@@ -1,0 +1,575 @@
+\documentclass[10pt,english]{beamer}
+%\documentclass[english,handout]{beamer} % For handouts
+\input{../metropolis_preamble.tex}
+\input{../macros.tex}
+%\usepackage{extendedalt}
+%\usepackage{animate} % Animations
+%\usepackage{../lindsten}
+%\usepackage{movie15}
+\usepackage{tikz}
+\usepackage{listofitems} % for \readlist to create arrays
+
+\hypersetup{
+  colorlinks=true, urlcolor=blue, linkcolor=red
+}
+
+\title{732G12 Data Mining}
+\subtitle{Föreläsning 10}
+\date{}
+\author{Josef Wilzén \\ IDA, Linköping University, Sweden}
+\titlegraphic{\hfill\includegraphics[height=1.2cm]{../LiU_primary_black.pdf}}
+%\institute{Joint work with\dots}
+
+
+%% MY DEF %%
+\newcommand{\itm}[1]{\mathrm{Item}_{#1}}
+\newcommand{\pausa}{\pause}
+%\renewcommand{\pausa}{}
+\tikzstyle{mynode}=[thick,draw=blue,fill=blue!20,circle,minimum size=22]
+
+
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Dagens föreläsning}
+
+    \begin{itemize}
+        \item Projekt
+        \item K-medoid klustring
+        \item Densitetsbaserade metoder
+        \item Faktorer som påverkar klusteranalys
+        \item Utvärdera klusteranalys
+        \item Sammanfattning av kursen
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Projekt och resten av kursen}
+    
+  \begin{itemize}
+        \item Kursvecka 7 och framåt: 
+        \begin{itemize}
+          \item Arbeta med projektet
+          \item Datorlabbar: hjälp med projektet $\rightarrow$ utnyttja tiden!
+          \item Förbereda inför tentan
+        \end{itemize}
+        \item Datum: \href{https://raw.githubusercontent.com/STIMALiU/732G12_DM/refs/heads/master/project/Datum_ht2024.pdf}{länk}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{K-medoid klustring}
+
+    Använder \imp{medoider} som center/prototyp vid klustring.
+    \begin{itemize}
+        \item En \imp{medoid} är en representativ observation inom ett dataset/kluster.
+        \item Medoid är \imp{inte} samma som centroid, median, geometrisk median etc.
+        \item Medoider är \imp{lätta att tolka}
+        \begin{itemize}
+            \item centroider kan vara punkter som inte liknar någon av observationerna i data.
+        \end{itemize}
+        \item k-medoids:
+        \begin{itemize}
+            \item minimerar summan av parvisa avstånd.
+            \item kan använda godtyckligt avståndsmått.
+            \item mer robust med brus och extremvärden.
+        \end{itemize}
+        \item k-means: använder oftast euklidiskt avstånd.
+        \item k-medoid klustring kallas också Partitioning Around Medoids (PAM)
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{K-medoid klustring}
+
+    \includegraphics[width = \textwidth]{figs/k-mediod.png}
+    
+\end{frame}
+
+
+
+\begin{frame}{Densitetsbaserade metoder}
+
+    Kluster kan formas baserat på hur densiteten på punkter varierar över variablerna: Täta områden kan defineras som ett kluster.
+
+    \includegraphics[width = .8\textwidth]{figs/density_cluster2.png}
+    
+\end{frame}
+
+\begin{frame}{DBSCAN}
+
+    \begin{itemize}
+        \item Algoritm för att skapa kluster baserat på punkternas täther.
+        \item Använder två begrepp:
+        \begin{itemize}
+            \item $\operatorname{eps}$, en sökradie där vi letar efter punkter.
+            \item $\operatorname{minPts}$, minsta antal punkter/grannar.
+        \end{itemize}
+    \end{itemize}
+    
+    Från detta kan vi klassificera observationerna till någon av följande kategorier:
+    \begin{description}
+        \item[Kärnpunkt] Punkter med minst $\operatorname{minPts}$ punkter inom sökradien $\operatorname{eps}$.
+        \item[Gränspunkt] Inte en kärnpunkt men hamnar inom sökradien från en kärnpunkt.
+        \item[Bruspunkt] Varken kärnpunkt eller gränspunkt.   
+    \end{description}
+
+\end{frame}
+
+\begin{frame}{Illustration}
+    
+    \includegraphics[width=\textwidth]{figs/DBSCAN_obs_class.png}
+
+\end{frame}
+
+\begin{frame}{DBSCAN Algoritmen}
+
+    \includegraphics[width=\textwidth]{figs/DBSCAN algoritm.png}
+    
+\end{frame}
+
+\begin{frame}{Val av $\operatorname{eps}$ och $\operatorname{minPts}$}
+
+    Hyperparametrar som vi måste välja.
+    \begin{enumerate}
+        \item Definera ett nummer $k$.
+        \item Beräkna avståndet mellan varje punkt och dess $k$-närmaste granne och sortera punkterna enligt ökande avstånd.
+        \item Definera $\operatorname{eps}$ som värdet där skarp förändring märks (armbågsmetoden).
+        \item $\operatorname{minPts} = k$.
+    \end{enumerate}
+    $k$-värdet vi valt i steg 1 påverkar \imp{inte} $\operatorname{eps}$-värdet mycket om $k$ inte är extremt (för litet eller för stort).
+    
+\end{frame}
+
+\begin{frame}{DBSCAN - Exempel}
+
+    \includegraphics[width=\textwidth]{figs/density_cluster.png}
+    
+\end{frame}
+
+\begin{frame}{DBSCAN - Exempel}
+    
+    \includegraphics[width=\textwidth]{figs/DBSCAN_cluster_example.png}
+
+\end{frame}
+
+\begin{frame}{DBSCAN - För och nackdelar}
+
+    \begin{itemize}
+        \item Brusbeständig.
+        \item Behandlar kluster av olika former och storlekar.
+        \item Problem med kluster som har tydligt varierande tätheter.
+        \begin{itemize}
+            \item Svårt att välja ett bra $\operatorname{eps}$.
+        \end{itemize}
+        \item Problem i stora dimensioner.
+    \end{itemize}
+    
+    Förbättring: HDBscan
+    \begin{itemize}
+        \item Variant som är en kombination av täthetsbaserad och hierarkisk klustring.
+        \item Hyperparameter: Antal grannar, (eps bestämns automatiskt)
+        \item Skalbar till stora dataset
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{K-means och DBSCAN}
+
+    \includegraphics[width=\textwidth]{figs/compre_k-mean_DBACAN.png}
+    
+\end{frame}
+
+\begin{frame}{Faktorer som påverkar klusteranalys}
+    \begin{itemize}
+        \item Dimensionalitet (problem för täthetsbaserade metoder).
+        \item Datamängdens storlek (stora datamängder är svåra att skala upp).
+        \item Brus och extremvärden.
+        \item Skalan på data: numerisk, kategorisk.
+        \begin{itemize}
+            \item problem att välja närhetsmått för datamängder med blandade attribut.
+        \end{itemize}
+        \item Standardisering av variabler.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Egenskaper}
+    
+\begin{itemize}
+    \item Fördelningar - Olika metoder passar bättre på vissa fördelningar.
+    \item Form - Godtyckliga former är svårare att klustra.
+    \item Storlek - K-means, problem med olika storlekar.
+    \item Täthet - Olika täthet problem för K-means, DBSCAN.
+    \item Dåligt separerade kluster - Vissa metoder slår ihop överlappande kluster eller kluster som ligger nära varandra
+\end{itemize}
+
+\begin{redbox}
+Ingen klustermetod passar för alla dataset!
+\end{redbox}
+
+\end{frame}
+
+\begin{frame}{Utvärdera klusteranalys}
+
+    \begin{itemize}
+        \item Cluster tendency: Finns det kluster i data? Eller har observationerna bara slumpmässiga värden?
+        \begin{itemize}
+           \item Notera: det kan finnas bra ett "naturligt" kluster i data
+        \end{itemize}
+        \item Avgöra rätt antal kluster.
+        \item Interna mått på hur bra klusteranalysen är.
+        \item Externa mått på hur bra klusteranalysen är $\rightarrow$ om vi har tillgång till sanna klasser/grupper.
+        \item Jämföra olika metoder för klusteranalys på samma dataset.
+        \item Kontext och problembeskrivning: avgör om vi har en bra klustring.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Cohesion och Separation}
+    Interna mått.
+    \begin{description}
+        \item[Cohesion:] Hur tight eller sammanhållet ett kluster är med sig själv.
+        \item[Separation:] Hur väl separerat ett kluster är från övriga kluster.
+    \end{description}
+    
+    När vi har beräknat dessa mått för ett kluster kan vi väga samman alla dessa mått till ett mått för hela klustringen.
+
+\end{frame}
+
+\begin{frame}{Cohesion och Separation}
+    
+    \begin{align*}
+        \operatorname{cohesion}(C_i) &= \sum_{x \in C_i, y \in C_i} \operatorname{proximity}(x,y) \\
+        \operatorname{proximity}(C_i, C_j) &= \sum_{x \in C_i, y \in C_j} \operatorname{proximity}(x,y)
+    \end{align*}
+
+    \includegraphics[width=.8\textwidth]{figs/cohesion and separation.1.png}
+
+    $\operatorname{proximity}(x,y)$ kan vara både närhetsmått eller avståndsmått.
+
+\end{frame}
+
+\begin{frame}{The Silhouette Coefficient}
+    
+    Använder både cohesion och separation för att beräkna ett mått.
+
+    \begin{enumerate}
+        \item Beräkna medelavståndet från $\text{observation}_i$ till alla andra observationer i dess kluster, kalla det $a_i$.
+        \item Beräkna nu medelavståndet från $\text{observation}_i$ till alla kluster som inte innehåller denna observation.
+        \item Hitta det minsta av dessa avstånd kalla det $b_i$.
+        \item Silhouette coefficient för $\text{observation}_i$ defineras som,
+        \begin{equation*}
+            s_i = \frac{b_i - a_i}{\max(a_i, b_i)}
+        \end{equation*}
+    \end{enumerate}
+
+\end{frame}
+
+\begin{frame}{The Silhouette Coefficient}
+
+    \begin{equation*}
+        s_i = \frac{b_i - a_i}{\max(a_i, b_i)}
+    \end{equation*}
+
+    \begin{itemize}
+        \item $s_i$ kan ta värden mellan $-1$ och $1$.
+        \item 1 är bästa möjliga värde.
+        \begin{itemize}
+            \item Vill ha $a_i < b_i$ och att $a_i$ ska vara nära noll.
+        \end{itemize}
+        \item Average silhouette coefficient.
+        \begin{itemize}
+            \item Ta medelvärdet över alla $s_i$
+            \item Ger ett mått på hur bra klustringen är.
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{The Silhouette Coefficient - Exempel}
+
+    \includegraphics[width=\textwidth]{figs/Silhouette coefficients for points in ten clusters..png}
+    
+\end{frame}
+
+\begin{frame}{Välja antal kluster}
+
+    \begin{itemize}
+        \item K-means: vi kan använda total SSE och average silhouette coefficient.
+        \item Plotta dessa mot antal kluster.
+        \begin{itemize}
+            \item Kolla efter böjar och toppar.
+            \item SSE planar ut efter en böj: ta antal kluster vid böjen.
+            \item Average silhouette coefficient: Kolla om det finns en eller flera toppar.
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Välja antal kluster - Exempel}
+
+    \includegraphics[width=\textwidth]{figs/Determining the Correct Number of Clusters.png}
+    
+\end{frame}
+
+\begin{frame}{Calinski-Harabasz Index}
+    \begin{description}
+        \item[Inter-cluster dispersion]
+        \begin{equation*}
+            \operatorname{BCSS} = \sum_{k=1}^{K} n_k \| C_k - C \|^2.
+        \end{equation*}
+        \item[Intra-cluster dispersion]
+        \begin{equation*}
+            \operatorname{WCSS}_k = \sum_{i=1}^{n_k} \| x_{i,k} - C_k \|^2, \qquad \operatorname{WCSS} = \sum_{k=1}^{K} \operatorname{WCSS}_k.
+        \end{equation*}
+        \item [\href{https://en.wikipedia.org/wiki/Calinski\%E2\%80\%93Harabasz_index}{Calinski-Harabasz Index}]
+        \begin{equation*}
+            \operatorname{CH} = \frac{\operatorname{BCSS}}{\operatorname{WCSS}} \cdot \frac{N - K}{K-1}.
+        \end{equation*}
+    \end{description}
+    Höga värden är bra för CH.
+
+    Davies-Bouldin Index är ett liknande mått. Där ska man ha låga värden.
+\end{frame}
+
+\begin{frame}{Välja antal kluster}
+
+    \begin{itemize}
+        \item Vi kan beräkna närhetsmatrisen eller avståndsmatrisen för alla datapunkter.
+        \begin{itemize}
+            \item Matris med alla parvisa närheter/avstånd mellan observationer.
+        \end{itemize}
+        \item Notera att detta är dyrt!
+        \begin{itemize}
+            \item Kostar $O(n^2)$
+            \item Svårt att plotta med många observationer.
+            \item En lösning är att ta ett slumpmässigt urval av data.
+        \end{itemize}
+        \item Sortera närhetsmatrisen baserat på kluster.
+        \begin{itemize}
+            \item Först kommer kluster 1, sen kluster 2, osv.
+        \end{itemize}
+        \item Om vi har väl separerade kluster och valt ett bra antal kluster kommer den sorterade matrisen vara ungefär blockdiagonal.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Välja antal kluster - Exempel}
+
+    \includegraphics[width=.8\textwidth]{figs/Similarity matrices for clusters.png}
+    
+\end{frame}
+
+\begin{frame}{Cluster Tendency}
+
+    \begin{itemize}
+        \item Har vi slumpmässig data eller finns det något mönster? (kluster)
+        \item Sampla två grupper om $p$ datapunkter
+        \begin{itemize}
+            \item Uniformt fördelade från datarymden.
+            \item Från datasetet utan återläggning.
+        \end{itemize}
+        \item Beräkna avståndet till närmaste granne i datasetet.
+        \begin{itemize}
+            \item $u_i$ är minsta avståndet från en uniform datapunkt till en observation.
+            \item $w_i$ är minsta avståndet från en samplad datapunkt till en icke-samplad datapunkt.
+        \end{itemize}
+        \item Hopkins statistic:
+        \begin{equation*}
+            \operatorname{H}=\frac{\sum_{i=1}^{p}w_i}{\sum_{i=1}^{p}u_i + \sum_{i=1}^{p}w_i}
+        \end{equation*}
+        \item Nollhypotesen är att datasetet följer en uniform fördelning. $\operatorname{H_0}$ kommer då vara $\operatorname{Beta}(p,p)$ fördelat.
+        \item Värden nära 1 indikerar att data inte är uniformt fördelat.
+        
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Extern validering}
+
+    \begin{itemize}
+        \item Jämför med sanna klasser/kluster.
+        \item Vi kan ta resultatet från vår klusteranalys som våra "predikterade värden"
+        \item Kan då jämföra med sanna klasserna.
+        \begin{itemize}
+            \item Vi kan då beräkna förväxlingsmatris och liknande mått.
+        \end{itemize}
+        \item Notera:
+        \begin{itemize}
+            \item Vi har inte de "rätta namnen" på våra kluster.
+            \item Vi vill ofta att klustren ska vara så rena som möjligt, dvs. domineras av en klass.
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Användning and utvärdering av klusteranalys}
+
+    \begin{itemize}
+        \item Börja med lämplig datahantering: välja variabler, skalning, mm
+        \item Välj lämpligt avståndsmått/närhetsmått
+        \item Överväg om någon variabelreduktion kan behövas (väja mindre delmängd av variabler, PCA, autoencoders, etc)
+        \item Ofta är det bra att testa olika klusteringsmetoder och olika inställningar på hyperparametrar
+        \item Vi kan använda klustering för att diskretisera variabler
+        \begin{itemize}
+          \item Välj en eller ett mindre antal variabler
+          \item Kör en klustring
+          \item Använd klustertillhörighet som en ny kategorisk variabel
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Användning and utvärdering av klusteranalys}
+
+    \begin{itemize}
+        
+        
+        \item Klusteranalys kan användas för att komprimera ett dataset. Här passar det bra med någon prototypbaserad klustering
+        \begin{itemize}
+            \item Om vi har många obs så kör vi k-means eller PAM på data, där $k$ är relativt stort
+            \item Vi använder sen centroiderna/medoiderna som data i vidare analyser: vi har nu $k$ stycken obs
+            \item Vi kan använda den "nya datan" för klustering med någon annan klustringsmetod eller för annan dataanalys
+        \end{itemize}
+        
+        
+        \item För att testa robusthet i resultatet:
+        \begin{itemize}
+          \item Dra ett antal slumpmässiga urval från data (t.ex. med 70-90\% av obs i ursprungliga data) 
+          \item Klustra alla dessa data med samma metod med samma inställningar
+          \item Undersök om klustering blir lika mellan dataseten eller om det är tydliga skillnader
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}[standout]
+    \Huge Sammanfattning av kursen
+\end{frame}
+
+\begin{frame}{Sammanfattning av kursen}
+
+    Sammanfattning i en mening:
+    \begin{itemize}
+        \item Givet data, hitta den bästa (mest lämpade), modellen som beskriver eller predikterar detta dataset.
+    \end{itemize}
+
+    Till vår hjälp har vi gått igenom väldigt många olika modeller och algoritmer.
+    
+\end{frame}
+
+\begin{frame}{Sammanfattning}
+    \begin{itemize}
+        \item Modellval
+        \begin{itemize}
+            \item Felfunktioner
+            \item Utvärderingsmått
+            \item Dela upp data i träning, validering, test.
+            \item Korsvalidering
+            \item AIC, BIC\dots
+            \item Variabelselektion
+        \end{itemize}
+        \item Regularisering
+        \begin{itemize}
+            \item LASSO, Ridge
+            \item Vi vill ofta ha så enkla modeller som möjligt
+        \end{itemize}
+        \item Vi vill ha bra generaliserbarhet!
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Sammanfattning}
+    
+    \begin{itemize}
+        \item Icke-linjär regression/klassificering
+        \begin{itemize}
+            \item Grundidé är att hitta en transformationer av förklarande variabler.
+            \item Gått igenom många olika transformationer.
+        \end{itemize}
+        \item Basfunktioner
+        \item Splines
+        \item Kernelfunktioner
+        \item Lokal regression
+        \item Trädmodeller
+        \item Neurala nätverk
+        \begin{itemize}
+            \item Olika typer av lager för olika problem
+            \item Olika aktiveringsfunktioner
+            \item Global approximation theorem
+            \item Bra för bilder, video, text, ...
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Sammanfattning}
+    \begin{itemize}
+        \item Trädmodeller
+        \begin{itemize}
+            \item Dela upp variabelrummet i rektanglar.
+            \item Varje rektangel får ett värde.
+            \item Olika regler för uppdelning beroende på problem.
+        \end{itemize}
+        \item Beskärning av träd
+        \begin{itemize}
+            \item Förbeskärning
+            \item Efterbeskärning
+        \end{itemize}
+        \item Ensamblemetoder
+        \begin{itemize}
+            \item Bagging - Använd bootstrap för att skapa många "oberoende" träd.
+            \item Random forest - Gör slumpmässiga ändringar i träden.
+            \item Boosting - Skapa många (små) träd, men modifiera datan mellan varje träd.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Sammanfattning}
+    
+    \begin{itemize}
+        \item K-närmaste grannar
+        \begin{itemize}
+            \item Skattar värdet med hjälp av närmaste datapunkterna
+            \item Kan förbättras genom att vikta med avståndet
+        \end{itemize}
+        \item Naive bayes
+        \begin{itemize}
+            \item Skatta klassificering med hjälp av bayes sats
+            \item För full sannolikhetsfördelning krävs mycket data
+            \item Görs ofta förenklningen att varje variabel är oberoende
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Sammanfattning}
+    
+    \begin{itemize}
+        \item Klusteranalys
+        \begin{itemize}
+            \item Oövervakad inlärning.
+            \item K-means klustring
+            \item K-medoid klustring
+            \item Hierarkisk klustring
+            \item DBSCAN
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}[standout]
+    \Huge Tack för att ni har lyssnat!
+
+    \large Nu är det bara projektet och tentan kvar.
+\end{frame}
+
+\end{document}
