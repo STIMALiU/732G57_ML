@@ -1,0 +1,753 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+    LINK\"OPING UNIVERSITY\\
+    Avdelningen för Statistik och maskininlärning\\
+    Institutionen för datavetenskap
+  }
+  \fancyhead[R]{Data Mining}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Data Mining}
+\fancyhead[LO,RE]{}
+
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+\end_preamble
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package auto
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style swedish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Projekt i 732G12 Data Mining
+\end_layout
+
+\begin_layout Author
+Josef Wilzén
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Global options
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(comment='') 
+\end_layout
+
+\begin_layout Plain Layout
+
+options(digits = 5)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Lärandemål
+\end_layout
+
+\begin_layout Standard
+Det huvudsakliga målet med denna inlämningsuppgift är att använda den teoretiska
+ och praktiska kunskap som övats upp under tidigare del av kursen.
+ Ni förväntas även få en praktisk övning i hur man kan analysera verkliga
+ datamaterial samt de problem som kan uppstå med dessa.
+ Det ingår även en övning i muntlig och skriftlig redovisning av analysresultate
+t.
+\end_layout
+
+\begin_layout Section
+Instruktioner
+\end_layout
+
+\begin_layout Standard
+Er uppgift är att i par välja ett datamaterial som ni ska analysera.
+ Se sektion 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Datamaterial"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ för detaljer.
+ När ni väl valt datamaterial ska ni komma på en frågeställning som kan
+ besvaras genom att analysera det valda datamaterialet.
+ Exempel på frågeställningar:
+\end_layout
+
+\begin_layout Itemize
+Vilka egenskaper påverkar huruvida en komponent är trasig?
+\end_layout
+
+\begin_layout Itemize
+Vilken metod predikterar temperaturen bäst med avseende på MSE och MAE?
+\end_layout
+
+\begin_layout Itemize
+Vilka sidor besöker en användare innan den landar på sidan 
+\begin_inset Quotes sld
+\end_inset
+
+Resultat
+\begin_inset Quotes srd
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Itemize
+Finns det grupper av varor som oftast köps samtidigt?
+\end_layout
+
+\begin_layout Standard
+Under arbetets gång kommer ni säkert stöta på problem som till exempel att
+ datamaterialet inte har det format som ni använt tidigare under kursen
+ eller att en viss tilltänkt metod inte alls fungerar på just det specifika
+ datamaterialet.
+ En del av denna inlämningsuppgift är att ni ska självständigt lösa dessa
+ problem, men ni kan självklart fråga om hjälp under de schemalagda handlednings
+passen som finns tillhands.
+ Lösningar som ni kommer på, måste tydligt presenteras i rapporten som ni
+ skriver för att uppfylla kravet om reproducerbarhet som råder för akademiska
+ rapporter.
+\end_layout
+
+\begin_layout Standard
+När ni väl kommit fram till ett svar på er frågeställning ska allting sammanstäl
+las till en rapport som ska formas enligt rapportmallen.
+ Rapportmallen finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/project/template/Rapportmall%20STIMA%20projekt.rmd"
+literal "false"
+
+\end_inset
+
+ och 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/project/template/Rapportmall-STIMA-projekt.pdf"
+literal "false"
+
+\end_inset
+
+ (se även kurshemsidan), och innehåller instruktioner om hur ni ska skriva
+ er rapport.
+ Huvudfokus ska ligga på databeskrivningen och dess bearbetning samt rapportens
+ metodkapitel.
+ Alla analyser och slutsatser ska vara motiverade med lämpliga grafer och
+ tabeller.
+ 
+\end_layout
+
+\begin_layout Standard
+Rapporterna ska skrivas med någon följande programvaror:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Rmarkdown"
+target "https://rmarkdown.rstudio.com/"
+literal "false"
+
+\end_inset
+
+ (med 
+\begin_inset CommandInset href
+LatexCommand href
+name "knitr"
+target "https://yihui.org/knitr/"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "LaTeX"
+target "https://en.wikipedia.org/wiki/LaTeX"
+literal "false"
+
+\end_inset
+
+: typsättningssystem som är speciellt lämpligt för vetenskapliga texter
+ och matematisk notation.
+ Valfri programvara för LaTex går bra.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Lyx"
+target "https://www.lyx.org/"
+literal "false"
+
+\end_inset
+
+: grafiskt program som generar en LaTeX-rapport i bakgrunden, som kan komplieras
+ till en pdf.
+ Kan användas med knitr.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Rapporten ska lämnas in som pdf-fil.
+ Det rekomenderas att ni använder Rmarkdown för rapporten.
+ Döp filen på formen 
+\begin_inset Quotes sld
+\end_inset
+
+gruppX_liuid1_liuid2.pdf
+\begin_inset Quotes srd
+\end_inset
+
+ och ladda upp på Lisam i den anvisade samarbetsytan innan deadline.
+ Deadlines finns sammaställda i ett dokumment 
+\begin_inset CommandInset href
+LatexCommand href
+name "[här]"
+target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/project/Datum%20och%20deadlines%20f%C3%B6r%20732G12%20HT2022.pdf"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Datainlämning
+\end_layout
+
+\begin_layout Standard
+Ni ska göra en mindre inlämning (på Lisam) innan ni lämnar in den färdiga
+ rapporten.
+ Där ska ni:
+\end_layout
+
+\begin_layout Itemize
+Beskriva vilket datamaterial som ni har valt
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+vilka variabler, antal variabler, antal obs mm
+\end_layout
+
+\begin_layout Itemize
+kortfattad explorativ analys: kortfattad beskrivande statistik av data och/eller
+ några plottar av data
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ange preliminär frågeställning (ok att ändra senare vid behov)
+\end_layout
+
+\begin_layout Standard
+Inlämingen ska vara en pdf-fil som är 1-3 sidor lång.
+ Syftet är att ni ska välja data och komma igång med inledande datahanteringen,
+ och börja fundera över frågeställningen.
+ Det är ok att återanvända hela eller delar av denna inlämning till den
+ slutgiltiga rapporten om man vill.
+\end_layout
+
+\begin_layout Subsection*
+Presentation
+\end_layout
+
+\begin_layout Standard
+Under seminariet kommer varje grupp förfoga över 25 minuter där både presentatio
+n och opponering inkluderas.
+ Ni ska under presentationens första 15 minuter presentera och sammanfatta
+ den rapport som ni gjort och sedan lämnas 10 minuter för opponering från
+ opponentgruppen.
+\end_layout
+
+\begin_layout Subsection*
+Opponering
+\end_layout
+
+\begin_layout Standard
+Varje grupp ska opponera på en annan rapport enligt det schema som kommer
+ att presenteras.
+ Det förväntas att fokus ligger på det statistiska, det vill säga hur metoderna
+ presenteras, används och tolkas.
+ 
+\end_layout
+
+\begin_layout Itemize
+Vid den muntliga opponeringen så ska de större konceptuella frågorna och
+ kommentarerna tas upp.
+ Börja med de viktigaste.
+\end_layout
+
+\begin_layout Itemize
+Mindre kommentarer och saker som rör formalia tas bara upp skriftligt.
+\end_layout
+
+\begin_layout Standard
+Varje grupp ska sammanställa sina kommentarer i ett dokument som sedan ska
+ skickas till rapportgruppen och lärare.
+ Detta dokument ska innehålla både de små och stora kommentarerna.
+\end_layout
+
+\begin_layout Section
+Datamaterial
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Datamaterial"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Er uppgift är att i grupper om två välja något datamaterial att analysera.
+ Endast en grupp tillåtas per datamaterial.
+ Först till kvarn gäller för dessa val!
+\end_layout
+
+\begin_layout Standard
+Skriv upp ert val på projektlistan som kommer att delas i Teams under kanalen
+ 
+\begin_inset Quotes sld
+\end_inset
+
+#DM_project
+\begin_inset Quotes srd
+\end_inset
+
+.
+ Ni ska citera källan på datamaterialet i de fall då det krävs i er rapport.
+\end_layout
+
+\begin_layout Subsection*
+Välja datamaterial
+\end_layout
+
+\begin_layout Standard
+Ni är fria att välja ett eget datamaterial.
+ Då gäller följande regler:
+\end_layout
+
+\begin_layout Itemize
+Inget simulerat datamaterial eller 
+\begin_inset Quotes sld
+\end_inset
+
+toy data
+\begin_inset Quotes srd
+\end_inset
+
+.
+ Det ska vara ett riktig data, som kan användas för en riktig frågeställning.
+\end_layout
+
+\begin_layout Itemize
+Inte för 
+\begin_inset Quotes sld
+\end_inset
+
+enkelt
+\begin_inset Quotes srd
+\end_inset
+
+: inte för några observationer eller variabler, tumregel: antingen antal
+ obs 
+\begin_inset Formula $\ge$
+\end_inset
+
+ 500 eller antal variabler 
+\begin_inset Formula $\ge$
+\end_inset
+
+ 10.
+ Fråga om ni är osäkra.
+\end_layout
+
+\begin_layout Itemize
+När ni hittat ett datamaterial: Fråga Josef om det är ok att använda det.
+ Ge en kort beskrivning av det och vilken metodklass ni tänker er.
+\end_layout
+
+\begin_layout Standard
+Förslag på ställen att hitta data:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Machine Learning Repository"
+target "https://archive.ics.uci.edu/ml/index.php"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Kaggle datasets"
+target "https://www.kaggle.com/datasets"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Datasets for Data Mining, Data Science, and Machine Learning"
+target "https://www.kdnuggets.com/datasets/index.html"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "List of datasets for machine-learning research"
+target "https://en.wikipedia.org/wiki/List_of_datasets_for_machine-learning_research"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+De databaser som finns tillgänliga via 
+\begin_inset CommandInset href
+LatexCommand href
+name "pxweb"
+target "https://cran.r-project.org/web/packages/pxweb/index.html"
+literal "false"
+
+\end_inset
+
+, se också 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://cran.r-project.org/web/packages/pxweb/vignettes/pxweb.html"
+literal "false"
+
+\end_inset
+
+ och 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://www.scb.se/en/services/statistical-programs-for-px-files/px-web/pxweb-examples/"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Några förslag på datamaterial
+\end_layout
+
+\begin_layout Itemize
+SkillCraft1
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "https://archive.ics.uci.edu/ml/datasets/SkillCraft1+Master+Table+Dataset"
+target "https://archive.ics.uci.edu/ml/datasets/SkillCraft1+Master+Table+Dataset"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Förslag: Klassificering
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Parkinsons
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "https://archive.ics.uci.edu/ml/datasets/Parkinsons+Telemonitoring"
+target "https://archive.ics.uci.edu/ml/datasets/Parkinsons+Telemonitoring"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Förslag: Regression
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+USAs befolkning
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+En databas över 2 458 285 slumpmässigt utvalda individer från 1990 års folkräkni
+ng i USA.
+ Källa: 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://archive.ics.uci.edu/ml/datasets/US+Census+Data+%281990%29"
+target "https://archive.ics.uci.edu/ml/datasets/US+Census+Data+%281990%29"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Förslag: Klustering, Klassificering
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Växter 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+En databas över 22 632 växter som finns i USA och Canada.
+ Informationen för varje växt som finns är vilken stat eller provins/territorium
+ som den växer i.
+ Källa: 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://archive.ics.uci.edu/ml/datasets/Plants"
+target "https://archive.ics.uci.edu/ml/datasets/Plants"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Förslag: Klustering, Associations och sekvensanalys
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Wine Quality Data Set
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "https://archive.ics.uci.edu/ml/datasets/Wine+Quality"
+target "https://archive.ics.uci.edu/ml/datasets/Wine+Quality"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Förslag: Regression, Klassificering
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Adult Data Set
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "https://archive.ics.uci.edu/ml/datasets/Adult"
+target "https://archive.ics.uci.edu/ml/datasets/Adult"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Förslag: Klassificering
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Bokstavsigenkänning
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Datamaterial som behandlar en 20 000 bokstäver med variabler som beskriver
+ hur dessa ser ut.
+ Källa: 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://archive.ics.uci.edu/ml/datasets/Letter+Recognition"
+target "https://archive.ics.uci.edu/ml/datasets/Letter+Recognition"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Förslag: Klassificering
+\end_layout
+
+\end_deeper
+\end_body
+\end_document
