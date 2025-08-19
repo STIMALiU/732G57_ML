@@ -85,7 +85,7 @@ Josef Wilzén
 
 \begin_layout Standard
 \align center
-732G12 Data Mining HT2021
+732G57 Maskininlärning för statistiker 
 \end_layout
 
 \begin_layout Section*
@@ -194,7 +194,7 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-Kodmanual för kursen finns 
+Kodmanual för kursen 732G12 finns 
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
@@ -204,8 +204,7 @@ literal "false"
 \end_inset
 
 .
- Notera att denna inte är uppdaterad för detta års omgång, så mindre ändringar
- kan komma senare.
+ Notera att denna inte är uppdaterad för detta års omgång.
 \end_layout
 
 \begin_layout Section*
@@ -265,7 +264,7 @@ Använd Hitters-data och gå igenom koden
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/lab1_adaptive_lasso_example.R"
+target "https://raw.githubusercontent.com/STIMALiU/732G57_ML/master/labs/lab1_adaptive_lasso_example.R"
 literal "false"
 
 \end_inset
@@ -318,12 +317,30 @@ literal "false"
 \end_inset
 
 .
+ Klicka på 
+\begin_inset Quotes eld
+\end_inset
+
+VIEW DATASETS
+\begin_inset Quotes erd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
 Ni ska nu välja ut ett dataset här som passar för klassificering.
- Notera att ni kan filtrera på olika kategorier till vänster.
- Ni kan sortera olika kolumner genom att trycka på kolumnnamnet.
+ Notera att ni kan filtrera på olika kategorier till vänster, välj 
+\begin_inset Quotes eld
+\end_inset
+
+Classification
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Ni kan sortera och filtera dataset baserat på antal observationer och antal
+ variabler.
 \end_layout
 
 \begin_layout Enumerate
@@ -364,13 +381,14 @@ Genomför nödvändig datahantering, tex: kolla efter NA, skala om variabler,
 \end_layout
 
 \begin_layout Enumerate
-Skapa ett testset från ert dataset (vissa dataset har en förbestämt testset
- andra inte).
+Skapa ett valideringsset från ert dataset (vissa dataset har en förbestämt
+ testset, användet det i så fall som valideringsset).
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Se till att alla klasser för responsvariabeln finns representerade i testsetet
+Se till att alla klasser för responsvariabeln finns representerade i validerings
+set
 \end_layout
 
 \begin_layout Enumerate
@@ -382,14 +400,15 @@ createDataPartition()
 \family typewriter
 caret
 \family default
- kan skapa träning-test delning.
+ kan skapa träning-validering delning.
  Se kodmanualen.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
 Nu ska ni bygga en prediktiv modell (logistik regression) som kan prediktera
- observationer i testdata.
+ observationer i valideringsdata.
+ Se guiderna för glmnet för ridge/lasso tillsammans med logistik regression.
  Testa följande metoder för modellval:
 \end_layout
 
@@ -450,7 +469,7 @@ Elesticnet regression, med
 
 \end_deeper
 \begin_layout Enumerate
-Räkna ut klassificeringsfelet (misclassification rate) för testdata.
+Räkna ut klassificeringsfelet (misclassification rate) för valideringsdata.
  Vilken model var bäst? Undersök om det är lätt att identifiera vilka variabler
  som är viktiga för modellerna.
  För den bästa och näst bästa modellen:
@@ -458,8 +477,17 @@ Räkna ut klassificeringsfelet (misclassification rate) för testdata.
 
 \begin_deeper
 \begin_layout Enumerate
-Beräkna förväxlingsmatrisen för testdata.
- Se kodmanualen för kod.
+Beräkna förväxlingsmatrisen för valideringsdata.
+ Kod: 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/2023/labs/class_evaluation.R"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Enumerate
