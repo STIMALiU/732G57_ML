@@ -1,0 +1,517 @@
+\documentclass[10pt,english]{beamer}
+%\documentclass[english,handout]{beamer} % For handouts
+\input{../metropolis_preamble.tex}
+\input{../macros.tex}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{caption}
+%\usepackage{extendedalt}
+%\usepackage{animate} % Animations
+%\usepackage{../lindsten}
+%\usepackage{movie15}
+
+\hypersetup{
+  colorlinks=true, urlcolor=blue, linkcolor=red
+}
+
+\title{732G57 Maskininlärning för statistiker}
+\subtitle{Föreläsning 1B}
+\date{}
+\author{Josef Wilzén \\ IDA, Linköping University, Sweden}
+\titlegraphic{\hfill\includegraphics[height=1.2cm]{../LiU_primary_black.pdf}}
+%\institute{Joint work with\dots}
+
+
+%% MY DEF %%
+\newcommand{\itm}[1]{\mathrm{Item}_{#1}}
+\newcommand{\pausa}{\pause}
+%\renewcommand{\pausa}{}
+
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Dagens föreläsning}
+    \begin{itemize}
+        \item Modellering, modellval
+        \item Optimering 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Introduktion till optimering}
+  \begin{itemize}
+    \item I maskininlärning vill vi ofta minimera en \textbf{kostnadsfunktion}: $f\left(\omega\right)$
+    \item Parametrar, $\omega$, styr värdet på funktionen  – målet är att hitta de värden som ger lägst kostnad.
+    \item Optimering innebär att vi vill hitta värden på $\omega$ som ger så låga/höga värden som möjligt på kostnadsfunktionen.
+    \item En variant: stegvis förbättra parametrarna för att närma oss ett minimum eller maximum.
+  \end{itemize}
+
+  \vspace{1em}
+  \begin{center}
+    \includegraphics[width=0.55\textwidth]{optimering_kostnadsfunktion1.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Introduktion till optimering}
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.6\textwidth]{optimeringssteg_konturer.png}
+        \caption*{Optimeringssteg i kostnadslandskapet för 
+        $f(\omega_1, \omega_2) = (\omega_1 - 1)^2 + (\omega_2 + 2)^2$}
+    \end{figure}
+    \begin{itemize}
+        \item Konturlinjer visar nivåer av $f(\omega_1, \omega_2)$
+        \item Röda punkter och linjer visar tänkta optimeringssteg
+        \item Minimum vid $(1, -2)$ är markerat med blå punkt
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Gradient och Euklidisk norm}
+    \textbf{Gradient:}
+    \begin{itemize}
+        \item Gradienten av en funktion $f(x_1, x_2, \dots, x_n)$ är en vektor med partiella derivator:
+        \[
+        \nabla f = \left( \frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, \dots, \frac{\partial f}{\partial x_n} \right)
+        \]
+        \item Gradientvektorn pekar i riktningen där funktionen ökar snabbast.
+        \item Kan användas i optimering för att hitta minimum eller maximum.
+    \end{itemize}
+
+    \vspace{0.4cm}
+    \textbf{Euklidisk norm:}
+    \begin{itemize}
+        \item Normen av en vektor $v = (v_1, v_2, \dots, v_n)$ är dess längd:
+        \[
+        \|v\| = \sqrt{v_1^2 + v_2^2 + \dots + v_n^2}
+        \]
+        \item Kallas även $L^2$-norm eller den euklidiska normen.
+        \item Används för att mäta storleken på gradienten.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Gradientens norm och riktining i ett kostnadslandskap}
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.5\textwidth]{gradient_landscape1.png}
+        \caption*{Gradientfält och konturlinjer för $f(\omega_1, \omega_2) = 
+        (\omega_1 - 1)^2 + (\omega_2 + 2)^2$}
+    \end{figure}
+    \begin{itemize}
+        \item Konturlinjer visar nivåer av $f(\omega_1, \omega_2)$
+        \item Röda pilar visar gradientens riktning och storlek
+        \item Minimum vid $(1, -2)$ där gradienten är noll
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Hur hittar vi de bästa värdena på $\omega$?}
+    \begin{itemize}
+        \item Det finns många olika sätt att lösa olika optimeringsproblem på
+        \item Brute force: vi testar många värden på $\omega$ och ser vilket som ger bäst värde på $f(\omega)$ $\rightarrow$ oftast inte praktiskt genomförbart
+        \item Vissa problem har enkla/analytiska lösningar
+        \item Optimeringsalgoritmer som stegvis förbättrar värdet på $f(\omega)$
+    \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Minimum för en andragradsfunktion}
+    Vi undersöker funktionen:
+    \[
+    f(x) = x^2 - 4x + 5
+    \]
+    \begin{itemize}
+        \item Derivera funktionen:
+        \[
+        f'(x) = 2x - 4
+        \]
+        \item Sätt derivatan lika med noll:
+        \[
+        2x - 4 = 0 \Rightarrow x = 2
+        \]
+        \item Undersök andraderivatan:
+        \[
+        f''(x) = 2 > 0
+        \]
+        \item Eftersom $f''(x) > 0$ har funktionen ett \textbf{minimum} vid $x = 2$
+        \item Värdet vid minimum:
+        \[
+        f(2) = 2^2 - 4 \cdot 2 + 5 = 4 - 8 + 5 = 1
+        \]
+    \end{itemize}
+    \textbf{Slutsats:} Funktionen har ett minimum vid $(x, f(x)) = (2, 1)$
+\end{frame}
+
+
+\begin{frame}{Minimum för ett godtyckligt polynom}
+    Antag att vi har ett polynom av grad $n$:
+    \[
+    f(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0
+    \]
+    \begin{itemize}
+        \item \textbf{Steg 1:} Beräkna den första derivatan:
+        \[
+        f'(x) = n a_n x^{n-1} + (n-1) a_{n-1} x^{n-2} + \dots + a_1
+        \]
+        \item \textbf{Steg 2:} Sätt $f'(x) = 0$ och lös ekvationen för att hitta kritiska punkter.
+        \item \textbf{Steg 3:} Beräkna den andra derivatan:
+        \[
+        f''(x) = n(n-1) a_n x^{n-2} + \dots
+        \]
+        \item \textbf{Steg 4:} Undersök tecknet på $f''(x)$ vid varje kritisk punkt:
+        \begin{itemize}
+            \item Om $f''(x) > 0$ $\Rightarrow$ lokalt minimum
+            \item Om $f''(x) < 0$ $\Rightarrow$ lokalt maximum
+            \item Om $f''(x) = 0$ $\Rightarrow$ vidare undersökning krävs
+        \end{itemize}
+    \end{itemize}
+    \textbf{Slutsats:} Minimum hittas där $f'(x) = 0$ och $f''(x) > 0$
+\end{frame}
+
+
+\begin{frame}{OLS-lösning med linjär algebra}
+    Vi utgår från modellen för linjär regression:
+    \[
+    y = X\beta + \varepsilon
+    \]
+
+    \vspace{0.3cm}
+    Den klassiska OLS-lösningen för $\beta$ fås genom att minimera residualsumman:
+    \[
+    \min_\beta \| y - X\beta \|^2
+    \]
+
+    \vspace{0.3cm}
+    Lösningen ges av:
+    \[
+    \hat{\beta} = (X^\top X)^{-1} X^\top y
+    \]
+
+    \begin{itemize}
+        \item $X^\top X$ är en (p × p) matris
+        \item $(X^\top X)^{-1}$ är inversen (om den existerar)
+        \item $X^\top y$ är en (p × 1) vektor
+    \end{itemize}
+
+    \textbf{Slutsats:} Vi kan beräkna $\hat{\beta}$ direkt med linjär algebra om $X^\top X$ är inverterbar.
+\end{frame}
+
+\begin{frame}{Antaganden om värde- och definitionsmängd}
+    \textbf{Antagande:}
+    \begin{itemize}
+        \item Kostnadsfunktionen $f(\omega)$ har de reella talen $\mathbb{R}$ som \textbf{värdemängd}.
+        \item Parametern $\omega$ har de reella talen $\mathbb{R}^p$ som \textbf{definitionsmängd}.
+    \end{itemize}
+
+    \vspace{0.4cm}
+    \textbf{Implikationer för optimering:}
+    \begin{itemize}
+        \item Vi kan använda \textbf{gradientbaserade metoder} som gradient descent.
+        \item Derivator och normer är definierade och kontinuerliga.
+        \item Möjligt att använda \textbf{analytiska verktyg} som första och andra derivatan.
+        \item Lösningen kan ligga var som helst i det reella rummet – inga diskreta begränsningar.
+    \end{itemize}
+
+    Reell värde- och definitionsmängd möjliggör effektiv optimering med kontinuerliga metoder.
+\end{frame}
+
+\begin{frame}{Globala och lokala minimipunkter}
+    \textbf{Definitioner:}
+    \begin{itemize}
+        \item \textbf{Lokalt minimum:} En punkt $x_0$ där $f(x_0) \leq f(x)$ för alla $x$ i en omgivning kring $x_0$.
+        \item \textbf{Globalt minimum:} En punkt $x^*$ där $f(x^*) \leq f(x)$ för alla $x$ i hela definitionsmängden.
+    \end{itemize}
+
+    \vspace{0.1cm}
+    \textbf{Exempel:}
+
+
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.45\textwidth]{globalt_min.png}
+        \hspace{0.5cm}
+        \includegraphics[width=0.45\textwidth]{lokala_minima_korrekt.png}
+        \caption*{Vänster: globalt minimum. Höger: flera lokala minima.}
+    \end{figure}
+\end{frame}
+
+
+\begin{frame}{Vad är en konvex funktion?}
+    \textbf{Intuitiv förklaring:}
+    \begin{itemize}
+        \item En konvex funktion är "skålformad" – den böjer uppåt.
+        \item Om du ritar en linje mellan två punkter på kurvan, så ligger hela linjen ovanför kurvan.
+        \item Det finns bara ett minimum, och det är det lägsta värdet i hela funktionen.
+    \end{itemize}
+
+    \vspace{0.4cm}
+    \textbf{Exempel:}
+    \begin{itemize}
+        \item $f(x) = x^2$ är en konvex funktion.
+        \item $f(x) = |x|$ är också konvex – även om den har ett hörn.
+    \end{itemize}
+
+    \vspace{0.4cm}
+    \textbf{Varför är det bra?}
+    \begin{itemize}
+        \item Enklare att hitta minimum – vi vet att det inte finns några "fällor".
+        \item Optimeringsalgoritmer fungerar bättre och snabbare.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Konvexa och icke-konvexa funktioner}
+
+    \textbf{Icke-konvex funktion:}
+    \begin{itemize}
+        \item Bryter mot konvexitetsvillkoret.
+        \item Kan ha \textbf{flera lokala minima} och maxima.
+        \item Exempel: $f(x) = \sin(x)$, $f(x) = x^4 - x^2$
+    \end{itemize}
+
+    \vspace{0.3cm}
+    \textbf{Konsekvenser för optimering:}
+    \begin{itemize}
+        \item Konvexa funktioner: enklare att optimera, globalt minimum kan hittas med gradientmetoder.
+        \item Icke-konvexa funktioner: kräver mer avancerade metoder (t.ex. randomisering, flera startpunkter). Vi har inga garantier att hitta ett globalt minimium.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{En generisk optimeringsalgoritm}
+  \begin{itemize}
+    \item Starta med en initial parametervektor \( \omega_0 \)
+    \item Sätt ett max antal iterationer \( k \)
+  \end{itemize}
+
+  \vspace{1em}
+  \textbf{För varje iteration } \( i = 1, 2, \dots, k \):
+  \begin{enumerate}
+    \item Uppdatera \( \omega_i \) baserat på \( \omega_{i-1} \) enligt en specifik regel
+    \item Beräkna kostnaden \( f\left(\omega_i\right) \)
+    \item Undersök konvergens:
+    \begin{itemize}
+      \item Om konvergerat: avbryt loopen
+    \end{itemize}
+  \end{enumerate}
+
+  \vspace{0.5em}
+  \textbf{Returnera:} \( \omega_i \) och \( f\left(\omega_i\right) \)
+\end{frame}
+
+
+\begin{frame}{Vad menas med konvergens?}
+  \begin{itemize}
+    \item En optimeringsalgoritm sägs ha \textbf{konvergerat} när den når ett tillstånd där ytterligare iterationer inte leder till någon meningsfull förbättring.
+    \item Det finns flera sätt att definiera konvergens:
+    \begin{itemize}
+      \item \textbf{Liten förändring i kostnadsfunktionen:} \\
+        \( |f(\omega_{i}) - f(\omega_{i-1})| < \varepsilon_{1} \)
+      \item \textbf{Liten förändring i parametrarna:} \\
+        \( \|\omega_{i} - \omega_{i-1}\| < \varepsilon_{2} \)
+      \item \textbf{Gradientens norm är nära noll:} \\
+        \( \|\nabla f(\omega_{i})\| < \varepsilon_{3} \)
+      \item \textbf{Maximalt antal iterationer har uppnåtts}
+    \end{itemize}
+    \item Valet av konvergenskriterium påverkar både hur bra den föreslagna lösningen blir och beräkningstiden.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Gradient Descent – En optimeringsmetod}
+    \textbf{Vad är Gradient Descent?}
+    \begin{itemize}
+        \item En metod för att hitta minimum av en funktion.
+        \item Används ofta för att minimera kostnadsfunktioner i maskininlärning.
+        \item Bygger på att följa den negativa riktningen av gradienten.
+    \end{itemize}
+
+    \textbf{Hur fungerar det?}
+    \begin{itemize}
+        \item Starta från en initial punkt $\omega_0$.
+        \item Uppdatera enligt: 
+        \[
+        \omega_{t+1} = \omega_t - \gamma \nabla f(\omega_t)
+        \]
+        där $\gamma$ är inlärningshastigheten (stegets storlek).
+        \item Upprepa tills gradienten är nära noll (dvs. vi når ett minimum).
+    \end{itemize}
+
+    \textbf{Nyckelidéer:}
+    \begin{itemize}
+        \item Gradient = riktning där funktionen ökar mest.
+        \item Negativ gradient = riktning mot lägre värden.
+        \item Inlärningshastigheten påverkar hur snabbt vi rör oss mot bättre värden.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Gradient Descent – Visuell illustration}
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.7\textwidth]{gradient_descent_figur.png}
+        \caption*{Gradient descent mot minimum för $f(x) = (x - 2)^2 + 1$}
+    \end{figure}
+
+    \begin{itemize}
+        \item Startpunkt vid $x=-2$
+        \item Pilar visar hur algoritmen rör sig mot lägre värden
+        \item Stegen följer den negativa gradienten
+        \item Minimum nås vid $x = 2$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Gradient Descent i flera dimensioner – 3D-visualisering}
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.77\textwidth]{gradient_descent_3d_rotated.png}
+        \caption*{Gradient descent i ett 3D-kostnadslandskap: $f(\omega_1, \omega_2) = (\omega_1 - 1)^2 + (\omega_2 + 2)^2$}
+    \end{figure}
+
+    \begin{itemize}
+        \item Ytan visar kostnadsfunktionen i två variabler.
+        \item Den röda linjen visar optimeringsstegen från startpunkt till minimum.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{När konvergerar Gradient Descent?}
+    \textbf{För att Gradient Descent ska konvergera till ett lokalt minimum krävs:}
+    \begin{itemize}
+        \item \textbf{Funktionen $f(\omega)$ är differentiabel:} Vi måste kunna beräkna gradienten.
+        \item \textbf{Gradienten är Lipschitz-kontinuerlig:} Det finns en konstant $L$ så att
+        \[
+        \|\nabla f(\omega_1) - \nabla f(\omega_2)\| \leq L \|\omega_1 - \omega_2\|
+        \]
+        vilket ger stabilitet i uppdateringarna.
+        \item \textbf{Inlärningshastigheten $\eta$ är tillräckligt liten:} Om $\eta < \frac{2}{L}$ så garanteras konvergens.
+        \item \textbf{Startpunkt nära minimum:} För icke-konvexa funktioner kan algoritmen fastna i lokala minima.
+        \item \textbf{Funktionen är konvex (för global konvergens):} Då är varje lokalt minimum också ett globalt minimum.
+    \end{itemize}
+
+    Med rätt förutsättningar leder gradient descent till ett (lokalt) minimum.
+\end{frame}
+
+\begin{frame}{Gradient Descent – Steglängdens roll}
+  \begin{itemize}
+    \item Vi optimerar funktionen $f(x) = x^2$ med gradient descent.
+    \item Startpunkt: $x = 8$, antal iterationer: 20.
+    \item \textbf{För liten steglängd (0.05):} långsam konvergens.
+    \item \textbf{Lagom steglängd (0.2):} snabb och stabil konvergens.
+    \item \textbf{För stor steglängd (0.8):} hoppar över minimum, risk för divergens.
+  \end{itemize}
+  \begin{center}
+    \includegraphics[width=0.87\textwidth]{steglangd_gradient_descent.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Gradient Descent – Steglängdsscheman}
+  \begin{itemize}
+    \item Ett \textbf{steglängdsschema} är en metod för att ändra steglängden $\gamma$ över iterationer i gradient descent.
+    \item Syftet är att börja med en större steglängd för snabb konvergens, och sedan minska den för stabilitet.
+    \item Vanligt schema: $\gamma_t = \frac{\gamma_0}{1 + \alpha t}$ där $\gamma_0$ är initial steglängd och $\alpha$ styr minskningstakten.
+    \item Hjälper algoritmen att undvika att studsa runt minimum i senare iterationer.
+  \end{itemize}
+  \begin{center}
+    \includegraphics[width=0.55\textwidth]{steglangdsschema.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Gradient Descent för Linjär Regression}
+  \begin{itemize}
+    \item Målet är att hitta parametrarna $\beta_0$ och $\beta_1$ i modellen:
+    \[
+      y = \beta_0 + \beta_1 x
+    \]
+    \item Vi använder gradient descent för att minimera kostnadsfunktionen:
+    \[
+      J(\beta) = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2
+    \]
+    där $\hat{y}_i = \beta_0 + \beta_1 x_i$.
+    \item Gradienterna för $\beta_0$ och $\beta_1$ ges av:
+    \[
+      \nabla_{\beta_0} J = -\frac{2}{n} \sum_{i=1}^n (y_i - \hat{y}_i), \quad
+      \nabla_{\beta_1} J = -\frac{2}{n} \sum_{i=1}^n (y_i - \hat{y}_i)x_i
+    \]
+    \item Uppdateringsregeln:
+    \[
+      \beta := \beta - \alpha \cdot \nabla J(\beta)
+    \]
+    där $\\alpha$ är steglängden.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Gradient Descent för Multipel Linjär Regression}
+  \begin{itemize}
+    \item Vi modellerar sambandet mellan flera variabler med:
+    \[
+      \mathbf{y} = \mathbf{X} \boldsymbol{\beta}
+    \]
+    där:
+    \begin{itemize}
+      \item $\mathbf{y}$ är en $n \times 1$-vektor med utfall,
+      \item $\mathbf{X}$ är en $n \times p$-matris med prediktorer (inkl. intercept),
+      \item $\boldsymbol{\beta}$ är en $p \times 1$-vektor med koefficienter.
+    \end{itemize}
+    \item Kostnadsfunktion (MSE):
+    \[
+      J(\boldsymbol{\beta}) = \frac{1}{n} (\mathbf{y} - \mathbf{X}\boldsymbol{\beta})^\top (\mathbf{y} - \mathbf{X}\boldsymbol{\beta})
+    \]
+    \item Gradienten ges av:
+    \[
+      \nabla J(\boldsymbol{\beta}) = -\frac{2}{n} \mathbf{X}^\top (\mathbf{y} - \mathbf{X}\boldsymbol{\beta})
+    \]
+    \item Uppdateringsregel:
+    \[
+      \boldsymbol{\beta} := \boldsymbol{\beta} - \alpha \cdot \nabla J(\boldsymbol{\beta})
+    \]
+    där $\alpha$ är steglängden.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Coordinate Descent – En variabel i taget}
+    \textbf{Vad är Coordinate Descent?}
+    \begin{itemize}
+        \item En optimeringsmetod där man optimerar en variabel i taget.
+        \item Alla andra variabler hålls fasta under varje steg.
+        \item Itererar över variablerna tills konvergens uppnås.
+    \end{itemize}
+
+    \vspace{0.3cm}
+    \textbf{Nyckelidéer:}
+    \begin{itemize}
+        \item Enkel att implementera, särskilt för stora problem.
+        \item Effektiv när varje delproblem (en variabel) är lätt att lösa.
+        \item Används ofta i t.ex. Lasso-regression (mer om det senare) och konvex optimering.
+        \item Kräver inte beräkning av hela gradienten.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Värdemängd och definitionsmängd i optimering}
+    \textbf{Värdemängd för $f(\omega)$:}
+    \begin{itemize}
+        \item Värdemängden är alla möjliga utfall av kostnadsfunktionen $f(\omega)$.
+        \item Exempel: Om $f(\omega) = \|\omega\|^2$ är värdemängden $[0, \infty)$.
+    \end{itemize}
+
+    \vspace{0.2cm}
+    \textbf{Definitionsmängd för $\omega$:}
+    \begin{itemize}
+        \item \textbf{Reella tal:} $\omega \in \mathbb{R}^p$ $\Rightarrow$ gradientbaserade metoder som gradient descent kan användas.
+        \item \textbf{Heltal:} $\omega \in \mathbb{Z}^p$ $\Rightarrow$ diskreta metoder som branch-and-bound eller dynamisk programmering krävs.
+        \item \textbf{Intervall:} $\omega \in [a, b]^p$ $\Rightarrow$ optimering med begränsningar, t.ex. projicerad gradient descent eller L-BFGS-B.
+        \item \textbf{Blandade variabler:} Kombination av reella och heltal $\Rightarrow$ mixed-integer programming (MIP).
+    \end{itemize}
+
+    Valet av optimeringsalgoritm beror på både värdemängden för $f(\omega)$ och definitionsmängden för $\omega$.
+\end{frame}
+
+
+
+\begin{frame}{Frågor?}
+    
+\end{frame}
+
+\end{document}
