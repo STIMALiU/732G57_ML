@@ -13,7 +13,7 @@
 %[colorlinks=true, urlcolor=blue, linkcolor=red]{hyperref}
 
 
-\title{732G12 Data Mining}
+\title{732G57  Maskininlärning för statistiker }
 \subtitle{Föreläsning 2}
 \date{}
 \author{Josef Wilzén \\ IDA, Linköping University, Sweden}
@@ -56,9 +56,10 @@
         \item En flexibel (komplex) modell har lättare att överanpassa.
         \item Vad är ''komplexitet''?
         \begin{itemize}
-            \item Linjär modell: Antal variabler, interaktioner, transformationer etc.
-            \item Neurala nätverk: Bredd och djup av modellen.
-            \item Trädmodeller: Djupet.
+            \item Linjär modell: Antal variabler, interaktioner, transformationer etc
+            \item Splines: frihetsgrader
+            \item Neurala nätverk: Bredd och djup av modellen
+            \item Trädmodeller: Djupet/antal löv
         \end{itemize}
     \end{itemize}
 
@@ -72,7 +73,7 @@
         \item Idé att hindra modellen att bli för komplex.
         \item Ger förhoppningsvis bättre generaliseringsfel.
         \item \textbf{Mycket viktigt tema inom maskininlärning}
-        \item Görs på olika sätt för olika metoder.
+        \item Görs på olika sätt för olika modeller.
     \end{itemize}
 
     Idén är att
@@ -172,9 +173,9 @@
 
 
 \begin{itemize}
-    \item Vanligt att skatta modellen med en felfunktion (tex negativa loglikelihoodfunktionen) och sen utvärdera med andra mått (felkvot, sensitivitet, specificitet etc)
+    \item Vanligt att skatta modellen med en felfunktion (tex negativa loglikelihoodfunktionen/cross entropy loss) och sen utvärdera med andra mått (felkvot, sensitivitet, specificitet etc)
     \item Problemet och strukturen på data avgör vilka mått som är lämpliga
-    \item Förväxlingsmatris - fler klasser, se separat dokument: \href{https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/other/confusion\%20matrix\%20classification\%20evaluation\%20metrics.pdf}{här}
+    \item Förväxlingsmatris - fler klasser, se separat dokument: \href{https://raw.githubusercontent.com/STIMALiU/732G57_DM/master/other/confusion\%20matrix\%20classification\%20evaluation\%20metrics.pdf}{kommer snart}
 \end{itemize}
     
 \end{frame}
@@ -183,7 +184,7 @@
 
 \begin{frame}{Generaliserade linjära modeller}
 
-    Antag att data $\mathbf{y} = y_1, y_2, \ldots, y_n$ är oberoende observationer från sannolikhetsfördelning från exponentialfamiljen.
+    Antag att data $\mathbf{y} = y_1, y_2, \ldots, y_n$ är oberoende observationer från sannolikhetsfördelning från \href{https://en.wikipedia.org/wiki/Exponential_family}{exponentialfamiljen}.
 
     Vi har en linjär prediktor $\mathbf{X} \beta$ samt en länkfunktion $g$ som kopplar ihop prediktorn med medelvärdet $\mu$ genom
     \begin{equation*}
