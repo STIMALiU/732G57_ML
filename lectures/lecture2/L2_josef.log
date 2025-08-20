@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.18)  19 AUG 2025 15:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.18)  20 AUG 2025 13:02
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1279,86 +1279,74 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
 
 ] [16
 
+] [17
+
 ]
-<figs/logplot.png, id=121, 1104.125pt x 325.215pt>
-File: figs/logplot.png Graphic file (type png)
-<use figs/logplot.png>
-Package pdftex.def Info: figs/logplot.png  used on input line 331.
-(pdftex.def)             Requested size: 307.28987pt x 90.50874pt.
-
-Overfull \vbox (6.16975pt too high) detected at line 331
- []
-
-[17
-
- <./figs/logplot.png>]
-<figs/best subset selection.png, id=129, 1186.4325pt x 551.05875pt>
+<figs/best subset selection.png, id=126, 1186.4325pt x 551.05875pt>
 File: figs/best subset selection.png Graphic file (type png)
 <use figs/best subset selection.png>
-Package pdftex.def Info: figs/best subset selection.png  used on input line 339
+Package pdftex.def Info: figs/best subset selection.png  used on input line 337
 .
 (pdftex.def)             Requested size: 307.28987pt x 142.72534pt.
  [18
 
  <./figs/best subset selection.png>]
-<figs/Forward stepwise selection.png, id=135, 1142.2675pt x 547.04375pt>
+<figs/Forward stepwise selection.png, id=132, 1142.2675pt x 547.04375pt>
 File: figs/Forward stepwise selection.png Graphic file (type png)
 <use figs/Forward stepwise selection.png>
 Package pdftex.def Info: figs/Forward stepwise selection.png  used on input lin
-e 347.
+e 345.
 (pdftex.def)             Requested size: 307.28987pt x 147.16121pt.
  [19
 
  <./figs/Forward stepwise selection.png>]
-<figs/Backward stepwise selection.png, id=142, 1154.3125pt x 541.02126pt>
+<figs/Backward stepwise selection.png, id=139, 1154.3125pt x 541.02126pt>
 File: figs/Backward stepwise selection.png Graphic file (type png)
 <use figs/Backward stepwise selection.png>
 Package pdftex.def Info: figs/Backward stepwise selection.png  used on input li
-ne 355.
+ne 353.
 (pdftex.def)             Requested size: 307.28987pt x 144.02211pt.
  [20
 
- <./figs/Backward stepwise selection.png>]
-[21
+ <./figs/Backward stepwise selection.png>] [21
 
 ] [22
 
 ]
-<figs/standardized ridge regression coefficients.png, id=158, 1283.79625pt x 67
+<figs/standardized ridge regression coefficients.png, id=155, 1283.79625pt x 67
 1.50874pt>
 File: figs/standardized ridge regression coefficients.png Graphic file (type pn
 g)
 <use figs/standardized ridge regression coefficients.png>
 Package pdftex.def Info: figs/standardized ridge regression coefficients.png  u
-sed on input line 394.
+sed on input line 392.
 (pdftex.def)             Requested size: 307.28987pt x 160.7248pt.
  [23
 
  <./figs/standardized ridge regression coefficients.png>] [24
 
 ]
-<figs/standardized lasso coefficients.png, id=170, 1259.70625pt x 685.56125pt>
+<figs/standardized lasso coefficients.png, id=167, 1259.70625pt x 685.56125pt>
 File: figs/standardized lasso coefficients.png Graphic file (type png)
 <use figs/standardized lasso coefficients.png>
 Package pdftex.def Info: figs/standardized lasso coefficients.png  used on inpu
-t line 414.
+t line 412.
 (pdftex.def)             Requested size: 307.28987pt x 167.22649pt.
-
-[25
+ [25
 
  <./figs/standardized lasso coefficients.png>]
-Overfull \hbox (24.89474pt too wide) in paragraph at lines 426--426
+Overfull \hbox (24.89474pt too wide) in paragraph at lines 424--424
 [][]  
  []
 
 [26
 
 ]
-<figs/Contours of the error .png, id=182, 1279.78125pt x 901.3675pt>
+<figs/Contours of the error .png, id=179, 1279.78125pt x 901.3675pt>
 File: figs/Contours of the error .png Graphic file (type png)
 <use figs/Contours of the error .png>
 Package pdftex.def Info: figs/Contours of the error .png  used on input line 43
-2.
+0.
 (pdftex.def)             Requested size: 307.28987pt x 216.4289pt.
  [27
 
@@ -1367,7 +1355,7 @@ Package pdftex.def Info: figs/Contours of the error .png  used on input line 43
 ] [29
 
 ]
-Overfull \hbox (9.89627pt too wide) detected at line 488
+Overfull \hbox (9.89627pt too wide) detected at line 486
 \OT1/mathkerncmss/m/sl/10 f\OT1/cmss/m/n/10 (\OML/cmm/m/it/10 ^^L\OT1/cmss/m/n/
 10 ) = [] +\OML/cmm/m/it/10 ^^U [] ;  ^^U \OMS/cmsy/m/n/10 ^^U \OT1/cmss/m/n/10
  0\OML/cmm/m/it/10 ;  \OT1/cmss/m/n/10 0 \OMS/cmsy/m/n/10 ^^T \OML/cmm/m/it/10 
@@ -1377,7 +1365,7 @@ Overfull \hbox (9.89627pt too wide) detected at line 488
 [30
 
 ]
-Overfull \hbox (6.69797pt too wide) detected at line 510
+Overfull \hbox (6.69797pt too wide) detected at line 508
 \OT1/mathkerncmss/m/sl/10 f\OT1/cmss/m/n/10 (\OML/cmm/m/it/10 ^^L\OT1/cmss/m/n/
 10 ) = [] +\OML/cmm/m/it/10 ^^U [] \OT1/mathkerncmss/m/sl/10 w[] [] \OML/cmm/m/
 it/10 ;  ^^U \OMS/cmsy/m/n/10 ^^U \OT1/cmss/m/n/10 0\OML/cmm/m/it/10 ;  \OT1/cm
@@ -1402,10 +1390,10 @@ Package rerunfilecheck Info: File `L2_josef.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 31485 strings out of 479533
- 649237 string characters out of 5876205
+ 31478 strings out of 479533
+ 649099 string characters out of 5876205
  893288 words of memory out of 5000000
- 48775 multiletter control sequences out of 15000+600000
+ 48769 multiletter control sequences out of 15000+600000
  481514 words of font info for 66 fonts, out of 8000000 for 9000
  417 hyphenation exceptions out of 8191
  128i,13n,122p,1893b,742s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1425,10 +1413,10 @@ sfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 t10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm
 10.pfb>
-Output written on L2_josef.pdf (31 pages, 686155 bytes).
+Output written on L2_josef.pdf (31 pages, 663904 bytes).
 PDF statistics:
- 294 PDF objects out of 1000 (max. 8388607)
- 210 compressed objects within 3 object streams
+ 291 PDF objects out of 1000 (max. 8388607)
+ 209 compressed objects within 3 object streams
  63 named destinations out of 1000 (max. 500000)
- 88 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 83 words of extra memory for PDF output out of 10000 (max. 10000000)
 
