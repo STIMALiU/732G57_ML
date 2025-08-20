@@ -38,8 +38,8 @@
 
 \begin{frame}{Dagens föreläsning}
     \begin{itemize}
-        \item Modellering, modellval
         \item Optimering 
+        \item Modellering, modellval
     \end{itemize}
 \end{frame}
 
@@ -371,7 +371,7 @@
     \end{figure}
 
     \begin{itemize}
-        \item Ytan visar kostnadsfunktionen i två variabler.
+        \item Ytan visar kostnadsfunktionen som beror på två variabler.
         \item Den röda linjen visar optimeringsstegen från startpunkt till minimum.
     \end{itemize}
 \end{frame}
@@ -385,7 +385,7 @@
         \|\nabla f(\omega_1) - \nabla f(\omega_2)\| \leq L \|\omega_1 - \omega_2\|
         \]
         vilket ger stabilitet i uppdateringarna.
-        \item \textbf{Inlärningshastigheten $\eta$ är tillräckligt liten:} Om $\eta < \frac{2}{L}$ så garanteras konvergens.
+        \item \textbf{Inlärningshastigheten $\gamma$ är tillräckligt liten:} Om $\gamma < \frac{2}{L}$ så garanteras konvergens.
         \item \textbf{Startpunkt nära minimum:} För icke-konvexa funktioner kan algoritmen fastna i lokala minima.
         \item \textbf{Funktionen är konvex (för global konvergens):} Då är varje lokalt minimum också ett globalt minimum.
     \end{itemize}
@@ -406,6 +406,41 @@
   \end{center}
 \end{frame}
 
+\begin{frame}{Gradient Descent: Fördelar och nackdelar}
+  \begin{columns}
+    \column{0.48\textwidth}
+    \textbf{Fördelar}
+    \begin{itemize}
+      \item Enkel att implementera
+      \item Fungerar för stora datamängder
+      \item Flexibel för olika typer av modeller
+      \item Kan användas med olika förbättringar/utökningar
+    \end{itemize}
+
+    \column{0.48\textwidth}
+    \textbf{Nackdelar}
+    \begin{itemize}
+      \item Känslig för val av steglängd
+      \item Kan fastna i lokala minima
+      \item Långsam konvergens
+      \item Kräver derivator av målfunktionen
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Vanliga förbättringar av Gradient Descent}
+  \begin{itemize}
+    \item Stochastic Gradient Descent (SGD)
+    \item Momentum
+    \item Nesterov Accelerated Gradient
+    \item Adagrad
+    \item RMSprop
+    \item Adam
+    \item AdaDelta
+    \item Learning rate scheduling/Steglängdsscheman
+  \end{itemize}
+\end{frame}
+
 \begin{frame}{Gradient Descent – Steglängdsscheman}
   \begin{itemize}
     \item Ett \textbf{steglängdsschema} är en metod för att ändra steglängden $\gamma$ över iterationer i gradient descent.
@@ -416,30 +451,6 @@
   \begin{center}
     \includegraphics[width=0.55\textwidth]{steglangdsschema.png}
   \end{center}
-\end{frame}
-
-\begin{frame}{Gradient Descent för Linjär Regression}
-  \begin{itemize}
-    \item Målet är att hitta parametrarna $\beta_0$ och $\beta_1$ i modellen:
-    \[
-      y = \beta_0 + \beta_1 x
-    \]
-    \item Vi använder gradient descent för att minimera kostnadsfunktionen:
-    \[
-      J(\beta) = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2
-    \]
-    där $\hat{y}_i = \beta_0 + \beta_1 x_i$.
-    \item Gradienterna för $\beta_0$ och $\beta_1$ ges av:
-    \[
-      \nabla_{\beta_0} J = -\frac{2}{n} \sum_{i=1}^n (y_i - \hat{y}_i), \quad
-      \nabla_{\beta_1} J = -\frac{2}{n} \sum_{i=1}^n (y_i - \hat{y}_i)x_i
-    \]
-    \item Uppdateringsregeln:
-    \[
-      \beta := \beta - \alpha \cdot \nabla J(\beta)
-    \]
-    där $\\alpha$ är steglängden.
-  \end{itemize}
 \end{frame}
 
 
@@ -457,17 +468,17 @@
     \end{itemize}
     \item Kostnadsfunktion (MSE):
     \[
-      J(\boldsymbol{\beta}) = \frac{1}{n} (\mathbf{y} - \mathbf{X}\boldsymbol{\beta})^\top (\mathbf{y} - \mathbf{X}\boldsymbol{\beta})
+      f(\boldsymbol{\beta}) = \frac{1}{n} (\mathbf{y} - \mathbf{X}\boldsymbol{\beta})^\top (\mathbf{y} - \mathbf{X}\boldsymbol{\beta})
     \]
     \item Gradienten ges av:
     \[
-      \nabla J(\boldsymbol{\beta}) = -\frac{2}{n} \mathbf{X}^\top (\mathbf{y} - \mathbf{X}\boldsymbol{\beta})
+      \nabla f(\boldsymbol{\beta}) = -\frac{2}{n} \mathbf{X}^\top (\mathbf{y} - \mathbf{X}\boldsymbol{\beta})
     \]
     \item Uppdateringsregel:
     \[
-      \boldsymbol{\beta} := \boldsymbol{\beta} - \alpha \cdot \nabla J(\boldsymbol{\beta})
+      \boldsymbol{\beta} := \boldsymbol{\beta} - \gamma \cdot \nabla f(\boldsymbol{\beta})
     \]
-    där $\alpha$ är steglängden.
+    där $\gamma$ är steglängden.
   \end{itemize}
 \end{frame}
 
@@ -489,6 +500,90 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{Första och andra ordningens metoder}
+  \begin{itemize}
+    \item \textbf{Första ordningens metoder:}
+    \begin{itemize}
+      \item Använder endast gradienten (första derivatan) av kostandsfunktionen.
+      \item Exempel: Gradient Descent, Stochastic Gradient Descent.
+    \end{itemize}
+    \item \textbf{Andra ordningens metoder:}
+    \begin{itemize}
+      \item Använder både gradienten och Hessianen (andra derivatan).
+      \item Exempel: Newtons metod, Quasi-Newton (t.ex. BFGS).
+    \end{itemize}
+    \item Val mellan metoder beror på problemets struktur, resurser och krav på noggrannhet.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Vad är en Hessian?}
+  \begin{itemize}
+    \item Hessianen är en matris med alla andra ordningens partialderivator av en funktion.
+    \item Används i optimering för att analysera kurvatur och hitta extrema punkter.
+    \item \textbf{Exempel:} Funktionen \( f(x, y) = x^2 + xy + y^2 \)
+  \end{itemize}
+  \[
+  \nabla^2 f(x, y) =
+  \begin{bmatrix}
+    \frac{\partial^2 f}{\partial x^2} & \frac{\partial^2 f}{\partial x \partial y} \\
+    \frac{\partial^2 f}{\partial y \partial x} & \frac{\partial^2 f}{\partial y^2}
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    2 & 1 \\
+    1 & 2
+  \end{bmatrix}
+  \]
+\end{frame}
+
+\begin{frame}{Exempel på Hessian: Funktion med tre variabler}
+  \begin{itemize}
+    \item Funktion: \( f(x, y, z) = x^2 + xy + y^2z + \sin(z) \)
+    \item Hessianen innehåller alla andra ordningens partialderivator:
+  \end{itemize}
+  \[
+  \nabla^2 f(x, y, z) =
+  \begin{bmatrix}
+    \frac{\partial^2 f}{\partial x^2} & \frac{\partial^2 f}{\partial x \partial y} & \frac{\partial^2 f}{\partial x \partial z} \\
+    \frac{\partial^2 f}{\partial y \partial x} & \frac{\partial^2 f}{\partial y^2} & \frac{\partial^2 f}{\partial y \partial z} \\
+    \frac{\partial^2 f}{\partial z \partial x} & \frac{\partial^2 f}{\partial z \partial y} & \frac{\partial^2 f}{\partial z^2}
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    2 & 1 & 0 \\
+    1 & 2z & y^2 \\
+    0 & y^2 & -\sin(z)
+  \end{bmatrix}
+  \]
+\end{frame}
+
+\begin{frame}{Viktiga andra ordningens optimeringsmetoder}
+  \begin{itemize}
+    \item Newtons metod
+    \item Quasi-Newton-metoder
+    \begin{itemize}
+      \item BFGS (Broyden–Fletcher–Goldfarb–Shanno)
+      \item L-BFGS (Limited-memory BFGS)
+      \item DFP (Davidon–Fletcher–Powell)
+    \end{itemize}
+    \item Gauss-Newton-metoden
+    \item Conjugate Gradient (för icke-linjär optimering)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Begränsningar via reparameterisering}
+  \begin{itemize}
+    \item Ibland måste parametrar uppfylla vissa villkor, t.ex. vara positiva.
+    \item Istället för att optimera direkt på parametern, kan vi omformulera problemet.
+    \item \textbf{Exempel:} Om \( \theta > 0 \), optimera istället över \( \phi \) där:
+    \[
+    \theta = \exp(\phi)
+    \]
+    \item Nu är \( \theta \) alltid positiv, oavsett värde på \( \phi \).
+    \item Reparameterisering gör det möjligt att använda gradientbaserade metoder utan att hantera begränsningar direkt.
+  \end{itemize}
+\end{frame}
+
 \begin{frame}{Värdemängd och definitionsmängd i optimering}
     \textbf{Värdemängd för $f(\omega)$:}
     \begin{itemize}
@@ -508,7 +603,65 @@
     Valet av optimeringsalgoritm beror på både värdemängden för $f(\omega)$ och definitionsmängden för $\omega$.
 \end{frame}
 
+\begin{frame}{Optimering i modellering}
+  \begin{itemize}
+    \item Optimering är centralt för att träna/skatta modeller inom statistik och maskininlärning.
+    \item Målet är ofta att minimera en förlustfunktion eller maximera en sannolikhet.
+    \item \textbf{Exempel:}
+    \begin{itemize}
+      \item Linjär regression: minimera residualsumma
+      \item Logistisk regression: maximera log-likelihood
+      \item Regulariserade modeller: balansera förlust och komplexitet
+      \item Neurala nätverk: minimera förlust via gradientbaserade metoder
+    \end{itemize}
+    \item Val av optimeringsmetod påverkar både noggrannhet och effektivitet.
+  \end{itemize}
+\end{frame}
 
+
+\begin{frame}{Parametrar vs. Hyperparametrar}
+  \begin{itemize}
+    \item \textbf{Parametrar:}
+    \begin{itemize}
+      \item Lärs direkt från data under träning.
+      \item Exempel: parametrar i en linjär (logistisk) regressionsmodell
+    \end{itemize}
+    \item \textbf{Hyperparametrar:}
+    \begin{itemize}
+      \item Ställs in före träning av parametarna
+      \item "Styr modellens/skattningens övergripande egenskaper"
+      \item Kan handla dels om modellen, men också om hur vi skattar modellens parametrar
+      \item Skattning/optimiering, exempel: val av algoritm, lärhastighet, antal iterationer, regulariseringsstyrka
+      \item Modellens struktur kan vara en hyperparameter:
+      \begin{itemize}
+        \item Antal variabler eller features
+        \item Val av modelltyp (t.ex. linjär vs. icke-linjär)
+        \item Antal lager i ett neuralt nätverk
+      \end{itemize}
+    \end{itemize}
+    \item Vi kan inte skatta hyperparametrar på "vanligt" sätt $\rightarrow$ leder ofta till överanpassning
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Val av hyperparametrar med validering}
+  \begin{itemize}
+    \item Hyperparametrar styr modellens träning och struktur.
+    \item För att välja bra värden testar vi olika alternativ och utvärderar modellen.
+    \item \textbf{Validering:}
+    \begin{itemize}
+      \item Dela upp data i tränings- och valideringsdel.
+      \item Träna modellen på träningsdata, utvärdera på valideringsdata.
+    \end{itemize}
+    \item \textbf{Korsvalidering:}
+    \begin{itemize}
+      \item Dela upp data i flera delar (folds).
+      \item Träna och utvärdera modellen flera gånger med olika uppdelningar.
+      \item Vanligt: 5- eller 10-faldig korsvalidering.
+    \end{itemize}
+    \item Välj de hyperparametrar som ger bäst genomsnittlig prestanda.
+    \item Vilka värden ska vi välja? Grid search, random search, ...
+  \end{itemize}
+\end{frame}
 
 \begin{frame}{Frågor?}
     
