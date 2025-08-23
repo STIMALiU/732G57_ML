@@ -9,7 +9,7 @@
 #' @param knots Postions for the truncation of the basis functions to end, 
 #'  default is NULL, which means that the basis functions are equally spread in
 #'  the range of x.
-#' @param type which type of basis functions? Options: linear, quadratic
+#' @param type which type of basis functions? Options: linear, quadratic, cubic
 #' @param show_plot shall the basis functions be plotted?
 #' 
 #' @return 
@@ -40,6 +40,8 @@ trunc_power_basis<-function(x,no_basis,knots=NULL,type="linear",show_plot=FALSE)
       spline_basis[,i]<-pmax(0,(x)-knot_pos[i])
     }else if(type=="quadratic"){
       spline_basis[,i]<-(pmax(0,(x)-knot_pos[i]))^2
+    }else if(type=="cubic"){
+      spline_basis[,i]<-(pmax(0,(x)-knot_pos[i]))^3
     } else{
       stop("Argument type is not correct!")
     }
@@ -55,6 +57,8 @@ trunc_power_basis<-function(x,no_basis,knots=NULL,type="linear",show_plot=FALSE)
           spline_basis2[,i]<-pmax(0,sort(x)-knot_pos[i])
         }else if(type=="quadratic"){
           spline_basis2[,i]<-(pmax(0,sort(x)-knot_pos[i]))^2
+        }else if(type=="cubic"){
+          spline_basis2[,i]<-(pmax(0,sort(x)-knot_pos[i]))^3
         } else{
           stop("Argument type is not correct!")
         }
