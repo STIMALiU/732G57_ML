@@ -1,0 +1,3377 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+	Linköpings universitet\\
+    STIMA
+  }
+  \fancyhead[R]{732G12}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Programming i R}
+\fancyhead[LO,RE]{}
+
+
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+\end_preamble
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package auto
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style swedish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+732G12 Laboration 2: extra material
+\end_layout
+
+\begin_layout Author
+Josef Wilzén
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Global options
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(comment='') 
+\end_layout
+
+\begin_layout Plain Layout
+
+options(digits = 5)
+\end_layout
+
+\begin_layout Plain Layout
+
+source("https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/lm_diagno
+stics.R")
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Funktionen lm()
+\end_layout
+
+\begin_layout Standard
+I R så använder vi funktionen 
+\family typewriter
+lm()
+\family default
+ för att skatta regressionsmodeller, lm = linear model.
+ Denna funktion kommer att användas mycket under kursen.
+ Kolla dokumentationen med 
+\family typewriter
+?lm
+\family default
+.
+ I denna 
+\begin_inset CommandInset href
+LatexCommand href
+name "laboration"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/Documents/D7.pdf"
+literal "false"
+
+\end_inset
+
+ från R-kursen under “Frivillig fördjupning: Introduktion till linjär regression
+” så finns det exempel på hur 
+\family typewriter
+lm()
+\family default
+ kan användas.
+\end_layout
+
+\begin_layout Standard
+R är ett objektorienterat programmeringsspråk, och funktionen 
+\family typewriter
+lm()
+\family default
+ returnerar objekt av klassen 
+\begin_inset Quotes sld
+\end_inset
+
+
+\family typewriter
+lm
+\family default
+
+\begin_inset Quotes srd
+\end_inset
+
+, vilket har formen av en lista.
+ Så det är enkelt att plocka önskade delar från den listan vid behov.
+ Det finns en mängd funktioner kopplade till objekt av klassen 
+\begin_inset Quotes sld
+\end_inset
+
+
+\family typewriter
+lm
+\family default
+
+\begin_inset Quotes srd
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+coef()
+\family default
+: Ger regressionskoefficienter
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+residuals():
+\family default
+ Ger residualvektorn 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+fitted()
+\family default
+: Ger vektorn med anpassade värden (
+\begin_inset Formula $\hat{y}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+summary()
+\family default
+: Ger en sammanfattande analys av regressionsmodellen.
+ Funktionen returnerar ett objekt av klassen 
+\begin_inset Quotes sld
+\end_inset
+
+
+\family typewriter
+summary.lm
+\family default
+
+\begin_inset Quotes srd
+\end_inset
+
+.
+ Kolla 
+\family typewriter
+?summary.lm
+\family default
+ i dokumentationen.
+ 
+\family typewriter
+coef()
+\family default
+ funkar på dessa objekt.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+anova()
+\family default
+: Ger anova-tabellen för modellen
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+predict()
+\family default
+: gör prediktioner för (nya) 
+\begin_inset Formula $x$
+\end_inset
+
+-värden, alltså beräknar 
+\begin_inset Formula $\hat{y}$
+\end_inset
+
+ för givna x-värden.
+ Kan även beräkna konfidensintervall och prediktionsintervall för 
+\begin_inset Formula $\hat{y}$
+\end_inset
+
+.
+ Se 
+\family typewriter
+?predict.lm()
+\family default
+ för detaljer.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+plot()
+\family default
+: Ger olika diagnostiska plottar, se 
+\family typewriter
+?plot.lm
+\family default
+ för detaljer.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+confint()
+\family default
+: Beräknar konfidensintervall för regressionskoefficienterna 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+model.matrix()
+\family default
+: skapar olika typer av designmatriser som kan användas i 
+\family typewriter
+lm()
+\family default
+.
+ Denna funktion använder vi innan vi anropar 
+\family typewriter
+lm()
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+Funktionerna 
+\family typewriter
+lm_diagnostics()
+\family default
+ och 
+\family typewriter
+model_diagnostics()
+\family default
+ ger utvärderingsplottar för residualerna.
+ Dessa finns här: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://raw.githubusercontent.com/STIMALiU/RegVar_student/main/general_code/lm_diagnostics.R"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Det är också användbart att använda 
+\family typewriter
+str()
+\family default
+ på lm-objekt.
+ Kolla i ?
+\family typewriter
+lm()
+\family default
+ under Value för att se vilka olika delar som finns i objektet.
+\end_layout
+
+\begin_layout Part*
+Övningsuppgifter
+\end_layout
+
+\begin_layout Standard
+Vi kod finns här: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://github.com/STIMALiU/732G12_DM/tree/master/labs"
+literal "false"
+
+\end_inset
+
+.
+ Hitta filen ni söker och klicka sen på knappen 
+\begin_inset Quotes sld
+\end_inset
+
+Raw
+\begin_inset Quotes srd
+\end_inset
+
+.
+ Sen kan ni spara filen med tex 
+\family typewriter
+Ctrl + S
+\family default
+ .
+ Det går även att läsa in filer direkt i R om man använder url:en som fås
+ när ni har klickat på 
+\begin_inset Quotes sld
+\end_inset
+
+Raw
+\begin_inset Quotes srd
+\end_inset
+
+.
+ Exempel: läsa in funktionerna i filen 
+\begin_inset Quotes sld
+\end_inset
+
+lm_diagnostics.R
+\begin_inset Quotes srd
+\end_inset
+
+, då kan vi köra: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=FALSE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+source(
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Quotes srd
+\end_inset
+
+https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/lm_diagnostics.R
+\begin_inset Quotes srd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Diagnos och utvärdering av linjär regression
+\end_layout
+
+\begin_layout Standard
+There exist several useful functions in R for residual diagnostics.
+ Some examples are:
+\end_layout
+
+\begin_layout Itemize
+The 
+\family typewriter
+lm.influence()
+\family default
+ function, 
+\family typewriter
+dffits()
+\family default
+, see documentation: 
+\family typewriter
+?lm.influence()
+\end_layout
+
+\begin_layout Itemize
+A tutorial over common diagnostics tools in R: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Regression Model Diagnostics "
+target "http://www.sthda.com/english/articles/39-regression-model-diagnostics/161-linear-regression-assumptions-and-diagnostics-in-r-essentials/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A tutorial over common diagnostics tools in R: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Regression Diagnostics "
+target "https://www.statmethods.net/stats/rdiagnostics.html"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+R package 
+\family typewriter
+olsrr
+\family default
+, see the vignette: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Measures of Influence"
+target "https://cran.r-project.org/web/packages/olsrr/vignettes/influence_measures.html"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Modellera icke-linjära samband med linjär regression
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Introduktion"
+
+\end_inset
+
+Introduktion
+\end_layout
+
+\begin_layout Standard
+Det finns många sätt som vi kan utöka den vanliga linjära regressionsmodellen
+ för att modellera icke-linjära samband mellan de förklarande variablerna
+ och responsvariabeln.
+ Notera att detta är att stort fält med en rik litteratur, med många ofta
+ avancerade regressionsmodeller.
+ Vi ska här undersöka några enkla utökningar av linjär regression.
+ 
+\end_layout
+
+\begin_layout Standard
+Vi kan beskriva regressionsmodeller som
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+y_{i}=f\left(x_{i}\right)+E\qquad E\sim N\left(0,\sigma^{2}\right)
+\]
+
+\end_inset
+
+där 
+\begin_inset Formula $f\left(x\right)$
+\end_inset
+
+ är en funktion som modellerar sambandet mellan 
+\begin_inset Formula $x$
+\end_inset
+
+ och 
+\begin_inset Formula $y.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+I fallet med den linjära regressionsmodellen:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f\left(x_{i}\right)=\beta_{0}+\beta_{1}x_{i}\Leftrightarrow y_{i}=\beta_{0}+\beta_{1}x_{i}+E
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+I detta falla så är 
+\begin_inset Formula $f\left(x\right)$
+\end_inset
+
+ en 
+\emph on
+linjär
+\emph default
+ funktion.
+ Vi kan såklart låta 
+\begin_inset Formula $f\left(\right)$
+\end_inset
+
+ bero av fler variabler: 
+\begin_inset Formula 
+\[
+f\left(x_{i,1},x_{i,2}\right)=\beta_{0}+\beta_{1}x_{i,1}+\beta_{2}x_{i,2}
+\]
+
+\end_inset
+
+ eller mer generellt 
+\begin_inset Formula 
+\[
+f\left(\boldsymbol{x}_{i}\right)=\boldsymbol{x}_{i}^{T}\boldsymbol{\beta}
+\]
+
+\end_inset
+
+där 
+\begin_inset Formula $\boldsymbol{x}^{T}=\left(1,x_{i,1},x_{i,2},\ldots,x_{i,p}\right)$
+\end_inset
+
+ och 
+\begin_inset Formula $\boldsymbol{\beta}^{T}=$
+\end_inset
+
+
+\begin_inset Formula $\left(\beta_{0},\beta_{1},\beta_{2},\ldots,\beta_{0}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Vi utgår från att vi har 
+\emph on
+en
+\emph default
+ förklarande variabel här, 
+\begin_inset Formula $x$
+\end_inset
+
+, men många av de saker som presenteras nedan går att relativt enkelt utökas
+ till flera förklarande variabler.
+\end_layout
+
+\begin_layout Enumerate
+För att undersöka vad för typ av samband som finns mellan 
+\begin_inset Formula $x$
+\end_inset
+
+ och 
+\begin_inset Formula $y$
+\end_inset
+
+ så är det oftast lättast plotta vår data i en scatter plot.
+ Då kan se vad för typ av samband det finns mellan 
+\begin_inset Formula $x$
+\end_inset
+
+ och 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ Ibland så kan vi göra lämpliga transformationer av 
+\begin_inset Formula $y$
+\end_inset
+
+ för att få sambanden mellan 
+\begin_inset Formula $x$
+\end_inset
+
+ och 
+\begin_inset Formula $y$
+\end_inset
+
+ mer linjärt, tex logaritmtransformation
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Notera: 
+\begin_inset Formula $log\left(\right)$
+\end_inset
+
+ syftar på logartimen med bas 
+\begin_inset Formula $e$
+\end_inset
+
+ i laborationerna
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Är de oberoende? Dvs värdena på 
+\begin_inset Formula $y$
+\end_inset
+
+ ändras inte när värden på 
+\begin_inset Formula $x$
+\end_inset
+
+ ändras.
+\end_layout
+
+\begin_layout Enumerate
+Linjärt beroende: 
+\begin_inset Formula $y$
+\end_inset
+
+ ökar eller minskar linjärt när värden på 
+\begin_inset Formula $x$
+\end_inset
+
+ ökar.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Icke-linjärt beroende: Här kan vi ha många olika varianter på hur 
+\begin_inset Formula $y$
+\end_inset
+
+ ändras när 
+\begin_inset Formula $x$
+\end_inset
+
+ ändras.
+ Exempel på icke-linjära samband är: 
+\begin_inset Formula 
+\[
+y=x^{2}+E\qquad y=sin\left(x\right)+E\qquad y=tanh\left(x\right)+0.1\cdot x^{3}+E
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Om vi har skäl att tro att 
+\begin_inset Formula $x$
+\end_inset
+
+ och 
+\begin_inset Formula $y$
+\end_inset
+
+ har ett icke-linjärt samband, så kan vi skapa en eller flera nya variabler
+ genom att använda icke-linjära transformationer på 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ Ett vanligt exempel är en polynomtransformation
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Notera: skapar vi polynom av 
+\begin_inset Formula $x$
+\end_inset
+
+ så vill vi i regel centrera eller standardisera 
+\begin_inset Formula $x$
+\end_inset
+
+ först.
+ 
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Formula $x^{2},x^{3},\ldots,x^{h}$
+\end_inset
+
+ Sen använder vi dessa som vanliga kovariater i en linjär regressionsmodell.
+ Vi får då att 
+\begin_inset Formula 
+\begin{equation}
+f\left(x\right)=\beta_{0}+\beta_{1}x+\beta_{2}x^{2}+\beta_{3}x^{3}+\ldots+\beta_{h}x^{h}\label{eq:polynom}
+\end{equation}
+
+\end_inset
+
+Vi kan spara dessa transformationer i nya variabler 
+\begin_inset Formula $z_{1}=x$
+\end_inset
+
+, 
+\begin_inset Formula $z_{2}=x^{2}$
+\end_inset
+
+, 
+\begin_inset Formula $z_{3}=x^{3}$
+\end_inset
+
+ osv, och sen använder vi dessa i vår designmatris 
+\begin_inset Formula $X=\left(1,z_{1},z_{2},\ldots,z_{h}\right)$
+\end_inset
+
+, och modellen blir då 
+\begin_inset Formula $y=X\beta+E$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Vi antar då att 
+\begin_inset Formula $y$
+\end_inset
+
+ beror linjärt på de nya variablerna 
+\begin_inset Formula $z_{1}$
+\end_inset
+
+ till 
+\begin_inset Formula $z_{h}$
+\end_inset
+
+, och vi kan skatta 
+\begin_inset Formula $\beta$
+\end_inset
+
+ med OLS.
+ Så vårt modellantagande är att vi antar att 
+\begin_inset Formula $y$
+\end_inset
+
+ beror linjärt på de nya variablerna, men att 
+\begin_inset Formula $y$
+\end_inset
+
+ beror 
+\emph on
+icke-linjärt
+\emph default
+ på de ursprungliga variablen 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ Så denna idé att vi har variabler, som vi sen transformerar icke-linjärt
+ och som vi sen använder som de nya variablerna i vår designmatris kan vi
+ generalisera till andra transformationer än polynomtransformationer.
+\end_layout
+
+\begin_layout Enumerate
+Notera: Polynom av av tillräckligt hög ordning kan anpassa kontinuerliga
+ funktioner godtyckligt bra.
+ Så om vi har tillräckligt högt 
+\begin_inset Formula $h$
+\end_inset
+
+ i funktionen i 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:polynom"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ kan vi i många fall få en bra anpassning av 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ Dock så ökar risken för överanpassning ju högre 
+\begin_inset Formula $h$
+\end_inset
+
+ vi har.
+ Det finns vissa problem med höga ordningens polynom (känsliga för outliers
+ tex), ofta så väljer vi tredje eller fjärdegradspolynom som högst.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Vi låter 
+\begin_inset Formula $z=g\left(x\right)$
+\end_inset
+
+ vara en funktion som transformerar 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ Exempel:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $z=g\left(x\right)=log\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $z=g\left(x\right)=exp\left(x\right)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $z=g\left(x\right)=sin\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $z=g\left(x\right)=tanh\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $z=g\left(x\right)=\sqrt{x}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $z=g\left(x\right)=0.5\cdot log\left(x\right)+2\cdot sin\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:Se-ett-exempel"
+
+\end_inset
+
+Se ett exempel nedan.
+ Sambandet mellan 
+\begin_inset Formula $x$
+\end_inset
+
+ och 
+\begin_inset Formula $y$
+\end_inset
+
+ är kvadratiskt, men mellan 
+\begin_inset Formula $x^{2}$
+\end_inset
+
+ och 
+\begin_inset Formula $y$
+\end_inset
+
+ är sambandet linjärt.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE,fig.width=6.5, fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+x<-seq(-4,4,length=50)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+y<-x^2+rnorm(50,sd=0.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mfrow=c(1,2))
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,y)
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x^2,y)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE,fig.width=6.5, fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mfrow=c(1,1))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Som vi ser ovan kan vi skapa en mängd olika transformationer beroende på
+ hur vi definerar 
+\begin_inset Formula $g\left(x\right)$
+\end_inset
+
+.
+ Vi kan tänka oss att vi skapar flera transformationer av 
+\begin_inset Formula $x$
+\end_inset
+
+, vi kan kalla transformation nummer 
+\begin_inset Formula $j$
+\end_inset
+
+ för 
+\begin_inset Formula $z_{j}=g_{j}\left(x\right)$
+\end_inset
+
+, alla våra transformationer blir då:
+\begin_inset Formula 
+\[
+z_{j}=g_{j}\left(x\right)\qquad j=1,\dots,J\quad\Leftrightarrow
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+z_{1}=g_{1}\left(x\right),z_{2}=g_{2}\left(x\right),\ldots,z_{J}=g_{J}\left(x\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+När vi skapar nya variabler på detta sätt så kan vi kalla dessa för 
+\emph on
+basfunktioner
+\emph default
+ (basis functions) eller baser.
+ Så vi skapar en eller flera basfunktioner som baseras på den ursprungliga
+ variablen 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ Vi skriver
+\begin_inset Formula 
+\[
+y=f\left(x\right)+E
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+f\left(x\right)=\beta_{0}+\sum_{j=1}^{J}\beta_{j}\cdot g_{j}\left(x\right)\label{eq:basis func}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=\beta_{0}+\beta_{1}\cdot g_{1}\left(x\right)+\beta_{2}\cdot g_{2}\left(x\right)+\ldots+\beta_{J}\cdot g_{J}\left(x\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=\beta_{0}+\beta_{1}\cdot z_{1}+\beta_{2}\cdot z_{2}+\ldots+\beta_{J}\cdot z_{J}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Eftersom funktionen 
+\begin_inset Formula $f\left(x\right)$
+\end_inset
+
+ i ekvation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:basis func"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ är linjär med avssende på basfunktionerna 
+\begin_inset Formula $g_{j}\left(x\right)$
+\end_inset
+
+ kan vi enkelt skatta 
+\begin_inset Formula $\beta$
+\end_inset
+
+ med OLS.
+ Ekvation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:basis func"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ ger oss ett ramverk för att modellera många olika typer av icke-linjära
+ samband mellan 
+\begin_inset Formula $x$
+\end_inset
+
+ och 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ Nedan kommer vi titta närmare på ett antal fall där vi kan använda oss
+ av detta ramverk.
+\end_layout
+
+\begin_layout Subsection
+Stegfunktionen
+\end_layout
+
+\begin_layout Enumerate
+Stegfunktionen: En vanlig funktion inom matematiken är stegfunktionen 
+\begin_inset Formula $u\left(x\right)$
+\end_inset
+
+, som defineras som
+\begin_inset Formula 
+\[
+u\left(x\right)=\begin{cases}
+\begin{array}{c}
+0\\
+1
+\end{array} & \begin{array}{c}
+om\,x\le a\\
+om\,x>a
+\end{array}\end{cases}
+\]
+
+\end_inset
+
+där 
+\begin_inset Formula $a$
+\end_inset
+
+ är en konstant som vi väljer.
+ Stegfunktionen är användbar om vi har plötsliga nivåskillnader eller skiften
+ i 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Se figuren nedan.
+ Vi har en tydlig nivåskillnad i 
+\begin_inset Formula $y$
+\end_inset
+
+ när 
+\begin_inset Formula $x=30$
+\end_inset
+
+, vilket är vid den streckade linjen.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE, ,fig.width=6.5, fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x<-1:60
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(2322)
+\end_layout
+
+\begin_layout Plain Layout
+
+y<-c(rnorm(n=30,mean=1,sd=0.1),rnorm(n=30,mean=3,sd=0.1))
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,y)
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(v=30,lty=
+\begin_inset Quotes srd
+\end_inset
+
+dashed
+\begin_inset Quotes srd
+\end_inset
+
+,col=
+\begin_inset Quotes srd
+\end_inset
+
+gray
+\begin_inset Quotes srd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vi testar nu att skatta en enkel linjär regression för 
+\begin_inset Formula $x$
+\end_inset
+
+ och 
+\begin_inset Formula $y$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE,fig.width=6.5, fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+lm_obj1<-lm(y~x)
+\end_layout
+
+\begin_layout Plain Layout
+
+summary(lm_obj1)
+\end_layout
+
+\begin_layout Plain Layout
+
+y_hat<-fitted(lm_obj1)
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,y)
+\end_layout
+
+\begin_layout Plain Layout
+
+lines(x,y_hat,col=
+\begin_inset Quotes srd
+\end_inset
+
+red
+\begin_inset Quotes srd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vi ser att vi får signifikanta parameterar, men vi ser när vi plottar 
+\begin_inset Formula $\hat{y}$
+\end_inset
+
+ tillsammans med data att vi har en mycket dålig anpassning.
+ Vi testar nu att skapa den nya variablen
+\begin_inset Formula 
+\[
+z=u\left(x\right)=\begin{cases}
+\begin{array}{c}
+0\\
+1
+\end{array} & \begin{array}{c}
+om\,x\le30\\
+om\,x>30
+\end{array}\end{cases}
+\]
+
+\end_inset
+
+och lägger till den vår modell.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE,fig.width=6.5, fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+z<-ifelse(x<30,0,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,z,t=
+\begin_inset Quotes srd
+\end_inset
+
+l
+\begin_inset Quotes srd
+\end_inset
+
+,main=
+\begin_inset Quotes srd
+\end_inset
+
+Stegfunktion: z = u(x)
+\begin_inset Quotes srd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+lm_obj2<-lm(y~x+z)
+\end_layout
+
+\begin_layout Plain Layout
+
+summary(lm_obj2)
+\end_layout
+
+\begin_layout Plain Layout
+
+y_hat<-fitted(lm_obj2)
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,y)
+\end_layout
+
+\begin_layout Plain Layout
+
+lines(x,y_hat,col=
+\begin_inset Quotes srd
+\end_inset
+
+red
+\begin_inset Quotes srd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vi har nu en tydligt bättre anpassning för 
+\begin_inset Formula $\hat{y}$
+\end_inset
+
+.
+ Vi ser nu att 
+\begin_inset Formula $x$
+\end_inset
+
+ inte längre är signifikant, men att 
+\begin_inset Formula $z$
+\end_inset
+
+ är tydligt signifikant.
+ Vi testar nu att bara ha med 
+\begin_inset Formula $z$
+\end_inset
+
+ som förklarande variabel
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE,fig.width=6.5, fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+lm_obj3<-lm(y~z)
+\end_layout
+
+\begin_layout Plain Layout
+
+summary(lm_obj3)
+\end_layout
+
+\begin_layout Plain Layout
+
+y_hat<-fitted(lm_obj3)
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,y)
+\end_layout
+
+\begin_layout Plain Layout
+
+lines(x,y_hat,col=
+\begin_inset Quotes srd
+\end_inset
+
+red
+\begin_inset Quotes srd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vi ser nu att vi har en ännu bättre anpassning till data, och att 
+\begin_inset Formula $z$
+\end_inset
+
+ är mycket signifikant.
+ Den sista modellen är skattar den rätta modellen, den som data generades
+ ifrån.
+\end_layout
+
+\begin_layout Enumerate
+Stegfunktioner kan hjälpa oss att modellera många olika sorters funktioner
+ 
+\begin_inset Formula $f\left(x\right)$
+\end_inset
+
+.
+ Vi kan få vår modell att 
+\begin_inset Quotes sld
+\end_inset
+
+bete sig
+\begin_inset Quotes srd
+\end_inset
+
+ annorlunda i olika regioner av 
+\begin_inset Formula $x$
+\end_inset
+
+-värden.
+ Se datan nedan.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE,fig.width=6.5, fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x<-1:60
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(755)
+\end_layout
+
+\begin_layout Plain Layout
+
+y<-ifelse(x<=30,1,1.5*(x[31:60]-30))+rnorm(n=60,sd=1)
+\end_layout
+
+\begin_layout Plain Layout
+
+#y#<-c(rnorm(n=30,mean=1,sd=0.1),0.1*x[31:60]+rnorm(n=30,mean=0,sd=0.1))
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,y)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Här har vi en konstantfunktion fram till 
+\begin_inset Formula $x=30$
+\end_inset
+
+ och sen verkar vi ha en linjär funktion som med avseende på 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ Vi skapar igen variabeln 
+\begin_inset Formula 
+\[
+z=u\left(x\right)=\begin{cases}
+\begin{array}{c}
+0\\
+1
+\end{array} & \begin{array}{c}
+om\,x\le30\\
+om\,x>30
+\end{array}\end{cases}
+\]
+
+\end_inset
+
+och sen skattar vi två olika modeller:
+\begin_inset Formula 
+\[
+y=\beta_{0}+\beta_{1}x+\beta_{2}z+E
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+y=\beta_{0}+\beta_{1}x+\beta_{2}z+\beta_{3}x\cdot z+E
+\]
+
+\end_inset
+
+Den andra modellen har en interaktionsterm mellan 
+\begin_inset Formula $x$
+\end_inset
+
+ och 
+\begin_inset Formula $z$
+\end_inset
+
+.
+ Vi testar att skatt dessa modeller.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE,fig.width=6.5, fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x<-1:60
+\end_layout
+
+\begin_layout Plain Layout
+
+z<-ifelse(x<=30,0,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+xz<-x*z
+\end_layout
+
+\begin_layout Plain Layout
+
+model1<-lm(y~x+z)
+\end_layout
+
+\begin_layout Plain Layout
+
+model2<-lm(y~x+z+xz)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+summary(model1)
+\end_layout
+
+\begin_layout Plain Layout
+
+summary(model2)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+y_hat1<-fitted(model1)
+\end_layout
+
+\begin_layout Plain Layout
+
+y_hat2<-fitted(model2)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,y)
+\end_layout
+
+\begin_layout Plain Layout
+
+lines(x,y_hat1,col=
+\begin_inset Quotes srd
+\end_inset
+
+red
+\begin_inset Quotes srd
+\end_inset
+
+) # utan interaktion
+\end_layout
+
+\begin_layout Plain Layout
+
+lines(x,y_hat2,col=
+\begin_inset Quotes srd
+\end_inset
+
+blue
+\begin_inset Quotes srd
+\end_inset
+
+) # med interaktion
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Den röda linjen är anpassade värden för modellen utan interaktion och den
+ blå linjen är anpassade värden för modellen med interaktion.
+ Här ser vi att den modellen som har med interaktionen mellan 
+\begin_inset Formula $x$
+\end_inset
+
+ och en lämplig stegfunktion kan modellera 
+\begin_inset Formula $y$
+\end_inset
+
+ väl.
+ Vi kan ha olika lutning på linjen i olika regioner av 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Vi kan generalisera detta till mer komplicerade situationer.
+ Sen data nedan.
+ Vi har tydliga brott vid 
+\begin_inset Formula $x=7$
+\end_inset
+
+ och 
+\begin_inset Formula $x=14$
+\end_inset
+
+.
+ Vi kan använda den informationen när vi skapar en regressionsmodell.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE,fig.width=6.5, fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x<-seq(0,20,length=200) 
+\end_layout
+
+\begin_layout Plain Layout
+
+y1<-3+x 
+\end_layout
+
+\begin_layout Plain Layout
+
+y2<-17+-1*x  
+\end_layout
+
+\begin_layout Plain Layout
+
+y3<--25+1.5*x 
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(345) 
+\end_layout
+
+\begin_layout Plain Layout
+
+y<-ifelse(x<7,y1,ifelse(x<14,y2,y3))+rnorm(200,sd=0.5) 
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,y)
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(v=c(7,14),lty=
+\begin_inset Quotes srd
+\end_inset
+
+dashed
+\begin_inset Quotes srd
+\end_inset
+
+,col=
+\begin_inset Quotes srd
+\end_inset
+
+gray
+\begin_inset Quotes srd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vi skattar en modell med två stegfunktioner, och interaktioner mellan dessa
+ och 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE,fig.width=6.5, fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# stegfunktioner:
+\end_layout
+
+\begin_layout Plain Layout
+
+z1<-ifelse(x<=7,1,0)
+\end_layout
+
+\begin_layout Plain Layout
+
+z2<-ifelse(x<=14,1,0)
+\end_layout
+
+\begin_layout Plain Layout
+
+# interaktioner:
+\end_layout
+
+\begin_layout Plain Layout
+
+xz1<-x*z1
+\end_layout
+
+\begin_layout Plain Layout
+
+xz2<-x*z2
+\end_layout
+
+\begin_layout Plain Layout
+
+# skatta modell:
+\end_layout
+
+\begin_layout Plain Layout
+
+model<-lm(y~x+z1+z2+xz1+xz2)
+\end_layout
+
+\begin_layout Plain Layout
+
+summary(model)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vi ser att alla variabler är signifikanta och behövs för modelleringen.
+ Vi tittar på anpassade värden nedan, och vi ser att vi har en bra anpassning
+ av sambandet mellan 
+\begin_inset Formula $x$
+\end_inset
+
+ och 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE,fig.width=6.5, fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,y)
+\end_layout
+
+\begin_layout Plain Layout
+
+lines(x,fitted(model),col=
+\begin_inset Quotes srd
+\end_inset
+
+red
+\begin_inset Quotes srd
+\end_inset
+
+,lwd=3) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Trunkerade polynombaser
+\end_layout
+
+\begin_layout Enumerate
+Trunkerade polynombaser: ovan hade vi ett fall där vi hade olika linjära
+ samband i olika regioner av 
+\begin_inset Formula $x$
+\end_inset
+
+: Ett samband för 
+\begin_inset Formula $x<=7$
+\end_inset
+
+, ett för 
+\begin_inset Formula $7<x\le14$
+\end_inset
+
+ och ett för 
+\begin_inset Formula $14<x$
+\end_inset
+
+.
+ Vi kan generalisera denna approach genom att använda en klass av basfunktioner
+ som kallas trunkerade polynombaser (truncated power basis).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Trunkerade polynombaser är polynom, som är 
+\begin_inset Quotes sld
+\end_inset
+
+avstängda
+\begin_inset Quotes srd
+\end_inset
+
+ en för en del av värdena på 
+\begin_inset Formula $x$
+\end_inset
+
+ och sen är de bara 
+\begin_inset Quotes sld
+\end_inset
+
+vanliga polynom
+\begin_inset Quotes srd
+\end_inset
+
+.
+ Man brukar ha en grupp av sådana basfunktioner.
+ Detta är exempel på en variant av 
+\emph on
+splinemodell
+\emph default
+.
+ Vi kollar hur de ser ut med koden nedan.
+ Vi använder en funktion som finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://github.com/STIMALiU/732G12_DM/tree/master/labs"
+literal "false"
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE,fig.width=6.5, fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# läs in funktion
+\end_layout
+
+\begin_layout Plain Layout
+
+source(
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Quotes sld
+\end_inset
+
+https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/trunc_power_basis.
+R
+\begin_inset Quotes srd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# x är en vektor med data
+\end_layout
+
+\begin_layout Plain Layout
+
+# no_basis är antal basfunktioner
+\end_layout
+
+\begin_layout Plain Layout
+
+basis_list<-trunc_power_basis(x = 1:120,no_basis = 6,type = "linear",show_plot
+ = FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+str(basis_list)
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mfrow=c(2,3))
+\end_layout
+
+\begin_layout Plain Layout
+
+for(i in 1:6){
+\end_layout
+
+\begin_layout Plain Layout
+
+	plot(basis_list$x,basis_list$basis_mat[,i],t=
+\begin_inset Quotes srd
+\end_inset
+
+l
+\begin_inset Quotes srd
+\end_inset
+
+,xlab=
+\begin_inset Quotes srd
+\end_inset
+
+x
+\begin_inset Quotes srd
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Plain Layout
+
+		ylab=
+\begin_inset Quotes srd
+\end_inset
+
+basis function
+\begin_inset Quotes srd
+\end_inset
+
+,ylim=c(0,1),main=colnames(basis_list$basis_mat)[i])
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE,fig.width=6.5, fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mfrow=c(1,1))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Ovan ser vi att den första basfunktionen är en vanlig linjär funktion.
+ Den andra är 
+\begin_inset Quotes sld
+\end_inset
+
+avstängd
+\begin_inset Quotes srd
+\end_inset
+
+ (=trunkerad) i början, sen är den en vanlig linjär funktion.
+ Alla de andra är mer och mer trunkerade (större andel som är noll).
+ Default är att trunkeringspunkterna är jämt spridda inom 
+\begin_inset Formula $x$
+\end_inset
+
+ variationsområde.
+ Trunkeringspunkterna kallas knutar (knots), och vi kan välja dessa manuellt
+ om vi vill.
+ Då ger vi en numerisk vektor till argumentet 
+\family typewriter
+knots=
+\family default
+.
+ Om vi använder dessa basfunktioner i en regressionsmodell så har vi exempel
+ på en spline-modell.
+ Det finns många spline-modeller, och detta är en av de enklare.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Vi testar att använda trunkerade polynombaser för att modellera en sinusfunktion
+ med brus.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE,fig.width=6.5, fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x<-1:120 
+\end_layout
+
+\begin_layout Plain Layout
+
+basis_list<-trunc_power_basis(x = 1:120,no_basis = 6,type = "linear",show_plot
+ = FALSE) 
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(2423) 
+\end_layout
+
+\begin_layout Plain Layout
+
+y<-sin(pi*x/60)+rnorm(n = 120,sd=0.1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,y) 
+\end_layout
+
+\begin_layout Plain Layout
+
+df<-data.frame(y=y,basis_list$basis_mat)
+\end_layout
+
+\begin_layout Plain Layout
+
+head(df)
+\end_layout
+
+\begin_layout Plain Layout
+
+tail(df)
+\end_layout
+
+\begin_layout Plain Layout
+
+A<-lm(y~.,data=df) 
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,y) 
+\end_layout
+
+\begin_layout Plain Layout
+
+lines(x,fitted(A),col="red",lwd=2)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vi ser att med 6 stycken linjära trunkerade polynombaser så får vi en ok
+ anpassning av 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ Ökar vi antalet basfunktioner så får vi en mer flexibel modell, men riskerar
+ också att få överanpassning, dvs vi börjar modellera bruset i data.
+ Testa hur anpassningen blir om vi har 
+\family typewriter
+no_basis = 3
+\family default
+, 
+\family typewriter
+no_basis = 10
+\family default
+, 
+\family typewriter
+no_basis = 
+\family default
+100.
+ Vilken av dessa modeller är du mest nöjd med? Beräkna AIC för alla modeller,
+ vilken har lägst värde?
+\end_layout
+
+\begin_layout Enumerate
+Vi kan välja om vi vill ha linjära baser eller kvadratiska baser.
+ De linjära kan vara bättre om det är skarpa skiftningar i 
+\begin_inset Formula $y$
+\end_inset
+
+ när 
+\begin_inset Formula $x$
+\end_inset
+
+ ändrar sig.
+ De kvadratiska är bättre om 
+\begin_inset Formula $y$
+\end_inset
+
+ varierar mer mjukt när 
+\begin_inset Formula $x$
+\end_inset
+
+ ändrar sig.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE,fig.width=6.5, fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# x är en vektor med data
+\end_layout
+
+\begin_layout Plain Layout
+
+# no_basis är antal basfunktioner
+\end_layout
+
+\begin_layout Plain Layout
+
+# vi plottar alla baserna i samma plot:
+\end_layout
+
+\begin_layout Plain Layout
+
+# linjära baser:
+\end_layout
+
+\begin_layout Plain Layout
+
+basis_list1<-trunc_power_basis(x = 1:120,no_basis = 10,type = "linear",show_plot
+ = TRUE)
+\end_layout
+
+\begin_layout Plain Layout
+
+# kvadratiska baser:
+\end_layout
+
+\begin_layout Plain Layout
+
+basis_list2<-trunc_power_basis(x = 1:120,no_basis = 10,type = "quadratic",show_p
+lot = TRUE)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Testa att modellera sinusfunktionen ovan med kvadratiska trunkerade polynombaser.
+ Testa låta 
+\family typewriter
+no_basis
+\family default
+ vara 5, 10 och 30.
+ Vilken anpassning är ni mest nöjda med?
+\end_layout
+
+\begin_layout Enumerate
+Har vi många basfunktioner i vår 
+\begin_inset Quotes sld
+\end_inset
+
+fulla modell
+\begin_inset Quotes srd
+\end_inset
+
+ så är det ofta bra att använda metoder för automatiskt modellval.
+ Här kan krympningsmetoder som ridge eller LASSO användas.
+ Andra alternativ är framåtvalsmetoden eller Stepwise forward selection
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Varför är inte backward elimination så bra här?
+\end_layout
+
+\end_inset
+
+.
+ Har vi många basfunktioner och/eller många observationer så rekomenderas
+ paketet 
+\family typewriter
+bigstep
+\family default
+ , se 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://cran.r-project.org/web/packages/bigstep/vignettes/bigstep.html"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Generera data nedan.
+ Skapa sedan en modell där ni modeller 
+\begin_inset Formula $y$
+\end_inset
+
+ med hjälp av trunkerade polynombaser, och där ni väljer basfunktioner med
+ Stepwise forward selection med BIC
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Notera: om vi har många variabler i vår modell så tenderar AIC att välja
+ en för stor modell, då är ofta BIC eller AICc bättre att använda.
+\end_layout
+
+\end_inset
+
+ som kriterie.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Använd 100 linjära trunkerade polynombaser som den fulla modellen.
+ Ta reda på hur många basfunktioner som blev kvar i den slutgiltiga modellen.
+ Plotta anpassade värden tillsammans med data.
+ Hur bra blev anpassningen?
+\end_layout
+
+\begin_layout Enumerate
+Använd 100 kvaderade trunkerade polynombaser som den fulla modellen.
+ Ta reda på hur många basfunktioner som blev kvar i den slutgiltiga modellen.
+ Plotta anpassade värden tillsammans med data.
+ Hur bra blev anpassningen?
+\end_layout
+
+\begin_layout Enumerate
+Lösningsförslag finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/trunkerade_polynombaser_uppgift9.R"
+literal "false"
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE,fig.width=6.5, fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x<-seq(0,1,length=1000) 
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(64) 
+\end_layout
+
+\begin_layout Plain Layout
+
+y<-sin(pi*x*7)+x*5+rnorm(n = 1e3,sd=0.3) 
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,y)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Upprepa uppgiften ovan men använd: ridge, lasso och elasticnet med 
+\begin_inset Formula $\alpha=0.5$
+\end_inset
+
+ för att välja modell.
+ Använd korsvalidering för att välja 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Consinusbaser
+\end_layout
+
+\begin_layout Standard
+En annan variant av basfunktioner som kan modellera icke-linjära funktioner
+ är cosinusbaser.
+ De defineras som 
+\begin_inset Formula 
+\[
+x_{min}=min\left(x\right)\qquad x_{max}=max\left(x\right)\qquad L=x_{max}-x_{min}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+g_{h}\left(x\right)=cos\left(\frac{\pi\cdot h\cdot\left(x-x_{min}\right)}{L}\right)\qquad h=1,2,\ldots,H\label{eq:cosine basis}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+där 
+\begin_inset Formula $x$
+\end_inset
+
+ är en vektor med vår förklarande variabel, 
+\begin_inset Formula $x_{min}$
+\end_inset
+
+ är det minsta värdet av 
+\begin_inset Formula $x$
+\end_inset
+
+ och 
+\begin_inset Formula $x_{max}$
+\end_inset
+
+ är det största värdet av 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ 
+\begin_inset Formula $h$
+\end_inset
+
+ är ordningen för basen, och 
+\begin_inset Formula $H$
+\end_inset
+
+ är den högsta ordningen.
+ Vi kan likna 
+\begin_inset Formula $h$
+\end_inset
+
+ med graden i ett polynom.
+ Så vi kan givet vår förklarande variabel skapa 
+\begin_inset Formula $H$
+\end_inset
+
+ stycken basfunktioner baserat på ekvation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:cosine basis"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Desto högre 
+\begin_inset Formula $H$
+\end_inset
+
+ är desto mer flexibel och icke-linjär funktion kan vi modellera med dessa
+ baser.
+ Samtidigt ökar risken för överanpassning ju högre 
+\begin_inset Formula $H$
+\end_inset
+
+ som vi har.
+ En fördel med dessa basfunktioner är att de är okorrelerade med varandra.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Vi testar att skapa några cosinusbaser och ser hur de ser ut.
+ Vi använder en funktion som finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/cosine_basis.R"
+literal "false"
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE,fig.width=6.5, fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+source(
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Quotes sld
+\end_inset
+
+https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/cosine_basis.R
+\begin_inset Quotes srd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+x<-seq(-3,5,length=300)
+\end_layout
+
+\begin_layout Plain Layout
+
+# order: högsta ordningen på cosinusbaserna 
+\end_layout
+
+\begin_layout Plain Layout
+
+cos_list<-cosine_basis(x = x,order = 6) 
+\end_layout
+
+\begin_layout Plain Layout
+
+dim(cos_list$basis_mat) 
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mfrow=c(2,3)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+for(i in 1:6){   
+\end_layout
+
+\begin_layout Plain Layout
+
+	plot(cos_list$x,cos_list$basis_mat[,i],t="l",xlab="x",ylab="basis function",yli
+m=c(-1,1),main=colnames(cos_list$basis_mat)[i])
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE,fig.width=6.5, fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mfrow=c(1,1))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vi ser att den första basen har en halv period mellan 
+\begin_inset Formula $x_{min}$
+\end_inset
+
+ och 
+\begin_inset Formula $x_{max}$
+\end_inset
+
+.
+ Sen ju högre ordning som basen har desto fler svängningar har den mellan
+ 
+\begin_inset Formula $x_{min}$
+\end_inset
+
+ och 
+\begin_inset Formula $x_{max}$
+\end_inset
+
+.
+ Vi testar att använda dessa basfunktioner för att modellera en observerad
+ 
+\begin_inset Formula $y$
+\end_inset
+
+-variabel.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE,fig.width=6.5, fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+n_obs<-300 
+\end_layout
+
+\begin_layout Plain Layout
+
+x<-1:n_obs 
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(4325) 
+\end_layout
+
+\begin_layout Plain Layout
+
+y<-arima.sim(model = list(ar=0.999),n = n_obs,sd=1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,y,t="p")
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# skapar baser:
+\end_layout
+
+\begin_layout Plain Layout
+
+cos_list<-cosine_basis(x = x,order = 6)
+\end_layout
+
+\begin_layout Plain Layout
+
+# anpassar en modell
+\end_layout
+
+\begin_layout Plain Layout
+
+df<-data.frame(y=y,cos_list$basis_mat) 
+\end_layout
+
+\begin_layout Plain Layout
+
+A<-lm(y~.,data = df) 
+\end_layout
+
+\begin_layout Plain Layout
+
+summary(A)
+\end_layout
+
+\begin_layout Plain Layout
+
+y_hat<-fitted(A)
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,y,t="p") 
+\end_layout
+
+\begin_layout Plain Layout
+
+lines(x,y_hat,col="red",lwd=3)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vi ser att vi har en bättre anpassning en en vanlig linjär modell med bara
+ 
+\begin_inset Formula $x$
+\end_inset
+
+ som kovariat.
+ Dock så kan man önska en bättre anpassning.
+ Vi gör residualanalys:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE,fig.width=6.5, fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressWarnings({
+\end_layout
+
+\begin_layout Plain Layout
+
+lm_diagnostics(A)
+\end_layout
+
+\begin_layout Plain Layout
+
+})
+\end_layout
+
+\begin_layout Plain Layout
+
+# förklarande variabeln mot residualer  
+\end_layout
+
+\begin_layout Plain Layout
+
+qplot(x,residuals(A))+theme_bw()
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vi ser att det finns bereoende kvar mellan 
+\begin_inset Formula $x$
+\end_inset
+
+ och 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ Tex ser vi tydliga mönster i fitted values mot residuals.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Anpassa nu en linjär regression med cosinusbaser med 
+\family typewriter
+order = 10
+\family default
+ och 
+\family typewriter
+order = 30
+\family default
+ till data ovan.
+ Hur blir anpassningen?
+\end_layout
+
+\begin_layout Enumerate
+Skapa sedan en modell där ni modeller 
+\begin_inset Formula $y$
+\end_inset
+
+ med hjälp av cosinusbaser, och där ni väljer basfunktioner med Stepwise
+ forward selection med BIC som kriterie.
+ Ha 
+\family typewriter
+order = 100 
+\family default
+som den fulla modellen.
+ Hur blir anpassningen? Hur många basfunktioner väljs?
+\end_layout
+
+\begin_layout Enumerate
+Upprepa uppgiften ovan men använd: ridge, lasso och elasticnet med 
+\begin_inset Formula $\alpha=0.5$
+\end_inset
+
+ för att välja modell.
+ Använd korsvalidering för att välja 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Sammanfattning"
+
+\end_inset
+
+Sammanfattning
+\end_layout
+
+\begin_layout Enumerate
+När vi ska modellera icke-linjära samband mellan 
+\begin_inset Formula $x$
+\end_inset
+
+ och 
+\begin_inset Formula $y$
+\end_inset
+
+, så är det ofta bra att skapa transformationer av 
+\begin_inset Formula $x$
+\end_inset
+
+, olika alternativ:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Ofta vill vi använda en metod för att 
+\begin_inset Quotes sld
+\end_inset
+
+automatiskt
+\begin_inset Quotes srd
+\end_inset
+
+ transformera 
+\begin_inset Formula $x$
+\end_inset
+
+, exempel är splines eller lokal regression.
+\end_layout
+
+\begin_layout Enumerate
+Vi kan välja ett antal manuella transformationer av 
+\begin_inset Formula $x$
+\end_inset
+
+ som passar vårt problem, tex 
+\begin_inset Formula $log\left(x\right)$
+\end_inset
+
+, 
+\begin_inset Formula $sin\left(\pi\cdot x\right)$
+\end_inset
+
+, 
+\begin_inset Formula $x^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Testa att plotta den nya transformerade variabeln mot 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ Om du ser ett linjärt mönster i plotten så är troligen transformationen
+ lämplig.
+ Detta funkar ofta bra om vi har 
+\begin_inset Quotes sld
+\end_inset
+
+ett tydligt mönster
+\begin_inset Quotes srd
+\end_inset
+
+ mellan 
+\begin_inset Formula $x$
+\end_inset
+
+ och 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ Se tex uppgift 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:Se-ett-exempel"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ i sektion 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Introduktion"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, när vi har ett kvadratiskt samband.
+ Men är sambandet mellan 
+\begin_inset Formula $x$
+\end_inset
+
+ och 
+\begin_inset Formula $y$
+\end_inset
+
+ mer komplicerat så kan så är det ofta svårt att hitta 
+\emph on
+en
+\emph default
+ transformation som gör att 
+\begin_inset Formula $x$
+\end_inset
+
+ passar 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ Men det kan fortfarande vara så att flera transformer av 
+\begin_inset Formula $x$
+\end_inset
+
+ tillsammans kan modellera 
+\begin_inset Formula $y$
+\end_inset
+
+ på ett bra sätt.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Använda oss av en eller flera stegfunktioner.
+ Även interaktioner med dessa och tex 
+\begin_inset Formula $x$
+\end_inset
+
+ kan vara användbara.
+\end_layout
+
+\begin_layout Enumerate
+Polyom av 
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Trunkerade polynom av 
+\begin_inset Formula $x$
+\end_inset
+
+ (en variant av enkla splines)
+\end_layout
+
+\begin_layout Enumerate
+Cosinusbaser av 
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Någon kombination av ovanstående transformationer
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+När vi använder oss av många basfunktioner, som också kan vara komplicerade,
+ då är det bra att tänka på:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Ofta är vi inte intresserade för inferens för enskilda basfunktioner (ibland
+ kan vi vara det), utan ofta fokuserar vi mer på vilken 
+\emph on
+funktion
+\emph default
+ som basfunktionerna tillsammas skapar.
+ Vi fokuserar på hur bra de anpassade värden blir för modellen.
+ Vi kan testa om en grupp basfunktioner behövs genom att göra lämpliga partiella
+ f-test.
+\end_layout
+
+\begin_layout Enumerate
+Det finns ju fler och ju mer avancerade basfunktioner som vi använder, desto
+ större är risken för 
+\emph on
+överanpassning
+\emph default
+.
+ Så ofta vill vi dela in data i en träningsdel och en valideringsdel
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Notera: Vi skattar alltid modellen på träningsdata.
+ Vi använder valideringsdata för utvärdering.
+\end_layout
+
+\end_inset
+
+, och sen beräkna MSE för båda dessa delar.
+ Då kan vi jämföra olika mängder av basfunktioner, och se vilken som har
+ lägst MSE på valideringsdata.
+\end_layout
+
+\begin_layout Enumerate
+Det är bra att plotta anpassade värden för att se hur bra de modellerar
+ 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ Det är viktigt att göra residualanalys för att se om vi har lyckats modellera
+ relationen mellan 
+\begin_inset Formula $x$
+\end_inset
+
+ och 
+\begin_inset Formula $y$
+\end_inset
+
+ på ett bra sätt.
+ Det är bra att göra residualanalys på både träningsdelen och valideringsdelen.
+\end_layout
+
+\begin_layout Enumerate
+Vi kan använda olika metoder för automatiskt modellval.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Ofta är krympningsmetoder att föredra (ridge, LASSO etc)
+\end_layout
+
+\begin_layout Enumerate
+Andra alternativ: framåtvalsmetoden eller Stepwise forward selection.
+ Har vi många basfunktioner och/eller många observationer så rekomenderas
+ paketet 
+\family typewriter
+bigstep
+\family default
+, se 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://cran.r-project.org/web/packages/bigstep/vignettes/bigstep.html"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_body
+\end_document

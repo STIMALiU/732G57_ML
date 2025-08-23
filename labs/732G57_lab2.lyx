@@ -1,9 +1,9 @@
-#LyX file created by tex2lyx 2.3
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin /home/joswi05/Dropbox/Josef/arbete/kurser/732G12/732G12_2024HT/732G12_DM/labs/
+\origin unavailable
 \textclass article
 \begin_preamble
 \usepackage{minted}
@@ -14,17 +14,13 @@
 
 \fancyhf{}
 
-\lhead{LINKÃPINGS UNIVERSITET\\Avdelningen fÃ¶r statistik och maskininlÃ¤rning\\Institutionen fÃ¶r datavetenskap}
+\lhead{LINKÖPINGS UNIVERSITET\\Avdelningen för statistik och maskininlärning\\Institutionen för datavetenskap}
 \rhead{
-Data Mining 732G12 \\ HT2024}
+Maskininlärning för statistiker 732G57 \\ HT2025}
 
 
 \title{Datorlaboration 2}
 \author{Josef Wilzen}
-
-
-
-
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -52,15 +48,15 @@ Data Mining 732G12 \\ HT2024}
 \paperfontsize default
 \spacing single
 \use_hyperref true
-\pdf_bookmarks 0
-\pdf_bookmarksnumbered 0
-\pdf_bookmarksopen 0
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
-\pdf_breaklinks 0
-\pdf_pdfborder 0
-\pdf_colorlinks 0
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
 \pdf_backref section
-\pdf_pdfusetitle 0
+\pdf_pdfusetitle false
 \papersize a4paper
 \use_geometry true
 \use_package amsmath 2
@@ -108,11 +104,11 @@ Data Mining 732G12 \\ HT2024}
 \begin_body
 
 \begin_layout Standard
-
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
+
 
 \backslash
 maketitle
@@ -122,9 +118,10 @@ maketitle
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
+
 
 \backslash
 thispagestyle{fancy}
@@ -136,18 +133,19 @@ thispagestyle{fancy}
 \end_layout
 
 \begin_layout Section*
-AllmÃ¤nt
+Allmänt
 \end_layout
 
 \begin_layout Standard
-Datorlaborationerna krÃ¤ver att ni har R och Rstudio installerat. 
+Datorlaborationerna kräver att ni har R och Rstudio installerat.
+ 
 \end_layout
 
 \begin_layout Itemize
 Kodmanual: 
 \begin_inset CommandInset href
 LatexCommand href
-name "lÃ¤nk"
+name "länk"
 target "https://www.isakhietala.com/teaching/732g12/"
 literal "true"
 
@@ -169,7 +167,7 @@ ISL
 Boken: 
 \begin_inset CommandInset href
 LatexCommand href
-name "lÃ¤nk"
+name "länk"
 target "https://www.statlearning.com/"
 literal "true"
 
@@ -182,7 +180,7 @@ literal "true"
 R-kod till labbar: 
 \begin_inset CommandInset href
 LatexCommand href
-name "lÃ¤nk"
+name "länk"
 target "https://www.statlearning.com/resources-second-edition"
 literal "true"
 
@@ -195,7 +193,7 @@ literal "true"
 Dataset: 
 \begin_inset CommandInset href
 LatexCommand href
-name "lÃ¤nk"
+name "länk"
 target "https://cran.r-project.org/web/packages/ISLR2/index.html"
 literal "true"
 
@@ -204,7 +202,7 @@ literal "true"
 och 
 \begin_inset CommandInset href
 LatexCommand href
-name "lÃ¤nk"
+name "länk"
 target "https://www.statlearning.com/resources-second-edition"
 literal "true"
 
@@ -227,7 +225,7 @@ IDM
 Kod till boken: 
 \begin_inset CommandInset href
 LatexCommand href
-name "lÃ¤nk"
+name "länk"
 target "https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/"
 literal "true"
 
@@ -237,7 +235,6 @@ literal "true"
 \end_layout
 
 \begin_layout Itemize
-
 \begin_inset CommandInset href
 LatexCommand href
 name "Sample chapters"
@@ -254,7 +251,7 @@ literal "false"
 Dataset till vissa uppgifter finns 
 \begin_inset CommandInset href
 LatexCommand href
-name "hÃ¤r"
+name "här"
 target "https://github.com/STIMALiU/732G12_DM/tree/2023/data"
 literal "true"
 
@@ -264,7 +261,10 @@ literal "true"
 \end_layout
 
 \begin_layout Standard
-Notera att ni inte behÃ¶ver gÃ¶ra alla delar pÃ¥ alla uppgifter. Det viktiga Ã¤r att ni fÃ¥r en fÃ¶rstÃ¥else fÃ¶r de olika principerna och modellerna som avhandlats. Dessa uppgifter ska inte lÃ¤mnas in, utan Ã¤r till fÃ¶r er Ã¶vning.
+Notera att ni inte behöver göra alla delar på alla uppgifter.
+ Det viktiga är att ni får en förståelse för de olika principerna och modellerna
+ som avhandlats.
+ Dessa uppgifter ska inte lämnas in, utan är till för er övning.
 \end_layout
 
 \begin_layout Section*
@@ -272,23 +272,32 @@ Datoruppdelning
 \end_layout
 
 \begin_layout Standard
-FÃ¶r att motverka Ã¶veranpassning bÃ¶r ni dela upp data till trÃ¤ning-, validering-, (och testmÃ¤ngd). Detta kan gÃ¶ras med 
+För att motverka överanpassning bör ni dela upp data till träning-, validering-,
+ (och testmängd).
+ Detta kan göras med 
 \family typewriter
 createDataPartition()
 \family default
- frÃ¥n 
+ från 
 \family typewriter
 caret
 \family default
--paketet. Argument till den funktionen som Ã¤r av vikt hÃ¤r Ã¤r 
+-paketet.
+ Argument till den funktionen som är av vikt här är 
 \family typewriter
 p
 \family default
- som anger hur stor andel av observationerna som ska anvÃ¤ndas till trÃ¤ningsmÃ¤ngden. Ni kan ocksÃ¥ anvÃ¤nda 
+ som anger hur stor andel av observationerna som ska användas till träningsmängd
+en.
+ Ni kan också använda 
 \family typewriter
 subset()
 \family default
- fÃ¶r att gÃ¶ra detta, men det blir svÃ¥rare att tydligt ange de observationer som ska tilldelas till valideringsmÃ¤ngden. Denna uppdelning mÃ¥ste var aslumpmÃ¤ssigt. Notera att om en testmÃ¤ngd ska skapas mÃ¥ste uppdelningen ske en gÃ¥ng till frÃ¥n valideringsmÃ¤ngden.
+ för att göra detta, men det blir svårare att tydligt ange de observationer
+ som ska tilldelas till valideringsmängden.
+ Denna uppdelning måste var aslumpmässigt.
+ Notera att om en testmängd ska skapas måste uppdelningen ske en gång till
+ från valideringsmängden.
 \end_layout
 
 \begin_layout Section*
@@ -296,29 +305,34 @@ Del 1: Polynomregression och stegfunktioner
 \end_layout
 
 \begin_layout Enumerate
-GÃ¥ igenom Lab 7.8.1 i ISL 
+Gå igenom Lab 7.8.1 i ISL 
 \end_layout
 
 \begin_layout Enumerate
-Vad Ã¤r skillnaden mellan fÃ¶ljande tre funktioner fÃ¶r polynomregression? 
+Vad är skillnaden mellan följande tre funktioner för polynomregression?
+ 
 \begin_inset listings
 lstparams "language=R"
 inline false
 status open
 
 \begin_layout Plain Layout
+
 y ~ poly(x, 4)
 \end_layout
 
 \begin_layout Plain Layout
-        y ~ poly(x, 4, raw = TRUE)
+
+y ~ poly(x, 4, raw = TRUE)
 \end_layout
 
 \begin_layout Plain Layout
-        y ~ x + I(x^2) + I(x^3) + I(x^4)
+
+y ~ x + I(x^2) + I(x^3) + I(x^4)
 \end_layout
 
 \begin_layout Plain Layout
+
     
 \end_layout
 
@@ -328,11 +342,14 @@ y ~ poly(x, 4)
 \end_layout
 
 \begin_layout Enumerate
-LÃ¤s in datamaterialet 
+Läs in datamaterialet 
 \family typewriter
 lab6_data_1.csv
 \family default
-. Dela upp i trÃ¤ning och validering och anvÃ¤nd korsvalidering fÃ¶r att skatta den bÃ¤sta polynomregression och stegfunktionen till detta datamaterial. Vilken grad av polynom anvÃ¤nds? Hur mÃ¥nga stegfunktioner anvÃ¤nds? 
+.
+ Dela upp i träning och validering och använd korsvalidering för att skatta
+ den bästa polynomregression och stegfunktionen till detta datamaterial.
+ Vilken grad av polynom används? Hur många stegfunktioner används? 
 \end_layout
 
 \begin_layout Section*
@@ -340,7 +357,7 @@ Del 2: Splines
 \end_layout
 
 \begin_layout Enumerate
-GÃ¶r Lab 7.8.2 i ISL 
+Gör Lab 7.8.2 i ISL 
 \end_layout
 
 \begin_layout Enumerate
@@ -348,7 +365,9 @@ Ladda in datamaterialet
 \family typewriter
 lab6_data_1.csv
 \family default
-. VÃ¤lj knutarna i 1, 2, 3, och 4. Testa nu att skatta vanliga splines (
+.
+ Välj knutarna i 1, 2, 3, och 4.
+ Testa nu att skatta vanliga splines (
 \family typewriter
 bs()
 \family default
@@ -356,19 +375,24 @@ bs()
 \family typewriter
 degree
 \family default
- 1, 2, 3 och 4. Vad blir skillnaden i resultat? Vilken ser bÃ¤st ut? 
+ 1, 2, 3 och 4.
+ Vad blir skillnaden i resultat? Vilken ser bäst ut? 
 \end_layout
 
 \begin_layout Enumerate
-AnvÃ¤nd samma datamaterial och Ã¤ndra till natural splines (
+Använd samma datamaterial och ändra till natural splines (
 \family typewriter
 ns()
 \family default
-). Vad blir skillnaden? LÃ¤gg till knutar i 0.5 och 4.5 och jÃ¤mfÃ¶r. 
+).
+ Vad blir skillnaden? Lägg till knutar i 0.5 och 4.5 och jämför.
+ 
 \end_layout
 
 \begin_layout Enumerate
-Testa andra platser fÃ¶r knutarna och anvÃ¤nd korsvalidering fÃ¶r att hitta den bÃ¤sta modellen. 
+Testa andra platser för knutarna och använd korsvalidering för att hitta
+ den bästa modellen.
+ 
 \end_layout
 
 \begin_layout Section*
@@ -376,7 +400,7 @@ Del 3: GAM
 \end_layout
 
 \begin_layout Enumerate
-GÃ¶r Lab 7.8.3 i ISL 
+Gör Lab 7.8.3 i ISL 
 \end_layout
 
 \begin_layout Section*
@@ -388,43 +412,56 @@ Ladda in
 \family typewriter
 spambase.csv
 \family default
- datasetet och bekanta dig med det. Vi vill skapa en modell som predikterar 
+ datasetet och bekanta dig med det.
+ Vi vill skapa en modell som predikterar 
 \family typewriter
 spam
 \family default
- (0 eller 1) givet de fÃ¶rklarande variablerna. DÃ¥ vÃ¥ra fÃ¶rklarande Ã¤r tungsvansade kan en log-transformation fungera bra (
-\begin_inset Formula $\log(x + 0.1)$
+ (0 eller 1) givet de förklarande variablerna.
+ Då våra förklarande är tungsvansade kan en log-transformation fungera bra
+ (
+\begin_inset Formula $\log(x+0.1)$
 \end_inset
 
-) dÃ¤r vi lÃ¤gger pÃ¥ 
+) där vi lägger på 
 \begin_inset Formula $0.1$
 \end_inset
 
- fÃ¶r att undvika 
+ för att undvika 
 \begin_inset Formula $\log(0)$
 \end_inset
 
- problem. 
+ problem.
+ 
 \end_layout
 
 \begin_layout Enumerate
-Dela upp datamaterialet i 70% trÃ¤ningsdata och 30% valideringsdata. 
+Dela upp datamaterialet i 70% träningsdata och 30% valideringsdata.
+ 
 \end_layout
 
 \begin_layout Enumerate
-BÃ¶rja med att anpassa en vanlig multiple logistisk regression till datamaterialet. Vilket klassificeringsfel fÃ¥r du? 
+Börja med att anpassa en vanlig multiple logistisk regression till datamateriale
+t.
+ Vilket klassificeringsfel får du? 
 \end_layout
 
 \begin_layout Enumerate
-Anpassa nu en GAM modell med kubiska natural splines med 4 frihetsgrader fÃ¶r varje fÃ¶rklarande variabel. Vilket klassificeringsfel fÃ¥r du nu? 
+Anpassa nu en GAM modell med kubiska natural splines med 4 frihetsgrader
+ för varje förklarande variabel.
+ Vilket klassificeringsfel får du nu? 
 \end_layout
 
 \begin_layout Enumerate
-Testa med andra ordningar av frihetsgrader fÃ¶r dina splines och se om du kan fÃ¥ till en bÃ¤ttre modell. 
+Testa med andra ordningar av frihetsgrader för dina splines och se om du
+ kan få till en bättre modell.
+ 
 \end_layout
 
 \begin_layout Enumerate
-Testa att anvÃ¤nda lokal regression fÃ¶r nÃ¥gon eller nÃ¥gra variabler och se hur det pÃ¥verkar dina resultat. 
+Testa att använda lokal regression för någon eller några variabler och se
+ hur det påverkar dina resultat.
+ 
 \end_layout
 
 \end_body

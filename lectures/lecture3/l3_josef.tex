@@ -13,7 +13,7 @@
   colorlinks=true, urlcolor=blue, linkcolor=red
 }
 
-\title{732G12 Data Mining}
+\title{732G57 Maskininlärning för statistiker }
 \subtitle{Föreläsning 3}
 \date{}
 \author{Josef Wilzén \\ IDA, Linköping University, Sweden}
@@ -39,10 +39,58 @@
 \begin{frame}{Dagens föreläsning}
 
     \begin{itemize}
+        \item Variabelselektion och inferens
         \item Linjära och icke-linjära modeller
         \item Splines
     \end{itemize}
     
+\end{frame}
+
+
+\begin{frame}{Variabelselektion och inferens}
+\begin{itemize}
+    \item I linjär regression används ibland automatiska metoder för att välja variabler (t.ex. stegvis regression, LASSO).
+    \item Efter variabelselektion är det vanligt att analysera p-värden och konfidensintervall för de valda variablerna $\rightarrow$ kallas \textbf{post-selection inference}
+    \item \textbf{Problem:} Dessa inferenser antar att modellen är fördefinierad – men valet av variabler påverkar fördelningen av skattningarna.
+    \item Detta leder till:
+    \begin{itemize}
+        \item För snäva konfidensintervall
+        \item P-värden som är för små
+        \item Ökad risk för falska positiva resultat
+    \end{itemize}
+    \item \textbf{Slutsats}: Standardinferens efter variabelselektion ska undvikas
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Varför fungerar inte vanlig inferens efter variabelselektion?}
+\begin{itemize}
+    \item Klassisk inferens (t.ex. p-värden, konfidensintervall) bygger på att modellen är fixerad innan data analyseras.
+    \item Vid variabelselektion används data för att välja modell – detta introducerar ett beroende mellan data och modellen.
+    \item Parametrarna skattas i en modell som valts utifrån samma data → fördelningen av skattningarna ändras.
+    \item Om vi bara rapporterar resultat för variabler som ”överlevde” selektionen, får vi en snedvriden bild.
+    \item Detta kallas \textbf{selektionsbias} och leder till:
+    \begin{itemize}
+        \item Överskattad signifikans
+        \item Underskattad osäkerhet
+    \end{itemize}
+    \item Lösningar kräver att man tar hänsyn till selektionssteget i inferensen.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Metoder för att hantera post-selection inference}
+\begin{itemize}
+    \item För att få korrekt inferens efter variabelselektion krävs att selektionssteget tas med i beräkningen.
+    \item Några vanliga metoder:
+    \begin{itemize}
+        \item \textbf{Selective inference:} Justerar p-värden och konfidensintervall baserat på hur modellen valdes.
+        \begin{itemize}
+          \item \textbf{Metoder från Tibshirani et al.:} R-paketet \texttt{selectiveInference} implementerar selektionsjusterad inferens för t.ex. LASSO, med exakta eller asymptotiska p-värden och konfidensintervall.
+        \end{itemize}
+        \item \textbf{Sample splitting:} Ena delen av datan används för selektion, den andra för inferens.
+         \item \textbf{Bayesianska metoder:} Inkluderar osäkerhet i modellvalet direkt i analysen.
+    \end{itemize}
+    \item Ingen metod är perfekt – valet beror på syftet (prediktion vs inferens) och tillgång till data.
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Linjära och icke-linjära modeller}
@@ -160,7 +208,8 @@
         y_i = \beta_0 + \beta_1 b_1(x_i) + \beta_2 b_2(x_i) + \ldots + \beta_k b_k(x_i) + \varepsilon_i.
     \end{equation*}
 
-    Observera att vi har ett linjärt problem (i basfunktionerna), vi kan enkelt skatta parametrarna $\beta$ som i vanlig linjär regression, dvs med OLS
+    Observera att vi har ett linjärt problem (i basfunktionerna), 
+    vi kan enkelt skatta parametrarna $\beta$ som i vanlig linjär regression, dvs med OLS (eller med Ridge/LASSO)
 
 \end{frame}
 
@@ -173,9 +222,43 @@
         \item Andra funktioner är också vanliga, t.ex. $\log$, $\exp$, $\sin$, $\cos$, osv.
     \end{itemize}
     
-    Ett problem: Behöver ofta väldigt många basfunktioner för att väl anpassa data. Leder ofta till överanpassning.
+    Ett problem: Behöver ofta väldigt många basfunktioner för att väl anpassa data. 
+    
+    Leder ofta till överanpassning $\rightarrow$ vi behöver variabelselektion eller regularisering!
 
 \end{frame}
+
+
+\begin{frame}{Consinusbaser}
+
+En annan variant av basfunktioner som kan modellera icke-linjära funktioner
+är cosinusbaser. De defineras som 
+\[
+x_{min}=min\left(x\right)\qquad x_{max}=max\left(x\right)\qquad L=x_{max}-x_{min}
+\]
+\begin{equation}
+g_{h}\left(x\right)=cos\left(\frac{\pi\cdot h\cdot\left(x-x_{min}\right)}{L}\right)\qquad h=1,2,\ldots,H\label{eq:cosine basis}
+\end{equation}
+
+$h$ är ordningen för basen, och $H$ är den högsta ordningen. Vi kan likna $h$ med graden i ett polynom.
+
+Större $H$ leder till en mer flexibel anpassning.
+
+\end{frame}
+
+
+\begin{frame}{Consinusbaser - exempel}
+
+Låt $x$ vara en numerisk variabel, och låt $x_{min}=-3$ och $x_{max}=5$. 
+
+Nedan visas alla baser upp till $H=6$
+
+\includegraphics[width=0.7\textwidth]{figs/cosinus_basis_func_example.png}
+
+Exempel på anpassning med R-kod: länk
+
+\end{frame}
+
 
 \begin{frame}{Stegvisa basfunktioner}
 
