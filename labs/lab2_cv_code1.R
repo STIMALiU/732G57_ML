@@ -66,7 +66,7 @@ plot(sort(Wage$age),fit_loess)
 plot(x = Wage$age, y = Wage$wage)
 lines(x = sort(Wage$age),fit_ns,t="l",col="blue",lwd=3,lty="dashed")
 lines(x = sort(Wage$age),fit_loess,col="red",lwd=3,lty="dashed")
-
+# mycket lika anpassning i detta fall
 
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
