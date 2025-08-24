@@ -23,6 +23,11 @@ par(mfrow=c(1,1))
 # vad finns i listan?
 str(cos_list)
 
+
+dim(cos_list$basis_mat)
+
+round(cor(cos_list$basis_mat),3)
+
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
 # modellanpassning med cosinusbaser

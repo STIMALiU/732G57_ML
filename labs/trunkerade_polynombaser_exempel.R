@@ -1,3 +1,6 @@
+
+
+# läser in funktion som kan skapa trunkerade
 source("https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/labs/trunc_power_basis.R")
 
 

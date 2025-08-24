@@ -16,7 +16,7 @@
 \title{732G57 Maskininlärning för statistiker }
 \subtitle{Föreläsning 3}
 \date{}
-\author{Josef Wilzén \\ IDA, Linköping University, Sweden}
+\author{Josef Wilzén \ IDA, Linköping University, Sweden}
 \titlegraphic{\hfill\includegraphics[height=1.2cm]{../LiU_primary_black.pdf}}
 %\institute{Joint work with\dots}
 
@@ -148,9 +148,18 @@
 
     Men vilken ordning $p$ ska vi ha?
 
-    \only<2>{\includegraphics[width = \textwidth]{figs/nonLinWithPoly4.png}}
-    \only<3>{\includegraphics[width = \textwidth]{figs/nonLinWithPoly6.png}}
-    \only<4>{\includegraphics[width = \textwidth]{figs/nonLinWithPoly8.png}}
+    \only<2>{
+    - Testar $p=4$
+    \includegraphics[width = \textwidth]{figs/nonLinWithPoly4.png}
+    }
+    \only<3>{
+    - Testar $p=6$
+    \includegraphics[width = \textwidth]{figs/nonLinWithPoly6.png}
+    }
+    \only<4>{
+    - Testar $p=8$
+    \includegraphics[width = \textwidth]{figs/nonLinWithPoly8.png}
+    }
     
 \end{frame}
 
@@ -178,8 +187,14 @@
     
     Vilka områden ska vi välja?
 
-    \only<2>{\includegraphics[width = \textwidth]{figs/nonLinWithSteps5.png}}
-    \only<3>{\includegraphics[width = \textwidth]{figs/nonLinWithSteps10.png}}
+    \only<2>{
+    - Vi testar 5 områden jämt fördelade över $x$.
+    \includegraphics[width = \textwidth]{figs/nonLinWithSteps5.png}
+    }
+    \only<3>{
+    - Vi testar 10 områden jämt fördelade över $x$.
+    \includegraphics[width = \textwidth]{figs/nonLinWithSteps10.png}
+    }
 
 \end{frame}
 
@@ -244,6 +259,8 @@ $h$ är ordningen för basen, och $H$ är den högsta ordningen. Vi kan likna $h
 
 Större $H$ leder till en mer flexibel anpassning.
 
+Cosinusbaserna är okorrelerade $\rightarrow$ underlättar skattningen.
+
 \end{frame}
 
 
@@ -255,9 +272,13 @@ Nedan visas alla baser upp till $H=6$
 
 \includegraphics[width=0.7\textwidth]{figs/cosinus_basis_func_example.png}
 
-Exempel på anpassning med R-kod: länk
+Exempel på modellanpassning med R-kod: \href{https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/labs/cosinusbaser_exempel.R}{länk}
 
 \end{frame}
+
+
+
+
 
 
 \begin{frame}{Stegvisa basfunktioner}
@@ -293,8 +314,34 @@ Exempel på anpassning med R-kod: länk
     
 \end{frame}
 
+
+\begin{frame}{Stegvisa basfunktioner - exempel}
+
+Vi skapar en mängd med \textbf{linjära} funktioner som är "avstängda" för en del av $x$-värdena, 
+och sprider ut dem jämt för möjliga $x$-värden.
+
+\includegraphics[width=0.6\textwidth]{figs/linear_trunc_power_basis.png}
+
+
+\end{frame}
+
+
+\begin{frame}{Stegvisa basfunktioner - exempel}
+
+Vi skapar en mängd med \textbf{kvadratiska} funktioner som är "avstängda" för en del av $x$-värdena, 
+och sprider ut dem jämt för möjliga $x$-värden.
+
+\includegraphics[width=0.6\textwidth]{figs/quad_trunc_power_basis.png}
+
+
+Dessa funktioner kallas \textbf{trunkerade polynombaser}. 
+Exempel på modellanpassning med R-kod: \href{https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/labs/trunkerade_polynombaser_exempel.R}{länk}
+
+\end{frame}
+
+
 \begin{frame}{Regression Splines}
-    Stegvis polynomregression som i exemplet innan är en form av Regression Splines.
+    Stegvis polynomregression som i exemplen innan är en form av Regression Splines.
 
     \begin{bluebox}
     Målet är att anpassa en stegvis polynomfunktion med begränsningar i skarvarna för att få kontinuitet, kontinuerliga derivator osv.
@@ -307,8 +354,8 @@ Exempel på anpassning med R-kod: länk
         \item[trunkerad polynombas (truncated power basis)]: en funktion $h(x,\xi)$ som ges av
         \begin{equation*}
             h(x,\xi) = (x - \xi)^p_+ = \begin{cases}
-                (x - \xi)^p & \text{if } x > \xi, \\
-                0 & \text{otherwise.}
+                (x - \xi)^p & \text{om } x > \xi, \\
+                0 & \text{annars.}
             \end{cases}
         \end{equation*} 
     \end{description}
@@ -357,21 +404,21 @@ Exempel på anpassning med R-kod: länk
         \end{itemize}
         \item Hur välja antal knutar och deras placeringar?
         \item Skattningar utanför intervallet blir dåliga.
-        \begin{description}
-            \item[Natural spline]: Lägger till ett extra krav, att funktionen ska vara linjär i ändarna (innan första och efter sista knuten). 
+        \begin{description} 
+            \item[Naturliga spline]: Lägger till ett extra krav, att funktionen ska vara linjär i ändarna (innan första och efter sista knuten). 
         \end{description}
         \item Jämfört med vanlig polynomregression skulle vi behöva grad $d+k$ för samma antal frihetsgrader.
     \end{itemize}
     
 \end{frame}
 
-\begin{frame}{Natural Splines - Exempel}
+\begin{frame}{Naturliga splines - Exempel}
 
-    Vi modellerar med kubiska splines med knutar i $1,2,3$ och $4$.
+    Vi modellerar med kubiska splines med knutar i $1,2,3$ och $4$. (Blå linje)
 
-    \uncover<2->{Lägger till Natural Splines med samma knutar.}
+    \uncover<2->{Lägger till Naturliga splines med samma knutar. (Röd linje)}
 
-    \uncover<3->{Lägger till nya knutar i $0.5$ och $4.5$ och kör natural splines.}
+    \uncover<3->{Lägger till nya knutar i $0.5$ och $4.5$ och kör naturliga splines. (Grön linje)}
     
     \includegraphics<1>[width=\textwidth]{figs/nonLinPeceBS.png}
     \includegraphics<2>[width=\textwidth]{figs/nonLinPeceBSNS.png}
@@ -399,7 +446,9 @@ Exempel på anpassning med R-kod: länk
 
 \begin{frame}{Antalet knutar och deras placeringar - Exempel}
 
-    Vi använder samma data som tidigare och beräknar MSE för olika frihetsgrader
+    Vi använder samma data som tidigare och beräknar MSE för olika frihetsgrader. 
+    
+    Blå = kubiska splines, Röd = naturliga splines
 
     \includegraphics[width=\textwidth]{figs/bsnsMSE.png}
     
@@ -408,7 +457,7 @@ Exempel på anpassning med R-kod: länk
 
 \begin{frame}{Antalet knutar och deras placeringar - Exempel}
 
-    Bästa modellen ser vi $8$ frihetsgrader för natural splines och $9$ frihetsgrader för cubic splines.
+    Bästa modellen ser vi $8$ frihetsgrader för naturliga splines och $9$ frihetsgrader för cubic splines.
 
     Det ger 4 respektive 5 knutar.
 
@@ -493,7 +542,7 @@ Exempel på anpassning med R-kod: länk
 \begin{frame}{Smoothing Splines - Sammanfattning}
 
     \begin{itemize}
-        \item Efter optimering får vi kubisk natural splines.
+        \item Efter optimering får vi kubisk naturliga splines.
         \item En knut i varje datapunkt.
         \item För många frihetsgrader? ($4+n$)
         \item $\lambda$ krymper parameterarna vilket ändrar den effektiva frihetsgraden $df_{\lambda}$.
@@ -509,7 +558,7 @@ Exempel på anpassning med R-kod: länk
 
 \begin{frame}{Att välja $\lambda$}
     
-    Eftersom smoothing splines resulterar i natural splines med ett fixt antal knutar med ridge regularisering kan vi skriva
+    Eftersom smoothing splines resulterar i naturliga splines med ett fixt antal knutar med ridge regularisering kan vi skriva
     \begin{equation*}
         \hat{\mathbf{g}}_{\lambda} = \mathbf{S}_{\lambda} \mathbf{y},
     \end{equation*}
@@ -579,7 +628,7 @@ Exempel på anpassning med R-kod: länk
         \ell = \sum_{i=1}^{n} \left[y_i f(x_i) - \log(1 + e^{f(x_i)}) \right] - \frac{1}{2}\lambda \int \{ f''(x)\}^2 \mathrm{d}x.
     \end{equation*}
 
-    Vilket igen kan visas resultera i natural splines med knutar i datapunkterna.
+    Vilket igen kan visas resultera i naturliga splines med knutar i datapunkterna.
 \end{frame}
 
 \begin{frame}{Flerdimensionella Splines}
