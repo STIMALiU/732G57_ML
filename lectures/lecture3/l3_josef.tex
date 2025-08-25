@@ -218,7 +218,7 @@
 \begin{frame}{Basfunktioner}
     Gemensamt för dessa metoder är att de bygger på basfunktioner.
 
-    Givet ett gäng funktioner $(b_1(x), b_2(x), \ldots, b_k(x))$ kan vi göra regression som
+    Givet ett mängd funktioner $(b_1(x), b_2(x), \ldots, b_k(x))$ kan vi göra regression som
     \begin{equation*}
         y_i = \beta_0 + \beta_1 b_1(x_i) + \beta_2 b_2(x_i) + \ldots + \beta_k b_k(x_i) + \varepsilon_i.
     \end{equation*}
@@ -446,7 +446,7 @@ Exempel på modellanpassning med R-kod: \href{https://raw.githubusercontent.com/
 
 \begin{frame}{Antalet knutar och deras placeringar - Exempel}
 
-    Vi använder samma data som tidigare och beräknar MSE för olika frihetsgrader. 
+    Vi använder samma data som tidigare, delar upp i 80/20 träning/validering, och beräknar MSE för olika frihetsgrader på valideringsdata. 
     
     Blå = kubiska splines, Röd = naturliga splines
 
