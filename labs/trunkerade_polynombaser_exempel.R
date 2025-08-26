@@ -8,7 +8,7 @@ source("https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/lab
 
 
 
-str(basis_list1)
+#str(basis_list1)
 
 n <- 500
 set.seed(424)

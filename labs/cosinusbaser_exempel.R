@@ -22,7 +22,7 @@ par(mfrow=c(1,1))
 
 # vad finns i listan?
 str(cos_list)
-
+head(cos_list$basis_mat)
 
 dim(cos_list$basis_mat)
 
