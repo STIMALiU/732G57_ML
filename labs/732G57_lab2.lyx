@@ -3100,7 +3100,7 @@ literal "false"
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 
 \lang english
 Del 3: GAM
@@ -3112,7 +3112,108 @@ Del 3: GAM
 Gör Lab 7.8.3 i ISL 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Enumerate
+Här finns mycket material om GAMs: 
+\begin_inset CommandInset href
+LatexCommand href
+name "GAMs in R by Noam Ross"
+target "https://noamross.github.io/gams-in-r-course/"
+literal "false"
+
+\end_inset
+
+, detta är en fri webbkurs om GAMs med R-paketet 
+\family typewriter
+mgcv
+\family default
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Rekomenderas att gå igenom delarna 
+\begin_inset Quotes sld
+\end_inset
+
+1 - Introduction to Generalized Additive Models
+\begin_inset Quotes srd
+\end_inset
+
+ och 
+\begin_inset Quotes sld
+\end_inset
+
+2 - Interpreting and Visualizing GAMs
+\begin_inset Quotes srd
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Kombinera GAM och variabel selektion, det finns olika paket som kan göra
+ olika varianter av variabelselektion när vi arbetar med GAMs:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "gamsel"
+target "https://cran.r-project.org/web/packages/gamsel/index.html"
+literal "false"
+
+\end_inset
+
+, här finns en vingette: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://cran.r-project.org/web/packages/gamsel/vignettes/gamsel.html"
+literal "false"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\family typewriter
+gamsel
+\family default
+ kan automatiskt välja om en förklarande variabel ska vara tas bort, ha
+ ett linjärt samband eller ett icke-linjärt samband (=splines) med y.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\family typewriter
+step.gam()
+\family default
+ funktion i paketet 
+\family typewriter
+gam
+\family default
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+gam.selection()
+\family default
+ funktion i paketet 
+\family typewriter
+mgcv
+\end_layout
+
+\end_deeper
+\begin_layout Section
 
 \lang english
 Del 4: Email Spam
@@ -3152,7 +3253,7 @@ spam
 
 \lang english
 Dela upp datamaterialet i 70% träningsdata och 30% valideringsdata.
- 
+ Undersök så att klassbalansen i är liknande i träningsdata och valideringsdata.
 \end_layout
 
 \begin_layout Enumerate
@@ -3176,14 +3277,6 @@ Anpassa nu en GAM modell med kubiska natural splines med 5 frihetsgrader
 \lang english
 Testa med andra ordningar av frihetsgrader för dina splines och se om du
  kan få till en bättre modell.
- 
-\end_layout
-
-\begin_layout Enumerate
-
-\lang english
-Testa att använda lokal regression för någon eller några variabler och se
- hur det påverkar dina resultat.
  
 \end_layout
 
