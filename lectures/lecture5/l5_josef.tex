@@ -14,6 +14,9 @@
 \titlegraphic{\hfill\includegraphics[height=1.2cm]{../LiU_primary_black.pdf}}
 %\institute{Joint work with\dots}
 
+\hypersetup{
+  colorlinks=true, urlcolor=blue, linkcolor=red
+}
 
 %% MY DEF %%
 \newcommand{\itm}[1]{\mathrm{Item}_{#1}}
@@ -192,6 +195,17 @@
     \includegraphics[width=0.68\textwidth]{figs/reg_tree_surface.png}
 \end{frame}
 
+\begin{frame}{CART - Regressionsträd}
+   Exempel i R:
+   
+   
+   \href{https://raw.githubusercontent.com/STIMALiU/732G57_ML/master/lectures/lecture5/tree_regression_example1.R}{Kod1}
+   
+   \href{https://raw.githubusercontent.com/STIMALiU/732G57_ML/master/lectures/lecture5/tree_regression_example2.R}{Kod2}
+   
+\end{frame}
+
+
 \begin{frame}{CART - Klassificeringsträd}
     
     När det kommer till klassificering behöver vi ett nytt mått för att utvärdera om en regel är bra eller dålig.
@@ -237,6 +251,8 @@
     Trädmodeller överanpassar väldigt lätt. Vilket ger en hög varians på framtida testdata!
     
 \end{frame}
+
+
 
 \begin{frame}{Motverka överanpassning}
 
