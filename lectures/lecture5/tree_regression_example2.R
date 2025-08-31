@@ -40,7 +40,7 @@ tree <- rpart(
     # Anger att antalet observationer som krävs för att en förgrening ska ske
     minsplit = 20,
     # Anger maxdjupet av träder, där 0 är rotnoden
-    maxdepth = 10, 
+    maxdepth = 5, 
     # Anger den minsta tillåtna förbättringen som måste ske för att en förgrening ska ske
     cp = 0,
     # Två inställningar som inte används mer i detalj
