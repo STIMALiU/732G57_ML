@@ -7,7 +7,7 @@
 %\usepackage{../lindsten}
 %\usepackage{movie15}
 
-\title{732G12 Data Mining}
+\title{732G57 Maskininlärning för statistiker}
 \subtitle{Föreläsning 5}
 \date{}
 \author{Josef Wilzén \\ IDA, Linköping University, Sweden}
@@ -43,7 +43,7 @@
 
 \begin{frame}{Linjär regression till icke-linjär?}
     
-    Som vanligt, har förklarande variabler $\mathbf{X} = (x_1, x_2, \ldots, x_p)$ och respons $y$.
+    Förklarande variabler $\mathbf{X} = (x_1, x_2, \ldots, x_p)$ och respons $y$.
 
     Modellerear som $y = \mathbf{X}\beta$.
 
@@ -183,6 +183,9 @@
         R_1(j,s) = \{x \mid x_j < s\} \qquad R_2(j,s) = \{x | x_j \geq s\},
     \end{align*}
     $c_1$ och $c_2$ skattas oftast som medelvärdet av respektive region.
+    
+    Finns effektiva algoritmer för att söka igenom bästa splittpunkten $s$ för alla förklarande variabler.
+    
 \end{frame}
 
 \begin{frame}{CART - Regressionsträd}
@@ -231,7 +234,7 @@
 
     Felkvoten används ofta för att utvärdera trädet på testdata.
 
-    Trädmodeller överanpassar väldigt lätt. Vilket ger en hög varians!
+    Trädmodeller överanpassar väldigt lätt. Vilket ger en hög varians på framtida testdata!
     
 \end{frame}
 
@@ -258,6 +261,8 @@
     
 \end{frame}
 
+
+
 \begin{frame}{Efterbeskärning}
     Använd CART för att ta växa fram ett stort träd $T_0$ på all träningsdata.
 
@@ -265,12 +270,15 @@
     \begin{equation*}
         C_{\alpha}(T) = \sum_{R \in \text{Löv i T}} N(R) \cdot I(R) + \alpha |T|,
     \end{equation*} 
-    där $|T|$ är antalet löv i $T$, $N(R_j)$ antal objekt i lövnod $j$.
+    där $|T|$ är antalet löv i $T$, $N(R_j)$ antal objekt i lövnod $j$. $I(\cdot)$ 
+    är ditt valda utvärderingsmått
 
     Använd korsvalidering för att skatta $\alpha$, välj det som ger minst valideringsfel.
 
     Idén är lik LASSO.
 \end{frame}
+
+
 
 \begin{frame}{Regressionsträd med cost complexity pruning}
     \includegraphics[height=0.9\textheight]{figs/reg_tree_estimate.png}
