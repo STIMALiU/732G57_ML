@@ -160,7 +160,7 @@ surface <- add_trace(scatter,
 
 # Anpassa layout
 surface <- layout(surface,
-                  title = "3D_trees: Volume as a function of Girth and Height (Tree Model)",
+                  title = "3D_trees: Volume as a function of Girth and Height (tree model A)",
                   scene = list(
                     xaxis = list(title = "Girth"),
                     yaxis = list(title = "Height"),
@@ -224,7 +224,7 @@ surface <- add_trace(scatter,
 
 # Anpassa layout
 surface <- layout(surface,
-                  title = "3D_trees: Volume as a function of Girth and Height (Tree Model)",
+                  title = "3D_trees: Volume as a function of Girth and Height (tree model B)",
                   scene = list(
                     xaxis = list(title = "Girth"),
                     yaxis = list(title = "Height"),
@@ -322,7 +322,7 @@ surface <- add_trace(scatter,
 
 # Anpassa layout
 surface <- layout(surface,
-                  title = "3D_trees: Volume as a function of Girth and Height (Tree Model)",
+                  title = "3D_trees: Volume as a function of Girth and Height (rpart Model)",
                   scene = list(
                     xaxis = list(title = "Girth"),
                     yaxis = list(title = "Height"),
