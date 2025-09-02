@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.18)  2 SEP 2025 00:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.18)  2 SEP 2025 14:16
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1417,27 +1417,41 @@ Overfull \vbox (11.47618pt too high) detected at line 461
 
 [35
 
+] [36
+
+] [37
+
 ]
-Overfull \vbox (13.22919pt too high) detected at line 487
+Overfull \vbox (1.10939pt too high) detected at line 509
  []
 
-[36
+[38
+
+] [39
+
+] [40
 
 ]
-Overfull \vbox (16.71178pt too high) detected at line 509
+Overfull \vbox (32.39537pt too high) detected at line 566
  []
 
-[37
+[41
+
+] [42
 
 ]
-<./figs//xgboost_gain_fig.png, id=253, 1541.76pt x 1027.84pt>
+<./figs//xgboost_gain_fig.png, id=279, 1541.76pt x 1027.84pt>
 File: ./figs//xgboost_gain_fig.png Graphic file (type png)
 <use ./figs//xgboost_gain_fig.png>
-Package pdftex.def Info: ./figs//xgboost_gain_fig.png  used on input line 523.
+Package pdftex.def Info: ./figs//xgboost_gain_fig.png  used on input line 599.
 (pdftex.def)             Requested size: 184.3758pt x 122.91202pt.
- [38
+ [43
 
- <./figs//xgboost_gain_fig.png (PNG copy)>]
+ <./figs//xgboost_gain_fig.png (PNG copy)>] [44
+
+] [45
+
+]
 \tf@nav=\write6
 \openout6 = `l6_josef.nav'.
 
@@ -1447,16 +1461,17 @@ Package pdftex.def Info: ./figs//xgboost_gain_fig.png  used on input line 523.
 \tf@snm=\write8
 \openout8 = `l6_josef.snm'.
 
- (./l6_josef.aux)
+
+(./l6_josef.aux)
 Package rerunfilecheck Info: File `l6_josef.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 31699 strings out of 479533
- 653894 string characters out of 5876205
- 895028 words of memory out of 5000000
- 48948 multiletter control sequences out of 15000+600000
- 493074 words of font info for 101 fonts, out of 8000000 for 9000
+ 31731 strings out of 479533
+ 654187 string characters out of 5876205
+ 895292 words of memory out of 5000000
+ 48965 multiletter control sequences out of 15000+600000
+ 493242 words of font info for 102 fonts, out of 8000000 for 9000
  417 hyphenation exceptions out of 8191
  128i,13n,122p,1893b,742s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/joswi05/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcss0900.6
@@ -1481,11 +1496,12 @@ e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/symbols/msbm10.pfb>
-Output written on l6_josef.pdf (38 pages, 2206378 bytes).
+ype1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/symbols/msbm10.pfb>
+Output written on l6_josef.pdf (45 pages, 2229416 bytes).
 PDF statistics:
- 381 PDF objects out of 1000 (max. 8388607)
- 267 compressed objects within 3 object streams
- 77 named destinations out of 1000 (max. 500000)
+ 426 PDF objects out of 1000 (max. 8388607)
+ 302 compressed objects within 4 object streams
+ 91 named destinations out of 1000 (max. 500000)
  123 words of extra memory for PDF output out of 10000 (max. 10000000)
 

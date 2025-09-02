@@ -7,7 +7,7 @@
 %\usepackage{../lindsten}
 %\usepackage{movie15}
 
-\title{732G12 Data Mining}
+\title{732G57 Maskininlärning för statistiker}
 \subtitle{Föreläsning 6}
 \date{}
 \author{Josef Wilzén \\ IDA, Linköping University, Sweden}
@@ -375,28 +375,28 @@
 \begin{frame}{Gradient för kvadratisk förlust}
   \textbf{Förlustfunktion:} Kvadratisk förlust (MSE) ges av
   \[
-    L(y, F(x)) = \frac{1}{2}(y - F(x))^2
+    L(y, f(x)) = \frac{1}{2}(y - f(x))^2
   \]
 
   
-  \textbf{Gradient:} Vi beräknar derivatan med avseende på modellens prediktion $F(x)$:
+  \textbf{Gradient:} Vi beräknar derivatan med avseende på modellens prediktion $f(x)$:
   \[
-    \frac{\partial L(y, F(x))}{\partial F(x)} = - (y - F(x))
+    \frac{\partial L(y, f(x))}{\partial f(x)} = - (y - f(x))
   \]
 
   
   \textbf{Tolkning:} Den negativa gradienten är residualen:
   \[
-    -\frac{\partial L}{\partial F(x)} = y - F(x)
+    -\frac{\partial L}{\partial f(x)} = y - f(x)
   \]
 
   
-  \textbf{I Gradient Boosting:} Vid varje iteration tränas en ny modell $h_m(x)$ för att approximera residualerna $y - F_{m-1}(x)$.
+  \textbf{I Gradient Boosting:} Vid varje iteration tränas en ny modell $h_m(x)$ för att approximera residualerna $y - f_{m-1}(x)$.
 
   
   \textbf{Uppdatering:}
   \[
-    F_m(x) = F_{m-1}(x) + \nu \cdot h_m(x)
+    f_m(x) = f_{m-1}(x) + \nu \cdot h_m(x)
   \]
   där $\nu$ är inlärningshastigheten.
 \end{frame}
@@ -406,21 +406,21 @@
 \begin{frame}{Gradient för cross-entropy (binär klassificering)}
   \textbf{Förlustfunktion:} Cross-entropy för två klasser (etiketter $y \in \{0, 1\}$) ges av:
   \[
-    L(y, F(x)) = -y \log(p(x)) - (1 - y) \log(1 - p(x))
+    L(y, f(x)) = -y \log(p(x)) - (1 - y) \log(1 - p(x))
   \]
   \vspace{0.4cm}
-  där $p(x) = \sigma(F(x)) = \frac{1}{1 + e^{-F(x)}}$ är sannolikheten från modellen.
+  där $p(x) = \sigma(f(x)) = \frac{1}{1 + e^{-f(x)}}$ är sannolikheten från modellen.
 
   
-  \textbf{Gradient:} Vi beräknar derivatan med avseende på $F(x)$:
+  \textbf{Gradient:} Vi beräknar derivatan med avseende på $f(x)$:
   \[
-    \frac{\partial L(y, F(x))}{\partial F(x)} = p(x) - y
+    \frac{\partial L(y, f(x))}{\partial f(x)} = p(x) - y
   \]
 
   
   \textbf{Tolkning:} Den negativa gradienten är:
   \[
-    -\frac{\partial L}{\partial F(x)} = y - p(x)
+    -\frac{\partial L}{\partial f(x)} = y - p(x)
   \]
   vilket motsvarar residualen mellan det sanna värdet och den predikterade sannolikheten.
 
@@ -430,29 +430,29 @@
 
 
 \begin{frame}{Gradient Boosting: Algoritmen steg för steg}
-  \textbf{Mål:} Approximation av en funktion $F(x)$ som minimerar en differentiabel förlustfunktion $L(y, F(x))$.
+  \textbf{Mål:} Approximation av en funktion $f(x)$ som minimerar en differentiabel förlustfunktion $L(y, f(x))$.
 
 
   \textbf{Algoritm:}
   \begin{enumerate}
-    \item Initialisera modellen med en konstant: $F_0(x) = \arg\min_c \sum_{i=1}^n L(y_i, c)$
+    \item Initialisera modellen med en konstant: $f_0(x) = \arg\min_c \sum_{i=1}^n L(y_i, c)$
      \vspace{0.1cm}
     \item För varje iteration $m = 1, \dots, M$:
     \begin{itemize}
       \item Beräkna negativa gradienten (pseudo-residualer):
       \[
-        r_i^{(m)} = -\left.\frac{\partial L(y_i, F(x_i))}{\partial F(x_i)}\right|_{F(x) = F_{m-1}(x)}
+        r_i^{(m)} = -\left.\frac{\partial L(y_i, f(x_i))}{\partial f(x_i)}\right|_{f(x) = f_{m-1}(x)}
       \]
       
       \item Träna en svag modell $h_m(x)$ för att approximera $r_i^{(m)}$.
       
-      \item Uppdatera modellen: $F_m(x) = F_{m-1}(x) + \nu \cdot h_m(x)$
+      \item Uppdatera modellen: $f_m(x) = f_{m-1}(x) + \nu \cdot h_m(x)$
 
       där $\nu$ är inlärningshastigheten.
     \end{itemize}
      \vspace{0.1cm}
     
-    \item Slutlig modell: $F_M(x) = F_0(x) + \sum_{m=1}^M \nu \cdot h_m(x)$
+    \item Slutlig modell: $f_M(x) = f_0(x) + \sum_{m=1}^M \nu \cdot h_m(x)$
 
   \end{enumerate}
 
@@ -460,42 +460,118 @@
   \textbf{Kommentar:} $h_m(x)$ är ofta ett litet beslutsträd, och gradienten beror på vald förlustfunktion.
 \end{frame}
 
-\begin{frame}{XGBoost: Grundläggande idéer}
-  \textbf{XGBoost} (Extreme Gradient Boosting) är en effektiv och förbättrad implementation av gradient boosting.
+
+\begin{frame}{Grundläggande idéer inom XGBoost}
+  \begin{itemize}
+    \item \textbf{XGBoost} (Extreme Gradient Boosting) är en effektiv implementation av gradient boosting med fokus på prestanda och skalbarhet.
+    \item Modellen bygger beslutsträd med hjälp av en greedy-algoritm som väljer den bästa splitpunkten i varje steg.
+    \item Inbyggd regularisering används för att kontrollera modellens komplexitet och minska risken för överanpassning.
+    \item Träden byggs med hjälp av en kostandsfunktion som kombinerar förlust och modellkomplexitet.
+    \item XGBoost är optimerad för parallellisering och hantering av stora datamängder.
+    \item Kan hantera saknade värden automatiskt
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Viktiga hyperparametrar i XGBoost}
+  \begin{itemize}
+    \item \texttt{eta} – Inlärningshastighet. Lägger mindre vikt vid varje nytt träd.
+    \item \texttt{nrounds} – Antal boosting-rundor, dvs. antal träd som byggs.
+    \item \texttt{lambda} – L2-regularisering av vikter. Minskar överanpassning.
+    \item \texttt{gamma} – Minsta förbättring som krävs för att göra en split. Påverkar pruning.
+    \item \texttt{max\_depth} – Maximal djup för varje träd. Påverkar modellens komplexitet.
+    \item \texttt{subsample} – Andel av träningsdata som används för varje träd. Minskar överanpassning.
+    \item \texttt{colsample\_bytree} – Andel features som används vid varje träd. Ökar variation mellan träden.
+    
+    
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Kostandsfunktion och additiv modell}
+  \textbf{Additiv modell:}
+  \begin{equation*}
+    \hat{y}_i^{(t)} = \sum_{k=1}^{t} f_k(x_i), \quad f_k \in \mathcal{F}
+  \end{equation*}
+  Där varje \( f_k \) är ett beslutsträd och modellen byggs upp stegvis.
 
   \vspace{0.1cm}
-  \textbf{Nyckelkomponenter:}
+  \textbf{Kostandsfunktion:}
+  \begin{equation*}
+    \text{Obj}^{(t)} = \sum_{i=1}^{n} l(y_i, \hat{y}_i^{(t-1)} + f_t(x_i)) + \Omega(f_t)
+  \end{equation*}
+  Där \( l \) är en förlustfunktion (t.ex. kvadratisk eller logistisk) och \( \Omega(f) \) är en regulariseringsterm som straffar komplexa träd.
+
+  \vspace{0.1cm}
+  \textbf{Regulariseringsterm:}
+  \begin{equation*}
+    \Omega(f) = \gamma T + \frac{1}{2} \lambda \sum_{j=1}^{T} w_j^2
+  \end{equation*}
+  Där \( T \) är antalet blad i trädet och \( w_j \) är vikten för blad \( j \).
+\end{frame}
+
+\begin{frame}{Taylor-expansion av en funktion}
+  \textbf{Taylor-expansion:}
   \begin{itemize}
-    \item \textbf{Regularisering:} Lägger till straff för komplexa träd:
-    \[
-      \text{Objektiv} = \sum_i L(y_i, \hat{y}_i) + \sum_k \Omega(f_k)
-    \]
-    där $\Omega(f) = \gamma T + \frac{1}{2} \lambda \sum_j w_j^2$
-
-    \item \textbf{Trädstruktur:} Varje svag modell är ett beslutsträd som byggs med hjälp av en greedy-algoritm för att maximera "gain".
-
-    \item \textbf{Andra förbättringar:}
-    \begin{itemize}
-      \item Hanterar saknade värden automatiskt
-      \item Stöd för parallellisering och cache-optimering
-      \item Shrinkage (learning rate) och column subsampling
-    \end{itemize}
+    \item En metod för att approximera en funktion \( f(x) \) nära en punkt \( x_0 \) med hjälp av derivator.
+    \item För en tillräckligt mjuk funktion kan vi skriva:
   \end{itemize}
 
+  \begin{equation*}
+    f(x) \approx f(x_0) + f'(x_0)(x - x_0) + \frac{1}{2} f''(x_0)(x - x_0)^2 + \cdots
+  \end{equation*}
+
+  \begin{itemize}
+    \item I XGBoost används en andra ordningens Taylor-expansion för att approximera kostandsfunktionen.
+    \item Detta gör det möjligt att analysera hur ett nytt träd påverkar förlusten och därmed optimera modellen effektivt.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Första steg mot härledning av Gain}
+
   \vspace{0.1cm}
-  \textbf{Resultat:} Hög prediktiv precision, snabb träning, och god kontroll över överanpassning.
+  \textbf{Approximerad kostandsfunktion:}
+  \begin{equation*}
+    \text{Obj}^{(t)} \approx \sum_{i=1}^{n} \left[ g_i f_t(x_i) + \frac{1}{2} h_i f_t(x_i)^2 \right] + \Omega(f_t)
+  \end{equation*}
+  Där:
+  \begin{itemize}
+    \item \( g_i = \frac{\partial l(y_i, \hat{y}_i)}{\partial \hat{y}_i} \) är första derivatan (gradient).
+    \item \( h_i = \frac{\partial^2 l(y_i, \hat{y}_i)}{\partial \hat{y}_i^2} \) är andra derivatan (hessian).
+  \end{itemize}
 \end{frame}
 
 
+\begin{frame}{Skattning av lövvikter via Taylor-expansion}
+  \textbf{Utgångspunkt:}
+  \begin{itemize}
+    \item Vi approximerar kostandsfunktionen med en andra ordningens Taylor-expansion.
+    \item För varje löv i trädet summerar vi gradienter och hessianer för de observationer som hamnar där.
+  \end{itemize}
+
+  \textbf{Approximerad kostandsfunktion för ett löv:}
+  \begin{equation*}
+    \text{Obj}_{\text{leaf}}(w) = G w + \frac{1}{2} H w^2 + \Omega(w)
+  \end{equation*}
+  Där:
+  \begin{itemize}
+    \item \( G = \sum_{i \in \text{leaf}} g_i \) är summan av första derivator (gradienter).
+    \item \( H = \sum_{i \in \text{leaf}} h_i \) är summan av andra derivator (hessianer).
+    \item \( w \) är vikten som tilldelas lövet.
+  \end{itemize}
+
+  \textbf{Optimal lövvikt:}
+  \begin{equation*}
+    w^* = -\frac{G}{H + \lambda}
+  \end{equation*}
+  Detta är den vikt som minimerar den approximativa kostandsfunktionen för lövet.
+\end{frame}
+
+
+
 \begin{frame}{XGBoost: Gain-beräkning}
-  \textbf{Syfte:} Välj den split som maximerar förbättringen i den regulariserade objektfunktionen.
+  \textbf{Syfte:} Välj den split som maximerar förbättringen i den regulariserade kostandsfunktionen.
 
   \textbf{För varje split:}
   \begin{itemize}
-    \item Beräkna summan av första och andra derivatan (gradient och hessian) för varje nod:
-    $G = \sum_{i \in \text{node}} g_i, \quad H = \sum_{i \in \text{node}} h_i$
-    där $g_i = \frac{\partial L}{\partial F(x_i)}$, $h_i = \frac{\partial^2 L}{\partial F(x_i)^2}$
-
     \item Gain ges av:
     \[
       \text{Gain} = \frac{1}{2} \left[ \frac{G_L^2}{H_L + \lambda} + \frac{G_R^2}{H_R + \lambda} - \frac{(G_L + G_R)^2}{H_L + H_R + \lambda} \right] - \gamma
@@ -514,7 +590,7 @@
   \end{center}
 
   \vspace{0.3cm}
-  \textbf{Gain} mäts som förbättring i objektfunktionen när en nod delas:
+  \textbf{Gain} mäts som förbättring i kostandsfunktionen när en nod delas:
   \[
     \text{Gain} = \frac{1}{2} \left[ \frac{G_L^2}{H_L + \lambda} + \frac{G_R^2}{H_R + \lambda} - \frac{(G_L + G_R)^2}{H_L + H_R + \lambda} \right] - \gamma
   \]
@@ -522,5 +598,33 @@
   \textbf{Split görs om gain är positiv och tillräckligt stor.}
 \end{frame}
 
+\begin{frame}{Översikt av XGBoost-algoritmen}
+  \begin{itemize}
+    \item Starta med en initial modell (t.ex. en konstant prediktion).
+    \item Upprepa för varje boosting-runda:
+    \begin{itemize}
+      \item Beräkna gradienter och hessianer för varje observation.
+      \item Bygg ett nytt beslutsträd som approximerar dessa derivator.
+      \item Optimera varje split med hjälp av en kostandsfunktion som inkluderar regularisering.
+      \item Beräkna vikter för varje löv i trädet.
+    \end{itemize}
+    \item Lägg till det nya trädet i den befintliga modellen.
+    \item Fortsätt tills ett stoppkriterium uppfylls (t.ex. antal träd eller ingen förbättring).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Regulariseringens roll i XGBoost}
+  \begin{itemize}
+    \item Regularisering används för att kontrollera modellens komplexitet och minska risken för överanpassning.
+    \item I XGBoost införs regularisering direkt i kostandsfunktionen, vilket påverkar hur träd byggs.
+    \item Två typer av regularisering används:
+    \begin{itemize}
+      \item \textbf{L2-straff} på lövvikterna – straffar stora värden och gör modellen mer stabil.
+      \item \textbf{Strukturstraff} – straffar träd med många löv för att föredra enklare modeller.
+    \end{itemize}
+    \item Regularisering påverkar både hur splitar väljs och hur lövvikter beräknas.
+    \item Genom att justera hyperparametrar som \texttt{lambda} och \texttt{gamma} kan man styra regulariseringens styrka.
+  \end{itemize}
+\end{frame}
 
 \end{document}
