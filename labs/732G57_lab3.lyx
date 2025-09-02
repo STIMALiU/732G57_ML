@@ -223,7 +223,7 @@ Dataset till vissa uppgifter finns
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://github.com/STIMALiU/732G12_DM/tree/master/data"
+target "https://github.com/STIMALiU/732G57_ML/tree/master/data"
 literal "false"
 
 \end_inset
@@ -321,6 +321,15 @@ literal "false"
 
 \end_inset
 
+ och denna 
+\begin_inset CommandInset href
+LatexCommand href
+name "R-fil"
+target "https://raw.githubusercontent.com/STIMALiU/732G57_ML/master/lectures/lecture5/tree_regression_example2.R"
+literal "false"
+
+\end_inset
+
 , för att göra följande:
 \end_layout
 
@@ -365,7 +374,7 @@ Beräkna felkvoten av både tränings och valideringsmängden och tolka.
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/class_evaluation.R"
+target "https://raw.githubusercontent.com/STIMALiU/732G57_ML/master/labs/class_evaluation.R"
 literal "false"
 
 \end_inset
@@ -452,7 +461,16 @@ Regression med beslutsträd
 \family typewriter
 lab2_data_1.csv
 \family default
- från laboration 2.
+ från laboration 2, 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://github.com/STIMALiU/732G57_ML/tree/main/data"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -478,7 +496,7 @@ Upprepa 3) men cost complexity pruning tillsammans med korsvalidering
 status collapsed
 
 \begin_layout Plain Layout
-Korsvalideringen gör på träningsdata.
+Korsvalideringen görs på träningsdata.
 \end_layout
 
 \end_inset
@@ -511,7 +529,7 @@ spambase.csv
  mail (spam = 0).
  Er uppgift är nu att skatta ett beslutsträd som kan användas som någon
  form av spamfilter för nya mail som anländer till inkorgen.
- Mer detaljerad information om dessa attribut är angivna i bilagan.
+ Mer detaljerad information om dessa attribut är angivna i bilagan nedan.
 \end_layout
 
 \begin_layout Enumerate
@@ -572,8 +590,79 @@ Blev modellen bra? Hur djupt blev trädet? Hur många lövnoder?
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part*
+Del 2: Ensemblemetoder
+\end_layout
+
 \begin_layout Subsection*
-Teorifrågor
+ISL
+\end_layout
+
+\begin_layout Itemize
+Bootstrap: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Gå igenom laborationen 5.3.4
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Bagging and Random Forests, Boosting
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Gå igenom laborationerna 8.3.3 och 8.3.4
+\end_layout
+
+\begin_layout Itemize
+8.4 Exercises Conceptual: 2, 5 
+\end_layout
+
+\end_deeper
+\begin_layout Part*
+Del 3: XGBoost
+\end_layout
+
+\begin_layout Standard
+....kommer snart....
+\end_layout
+
+\begin_layout Part*
+Del 4: Mer övningsuppgifter
+\end_layout
+
+\begin_layout Subsection*
+Tillämpning
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+ISL
+\series default
+ 5.4 Exercises Applied: 9
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+ISL
+\series default
+ 8.4 Exercises Applied: 7, 8, 9, 10, 11 
+\end_layout
+
+\begin_layout Subsection*
+Teori
 \end_layout
 
 \begin_layout Enumerate
@@ -632,171 +721,17 @@ Utgå från ett kontinuerligt
 \series bold
 ISL
 \series default
+ 5.4 Exercises Conceptual: 4
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+ISL
+\series default
  8.4 Exercises Conceptual: 1, 3
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Part*
-Del 2: Naive Bayes classifier
-\end_layout
-
-\begin_layout Standard
-I filen 
-\begin_inset Quotes eld
-\end_inset
-
-loan.csv
-\begin_inset Quotes erd
-\end_inset
-
- finns 600 observationer från en bank där egenskaper hos individer som tagit
- lån är registrerade.
- Det finns även information om lånet betalats tillbaka eller ej.
- Variablerna beskrivs som:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Y
-\series default
-, om lånet betalas tillbaka eller ej (0 = Ja, 1 = N ej) 
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Residence
-\series default
-, om individen är en medborgare eller ej (0 = N ej, 1 = Ja) 
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Age
-\series default
-, vilken åldersgrupp som individen tillhör (0 = [35, Infinity), 1 = [18
- − 35]) 
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-House
-\series default
-, om individen äger ett hus eller ej (0 = N ej, 1 = Ja) 
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Sex
-\series default
-.
- individens kön (0 = Man, 1 = Kvinna) 
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Employment
-\series default
-, om individen har en anställning eller ej (0 = N ej, 1 = Ja) 
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Marital status
-\series default
-, om individen är gift eller ej (0 = Gift eller änka, 1 = Skild eller separerad)
-\end_layout
-
-\begin_layout Enumerate
-Tanken är att ni ska 
-\begin_inset Quotes eld
-\end_inset
-
-räkna för hand
-\begin_inset Quotes erd
-\end_inset
-
- i R: Klassificera, med en Naïve Bayes klassificerare, en ny individ som
- har följande egenskaper: En man som är 26 år gammal, är gift, har en anställnin
-g men äger inte ett eget hus och är inte en medborgare i landet.
- Beskriv detaljerat hur ni gått tillväga för att lösa denna uppgift.
- (Ledning: Använd table() och prop.table() för att beräkna sannolikheterna
- som behövs.)
-\end_layout
-
-\begin_layout Enumerate
-Beräkna samma klassificering utan att använda Naïve Bayes på följande sätt.
- Sortera datamaterialet, hitta antalet individer som överensstämmer med
- de eftersökta egenskaperna av den nya individen och räkna hur många som
- betalat tillbaka sitt lån eller ej.
- Ett klassificeringsbeslut kan tas genom att titta på de relativa frekvenserna.
-\end_layout
-
-\begin_layout Enumerate
-Jämför resultaten mellan 1) och 2).
- Om ni kommit fram till olika beslut, vilken utav metoderna förlitar ni
- er på mest och varför gör ni det?
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Part*
-Del 3: Ensemblemetoder
-\end_layout
-
-\begin_layout Subsection*
-ISL
-\end_layout
-
-\begin_layout Itemize
-Bootstrap: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Gå igenom laborationen 5.3.4
-\end_layout
-
-\begin_layout Itemize
-5.4 Exercises Conceptual: 4, Exercises Applied: 9
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Bagging and Random Forests, Boosting
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Gå igenom laborationerna 8.3.3 och 8.3.4
-\end_layout
-
-\begin_layout Itemize
-8.4 Exercises Conceptual: 2, 5 
-\end_layout
-
-\begin_layout Itemize
-Exercises Applied: 7, 8, 9, 10, 11 
-\end_layout
-
-\end_deeper
 \begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset

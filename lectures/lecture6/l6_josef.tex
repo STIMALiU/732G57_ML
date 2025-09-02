@@ -29,110 +29,18 @@
 
 \maketitle
 
-\begin{frame}{Dagens föreläsning}
+\begin{frame}{Dagens föreläsning: Ensamblemetoder}
 
     \begin{itemize}
-        \item Bayesianska klassificerare
-        \item Ensamblemetoder
-        \begin{itemize}
-            \item Bagging
-            \item Boosting
-            \item Random forest
-        \end{itemize}
+        \item Bagging
+        \item Boosting
+        \item Random forest
+        \item Gradient Boosting 
+        \item XGBoost
     \end{itemize}
     
 \end{frame}
 
-
-
-\begin{frame}{Bayesiansk klassificerare}
-    Att direkt modellera en icke-deterministisk funktion kan vara mycket svårt.
-
-    Exempel:
-    \begin{itemize}
-        \item $(\text{diet}, \text{träning}) \to (\text{hjärtinfarkt})$ är svårt
-        \item $(\text{diet}, \text{träning}) \to \mathbb{P}(\text{hjärtinfarkt})$ lättare
-    \end{itemize}
-
-    Använd Bayes sats för att hjälpa till i modelleringen
-    \begin{align*}
-        \mathbb{P}(Y \mid \mathbf{X}) &= \frac{\mathbb{P}(\mathbf{X} \mid Y)}{\mathbb{P}(\mathbf{X})} \cdot \mathbb{P}(Y) \propto \mathbb{P}(\mathbf{X} \mid Y) \cdot \mathbb{P}(Y) \\
-        \text{posterior} &= \frac{\text{likelihood}}{\text{evidence}} \cdot \text{prior} \propto \text{likelihood} \cdot \text{prior}
-    \end{align*}
-\end{frame}
-
-\begin{frame}{Kategoriska attribut}
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            $\mathbb{P}(Y = y)$ är andelen datapunkter med klass $y$.
-
-            $\mathbb{P}(X_i = x_i \mid Y = y)$ andelen datapunkter med attribut $x_i$ av datapunkterna med klass $y$.
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            \includegraphics[width=\textwidth]{figs/data_bayes_class.png}
-        \end{column}
-    \end{columns}
-\end{frame}
-
-\begin{frame}{Kontinuerliga attribut}
-
-    För kontinuerliga attribut finns olika tillvägagångssätt.
-
-    \begin{itemize}
-        \item Diskretisera data i olika kategorier.
-        \begin{itemize}
-            \item För få intervall gör att man missar information.
-            \item För många intervall kan ge intervall utan observationer.
-        \end{itemize}
-        \item Anta en sannolikhetsfördelning för variabeln och skatta parametrarna från träniningsdatan.
-        \begin{itemize}
-            \item Normalfördelningen är vanlig.
-            \item Conjugate prior.
-        \end{itemize}
-    \end{itemize}
-    
-\end{frame}
-
-\begin{frame}{Grundläggande princip}
-
-    Träningfasen:
-
-    Skatta sannolikheten $\mathbb{P}(Y \mid \mathbf{X})$ för alla möjliga $\mathbf{X}$ och $y$.
-
-    Klassificeringsfas:
-
-    Givet $\mathbf{X}'$ skatta klass $Y' = \max_Y \mathbf{P}(Y \mid \mathbf{X}')$.
-    
-\end{frame}
-
-\begin{frame}{Naiv Bayes klassificerare}
-
-    Modellantagande:
-    \begin{equation*}
-        \mathbb{P}(\mathbf{X} \mid Y) = \prod_i \mathbb{P}(X_i \mid Y),
-    \end{equation*}
-    alla $X_i$ är oberoende av varandra. Vi kan då faktorisera likelihooden över $\mathbf{X}$.
-
-    Använder vi detta får vi en sannolikhet
-    \begin{equation*}
-        \mathbb{P}(Y \mid \mathbf{X}) = \prod_i \mathbb{P}(X_i \mid Y) \mathbb{P}(Y),
-    \end{equation*}
-    det räcker med att skatta sannolikheten för varje $X_i$. Detta ger oss en enklare modell som går att skatta.
-    
-\end{frame}
-
-\begin{frame}{Egenskaper hos naiv Bayes}
-    \begin{itemize}
-        \item Metoden är robust mot isolerade bruspunkter.
-        \item Metoden är robust mot irrelevanta attribut.
-        \item Lätt att skatta.
-        \item Korrelerade attribut kan väsentligt försämra prestandan.
-        \begin{itemize}
-            \item Behöver en mer komplex modell för att hantera.
-            \item Simultan sannolikhetsfördelning för likelihooden.
-        \end{itemize}
-    \end{itemize}
-\end{frame}
 
 \begin{frame}{Ensamblemetoder}
     
@@ -407,7 +315,7 @@
     
 \end{frame}
 
-\begin{frame}{Boosting - Sammanfattninig}
+\begin{frame}{Boosting - Sammanfattning}
     
     Finns många andra varianter:
     \begin{itemize}
@@ -432,5 +340,187 @@
     \end{tabular}
 
 \end{frame}
+
+\begin{frame}{Gradient Boosting: En teoretisk översikt}
+  \textbf{Gradient Boosting} är en iterativ ensemblemetod som bygger en modell $f(x)$ 
+  som approximerar en målfunktion genom att minimera en differentiabel 
+  förlustfunktion $L(y, f(x))$.
+
+  \vspace{0.4cm}
+  \textbf{Grundidé:} Vid varje iteration $m$, lägg till en ny modell $h_m(x)$ 
+  som approximerar den negativa gradienten av förlusten:
+  \[
+    h_m(x) \approx -\left.\frac{\partial L(y, f(x))}{\partial f(x)}\right|_{f(x) = f_{m-1}(x)}
+  \]
+
+  \vspace{0.4cm}
+  \textbf{Uppdatering:}
+  \[
+    f_m(x) = f_{m-1}(x) + \nu \cdot h_m(x)
+  \]
+  där $\nu$ är inlärningshastigheten (learning rate).
+\end{frame}
+
+\begin{frame}{Gradient Boosting}
+  \textbf{Fördelar:}
+  \begin{itemize}
+    \item Teoretiskt välgrundad: bygger på gradient descent i funktionsrymden.
+    \item Flexibel: fungerar med olika förlustfunktioner (t.ex. log-loss, kvadratisk förlust).
+    \item Effektiv: varje steg fokuserar på att minska felet mest effektivt.
+  \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Gradient för kvadratisk förlust}
+  \textbf{Förlustfunktion:} Kvadratisk förlust (MSE) ges av
+  \[
+    L(y, F(x)) = \frac{1}{2}(y - F(x))^2
+  \]
+
+  
+  \textbf{Gradient:} Vi beräknar derivatan med avseende på modellens prediktion $F(x)$:
+  \[
+    \frac{\partial L(y, F(x))}{\partial F(x)} = - (y - F(x))
+  \]
+
+  
+  \textbf{Tolkning:} Den negativa gradienten är residualen:
+  \[
+    -\frac{\partial L}{\partial F(x)} = y - F(x)
+  \]
+
+  
+  \textbf{I Gradient Boosting:} Vid varje iteration tränas en ny modell $h_m(x)$ för att approximera residualerna $y - F_{m-1}(x)$.
+
+  
+  \textbf{Uppdatering:}
+  \[
+    F_m(x) = F_{m-1}(x) + \nu \cdot h_m(x)
+  \]
+  där $\nu$ är inlärningshastigheten.
+\end{frame}
+
+
+
+\begin{frame}{Gradient för cross-entropy (binär klassificering)}
+  \textbf{Förlustfunktion:} Cross-entropy för två klasser (etiketter $y \in \{0, 1\}$) ges av:
+  \[
+    L(y, F(x)) = -y \log(p(x)) - (1 - y) \log(1 - p(x))
+  \]
+  \vspace{0.4cm}
+  där $p(x) = \sigma(F(x)) = \frac{1}{1 + e^{-F(x)}}$ är sannolikheten från modellen.
+
+  
+  \textbf{Gradient:} Vi beräknar derivatan med avseende på $F(x)$:
+  \[
+    \frac{\partial L(y, F(x))}{\partial F(x)} = p(x) - y
+  \]
+
+  
+  \textbf{Tolkning:} Den negativa gradienten är:
+  \[
+    -\frac{\partial L}{\partial F(x)} = y - p(x)
+  \]
+  vilket motsvarar residualen mellan det sanna värdet och den predikterade sannolikheten.
+
+  \textbf{I Gradient Boosting:} Vid varje iteration tränas en ny modell $h_m(x)$ för att approximera $y - p(x)$.
+\end{frame}
+
+
+
+\begin{frame}{Gradient Boosting: Algoritmen steg för steg}
+  \textbf{Mål:} Approximation av en funktion $F(x)$ som minimerar en differentiabel förlustfunktion $L(y, F(x))$.
+
+
+  \textbf{Algoritm:}
+  \begin{enumerate}
+    \item Initialisera modellen med en konstant: $F_0(x) = \arg\min_c \sum_{i=1}^n L(y_i, c)$
+     \vspace{0.1cm}
+    \item För varje iteration $m = 1, \dots, M$:
+    \begin{itemize}
+      \item Beräkna negativa gradienten (pseudo-residualer):
+      \[
+        r_i^{(m)} = -\left.\frac{\partial L(y_i, F(x_i))}{\partial F(x_i)}\right|_{F(x) = F_{m-1}(x)}
+      \]
+      
+      \item Träna en svag modell $h_m(x)$ för att approximera $r_i^{(m)}$.
+      
+      \item Uppdatera modellen: $F_m(x) = F_{m-1}(x) + \nu \cdot h_m(x)$
+
+      där $\nu$ är inlärningshastigheten.
+    \end{itemize}
+     \vspace{0.1cm}
+    
+    \item Slutlig modell: $F_M(x) = F_0(x) + \sum_{m=1}^M \nu \cdot h_m(x)$
+
+  \end{enumerate}
+
+  
+  \textbf{Kommentar:} $h_m(x)$ är ofta ett litet beslutsträd, och gradienten beror på vald förlustfunktion.
+\end{frame}
+
+\begin{frame}{XGBoost: Grundläggande idéer}
+  \textbf{XGBoost} (Extreme Gradient Boosting) är en effektiv och förbättrad implementation av gradient boosting.
+
+  \vspace{0.1cm}
+  \textbf{Nyckelkomponenter:}
+  \begin{itemize}
+    \item \textbf{Regularisering:} Lägger till straff för komplexa träd:
+    \[
+      \text{Objektiv} = \sum_i L(y_i, \hat{y}_i) + \sum_k \Omega(f_k)
+    \]
+    där $\Omega(f) = \gamma T + \frac{1}{2} \lambda \sum_j w_j^2$
+
+    \item \textbf{Trädstruktur:} Varje svag modell är ett beslutsträd som byggs med hjälp av en greedy-algoritm för att maximera "gain".
+
+    \item \textbf{Andra förbättringar:}
+    \begin{itemize}
+      \item Hanterar saknade värden automatiskt
+      \item Stöd för parallellisering och cache-optimering
+      \item Shrinkage (learning rate) och column subsampling
+    \end{itemize}
+  \end{itemize}
+
+  \vspace{0.1cm}
+  \textbf{Resultat:} Hög prediktiv precision, snabb träning, och god kontroll över överanpassning.
+\end{frame}
+
+
+\begin{frame}{XGBoost: Gain-beräkning}
+  \textbf{Syfte:} Välj den split som maximerar förbättringen i den regulariserade objektfunktionen.
+
+  \textbf{För varje split:}
+  \begin{itemize}
+    \item Beräkna summan av första och andra derivatan (gradient och hessian) för varje nod:
+    $G = \sum_{i \in \text{node}} g_i, \quad H = \sum_{i \in \text{node}} h_i$
+    där $g_i = \frac{\partial L}{\partial F(x_i)}$, $h_i = \frac{\partial^2 L}{\partial F(x_i)^2}$
+
+    \item Gain ges av:
+    \[
+      \text{Gain} = \frac{1}{2} \left[ \frac{G_L^2}{H_L + \lambda} + \frac{G_R^2}{H_R + \lambda} - \frac{(G_L + G_R)^2}{H_L + H_R + \lambda} \right] - \gamma
+    \]
+    där $G_L$, $H_L$ är gradient/hessian för vänster barn, $G_R$, $H_R$ för höger barn, $\lambda$ är L2-regularisering och $\gamma$ är straff för att skapa en ny nod.
+  \end{itemize}
+
+  \textbf{Tolkning:} En split görs om gain är positiv och tillräckligt stor – annars stoppas trädet.
+
+  \textbf{Effekt:} Effektiv trädbyggnad med inbyggd regularisering mot överanpassning.
+\end{frame}
+
+\begin{frame}{XGBoost: Visuell förklaring av Gain}
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{xgboost_gain_fig.png}
+  \end{center}
+
+  \vspace{0.3cm}
+  \textbf{Gain} mäts som förbättring i objektfunktionen när en nod delas:
+  \[
+    \text{Gain} = \frac{1}{2} \left[ \frac{G_L^2}{H_L + \lambda} + \frac{G_R^2}{H_R + \lambda} - \frac{(G_L + G_R)^2}{H_L + H_R + \lambda} \right] - \gamma
+  \]
+
+  \textbf{Split görs om gain är positiv och tillräckligt stor.}
+\end{frame}
+
 
 \end{document}
