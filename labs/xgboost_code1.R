@@ -48,6 +48,18 @@ xgb_model <- xgboost(
 )
 
 
+# Extrahera logloss från träningsloggen
+logloss_values <- xgb_model$evaluation_log
+
+# Plot med base R
+plot(logloss_values$iter, logloss_values$train_logloss,
+     type = "b", pch = 19, col = "blue",
+     xlab = "Boosting-rundor", ylab = "Logloss",
+     main = "Träningsfel (logloss) vs Boosting-rundor")
+grid()
+
+
+
 # Beräkna och visa feature importance
 importance_matrix <- xgb.importance(model = xgb_model, feature_names = colnames(Carseats_train_matrix))
 
