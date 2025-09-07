@@ -109,6 +109,7 @@ model_diagnostics(res_vect = nn_model2_res,fit_vect =nn_model2_fit[,1])
 
 library(randomForest)
 set.seed(67)
+# obs: kan ta lång tid att köra, minska ntree= vid behov.
 tree2<-randomForest(log_price~.,data=train_data_df,ntree=100,mtry=3)
 y_hat_tree2<-predict(tree2)
 y_hat_tree2_val<-predict(tree2,newdata = val_data_df[,-7])

@@ -868,7 +868,7 @@ Ni ska nu analysera datasetet diamonds från ggplot2 paketet.
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/nnets_files/nnet_regression2.R"
+target "https://raw.githubusercontent.com/STIMALiU/732G57_ML/master/labs/nnets_files/nnet_regression2.R"
 literal "false"
 
 \end_inset
@@ -915,7 +915,7 @@ Genomför residualanalys på träningsdata för de olika modellerna.
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/lm_diagnostics.R"
+target "https://raw.githubusercontent.com/STIMALiU/732G57_ML/master/labs/lm_diagnostics.R"
 literal "false"
 
 \end_inset
@@ -956,7 +956,7 @@ NN_reg_data.csv
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://github.com/STIMALiU/732G12_DM/tree/master/data"
+target "https://github.com/STIMALiU/732G57_ML/tree/master/data"
 literal "false"
 
 \end_inset
