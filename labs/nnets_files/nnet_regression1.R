@@ -326,5 +326,5 @@ beta_vect_hat
 beta_vect
 
 # utvärdera träningsdata:
-score <- nn_model23 %>% evaluate(x_train, y_train, verbose = 0)
+score <- nn_model3 %>% evaluate(x_train, y_train, verbose = 0)
 cat('Train loss:', score[["loss"]], "\n")
