@@ -177,7 +177,7 @@ Exempelkod för neurala nätvek:
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://github.com/STIMALiU/732G12_DM/tree/master/labs/nnets_files"
+target "https://github.com/STIMALiU/732G57_ML/tree/master/labs/nnets_files"
 literal "false"
 
 \end_inset
@@ -312,7 +312,7 @@ Dataset till vissa uppgifter finns
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://github.com/STIMALiU/732G12_DM/tree/master/data"
+target "https://github.com/STIMALiU/732G57_ML/tree/master/data"
 literal "false"
 
 \end_inset
@@ -322,7 +322,7 @@ literal "false"
 \begin_inset CommandInset href
 LatexCommand href
 name "Lisam"
-target "https://liuonline.sharepoint.com/sites/Lisam_732G53_2024HT_MV"
+target "https://liuonline.sharepoint.com/sites/Lisam_732G57_2025HT_O2/CourseDocuments/Forms/AllItems.aspx"
 literal "false"
 
 \end_inset
@@ -437,7 +437,7 @@ Utvärdering vid klassificering kan göras med funktionen
 \begin_inset CommandInset href
 LatexCommand href
 name "class_evaluation_keras()"
-target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/class_evaluation_keras.R"
+target "https://raw.githubusercontent.com/STIMALiU/732G57_ML/master/labs/class_evaluation_keras.R"
 literal "false"
 
 \end_inset
