@@ -897,7 +897,7 @@ Vilken klass var lättast att klassificera?
 \end_layout
 
 \begin_layout Enumerate
-Vilken klass var svårat?
+Vilken klass var svårast?
 \end_layout
 
 \end_deeper
@@ -991,7 +991,7 @@ Autoencoder och spambase data: Målet är nu att testa att träna en autoencoder
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
-target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/Email_Spam_dataset_info.pdf"
+target "https://raw.githubusercontent.com/STIMALiU/732G57_ML/master/labs/Email_Spam_dataset_info.pdf"
 literal "false"
 
 \end_inset
