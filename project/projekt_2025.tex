@@ -10,10 +10,10 @@
 
 \lhead{LINKÖPINGS UNIVERSITET\\Avdelningen för statistik och maskininlärning\\Institutionen för datavetenskap}
 \rhead{
-Data Mining 732G12 \\ HT2023}
+Data Mining 732G57 \\ HT2023}
 
 
-\title{Projekt i 732G12 Data Mining}
+\title{Projekt i 732G57 Data Mining}
 \author{Josef Wilzén}
 
 
@@ -46,17 +46,17 @@ Exempel på frågeställningar:
 \end{itemize}
 Under arbetets gång kommer ni säkert stöta på problem som till exempel att datamaterialet inte har det format som ni använt tidigare eller att en viss tilltänkt metod inte fungerar alls på det specifika datamaterialet. En del av denna inlämningsuppgift är att ni självständigt ska lösa dessa problem, men ni kan självklart ställa frågor under de schemalagda undervisningspassen. Lösningar som ni kommer på måste tydligt presenteras i rapporten som ni skriver för att uppfylla kravet om reproducerbarhet som råder för akademiska rapporter.
 
-När ni väl kommit fram till ett svar på frågeställningen ska allting sammanställas i en rapport som ska formas enligt rapportmallen. Rapportmallen finns \href{https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/project/template/Rapportmall STIMA projekt.rmd}{här} och \href{https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/project/template/Rapportmall-STIMA-projekt.pdf}{här} (se även kurshemsidan), och innehåller instruktioner om hur ni ska skriva er rapport. Huvudfokus ligger på databeskrivningen och dess bearbetning samt rapportens metodkapitel. Alla analyser och slutsatser ska vara motiverade med lämpliga gradet och tabeller.
+När ni väl kommit fram till ett svar på frågeställningen ska allting sammanställas i en rapport som ska formas enligt rapportmallen. Rapportmallen finns \href{https://raw.githubusercontent.com/STIMALiU/732G57_ML/master/project/template/Rapportmall STIMA projekt.rmd}{här} och \href{https://raw.githubusercontent.com/STIMALiU/732G57_ML/master/project/template/Rapportmall-STIMA-projekt.pdf}{här} (se även kurshemsidan), och innehåller instruktioner om hur ni ska skriva er rapport. Huvudfokus ligger på databeskrivningen och dess bearbetning samt rapportens metodkapitel. Alla analyser och slutsatser ska vara motiverade med lämpliga gradet och tabeller.
 
 Rapporten ska skrivas med någon av följande programvaror:
 \begin{itemize}
     \item \href{https://rmarkdown.rstudio.com/}{Rmarkdown}\footnote{Det går även att använda Quarto om man vill.} (med \href{https://yihui.org/knitr/}{knitr}) Rekomenderas för detta projekt!
-    \item \href{https://en.wikipedia.org/wiki/LaTeX}{LaTeX} Vanligt vid skrivandet av akademiska rapporter. Kan använda \href{https://www.overleaf.com}{Overleaf} för att skriva tillsammans (utan strul med installationer).
+    \item \href{https://en.wikipedia.org/wiki/LaTeX}{LaTeX} Vanligt vid skrivandet av akademiska rapporter. Kan använda \href{https://www.overleaf.com}{Overleaf} för att skriva tillsammans online (utan strul med installationer).
     \item \href{https://www.lyx.org/}{LyX} Grafiskt program som generar en LaTeX-rapport i bakgrunden. Kan användas med knitr för att köra R-kod.
 \end{itemize}
 Om ni använder knitr med Rmarkdown/latex/lyx, då rekomenderas det att ni har seprata R-filer där ni har era anayser, och att ni sen bara läser in lämpliga resultat i er rapport-fil. Så man inte måste köra om alla skattningar etc varje gånga som man ska kompliera sin rapport-fil. 
 
-Rapporten ska lämnas in som en pdf-fil.  Döp filen på formen \texttt{gruppX\_liuid1\_liuid2.pdf} och ladda upp på Lisam. Er rapport ska vara snygg och välstruktuerad. Se rapportmallen för mer instruktioner.
+Rapporten ska lämnas in som en pdf-fil.  Döp filen på formen \texttt{gruppX\_liuid1\_liuid2.pdf} och ladda upp i rätt mapp på samarbetsytan på Lisam. Er rapport ska vara snygg och välstruktuerad. Se rapportmallen för mer instruktioner.
 
 
 \subsection*{Tidigare studier}
@@ -118,15 +118,15 @@ Varje grupp ska opponera på en annan grupp. Det förväntas att fokus ligger p�
 Varje grupp ska sammanställa sina kommentarer i ett dokument som sedan ska skickas till rapportgruppen och lärare. Detta dokument ska innehålla både de små och stora kommentarerna.
 
 \section{Datamaterial} \label{sec:data}
-Varje grupp ska välja ett eget datamaterial. Två grupper kan inte ha samma datamaterial och först till kvarn gäller. På Lisam under sammarbetsyta finns ett excel ark där ni kan skriva upp vilket datamaterial ni valt. Kom ihåg att citera källan på ert datamaterial i er rapport.
+Varje grupp ska välja ett eget datamaterial. Två grupper kan inte ha samma datamaterial och först till kvarn gäller. På Lisam under sammarbetsyta finns ett excelark där ni kan skriva upp vilket datamaterial ni valt. Kom ihåg att citera källan på ert datamaterial i er rapport.
 
 \subsection*{Välja datamaterial}
 Ni är fria att välja ett eget datamaterial. Följande regler gäller:
 \begin{itemize}
     \item Inget datamaterial som ni har arbetet med under datorlaborationerna under kursen.
     \item Inget simulerat datamaterial eller "toy data". Det ska vara ett riktigt datamaterial som kan användas för en riktig frågeställning.
-    \item Inte för "enkelt": Tumregel, minst 500 observationer eller minst 10 variabler. Fråga om ni är osäkra.
-    \item När ni hittat ett datamaterial, skriv upp det i dokumentet. Fråga Johan om ni är osäkra på valet.
+    \item Inte för "enkelt": Tumregel, minst 1000 observationer eller minst 20 variabler. Fråga om ni är osäkra.
+    \item När ni hittat ett datamaterial, skriv upp det i dokumentet. Fråga Josef om ni är osäkra på valet.
     \item Problemet ska vara inom \textbf{övervakad inlärning} (kan vara antingen regression eller klassificering).
 \end{itemize}
 Ni väljer själva var ni vill hämta data ifrån. Här kommer några förslag på datakällor:
