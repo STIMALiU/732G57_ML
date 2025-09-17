@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.18)  17 SEP 2025 12:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.18)  17 SEP 2025 12:40
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -391,7 +391,7 @@ Package rerunfilecheck Info: File `projekt_2025.out' has not changed.
 Here is how much of TeX's memory you used:
  8665 strings out of 479533
  135074 string characters out of 5876205
- 445527 words of memory out of 5000000
+ 445549 words of memory out of 5000000
  26569 multiletter control sequences out of 15000+600000
  475145 words of font info for 49 fonts, out of 8000000 for 9000
  417 hyphenation exceptions out of 8191
