@@ -372,7 +372,7 @@ literal "false"
 \end_layout
 
 \begin_layout Section*
-Del 1: K-means klustering
+Del 1: K-means klustering och PAM
 \end_layout
 
 \begin_layout Enumerate
@@ -571,7 +571,11 @@ Del 3.1 Länkningsmetoder i hierarkisk klustring
 \end_layout
 
 \begin_layout Standard
-Använd data2.csv för att beräkna hierarkisk klusteranalys.
+Använd 
+\family typewriter
+data2.csv
+\family default
+ för att beräkna hierarkisk klusteranalys.
 \end_layout
 
 \begin_layout Enumerate
@@ -638,13 +642,9 @@ Density-based clustering with DBSCAN
 
 \begin_layout Standard
 Använd 
-\begin_inset Quotes sld
-\end_inset
-
+\family typewriter
 data3.csv
-\begin_inset Quotes srd
-\end_inset
-
+\family default
  för att beräkna densitetsbaserad klusteranalys.
 \end_layout
 
