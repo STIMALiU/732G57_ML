@@ -371,6 +371,19 @@ literal "false"
 
 \end_layout
 
+\begin_layout Itemize
+Från föreläsning: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/lectures/lecture9/clustering_example1.R"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section*
 Del 1: K-means klustering och PAM
 \end_layout
