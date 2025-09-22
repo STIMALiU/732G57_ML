@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.18)  20 SEP 2025 14:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.18)  22 SEP 2025 09:54
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1215,20 +1215,20 @@ File: ts1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ] [3
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 66.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 73.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 66.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 73.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 66.
+ut line 73.
 
 (/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
@@ -1244,14 +1244,14 @@ thkerncmss.
 <figs/kluster1.png, id=62, 416.55624pt x 152.57pt>
 File: figs/kluster1.png Graphic file (type png)
 <use figs/kluster1.png>
-Package pdftex.def Info: figs/kluster1.png  used on input line 110.
+Package pdftex.def Info: figs/kluster1.png  used on input line 117.
 (pdftex.def)             Requested size: 215.10196pt x 78.78511pt.
  [7
 
  <./figs/kluster1.png>]
 File: figs/kluster1.png Graphic file (type png)
 <use figs/kluster1.png>
-Package pdftex.def Info: figs/kluster1.png  used on input line 127.
+Package pdftex.def Info: figs/kluster1.png  used on input line 134.
 (pdftex.def)             Requested size: 215.10196pt x 78.78511pt.
  [8
 
@@ -1263,7 +1263,7 @@ Package pdftex.def Info: figs/kluster1.png  used on input line 127.
 <figs/Klustertyper.png, id=84, 759.83875pt x 865.2325pt>
 File: figs/Klustertyper.png Graphic file (type png)
 <use figs/Klustertyper.png>
-Package pdftex.def Info: figs/Klustertyper.png  used on input line 174.
+Package pdftex.def Info: figs/Klustertyper.png  used on input line 181.
 (pdftex.def)             Requested size: 153.64493pt x 174.95778pt.
  [11
 
@@ -1271,7 +1271,7 @@ Package pdftex.def Info: figs/Klustertyper.png  used on input line 174.
 <figs/basic K-means.png, id=90, 1401.235pt x 357.335pt>
 File: figs/basic K-means.png Graphic file (type png)
 <use figs/basic K-means.png>
-Package pdftex.def Info: figs/basic K-means.png  used on input line 189.
+Package pdftex.def Info: figs/basic K-means.png  used on input line 196.
 (pdftex.def)             Requested size: 307.28987pt x 78.36311pt.
  [12
 
@@ -1279,11 +1279,11 @@ Package pdftex.def Info: figs/basic K-means.png  used on input line 189.
 <figs/k-means Illustration1.png, id=97, 1207.51125pt x 482.80376pt>
 File: figs/k-means Illustration1.png Graphic file (type png)
 <use figs/k-means Illustration1.png>
-Package pdftex.def Info: figs/k-means Illustration1.png  used on input line 193
+Package pdftex.def Info: figs/k-means Illustration1.png  used on input line 200
 .
 (pdftex.def)             Requested size: 338.02072pt x 135.1473pt.
 
-Overfull \hbox (30.73085pt too wide) in paragraph at lines 193--193
+Overfull \hbox (30.73085pt too wide) in paragraph at lines 200--200
 [][]  
  []
 
@@ -1293,7 +1293,7 @@ Overfull \hbox (30.73085pt too wide) in paragraph at lines 193--193
 <figs/K-means clustering.png, id=104, 1004.75375pt x 479.7925pt>
 File: figs/K-means clustering.png Graphic file (type png)
 <use figs/K-means clustering.png>
-Package pdftex.def Info: figs/K-means clustering.png  used on input line 201.
+Package pdftex.def Info: figs/K-means clustering.png  used on input line 208.
 (pdftex.def)             Requested size: 307.28987pt x 146.73549pt.
  [14
 
@@ -1301,11 +1301,11 @@ Package pdftex.def Info: figs/K-means clustering.png  used on input line 201.
 <figs/k-means Illustration2.png, id=110, 761.84625pt x 904.37875pt>
 File: figs/k-means Illustration2.png Graphic file (type png)
 <use figs/k-means Illustration2.png>
-Package pdftex.def Info: figs/k-means Illustration2.png  used on input line 209
+Package pdftex.def Info: figs/k-means Illustration2.png  used on input line 216
 .
 (pdftex.def)             Requested size: 198.07535pt x 235.13293pt.
 
-Overfull \vbox (18.36884pt too high) detected at line 209
+Overfull \vbox (18.36884pt too high) detected at line 216
  []
 
 [15
@@ -1318,7 +1318,7 @@ Overfull \vbox (18.36884pt too high) detected at line 209
 <figs/dåliga start värden.png, id=135, 1334.9875pt x 500.87125pt>
 File: figs/dåliga start värden.png Graphic file (type png)
 <use figs/dåliga start värden.png>
-Package pdftex.def Info: figs/dåliga start värden.png  used on input line 262
+Package pdftex.def Info: figs/dåliga start värden.png  used on input line 269
 .
 (pdftex.def)             Requested size: 307.28987pt x 115.28967pt.
  [18
@@ -1330,7 +1330,7 @@ Package pdftex.def Info: figs/dåliga start värden.png  used on input line 262
 File: figs/Halverande K-means_exempel.png Graphic file (type png)
 <use figs/Halverande K-means_exempel.png>
 Package pdftex.def Info: figs/Halverande K-means_exempel.png  used on input lin
-e 281.
+e 288.
 (pdftex.def)             Requested size: 307.28987pt x 103.58176pt.
  [20
 
@@ -1339,7 +1339,7 @@ e 281.
 File: figs/Halverande K-means algoritm.png Graphic file (type png)
 <use figs/Halverande K-means algoritm.png>
 Package pdftex.def Info: figs/Halverande K-means algoritm.png  used on input li
-ne 287.
+ne 294.
 (pdftex.def)             Requested size: 307.28987pt x 124.01247pt.
  [21
 
@@ -1357,10 +1357,10 @@ ne 287.
 <figs/dendogram1.png, id=186, 584.1825pt x 462.72874pt>
 File: figs/dendogram1.png Graphic file (type png)
 <use figs/dendogram1.png>
-Package pdftex.def Info: figs/dendogram1.png  used on input line 384.
+Package pdftex.def Info: figs/dendogram1.png  used on input line 391.
 (pdftex.def)             Requested size: 153.64493pt x 121.69759pt.
 
-Overfull \vbox (17.33293pt too high) detected at line 384
+Overfull \vbox (17.33293pt too high) detected at line 391
  []
 
 [27
@@ -1369,7 +1369,7 @@ Overfull \vbox (17.33293pt too high) detected at line 384
 <figs/dendogram2.png, id=192, 1149.29375pt x 517.935pt>
 File: figs/dendogram2.png Graphic file (type png)
 <use figs/dendogram2.png>
-Package pdftex.def Info: figs/dendogram2.png  used on input line 390.
+Package pdftex.def Info: figs/dendogram2.png  used on input line 397.
 (pdftex.def)             Requested size: 307.28987pt x 138.47708pt.
  [28
 
@@ -1379,7 +1379,7 @@ Package pdftex.def Info: figs/dendogram2.png  used on input line 390.
 <figs/dendogram3.png, id=203, 1157.32375pt x 808.01875pt>
 File: figs/dendogram3.png Graphic file (type png)
 <use figs/dendogram3.png>
-Package pdftex.def Info: figs/dendogram3.png  used on input line 410.
+Package pdftex.def Info: figs/dendogram3.png  used on input line 417.
 (pdftex.def)             Requested size: 307.28987pt x 214.54315pt.
  [30
 
@@ -1387,7 +1387,7 @@ Package pdftex.def Info: figs/dendogram3.png  used on input line 410.
 <figs/hclut_alg.png, id=209, 1126.2075pt x 343.2825pt>
 File: figs/hclut_alg.png Graphic file (type png)
 <use figs/hclut_alg.png>
-Package pdftex.def Info: figs/hclut_alg.png  used on input line 418.
+Package pdftex.def Info: figs/hclut_alg.png  used on input line 425.
 (pdftex.def)             Requested size: 307.28987pt x 93.66702pt.
  [31
 
@@ -1399,7 +1399,7 @@ Package pdftex.def Info: figs/hclut_alg.png  used on input line 418.
 <figs/linking_pic.png, id=227, 1167.36125pt x 295.1025pt>
 File: figs/linking_pic.png Graphic file (type png)
 <use figs/linking_pic.png>
-Package pdftex.def Info: figs/linking_pic.png  used on input line 457.
+Package pdftex.def Info: figs/linking_pic.png  used on input line 464.
 (pdftex.def)             Requested size: 307.28987pt x 77.67944pt.
  [34
 
@@ -1409,10 +1409,10 @@ Package pdftex.def Info: figs/linking_pic.png  used on input line 457.
 <figs/ex_data.png, id=238, 1108.14pt x 852.18375pt>
 File: figs/ex_data.png Graphic file (type png)
 <use figs/ex_data.png>
-Package pdftex.def Info: figs/ex_data.png  used on input line 479.
+Package pdftex.def Info: figs/ex_data.png  used on input line 486.
 (pdftex.def)             Requested size: 307.28987pt x 236.30824pt.
 
-Overfull \vbox (19.54414pt too high) detected at line 479
+Overfull \vbox (19.54414pt too high) detected at line 486
  []
 
 [36
@@ -1421,14 +1421,14 @@ Overfull \vbox (19.54414pt too high) detected at line 479
 <figs/Single link clustering.png, id=244, 1005.7575pt x 626.34pt>
 File: figs/Single link clustering.png Graphic file (type png)
 <use figs/Single link clustering.png>
-Package pdftex.def Info: figs/Single link clustering.png  used on input line 48
-5.
+Package pdftex.def Info: figs/Single link clustering.png  used on input line 49
+2.
 (pdftex.def)             Requested size: 152.10698pt x 94.72107pt.
 <figs/Complete link clustering.png, id=245, 1028.84375pt x 611.28375pt>
 File: figs/Complete link clustering.png Graphic file (type png)
 <use figs/Complete link clustering.png>
 Package pdftex.def Info: figs/Complete link clustering.png  used on input line 
-485.
+492.
 (pdftex.def)             Requested size: 152.10698pt x 90.37343pt.
  [37
 
@@ -1436,11 +1436,11 @@ Package pdftex.def Info: figs/Complete link clustering.png  used on input line
 <figs/grouP_ward_clustering.png, id=252, 864.22874pt x 1034.86626pt>
 File: figs/grouP_ward_clustering.png Graphic file (type png)
 <use figs/grouP_ward_clustering.png>
-Package pdftex.def Info: figs/grouP_ward_clustering.png  used on input line 491
+Package pdftex.def Info: figs/grouP_ward_clustering.png  used on input line 498
 .
 (pdftex.def)             Requested size: 190.1309pt x 227.67128pt.
 
-Overfull \vbox (10.90718pt too high) detected at line 491
+Overfull \vbox (10.90718pt too high) detected at line 498
  []
 
 [38
@@ -1486,7 +1486,7 @@ sfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 sy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on l9_josef.pdf (38 pages, 2336163 bytes).
+Output written on l9_josef.pdf (38 pages, 2336245 bytes).
 PDF statistics:
  362 PDF objects out of 1000 (max. 8388607)
  255 compressed objects within 3 object streams
