@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.18)  20 SEP 2025 13:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.18)  23 SEP 2025 12:21
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1298,7 +1298,7 @@ Package pdftex.def Info: figs/DBSCAN_cluster_example.png  used on input line 15
  <./figs/DBSCAN_cluster_example.png>] [13
 
 ]
-<figs/compre_k-mean_DBACAN.png, id=105, 1351.0475pt x 744.7825pt>
+<figs/compre_k-mean_DBACAN.png, id=106, 1351.0475pt x 744.7825pt>
 File: figs/compre_k-mean_DBACAN.png Graphic file (type png)
 <use figs/compre_k-mean_DBACAN.png>
 Package pdftex.def Info: figs/compre_k-mean_DBACAN.png  used on input line 186.
@@ -1315,7 +1315,7 @@ Package pdftex.def Info: figs/compre_k-mean_DBACAN.png  used on input line 186.
 ] [18
 
 ]
-<figs/cohesion and separation.1.png, id=132, 934.49126pt x 469.755pt>
+<figs/cohesion and separation.1.png, id=133, 934.49126pt x 469.755pt>
 File: figs/cohesion and separation.1.png Graphic file (type png)
 <use figs/cohesion and separation.1.png>
 Package pdftex.def Info: figs/cohesion and separation.1.png  used on input line
@@ -1332,7 +1332,7 @@ Overfull \vbox (14.61409pt too high) detected at line 255
 ] [21
 
 ]
-<figs/Silhouette coefficients for points in ten clusters..png, id=156, 842.1462
+<figs/Silhouette coefficients for points in ten clusters..png, id=157, 842.1462
 6pt x 395.4775pt>
 File: figs/Silhouette coefficients for points in ten clusters..png Graphic file
  (type png)
@@ -1345,7 +1345,7 @@ s..png  used on input line 298.
  <./figs/Silhouette coefficients for points in ten clusters..png>] [23
 
 ]
-<figs/Determining the Correct Number of Clusters.png, id=167, 1124.2pt x 608.27
+<figs/Determining the Correct Number of Clusters.png, id=169, 1124.2pt x 608.27
 25pt>
 File: figs/Determining the Correct Number of Clusters.png Graphic file (type pn
 g)
@@ -1360,14 +1360,14 @@ sed on input line 318.
 ] [26
 
 ]
-<figs/Similarity matrices for clusters.png, id=186, 929.4725pt x 972.63374pt>
+<figs/Similarity matrices for clusters.png, id=187, 929.4725pt x 972.63374pt>
 File: figs/Similarity matrices for clusters.png Graphic file (type png)
 <use figs/Similarity matrices for clusters.png>
 Package pdftex.def Info: figs/Similarity matrices for clusters.png  used on inp
 ut line 366.
-(pdftex.def)             Requested size: 245.83282pt x 257.24211pt.
+(pdftex.def)             Requested size: 215.10196pt x 225.08128pt.
 
-Overfull \vbox (40.47801pt too high) detected at line 366
+Overfull \vbox (8.31718pt too high) detected at line 366
  []
 
 [27
@@ -1380,23 +1380,6 @@ Overfull \vbox (40.47801pt too high) detected at line 366
 
 ] [31
 
-] [32
-
-]
-[33
-
-] [34
-
-] [35
-
-] [36
-
-] [37
-
-] [38
-
-] [39
-
 ]
 \tf@nav=\write6
 \openout6 = `l10_josef.nav'.
@@ -1407,16 +1390,17 @@ Overfull \vbox (40.47801pt too high) detected at line 366
 \tf@snm=\write8
 \openout8 = `l10_josef.snm'.
 
- (./l10_josef.aux)
+
+(./l10_josef.aux)
 Package rerunfilecheck Info: File `l10_josef.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 31815 strings out of 479533
- 655118 string characters out of 5876205
+ 31779 strings out of 479533
+ 654749 string characters out of 5876205
  898403 words of memory out of 5000000
- 49058 multiletter control sequences out of 15000+600000
- 494837 words of font info for 106 fonts, out of 8000000 for 9000
+ 49038 multiletter control sequences out of 15000+600000
+ 494543 words of font info for 105 fonts, out of 8000000 for 9000
  417 hyphenation exceptions out of 8191
  128i,13n,122p,1894b,744s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/joswi05/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcss0900.6
@@ -1435,10 +1419,10 @@ fonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmssi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
 y10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on l10_josef.pdf (39 pages, 3014469 bytes).
+Output written on l10_josef.pdf (31 pages, 3006849 bytes).
 PDF statistics:
- 347 PDF objects out of 1000 (max. 8388607)
- 251 compressed objects within 3 object streams
- 79 named destinations out of 1000 (max. 500000)
+ 301 PDF objects out of 1000 (max. 8388607)
+ 213 compressed objects within 3 object streams
+ 63 named destinations out of 1000 (max. 500000)
  103 words of extra memory for PDF output out of 10000 (max. 10000000)
 
