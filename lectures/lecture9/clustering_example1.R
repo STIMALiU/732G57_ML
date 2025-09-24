@@ -131,7 +131,7 @@ abline(h=cut_val_single,lty="dashed",col="blue")
 # i en klusteruppdelning
 
 
-hclust_single<-cutree(hc.single, 2)
+hclust_single<-cutree(hc.single, k = 2)
 tab2<-table(hclust_single)
 tab2<-as.data.frame(tab2)
 colnames(tab2)<-c("Kluster ID","Antal")
@@ -227,7 +227,7 @@ abline(h=cut_val_single,lty="dashed",col="blue")
 # testa med några olika antal kluster nedan när ni plottar
 
 
-hclust_single<-cutree(hc.single, 3) # testa med 3 och 7 kluster
+hclust_single<-cutree(hc.single, 7) # testa med 3 och 7 kluster
 tab2<-table(hclust_single)
 tab2<-as.data.frame(tab2)
 colnames(tab2)<-c("Kluster ID","Antal")
