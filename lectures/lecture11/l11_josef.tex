@@ -1,0 +1,596 @@
+\documentclass[10pt,english]{beamer}
+%\documentclass[english,handout]{beamer} % For handouts
+\input{../metropolis_preamble.tex}
+\input{../macros.tex}
+%\usepackage{extendedalt}
+%\usepackage{animate} % Animations
+%\usepackage{../lindsten}
+%\usepackage{movie15}
+\usepackage{tikz}
+\usepackage{listofitems} % for \readlist to create arrays
+
+\hypersetup{
+  colorlinks=true, urlcolor=blue, linkcolor=red
+}
+
+\title{732G57 Maskininlärning för statistiker}
+\subtitle{Föreläsning 11}
+\date{}
+\author{Josef Wilzén \\ IDA, Linköping University, Sweden}
+\titlegraphic{\hfill\includegraphics[height=1.2cm]{../LiU_primary_black.pdf}}
+%\institute{Joint work with\dots}
+
+
+%% MY DEF %%
+\newcommand{\itm}[1]{\mathrm{Item}_{#1}}
+\newcommand{\pausa}{\pause}
+%\renewcommand{\pausa}{}
+\tikzstyle{mynode}=[thick,draw=blue,fill=blue!20,circle,minimum size=22]
+
+
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Dagens föreläsning}
+
+    \begin{itemize}
+        \item Info
+        \item Del 1:
+        \begin{itemize}
+          \item Datahantering
+          \item Modellering, modellval, hyperparametrar  
+        \end{itemize}
+        \item Del 2:
+        \begin{itemize}
+          \item Lite från gamla föreläsningar
+          \item Utblickar - tillämpningar och utökningar inom ML
+          \item Sammanfattning av kursen
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Projekt och resten av kursen}
+    
+  \begin{itemize}
+        \item Kursvecka 7 och framåt: 
+        \begin{itemize}
+          \item Arbeta med projektet
+          \item Datorlabbar: hjälp med projektet $\rightarrow$ utnyttja tiden!
+          \item Förbereda inför tentan
+        \end{itemize}
+        \item Datum: \href{https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/master/project/Datum_ht2024.pdf}{länk}
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Välja kurser till vårterminen}
+  Till VT så ska ni välja kurser på 15 HP. \\
+  Några rekommendationer om man är intresserad av maskininlärning.
+  \begin{itemize}
+        \item Om man vill arbeta direkt efter examen: 
+        \begin{itemize}
+          \item Läs en kurs i programmering i Python
+        \end{itemize}
+        \item Om man är intresserad av master i \href{https://liu.se/en/education/program/f7mml}{Statistics and Machine Learning}
+         \begin{itemize}
+          \item \href{https://studieinfo.liu.se/kurs/764G03\#examination}{764G03 Flervariabelanalys}
+          \item Någon kurs i optimering
+          \item Python/Fördjupande kurs i programmering/algoritmer
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[standout]
+    \LARGE Del 1: \\ Datahantering och Modellering
+\end{frame}
+
+
+
+\begin{frame}{Förstå och förbered data}
+\begin{itemize}
+    \item Identifiera förklarande variabler och responsvariabel.
+    \item Beskriv vad som utgör en observation i datasetet.
+    \item Hantera kategoriska variabler – slå ihop obalanserade kategorier vid behov.
+    \item Undersök extremvärden – uteslut endast med tydliga regler.
+    \item Hantera saknade värden:
+    \begin{itemize}
+        \item Uteslutning är ofta enklast.
+        \item Imputering kan användas, men med försiktighet.
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Dela upp data}
+\begin{itemize}
+    \item Dela upp i:
+    \begin{itemize}
+        \item Träningsdata
+        \item Valideringsdata
+        \item Testdata
+    \end{itemize}
+    \item Vid klassificering: kontrollera klassfördelning i alla dataset.
+    \item Testdata används först i slutet för att skatta framtida testfel (generaliserbarhet).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Standardisering och transformationer}
+\begin{itemize}
+    \item Standardisera kontinuerliga variabler vid behov.
+    \item Spara \texttt{x\_mean\_train} och \texttt{x\_sd\_train} för varje kontinuerlig variabel.
+    \item Använd dessa värden för att standardisera validerings- och testdata.
+    \item De flesta problem kräver att vi gör en viss mängd manuella 
+    transformationer av vissa variabler (feature engingering).
+    \item Ibland behöver vi transformera responsvariabeln, ex: $y_{log} = log(y)$
+    \item Transformationer bör baseras på träningsdata:
+    \begin{itemize}
+        \item Ex: log-transformera variabler.
+        \item Ex: skapa kategorier utifrån medianvärde i träningsdata.
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Praktiskt arbetssätt}
+\begin{itemize}
+    \item Börja med en kort explorativ fas för att förstå data och möjliga metoder.
+    \item Formulera ett strukturerat upplägg:
+    \begin{itemize}
+        \item Hur ska data delas upp?
+        \item Vilka modeller ska användas?
+        \item Vilka hyperparametrar ska testas?
+    \end{itemize}
+    \item Beskriv detta upplägg tydligt i rapportens metoddel, under Praktisk Metod.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Hyperparametrar – val och optimering}
+\begin{itemize}
+    \item Vissa hyperparametrar fixeras (tidsbegränsningar, avgränsning).
+    \item Andra optimeras med hjälp av valideringsdata eller korsvalidering.
+    \item Viktiga hyperparametrar bör identifieras via litteratur.
+    \item Ange tydligt:
+    \begin{itemize}
+        \item Vad som fixeras
+        \item Vad som optimeras
+        \item Vilka värden som testas
+        \item Vilka mått som används för utvärdering
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Loopar för hyperparametersökning}
+\begin{itemize}
+    \item Skatta flera modeller genom att loopa över vektor/lista med hyperparametervärden
+    \item Spara resultat för träning och validering i vektorer/matriser.
+    \item Jämför modeller baserat på utvärderingsmått.
+    \item Exempel:
+    \begin{itemize}
+        \item Testa olika värden på \texttt{k} i KNN.
+        \item Välj det \texttt{k} som ger lägst genomsnittligt MSE på valideringsdata.
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Utvärdering av modeller}
+\begin{itemize}
+    \item Hur ska modellerna utvärderas och jämföras?
+    \item Välj lämpliga utvärderingsmått:
+    \begin{itemize}
+        \item Klassificering: övergripande och klassvisa mått
+        \item Regression: övergripande mått och residualanalys
+    \end{itemize}
+    \item Visualisera resultat med plottar och tabeller.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Val av utvärderingsmått}
+\begin{itemize}
+    \item \textbf{Klassificering:}
+    \begin{itemize}
+        \item Övergripande mått: Träffsäkerhet, felkvot
+        \item Klassvisa mått: Sensitivitet, Specificitet, Precision, F1-score
+        \item Viktigt vid \textbf{obalanserade} klasser
+    \end{itemize}
+    \item \textbf{Regression:}
+    \begin{itemize}
+        \item Övergripande mått: MSE, MAE 
+        \item Residualanalys: undersök systematiska fel
+        \item MAE kan vara bättre än MSE vid extrema värden i residualerna
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Klassobalans i klassificering}
+\begin{itemize}
+    \item Vid tydlig obalans i responsvariabeln kan följande metoder användas:
+    \begin{itemize}
+        \item \textbf{Undersampling:} Minska antalet observationer i majoritetsklassen.
+        \item \textbf{Oversampling:} Öka antalet observationer i minoritetsklassen, t.ex. genom duplicering eller syntetiska exempel (SMOTE).
+        \item \textbf{Viktade kostnadsfunktioner:} Ge högre vikt till minoritetsklassen vid träning.
+        \begin{itemize}
+            \item Exempel: viktad log-loss, viktad cross-entropy
+        \end{itemize}
+    \end{itemize}
+    \item Syftet är att förbättra modellens förmåga att identifiera minoritetsklassen.
+    \item Se kap 6.11 i \textbf{IDM}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Användning av valideringsdata}
+\begin{itemize}
+    \item Valideringsdata används för att välja hyperparametrar.
+    \item Oftast väljer vi den modell som ger lägst fel på valideringsdata givet valda utvärderingsmått
+    \item När bästa kombinationen hyperparametrar hittats för en modell:
+    \begin{itemize}
+        \item Skatta om modellen med träningsdata \textbf{och} valideringsdata.
+        \item Antagande: bra hyperparametrar → rimlig regularisering.
+        \item Mer data kan användas utan att riskera överanpassning.
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Nästlade valideringsscheman}
+\begin{itemize}
+    \item Ibland skapas en extra valideringsmängd inom träningsdata.
+    \item Används för att välja hyperparametrar för en specifik modellklass.
+    \item Kräver att man har tillräckligt mycket data.
+    \item Exempel: intern validering i Keras vid träning av neurala nätverk.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Exempel – lasso vs neurala nätverk}
+\begin{itemize}
+    \item Dela upp data i träning, validering och test.
+    \item \textbf{Lasso regression:}
+    \begin{itemize}
+        \item Använd korsvalidering på träningsdata för att välja $\lambda$.
+    \end{itemize}
+    \item \textbf{Neurala nätverk:}
+    \begin{itemize}
+        \item Skapa intern valideringsmängd inom träningsdata.
+        \item Välj hyperparametrar för nätverket, exempel:
+        \begin{itemize}
+          \item antal gömda lager, antal noder i lager
+          \item learning rate, batch size
+        \end{itemize}
+    \end{itemize}
+    \item Jämför modeller på valideringsdata.
+    \item Välj bästa modell och utvärdera på testdata.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Projektet - resultat}
+\begin{itemize}
+    \item Använd tydliga tabeller för att visa mått för olika modeller/hyperparametervärden
+    \item Presentera resultat för både träningsdata och valideringsdata \\ (i samma tabell)
+    \item Plottar kan exempelvis användas för att illustrera:
+    \begin{itemize}
+        \item Modellens prestanda över skattningsiterationer
+        \item Effekten av olika förklarande variabler
+        \item Residualer (vid regression)
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Revidering av upplägg}
+\begin{itemize}
+    \item Det är tillåtet att revidera sitt praktiska upplägg under analysens gång. 
+    \item Viktigt att uppdatera beskrivningen av upplägget i rapporten.
+    \item Exempel på revidering:
+    \begin{itemize}
+        \item Ändrad datadelning
+        \item Ny modellklass
+        \item Justerade hyperparametrar
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Tolkningsbarhet vs prediktiv förmåga}
+\begin{itemize}
+    \item Modeller skiljer sig i hur lätta de är att tolka och hur bra de är på prediktioner.
+    \item \textbf{Mer tolkningsbara:}
+    \begin{itemize}
+        \item Linjär regression, logistisk regression
+        \item Grunda trädmodeller, Generalized Additive Models (GAM)
+    \end{itemize}
+    \item \textbf{Mellanläge:}
+    \begin{itemize}
+        \item Djupare träd, Random Forest, Boosting
+    \end{itemize}
+    \item \textbf{Mindre tolkningsbara:}
+    \begin{itemize}
+        \item Neurala nätverk, KNN
+    \end{itemize}
+    \item Valet beror på syftet: förklaring eller prediktion?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tolkningsbarhet vs Prediktiv förmåga}
+Konceptuell bild över olika modellers egenskaper.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{ml_methods_interpretability_vs_predictive_power3.png}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[standout]
+    \LARGE Del 2: \\ Sammanfattning av kursen, \\ utblickar mm
+\end{frame}
+
+
+\begin{frame}{Rester från tidigare föreläsningar}
+\begin{itemize}
+    \item Autoencoders
+    \item XGBoost
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Utblickar inom maskininlärning}
+  \begin{itemize}
+    \item Kursen fokuserar på grundläggande ML-metoder
+    \item Det finns många avancerade och specialiserade metoder
+    \item Här följer några exempel på utökningar och utblickar
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Probabilistisk maskininlärning}
+  \begin{itemize}
+    \item Modellera osäkerhet och variation direkt i sannolikhetsmodellen
+    \item \textbf{Normal likelihood}: modellera både medelvärde och varians med flexibla funktioner
+    \item \textbf{Poisson likelihood}: för räknevariabler, t.ex. antal händelser
+    \item \textbf{Gamma / log-normal}: för positiva och skeva utfall
+    \item \textbf{Quantile regression}: modellera olika kvantiler istället för bara medelvärdet
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Probabilistisk ML – Flexibel modellering}
+  \begin{itemize}
+    \item Modellera \textbf{alla parametrar} i likelihoodfunktionen med flexibla funktioner
+    \item Går bortom antagandet om konstant varians eller fixerad form
+    \item \textbf{Normalfördelning}: modellera både medelvärde och varians som funktioner av indata
+    \item \textbf{Poissonfördelning}: modellera intensitet (lambda) för räknevariabler
+    \item \textbf{Gammafördelning}: modellera både form och skala för positiva, skeva data
+    \item \textbf{Log-normalfördelning}: för multiplicativa effekter och skevhet
+    \item \textbf{Quantile regression}: modellera olika kvantiler direkt, utan antagande om fördelning
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Normal likelihood med neurala nätverk}
+  Antag att vi har $n$ observationer $(x_i, y_i)$ för $i = 1, \dots, n$. Vi modellerar:
+  \[
+  y_i \mid x_i \sim \mathcal{N}(\mu(x_i), \sigma^2(x_i))
+  \]
+  där:
+  \[
+  \mu(x_i) = f_\mu(x_i; \theta_\mu), \quad \log \sigma^2(x_i) = f_\sigma(x_i; \theta_\sigma)
+  \]
+  Den totala log-likelihood ges av:
+  \[
+  \log p(y_1, \dots, y_n \mid x_1, \dots, x_n) = 
+  -\frac{1}{2} \sum_{i=1}^n \left[ \log(2\pi \sigma^2(x_i)) + \frac{(y_i - \mu(x_i))^2}{\sigma^2(x_i)} \right]
+  \]
+  \begin{itemize}
+    \item Två separata nätverk för $\mu(x)$ och $\sigma^2(x)$
+    \item Träning sker genom att maximera log-likelihood över hela datasetet
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Bayesianska metoder}
+  \begin{itemize}
+    \item Modellering med sannolikhetsfördelningar
+    \item Ger osäkerhetsmått och möjliggör inferens
+    \item Baseras på Bayes sats: $p(\theta |y,X) \propto p(y|\theta,X) \cdot p(\theta)$
+    \item Generellt ramverk för inferens som kan användas för traditionella metoder och inom ML
+    \item Exempel: Bayesiansk regression, Gaussian Processes regression, BART, Bayesian Deep Learning
+    \item Kräver ofta MCMC eller variational inference
+    \item Se kursen  \href{https://studieinfo.liu.se/kurs/732G43}{732G43 Bayesiansk statistik}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Tidserieprognoser med maskininlärning}
+  \begin{itemize}
+    \item ML-modeller kan användas för att förutsäga framtida värden i en tidsserie
+    \item Kräver ofta att data omvandlas till ett övervakat format:
+    \[
+    \text{Input: } (y_{t-1}, y_{t-2}, \dots, x_{t-1}, x_{t-2}, \dots), \quad \text{Output: } y_t
+    \]
+    \item Exempel på ML-metoder:
+    \begin{itemize}
+      \item Trädmodeller (t.ex. XGBoost)
+      \item Neurala nätverk (t.ex. MLP, LSTM)
+      \item Hybridmodeller: ML + ARIMA
+    \end{itemize}
+    \item Fördelar: kan hantera icke-linjära samband och flera indata
+    \item Utmaningar: sekventiellt beroende, överanpassning, databehandling
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Tolkningsbar maskininlärning}
+  \begin{itemize}
+    \item Målet: förstå hur och varför en modell gör sina prediktioner
+    \item Viktigt inom känsliga tillämpningar: medicin, juridik, finans
+    \item Exempel på metoder:
+    \begin{itemize}
+      \item Feature importance (t.ex. permutation, SHAP)
+      \item Partial dependence plots (PDP)
+      \item Surrogatmodeller (t.ex. träd som approximerar komplexa modeller)
+      \item Lokala förklaringar (t.ex. LIME)
+    \end{itemize}
+    \item Rekommenderad läsning: \href{https://christophm.github.io/interpretable-ml-book/}{Interpretable Machine Learning}  av Christoph Molnar
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Generativa modeller för komplex data}
+  \begin{itemize}
+    \item Generativa modeller skapar ny data baserat på inlärda mönster
+    \item Används för att generera text, bilder, ljud, kod m.m.
+    \item \textbf{Transformer-arkitekturen} är central:
+    \begin{itemize}
+      \item Självuppmärksamhet (self-attention) för att modellera beroenden
+      \item Skalbar och effektiv för sekventiell data
+      \item Grunden för modeller som GPT, BERT, DALL·E, Stable Diffusion
+    \end{itemize}
+    \item Textgenerering: GPT, T5, LLaMA
+    \item Bildgenerering: DALL·E, Stable Diffusion, Imagen
+    \item Tränas ofta med stora mängder data och kraftfulla GPU:er
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Dimensionreduktion och representation learning}
+  \begin{itemize}
+    \item Syfte: hitta kompakta och informativa representationer av data
+    \item \textbf{Dimensionsreduktion}:
+    \begin{itemize}
+      \item \textbf{t-SNE}: bevarar lokala strukturer, bra för visualisering
+      \item \textbf{UMAP}: bevarar både lokal och global struktur, snabbare än t-SNE
+    \end{itemize}
+    \item \textbf{Representation learning}:
+    \begin{itemize}
+      \item \textbf{Autoencoders}: lär latenta representationer genom rekonstruktion
+      \item \textbf{Contrastive learning} (t.ex. SimCLR, CLIP): lär representationer genom att jämföra liknande och olika exempel
+      \item \textbf{Transformerbaserade modeller} (t.ex. BERT, ViT): representationer från sekventiell eller bilddata
+    \end{itemize}
+    \item Används för visualisering, klustring, transfer learning och förbehandling
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Sammanfattning av kursen}
+
+    Sammanfattning i en mening:
+    \begin{itemize}
+        \item Givet data, hitta den bästa (mest lämpade), modellen som beskriver eller predikterar detta dataset.
+    \end{itemize}
+
+    Till vår hjälp har vi gått igenom ett stort antal modeller och algoritmer.
+    
+\end{frame}
+
+\begin{frame}{Sammanfattning}
+    \begin{itemize}
+        \item Modellval
+        \begin{itemize}
+            \item Felfunktioner
+            \item Utvärderingsmått
+            \item Dela upp data i träning, validering, test.
+            \item Korsvalidering
+            \item AIC, BIC\dots
+            \item Variabelselektion
+        \end{itemize}
+        \item Regularisering
+        \begin{itemize}
+            \item LASSO, Ridge
+            \item Vi vill ofta ha så enkla modeller som möjligt
+        \end{itemize}
+        \item Vi vill ha bra generaliserbarhet!
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Sammanfattning}
+    
+    \begin{itemize}
+        \item Icke-linjär regression/klassificering
+        \begin{itemize}
+            \item Grundidé är att hitta en transformationer av förklarande variabler.
+            \item Gått igenom många olika transformationer.
+        \end{itemize}
+        \item Basfunktioner
+        \item Splines
+        \item Kernelfunktioner
+        \item Lokal regression
+        \item Trädmodeller
+        \item Neurala nätverk
+        \begin{itemize}
+            \item Olika typer av lager för olika problem
+            \item Olika aktiveringsfunktioner
+            \item Global approximation theorem
+            \item Bra för bilder, video, text, ...
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Sammanfattning}
+    \begin{itemize}
+        \item Trädmodeller
+        \begin{itemize}
+            \item Dela upp variabelrummet i rektanglar.
+            \item Varje rektangel får ett värde.
+            \item Olika regler för uppdelning beroende på problem.
+        \end{itemize}
+        \item Beskärning av träd
+        \begin{itemize}
+            \item Förbeskärning
+            \item Efterbeskärning
+        \end{itemize}
+        \item Ensamblemetoder
+        \begin{itemize}
+            \item Bagging - Använd bootstrap för att skapa många "oberoende" träd.
+            \item Random forest - Gör slumpmässiga ändringar i träden.
+            \item Boosting - Skapa många (små) träd, men modifiera datan mellan varje träd.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Sammanfattning}
+    
+    \begin{itemize}
+        \item K-närmaste grannar
+        \begin{itemize}
+            \item Skattar värdet med hjälp av närmaste datapunkterna
+            \item Kan förbättras genom att vikta med avståndet
+        \end{itemize}
+        \item Naive bayes
+        \begin{itemize}
+            \item Skatta klassificering med hjälp av bayes sats
+            \item För full sannolikhetsfördelning krävs mycket data
+            \item Görs ofta förenklningen att varje variabel är oberoende
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Sammanfattning}
+    
+    \begin{itemize}
+        \item Klusteranalys
+        \begin{itemize}
+            \item Oövervakad inlärning.
+            \item K-means klustring
+            \item K-medoid klustring
+            \item Hierarkisk klustring
+            \item DBSCAN
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}[standout]
+    \Huge Tack för att ni har lyssnat!
+
+    \large Nu är det bara projektet och tentan kvar.
+\end{frame}
+
+\end{document}
