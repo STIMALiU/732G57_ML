@@ -203,7 +203,9 @@
     \begin{itemize}
         \item Övergripande mått: Träffsäkerhet, felkvot
         \item Klassvisa mått: Sensitivitet, Specificitet, Precision, F1-score
-        \item Viktigt vid \textbf{obalanserade} klasser
+        \begin{itemize}
+          \item Viktigt vid \textbf{obalanserade} klasser
+        \end{itemize}
     \end{itemize}
     \item \textbf{Regression:}
     \begin{itemize}
@@ -222,7 +224,7 @@
         \item \textbf{Oversampling:} Öka antalet observationer i minoritetsklassen, t.ex. genom duplicering eller syntetiska exempel (SMOTE).
         \item \textbf{Viktade kostnadsfunktioner:} Ge högre vikt till minoritetsklassen vid träning.
         \begin{itemize}
-            \item Exempel: viktad log-loss, viktad cross-entropy
+            \item Exempel: viktad MSE, viktad cross-entropy loss
         \end{itemize}
     \end{itemize}
     \item Syftet är att förbättra modellens förmåga att identifiera minoritetsklassen.
@@ -354,24 +356,13 @@ Konceptuell bild över olika modellers egenskaper.
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Probabilistisk maskininlärning}
-  \begin{itemize}
-    \item Modellera osäkerhet och variation direkt i sannolikhetsmodellen
-    \item \textbf{Normal likelihood}: modellera både medelvärde och varians med flexibla funktioner
-    \item \textbf{Poisson likelihood}: för räknevariabler, t.ex. antal händelser
-    \item \textbf{Gamma / log-normal}: för positiva och skeva utfall
-    \item \textbf{Quantile regression}: modellera olika kvantiler istället för bara medelvärdet
-  \end{itemize}
-\end{frame}
-
 \begin{frame}{Probabilistisk ML – Flexibel modellering}
   \begin{itemize}
     \item Modellera \textbf{alla parametrar} i likelihoodfunktionen med flexibla funktioner
     \item Går bortom antagandet om konstant varians eller fixerad form
     \item \textbf{Normalfördelning}: modellera både medelvärde och varians som funktioner av indata
-    \item \textbf{Poissonfördelning}: modellera intensitet (lambda) för räknevariabler
-    \item \textbf{Gammafördelning}: modellera både form och skala för positiva, skeva data
-    \item \textbf{Log-normalfördelning}: för multiplicativa effekter och skevhet
+    \item \textbf{Poissonfördelning}: modellera intensitet ($±\lambda$) för räknevariabler
+    \item \textbf{Gammafördelning} och \textbf{Log-normalfördelning}: \\ modellera respons: $y\in \mathbb{R}^+$
     \item \textbf{Quantile regression}: modellera olika kvantiler direkt, utan antagande om fördelning
   \end{itemize}
 \end{frame}
