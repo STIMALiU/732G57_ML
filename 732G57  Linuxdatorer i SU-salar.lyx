@@ -188,7 +188,7 @@ Skriv:
 \begin_layout Itemize
 
 \family typewriter
-module add courses/732G12
+module add courses/732G57
 \family default
  och tryck enter, eller
 \end_layout
@@ -198,7 +198,7 @@ module add courses/732G12
 \family typewriter
 module add prog/r-mega-edition/22.08
 \family default
- och tryck enter
+ (obs äldre modul) och tryck enter
 \end_layout
 
 \begin_layout Itemize
