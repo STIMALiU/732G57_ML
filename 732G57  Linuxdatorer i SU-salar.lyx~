@@ -107,7 +107,7 @@ knitr
 \begin_layout Title
 
 \lang english
-732G12 - Linuxdatorer i SU-salar
+732G57 - Linuxdatorer i SU-salar
 \end_layout
 
 \begin_layout Author
@@ -163,8 +163,12 @@ SU-salarna och Ubuntu
 \begin_layout Standard
 De schemalagda datorlaborationerna har SU-salarna bokade, som har Linux
  (Ubuntu) som operativsystem.
- För att få tillgång till R, Rstudio och de R-paket som kursen använder
- gör ni följande:
+ Kursen har en kursmodul med R, Rstudio och de R-paket som kursen använder.
+ 
+\end_layout
+
+\begin_layout Standard
+För att få tillgång till kursmodulen:
 \end_layout
 
 \begin_layout Itemize

@@ -1,0 +1,171 @@
+---
+title: Simple MNIST convnet
+date-created: 2015/06/19
+last-modified: 2020/04/21
+description: A simple convnet that achieves ~99% test accuracy on MNIST.
+domain: vision
+category: basic
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Simple MNIST convnet}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Setup
+
+
+``` r
+library(keras3)
+```
+
+## Prepare the data
+
+
+``` r
+# Model / data parameters
+num_classes <- 10
+input_shape <- c(28, 28, 1)
+
+# Load the data and split it between train and test sets
+c(c(x_train, y_train), c(x_test, y_test)) %<-% dataset_mnist()
+
+# Scale images to the [0, 1] range
+x_train <- x_train / 255
+x_test <- x_test / 255
+# Make sure images have shape (28, 28, 1)
+x_train <- op_expand_dims(x_train, -1)
+x_test <- op_expand_dims(x_test, -1)
+
+
+dim(x_train)
+```
+
+```
+## [1] 60000    28    28     1
+```
+
+``` r
+dim(x_test)
+```
+
+```
+## [1] 10000    28    28     1
+```
+
+``` r
+# convert class vectors to binary class matrices
+y_train <- to_categorical(y_train, num_classes)
+y_test <- to_categorical(y_test, num_classes)
+```
+
+## Build the model
+
+
+``` r
+model <- keras_model_sequential(input_shape = input_shape)
+model |>
+  layer_conv_2d(filters = 32, kernel_size = c(3, 3), activation = "relu") |>
+  layer_max_pooling_2d(pool_size = c(2, 2)) |>
+  layer_conv_2d(filters = 64, kernel_size = c(3, 3), activation = "relu") |>
+  layer_max_pooling_2d(pool_size = c(2, 2)) |>
+  layer_flatten() |>
+  layer_dropout(rate = 0.5) |>
+  layer_dense(units = num_classes, activation = "softmax")
+
+summary(model)
+```
+
+```
+## [1mModel: "sequential"[0m
+## ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+## ┃[1m [0m[1mLayer (type)                   [0m[1m [0m┃[1m [0m[1mOutput Shape          [0m[1m [0m┃[1m [0m[1m      Param #[0m[1m [0m┃
+## ┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+## │ conv2d ([38;5;33mConv2D[0m)                 │ ([38;5;45mNone[0m, [38;5;34m26[0m, [38;5;34m26[0m, [38;5;34m32[0m)     │           [38;5;34m320[0m │
+## ├─────────────────────────────────┼────────────────────────┼───────────────┤
+## │ max_pooling2d ([38;5;33mMaxPooling2D[0m)    │ ([38;5;45mNone[0m, [38;5;34m13[0m, [38;5;34m13[0m, [38;5;34m32[0m)     │             [38;5;34m0[0m │
+## ├─────────────────────────────────┼────────────────────────┼───────────────┤
+## │ conv2d_1 ([38;5;33mConv2D[0m)               │ ([38;5;45mNone[0m, [38;5;34m11[0m, [38;5;34m11[0m, [38;5;34m64[0m)     │        [38;5;34m18,496[0m │
+## ├─────────────────────────────────┼────────────────────────┼───────────────┤
+## │ max_pooling2d_1 ([38;5;33mMaxPooling2D[0m)  │ ([38;5;45mNone[0m, [38;5;34m5[0m, [38;5;34m5[0m, [38;5;34m64[0m)       │             [38;5;34m0[0m │
+## ├─────────────────────────────────┼────────────────────────┼───────────────┤
+## │ flatten ([38;5;33mFlatten[0m)               │ ([38;5;45mNone[0m, [38;5;34m1600[0m)           │             [38;5;34m0[0m │
+## ├─────────────────────────────────┼────────────────────────┼───────────────┤
+## │ dropout ([38;5;33mDropout[0m)               │ ([38;5;45mNone[0m, [38;5;34m1600[0m)           │             [38;5;34m0[0m │
+## ├─────────────────────────────────┼────────────────────────┼───────────────┤
+## │ dense ([38;5;33mDense[0m)                   │ ([38;5;45mNone[0m, [38;5;34m10[0m)             │        [38;5;34m16,010[0m │
+## └─────────────────────────────────┴────────────────────────┴───────────────┘
+## [1m Total params: [0m[38;5;34m34,826[0m (136.04 KB)
+## [1m Trainable params: [0m[38;5;34m34,826[0m (136.04 KB)
+## [1m Non-trainable params: [0m[38;5;34m0[0m (0.00 B)
+```
+
+## Train the model
+
+
+``` r
+batch_size <- 128
+epochs <- 15
+
+model |> compile(
+  loss = "categorical_crossentropy",
+  optimizer = "adam",
+  metrics = "accuracy"
+)
+
+model |> fit(
+  x_train, y_train,
+  batch_size = batch_size,
+  epochs = epochs,
+  validation_split = 0.1
+)
+```
+
+```
+## Epoch 1/15
+## 422/422 - 5s - 13ms/step - accuracy: 0.8894 - loss: 0.3635 - val_accuracy: 0.9787 - val_loss: 0.0791
+## Epoch 2/15
+## 422/422 - 1s - 3ms/step - accuracy: 0.9665 - loss: 0.1111 - val_accuracy: 0.9848 - val_loss: 0.0550
+## Epoch 3/15
+## 422/422 - 1s - 2ms/step - accuracy: 0.9743 - loss: 0.0824 - val_accuracy: 0.9883 - val_loss: 0.0441
+## Epoch 4/15
+## 422/422 - 1s - 2ms/step - accuracy: 0.9785 - loss: 0.0695 - val_accuracy: 0.9895 - val_loss: 0.0397
+## Epoch 5/15
+## 422/422 - 1s - 2ms/step - accuracy: 0.9803 - loss: 0.0626 - val_accuracy: 0.9903 - val_loss: 0.0352
+## Epoch 6/15
+## 422/422 - 1s - 2ms/step - accuracy: 0.9823 - loss: 0.0559 - val_accuracy: 0.9912 - val_loss: 0.0332
+## Epoch 7/15
+## 422/422 - 1s - 2ms/step - accuracy: 0.9837 - loss: 0.0501 - val_accuracy: 0.9917 - val_loss: 0.0311
+## Epoch 8/15
+## 422/422 - 1s - 2ms/step - accuracy: 0.9848 - loss: 0.0481 - val_accuracy: 0.9923 - val_loss: 0.0307
+## Epoch 9/15
+## 422/422 - 1s - 2ms/step - accuracy: 0.9861 - loss: 0.0444 - val_accuracy: 0.9917 - val_loss: 0.0303
+## Epoch 10/15
+## 422/422 - 1s - 2ms/step - accuracy: 0.9862 - loss: 0.0440 - val_accuracy: 0.9913 - val_loss: 0.0298
+## Epoch 11/15
+## 422/422 - 1s - 2ms/step - accuracy: 0.9873 - loss: 0.0394 - val_accuracy: 0.9920 - val_loss: 0.0304
+## Epoch 12/15
+## 422/422 - 1s - 2ms/step - accuracy: 0.9875 - loss: 0.0375 - val_accuracy: 0.9925 - val_loss: 0.0295
+## Epoch 13/15
+## 422/422 - 1s - 2ms/step - accuracy: 0.9887 - loss: 0.0346 - val_accuracy: 0.9920 - val_loss: 0.0297
+## Epoch 14/15
+## 422/422 - 1s - 2ms/step - accuracy: 0.9889 - loss: 0.0343 - val_accuracy: 0.9923 - val_loss: 0.0285
+## Epoch 15/15
+## 422/422 - 1s - 3ms/step - accuracy: 0.9898 - loss: 0.0320 - val_accuracy: 0.9925 - val_loss: 0.0279
+```
+
+## Evaluate the trained model
+
+
+``` r
+score <- model |> evaluate(x_test, y_test, verbose = 0)
+score
+```
+
+```
+## $accuracy
+## [1] 0.9913
+##
+## $loss
+## [1] 0.02430356
+```

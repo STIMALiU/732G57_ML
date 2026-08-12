@@ -1,0 +1,206 @@
+%% LyX 2.3.6 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amstext}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\date{}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\title{Klassificering: \\
+Förväxlingsmatris och Utvärderingsmått}
+\author{Josef Wilzén}
+
+\maketitle
+När vi arbetar med klassificering så behöver kunna utvärdera om en
+modell för klassificering är bra eller dålig. Det finns en mängd olika
+mått som vi kan använda. Anta att vi har en modell eller ett test
+som kan ge minst två utfall.\\
+\\
+När man diskuterar utvärderingsmått så nämns ofta ``positiva'' och
+``negativa'' observationer eller fall. Det innebär att att man har
+en referensklass som är den ``positiva'' klassen och alla andra
+klasser är då ``negativa''. Om ni har binär klassificering med 0/1
+kodning så brukar 1 vara den ``positiva'' klassen. Historiskt så
+kommer den terminologin från medicinska tester där ett provsvar kan
+vara positivt eller negativt.\\
+\\
+Vi har följande beteckningar:\\
+
+TP = true positive, FN = false negative
+
+TN = true negative, FP = false positive\\
+\\
+Vi börjar ofta med måtten:
+\begin{itemize}
+\item \textbf{Träffsäkerhet }(accuracy): andelen korrekt klassificerade
+observationer givet alla tillgängliga observationer
+\item \textbf{Felkvot} (error rate): andelen inkorrekt klassificerade observationer
+givet alla tillgängliga observationer\\
+\end{itemize}
+Vi brukar beräkna måtten separat för våra olika datamängder (träning,
+validering, test). En grundregel är att vi vill vår klassificeringsmodell
+ska vara tydligt bättre än att slumpmässigt gissa vilken klass ett
+ny observation ska ha. Så om vi skattar en modell, och sen får ut
+en hög felkvot så vill vi försöka förbättra modellen på något sätt
+eller skatta en annan typ av modell. 
+
+Exempel: Vi har två klasser med 300 observationer i varje klass och
+vår modell har en felkvot på 43 \%, vilket inte är mycket bättre än
+att slumpmässigt tilldela klasser till observationer. Här är det tydligt
+att modellen inte är bra eller lämplig. \\
+
+Det finns många situationer där träffsäkerhet eller felkvot inte är
+tillräckliga mått. För vissa problem så kan typ I-fel (falska positiva)
+vara allvarligare än typ II-fel (falska negativa) eller tvärtom. Ibland
+så har vi obalanserade klasser i data vilket gör det olämligt att
+bara titta på träffsäkerhet/felkvot. Ofta vill veta vilken typ av
+fel som modellen gör.
+
+Två andra vanliga mått är:
+\begin{itemize}
+\item \textbf{Sensitivitet} = sannolikheten att min modell/test ger rätt
+klass givet att testobservationen är av en viss klass. Exempel: sannolikheten
+att min modell ger klass 1 när den sanna klassen för min testobservation
+är av klass 1. Kallas även Recall och True Positive Rate (TPR).
+\item \textbf{Specificitet} = sannolikheten att min modell/test inte ger
+en viss klass när testobservationen inte är av den klassen. Exempel:
+sannolikheten att min modell inte ger klass 1 när testobservation
+inte kommer från klass 1. Om våra klasser är sjuk/frisk så har vi:
+sannolikheten att min modell visar frisk när personen ifråga inte
+är sjuk.\\
+\end{itemize}
+
+\subsection*{Två klasser}
+
+Vid klassificering så brukar vi ställa upp en förväxlingsmatris (confusion
+matrix) för att tydlig redovisa hur vår modell fungerar. Låt $f$
+vara antalet observationer i en given cell. Förväxlingsmatris:
+\begin{flushleft}
+\begin{tabular}{|c|c|c|c|c|}
+\hline 
+\multirow{2}{*}{} & \multirow{2}{*}{} & \multicolumn{2}{c|}{Predikterad klass} & \tabularnewline
+\cline{3-5} \cline{4-5} \cline{5-5} 
+ &  & \textbf{\footnotesize{}klass=1} & \textbf{\footnotesize{}klass=0} & \textbf{\footnotesize{}Falska negativa}\tabularnewline
+\hline 
+\multirow{2}{*}{Sann klass} & \textbf{\footnotesize{}klass=1} & {\footnotesize{}$f_{11}$} & {\footnotesize{}$f_{10}$} & {\footnotesize{}$FN_{1}=f_{10}$}\tabularnewline
+\cline{2-5} \cline{3-5} \cline{4-5} \cline{5-5} 
+ & \textbf{\footnotesize{}klass=0} & {\footnotesize{}$f_{01}$} & {\footnotesize{}$f_{00}$} & {\footnotesize{}$FN_{0}=f_{01}$}\tabularnewline
+\hline 
+ & \textbf{\footnotesize{}Falska positiva} & {\footnotesize{}$FP_{1}=f_{01}$} & {\footnotesize{}$FP_{0}=f_{10}$} & \tabularnewline
+\hline 
+\end{tabular}\\
+\par\end{flushleft}
+
+$f_{11}$ och $f_{00}$ är korrekt klassificerade observationer. Om
+vi har klass 1 som vår referensklass så motsvarar $f_{01}$ typ I-fel
+(falska positiva) och $f_{10}$ motsvarar typ II-fel (falska negativa).
+\begin{itemize}
+\item Träffsäkerhet: $T=\frac{f_{11}+f_{00}}{f_{11}+f_{10}+f_{01}+f_{00}}$
+\item Felkvot: $E=\frac{f_{10}+f_{01}}{f_{11}+f_{10}+f_{01}+f_{00}}$
+\item Sensitivitet: $sens=\text{\ensuremath{\frac{f_{11}}{f_{11}+f_{10}}}}$
+\item Specificitet: $spec=\frac{f_{00}}{f_{00}+f_{01}}$
+\end{itemize}
+Notera sensitivitet och specificitet defineras utfrån den ``positiva''
+klassen, vilket påverkar vår tolkning för ett specifikt dataset. Notera
+att vi kan bestäma vad som är den postiva klassen eller ``1'' i
+vår analys, tex kan bestämma att sjuk=1 eller att frisk=1. 
+
+\pagebreak{}
+
+\subsection*{Fler än två klasser}
+
+Nedan visas exempel med tre klasser, vilket kan generaliseras till
+godtyckligt antal klasser. Låt $f$ vara antalet observationer i en
+given cell. 
+\begin{flushleft}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline 
+\multirow{2}{*}{} & \multirow{2}{*}{} & \multicolumn{3}{c|}{Predikterad klass} & \tabularnewline
+\cline{3-6} \cline{4-6} \cline{5-6} \cline{6-6} 
+ &  & \textbf{\footnotesize{}klass=1} & \textbf{\footnotesize{}klass=2} & \textbf{\footnotesize{}klass=3} & \textbf{\footnotesize{}Falska negativa}\tabularnewline
+\hline 
+\multirow{3}{*}{Sann klass} & \textbf{\footnotesize{}klass=1} & {\footnotesize{}$f_{11}$} & {\footnotesize{}$f_{12}$} & {\footnotesize{}$f_{13}$} & {\footnotesize{}$FN_{1}=f_{12}+f_{13}$}\tabularnewline
+\cline{2-6} \cline{3-6} \cline{4-6} \cline{5-6} \cline{6-6} 
+ & \textbf{\footnotesize{}klass=2} & {\footnotesize{}$f_{21}$} & {\footnotesize{}$f_{22}$} & {\footnotesize{}$f_{23}$} & {\footnotesize{}$FN_{2}=f_{21}+f_{23}$}\tabularnewline
+\cline{2-6} \cline{3-6} \cline{4-6} \cline{5-6} \cline{6-6} 
+ & \textbf{\footnotesize{}klass=3} & {\footnotesize{}$f_{31}$} & {\footnotesize{}$f_{32}$} & {\footnotesize{}$f_{33}$} & {\footnotesize{}$FN_{3}=f_{31}+f_{32}$}\tabularnewline
+\hline 
+ & \textbf{\footnotesize{}Falska positiva} & {\footnotesize{}$FP_{1}=f_{21}+f_{31}$} & {\footnotesize{}$FP_{2}=f_{21}+f_{32}$} & {\footnotesize{}$FP_{3}=f_{13}+f_{23}$} & \tabularnewline
+\hline 
+\end{tabular}\\
+\medskip{}
+\par\end{flushleft}
+
+\begin{flushleft}
+Vi har följande beteckningar:
+\par\end{flushleft}
+
+TP = true positive, FN = false negative
+
+TN = true negative, FP = false positive\\
+sdsfgs\\
+
+För en specifik klass $i$, sensitivitet: $\quad sens_{i}=TP_{i}/\left(TP_{i}+FN_{i}\right)$
+
+För en specifik klass $i$, specificitet: $\quad spec_{i}=TN_{i}/\left(TN_{i}+FP_{i}\right)$\\
+\\
+I formlerna ovan så är $i$ den postivia klassen, så vad som är TP,
+TP, FN och FP defineras utfrån den.\\
+\\
+\textbf{Exempel}: 
+
+Sensitivitet för klass 2: $f_{22}/$$\left(f_{22}+f_{21}+f_{23}\right)$
+$\rightarrow$ sannolikheten att min modell ger klass 2 när den sanna
+klassen för min testobservation är av klass 2. Så här har vi att $TP=f_{22}$
+och $FN=f_{21}+f_{23}$\\
+\\
+\textbf{Exempel}: 
+
+Specificitet för klass 2: $\left(f_{11}+f_{33}\right)/$$\left(f_{11}+f_{33}+f_{12}+f_{32}\right)$$\rightarrow$
+sannolikheten att min modell inte ger klass 2 när testobservation
+inte kommer från klass 2. Så här har vi $TN=f_{11}+f_{33}$ och $FP=f_{12}+f_{32}$\\
+\\
+Nedan följer formler för hur man beräknar sensitivitet och specificitet
+i de olika fallen.\\
+
+\begin{tabular}{|c|c|}
+\hline 
+ & Sensitivitet\tabularnewline
+\hline 
+\hline 
+klass=1 & $sens_{1}=\frac{f_{11}}{f_{11}+f_{12}+f_{13}}$\tabularnewline
+\hline 
+klass=2 & $sens_{2}=\frac{f_{22}}{f_{22}+f_{21}+f_{23}}$\tabularnewline
+\hline 
+klass=3 & $sens_{2}=\frac{f_{33}}{f_{33}+f_{31}+f_{32}}$\tabularnewline
+\hline 
+\end{tabular}\\
+\\
+
+\begin{tabular}{|c|c|}
+\hline 
+ & Specificitet\tabularnewline
+\hline 
+\hline 
+klass=1 & $spec_{1}=\frac{f_{22}+f_{33}}{f_{22}+f_{33}+f_{21}+f_{31}}$\tabularnewline
+\hline 
+klass=2 & $spec_{2}=\frac{f_{11}+f_{33}}{f_{11}+f_{33}+f_{12}+f_{32}}$\tabularnewline
+\hline 
+klass=3 & $spec_{3}=\frac{f_{11}+f_{22}}{f_{11}+f_{22}+f_{13}+f_{23}}$\tabularnewline
+\hline 
+\end{tabular}
+\end{document}

@@ -1,0 +1,709 @@
+\documentclass[10pt,english]{beamer}
+%\documentclass[english,handout]{beamer} % For handouts
+\input{../metropolis_preamble.tex}
+\input{../macros.tex}
+%\usepackage{extendedalt}
+%\usepackage{animate} % Animations
+%\usepackage{../lindsten}
+%\usepackage{movie15}
+
+\title{732G12 Data Mining}
+\subtitle{Föreläsning 6}
+\date{}
+\author{Josef Wilzén \\ IDA, Linköping University, Sweden}
+\titlegraphic{\hfill\includegraphics[height=1.2cm]{../LiU_primary_black.pdf}}
+%\institute{Joint work with\dots}
+
+
+%% MY DEF %%
+\newcommand{\itm}[1]{\mathrm{Item}_{#1}}
+\newcommand{\pausa}{\pause}
+%\renewcommand{\pausa}{}
+
+
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Dagens föreläsning: Ensamblemetoder}
+
+    \begin{itemize}
+        \item Bagging
+        \item Boosting
+        \item Random forest
+        \item Gradient Boosting 
+        \item XGBoost
+    \end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Ensamblemetoder}
+    
+    Grundidén är att skatta många modeller på träningsdata och sen kombinera dessa för att göra prediktioner.
+    
+    Finns många olika varainter:
+     \begin{itemize}
+        \item Göra slumpmässiga urval från träningsdata och skatta modeller på dessa urval (Bootstraping/Bagging)
+        \item Skapa en mängd dataset där observationerna har olika vikter i modellanpassningen i olika dataset (Boosting)
+        \item Skatta ett antal olika modeller (kan vara av helt olika sort) och sen kombinera dessa vid prediktioner
+        \item Vissa modeller har slumpmässiga element vid optimieringen (tänk neurala nätverk): optimera samma modell flera gånger men med olika seed, vilket ger olika modeller/parameterar. Kombinera dessa sedan vid prediktionen.
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Ensamblemetoder}
+    
+    \includegraphics[width=.8\textwidth]{figs/ensample_cat.png}
+
+\end{frame}
+
+\begin{frame}{Bootstraping}
+    
+    \begin{greenbox}
+        Idé: Skapa $B$ stickprov av datan genom att \textbf{med återläggning} välja nya datapunkter. Använd dessa stickprov för att skatta modell eller funktioner.
+    \end{greenbox}
+
+    Exempel:
+
+    Vi vill skatta $\mathbb{V}(e^{\bar{X}})$.
+
+    Skapa $B$ stickprov.
+
+    Skatta $T_k = e^{\bar{Z}_k}$ för $k = 1, \ldots, B$.
+
+    Beräkna $\mathbb{V}(\mathbf{T})$.
+
+
+\end{frame}
+
+\begin{frame}{Bagging}
+    
+    Idé: Om man tar medelvärdet av oberoende observationer (modeller) så minskar variansen.
+
+    \begin{bluebox}
+        \myheading{Bagging (Bootstrap aggregating)}: Använd Bootstrap för att skapa $B$ träningsdataset och skatta en modell $\hat{f}_b$ för varje av dessa set.
+
+        Den slutgiltliga modellen får vi genom att ta medelvärdet av alla dessa modeller:
+        \begin{equation*}
+            \hat{f}_{\text{bag}}(\mathbf{X}) = \frac{1}{B}\sum_{b=1}^{B}\hat{f}_b(\mathbf{X}).
+        \end{equation*}
+    \end{bluebox}
+
+    \begin{itemize}
+        \item Sänker variansen av den anpassade funktionen.
+        \item Påverkas \emph{mycket} av kvalitén av modellen. En bra modell blir bättre, en dålig blir sämre.
+        \item För klassificering, använd majoritetsröstning.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Classification and Regression Trees (CART)}
+    Vi delar upp variabelrummet genom att rekrusivt göra binära uppdelningar.
+
+    För klassificering används vanligaste klassen, för regression medelvärdet inom regionen.
+
+    \includegraphics[width=0.8\textwidth]{figs/tree_fredrik.png}
+\end{frame}
+
+\begin{frame}{Förbättre CART}
+    Flexibilitet/komplexitet för trädmodeller beror på djupet.
+    \begin{redbox}
+        Ett djupt träd ger litet bias, men mycket varians.
+    \end{redbox}
+    
+    Förbättringar:
+    \begin{itemize}
+        \item Efterbeskärning (post-pruning):
+        \begin{itemize}
+            \item Skapa ett djupt träd och beskär det till ett mindre (minska variansen).
+        \end{itemize}
+        \item Ensamblemetoder:
+        \begin{itemize}
+            \item Ta ett genomsnitt över många trädmodeller.
+            \item Bagging
+            \item Random forest
+            \item Boosted trees
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Random forest}
+    
+    Bagging kan ge stora förbättringar för trädmodeller. Men det finns vissa problem:
+    \begin{itemize}
+        \item De $B$ bootstrap-urvalen är korrelerade.
+        \item Reduktionen i varians blir liten när vi tar medelvärde över korrelerade variabler.
+    \end{itemize}
+
+    Idé: Avkorrelera de $B$ trädmodellerna genom att göra slumpmässiga ändringar av modellerna.
+
+\end{frame}
+
+\begin{frame}{Random forest}
+    
+    \begin{itemize}
+        \item Använd bagging för att skatta $B$ träd,
+        \begin{itemize}
+            \item Vid varje uppdelning/regel använd endast en slumpmässig delmängd $q \leq p$ av de förklarande variablerna.
+        \end{itemize}
+        \item Tumregel: (Förslag från Leo Breiman)
+        \begin{itemize}
+            \item Klassificering: $q = \sqrt{p}$
+            \item Regression: $q = p/3$
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Random forest}
+    Slumpmässigt val av variabler leder till:
+    \begin{description}
+        \item[-] Minskar bias, men ofta mycket långsamt.
+        \item[-] Lägger till varians till varje träd.
+        \item[+] Avkorrelerar träden.
+    \end{description}
+    Ofta dominerar den avkorrelerade effekten vilket leder till att MSE minskar på testdata.
+\end{frame}
+
+\begin{frame}{Random forest}
+    Beräkningsmässiga fördelar:
+    \begin{itemize}
+        \item Lätt att parallellisera.
+        \item $q <  p$ minskar kostanden för vaje regel/uppdelning.
+        \item Inte så många hyperparametrar.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Boosting}
+    
+    En enkel modell kan vanligtvis fånga vissa aspekter av datan.
+
+    Kan vi lära oss en stor mängd enkla modeller som var och en lär sig en liten del av datarelationen och sen kombinera dessa "dåliga" modeller till en stark modell.
+
+    Hur skulle vi göra detta?
+
+\end{frame}
+
+\begin{frame}{Boosting}
+    \begin{itemize}
+        \item Lär sig sekventiellt en ensamble av "svaga" modeller.
+        \item Kombinerar dessa till en "stark" modell.
+        \item Generell metod som kan användas till all form av övervakad inlärning.
+        \item Mycket framgångsrikt inom maskininlärning.
+    \end{itemize}
+
+    \includegraphics[width=\textwidth]{figs/boosting_scheme.png}
+\end{frame}
+
+\begin{frame}{Binär klassificering}
+    Vi kommer begränsa oss nu till binär klassificering.
+
+    Vi låter klasserna vara $-1$ och $1$ (möjliga $y$ värden).
+
+    Använder vi detta kan vi skriva majoritetsröstninig av $B$ klassificerare $\hat{y}^{b}(\mathbf{x})$ som
+    \begin{equation*}
+        \sign \left(\sum_{b=1}^{B} \hat{y}^{b}(\mathbf{x})\right).
+    \end{equation*}
+\end{frame}
+
+\begin{frame}{Boosting för klassificering}
+    
+    \begin{enumerate}
+        \item Ge varje datapunkt en vikt $w_i^1 = 1/n$.
+        \item För $b = 1, \ldots, B$
+        \begin{enumerate}
+            \item[a] Träna en "svag" klassificerare $\hat{y}^{b}(\mathbf{x})$ på den \myheading{viktade träniningsdatan} $\{(\mathbf{x}_i,y_i,w_i^b)\}_{i=1}^{n}$.
+            \item[b] Uppdatera vikterna $\{w_{i}^{b+1}\}_{i=1}^{n}$ från $\{w_{i}^{b}\}_{i=1}^{n}$
+            \begin{enumerate}
+                \item[i] Öka vikterna för missklassificerade datapunkter.
+                \item[ii] Minska vikterna för korrekt klassificeradet datapunkter. 
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+
+    Predikationen från de $B$ klassificerarna kombineras genom att använda en viktad majoritetsomröstning,
+    \begin{equation*}
+        \hat{y}^{B}_{\text{boost}}(\mathbf{x}) = \sign \left(\sum_{b=1}^{B} \alpha^b \hat{y}^b(\mathbf{x})\right).
+    \end{equation*}
+
+\end{frame}
+
+\begin{frame}{Boosting exempel}
+    \includegraphics[width=\textwidth]{figs/Boosting illustration1.png}
+\end{frame}
+
+\begin{frame}{Boosting exempel}
+    \includegraphics[width=\textwidth]{figs/Boosting illustration2.png}
+\end{frame}
+
+\begin{frame}{Boosting exempel}
+    \includegraphics[width=\textwidth]{figs/Boosting illustration3.png}
+\end{frame}
+
+\begin{frame}{Boosting exempel}
+    \includegraphics[width=\textwidth]{figs/Boosting illustration4.png}
+\end{frame}
+
+\begin{frame}{Boosting exempel}
+    \includegraphics[width=\textwidth]{figs/Boosting illustration5.png}
+\end{frame}
+
+\begin{frame}{Boosting exempel}
+    \includegraphics[width=\textwidth]{figs/Boosting illustration6.png}
+\end{frame}
+
+\begin{frame}{Boosting exempel}
+    \includegraphics[width=\textwidth]{figs/Boosting illustration7.png}
+\end{frame}
+
+\begin{frame}{Boosting exempel}
+    \includegraphics[width=\textwidth]{figs/Boosting illustration8.png}
+\end{frame}
+
+\begin{frame}{Boosting exempel}
+    \includegraphics[width=\textwidth]{figs/Boosting illustration9.png}
+\end{frame}
+
+\begin{frame}{Boosting exempel}
+    \includegraphics[width=\textwidth]{figs/Boosting illustration10.png}
+\end{frame}
+
+\begin{frame}{Boosting - Detaljer}
+    
+    Boosting fungerar bra, men vi har lite detaljer vi måste reda ut först.
+
+    \begin{enumerate}
+        \item Hur ska vi vikta om data?
+        \item Hur ska vi vikta koefficienterna $\alpha^b$?
+    \end{enumerate}
+
+    Olika boostingalgoritmer svarar olika på dessa frågor.
+
+    Den första praktiska algoritmen AdaBoost, svarade på dessa frågor genom att minimera exponentialförlust.
+
+\end{frame}
+
+\begin{frame}{AdaBoost}
+
+    \begin{enumerate}
+        \item Ge varje datapunkt en vikt $w_i^1 = 1/n$.
+        \item För $b = 1, \ldots, B$
+        \begin{enumerate}
+            \item[a] Träna en "svag" klassificerare $\hat{y}^{b}(\mathbf{x})$ på den \myheading{viktade träniningsdatan} $\{(\mathbf{x}_i,y_i,w_i^b)\}_{i=1}^{n}$.
+            \item[b] Uppdatera vikterna $\{w_{i}^{b+1}\}_{i=1}^{n}$ från $\{w_{i}^{b}\}_{i=1}^{n}$
+            \begin{enumerate}
+                \item[i] Beräkna $E_{\text{train}}^{b} = \sum_{i=1}^{n} w_{i}^{b} \mathbb{I}\{y_i \neq \hat{y}^{b}(\mathbf{x}_i)\}$.
+                \item[ii] Beräkna $\alpha^{b} = 0.5 \log((1 - E_{\text{train}}^{b})/E_{\text{train}}^{b})$.
+                \item[iii] Beräkna $w_{i}^{b+1} = w_i^b \exp(- \alpha^{b} y_i \hat{y}^{b}(\mathbf{x}_i)), i = 1,\ldots,n$.
+                \item[iv] Normalisera $w_i^{b+1}$. 
+            \end{enumerate}
+        \end{enumerate}
+        \item Output $\hat{y}^{B}_{\text{boost}}(\mathbf{X}) = \sign\left(\sum_{b=1}^{B} \alpha^b \hat{y}^{b}(\mathbf{x})\right)$.
+    \end{enumerate}
+    
+\end{frame}
+
+\begin{frame}{Boosting för regressionsträd}
+
+    \includegraphics[width=\textwidth]{figs/boosting for regression trees.png}
+    
+\end{frame}
+
+\begin{frame}{Boosting - Sammanfattning}
+    
+    Finns många andra varianter:
+    \begin{itemize}
+        \item Gradient boosting:
+        \begin{itemize}
+            \item XGboost
+            \item LightGBM
+            \item CatBoost
+        \end{itemize}
+        \item Presterar bra och vinner ofta tävlingar.
+    \end{itemize}
+
+    Om vi jämför med baggning kan vi se:
+
+    \begin{tabular}{l | l}
+        Bagging & Boosting \\ \hline
+        Kan träna modeller parallellt & Tränar modeller sekventiellt \\
+        Använder bootstrappade dataset & Använder viktade dataset \\
+        Överanpassar inte med ökande $B$ & Kan överanpassa när $B$ ökar \\
+        Minskar variansen men inte bias & Minska varians och bias.
+        
+    \end{tabular}
+
+\end{frame}
+
+\begin{frame}{Gradient Boosting: En teoretisk översikt}
+  \textbf{Gradient Boosting} är en iterativ ensemblemetod som bygger en modell $f(x)$ 
+  som approximerar en målfunktion genom att minimera en differentiabel 
+  förlustfunktion $L(y, f(x))$.
+
+  \vspace{0.4cm}
+  \textbf{Grundidé:} Vid varje iteration $m$, lägg till en ny modell $h_m(x)$ 
+  som approximerar den negativa gradienten av förlusten:
+  \[
+    h_m(x) \approx -\left.\frac{\partial L(y, f(x))}{\partial f(x)}\right|_{f(x) = f_{m-1}(x)}
+  \]
+
+  \vspace{0.4cm}
+  \textbf{Uppdatering:}
+  \[
+    f_m(x) = f_{m-1}(x) + \nu \cdot h_m(x)
+  \]
+  där $\nu$ är inlärningshastigheten (learning rate).
+\end{frame}
+
+\begin{frame}{Gradient Boosting}
+  \textbf{Fördelar:}
+  \begin{itemize}
+    \item Teoretiskt välgrundad: bygger på gradient descent i funktionsrymden.
+    \item Flexibel: fungerar med olika förlustfunktioner (t.ex. log-loss, kvadratisk förlust).
+    \item Effektiv: varje steg fokuserar på att minska felet mest effektivt.
+  \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Gradient för kvadratisk förlust}
+  \textbf{Förlustfunktion:} Kvadratisk förlust (MSE) ges av
+  \[
+    L(y, f(x)) = \frac{1}{2}(y - f(x))^2
+  \]
+
+  
+  \textbf{Gradient:} Vi beräknar derivatan med avseende på modellens prediktion $f(x)$:
+  \[
+    \frac{\partial L(y, f(x))}{\partial f(x)} = - (y - f(x))
+  \]
+
+  
+  \textbf{Tolkning:} Den negativa gradienten är residualen:
+  \[
+    -\frac{\partial L}{\partial f(x)} = y - f(x)
+  \]
+
+  
+  \textbf{I Gradient Boosting:} Vid varje iteration tränas en ny modell $h_m(x)$ för att approximera residualerna $y - f_{m-1}(x)$.
+
+  
+  \textbf{Uppdatering:}
+  \[
+    f_m(x) = f_{m-1}(x) + \nu \cdot h_m(x)
+  \]
+  där $\nu$ är inlärningshastigheten.
+\end{frame}
+
+
+
+\begin{frame}{Gradient för cross-entropy (binär klassificering)}
+  \textbf{Förlustfunktion:} Cross-entropy för två klasser (etiketter $y \in \{0, 1\}$) ges av:
+  \[
+    L(y, f(x)) = -y \log(p(x)) - (1 - y) \log(1 - p(x))
+  \]
+  \vspace{0.4cm}
+  där $p(x) = \sigma(f(x)) = \frac{1}{1 + e^{-f(x)}}$ är sannolikheten från modellen.
+
+  
+  \textbf{Gradient:} Vi beräknar derivatan med avseende på $f(x)$:
+  \[
+    \frac{\partial L(y, f(x))}{\partial f(x)} = p(x) - y
+  \]
+
+  
+  \textbf{Tolkning:} Den negativa gradienten är:
+  \[
+    -\frac{\partial L}{\partial f(x)} = y - p(x)
+  \]
+  vilket motsvarar residualen mellan det sanna värdet och den predikterade sannolikheten.
+
+  \textbf{I Gradient Boosting:} Vid varje iteration tränas en ny modell $h_m(x)$ för att approximera $y - p(x)$.
+\end{frame}
+
+
+
+\begin{frame}{Gradient Boosting: Algoritmen steg för steg}
+  \textbf{Mål:} Approximation av en funktion $f(x)$ som minimerar en differentiabel förlustfunktion $L(y, f(x))$.
+
+
+  \textbf{Algoritm:}
+  \begin{enumerate}
+    \item Initialisera modellen med en konstant: $f_0(x) = \arg\min_c \sum_{i=1}^n L(y_i, c)$
+     \vspace{0.1cm}
+    \item För varje iteration $m = 1, \dots, M$:
+    \begin{itemize}
+      \item Beräkna negativa gradienten (pseudo-residualer):
+      \[
+        r_i^{(m)} = -\left.\frac{\partial L(y_i, f(x_i))}{\partial f(x_i)}\right|_{f(x) = f_{m-1}(x)}
+      \]
+      
+      \item Träna en svag modell $h_m(x)$ för att approximera $r_i^{(m)}$.
+      
+      \item Uppdatera modellen: $f_m(x) = f_{m-1}(x) + \nu \cdot h_m(x)$
+
+      där $\nu$ är inlärningshastigheten.
+    \end{itemize}
+     \vspace{0.1cm}
+    
+    \item Slutlig modell: $f_M(x) = f_0(x) + \sum_{m=1}^M \nu \cdot h_m(x)$
+
+  \end{enumerate}
+
+  
+  \textbf{Kommentar:} $h_m(x)$ är ofta ett litet beslutsträd, och gradienten beror på vald förlustfunktion.
+\end{frame}
+
+\begin{frame}{XGBoost: Grundläggande idéer}
+  \textbf{XGBoost} (Extreme Gradient Boosting) är en effektiv och förbättrad implementation av gradient boosting.
+
+  \vspace{0.1cm}
+  \textbf{Nyckelkomponenter:}
+  \begin{itemize}
+    \item \textbf{Regularisering:} Lägger till straff för komplexa träd:
+    \[
+      \text{Objektiv} = \sum_i L(y_i, \hat{y}_i) + \sum_k \Omega(f_k)
+    \]
+    där $\Omega(f) = \gamma T + \frac{1}{2} \lambda \sum_j w_j^2$
+
+    \item \textbf{Trädstruktur:} Varje svag modell är ett beslutsträd som byggs med hjälp av en greedy-algoritm för att maximera "gain".
+
+    \item \textbf{Andra förbättringar:}
+    \begin{itemize}
+      \item Hanterar saknade värden automatiskt
+      \item Stöd för parallellisering och cache-optimering
+      \item Shrinkage (learning rate) och column subsampling
+    \end{itemize}
+  \end{itemize}
+
+  \vspace{0.1cm}
+  \textbf{Resultat:} Hög prediktiv precision, snabb träning, och god kontroll över överanpassning.
+\end{frame}
+
+
+\begin{frame}{XGBoost: Gain-beräkning}
+  \textbf{Syfte:} Välj den split som maximerar förbättringen i den regulariserade objektfunktionen.
+
+  \textbf{För varje split:}
+  \begin{itemize}
+    \item Beräkna summan av första och andra derivatan (gradient och hessian) för varje nod:
+    $G = \sum_{i \in \text{node}} g_i, \quad H = \sum_{i \in \text{node}} h_i$
+    där $g_i = \frac{\partial L}{\partial f(x_i)}$, $h_i = \frac{\partial^2 L}{\partial f(x_i)^2}$
+
+    \item Gain ges av:
+    \[
+      \text{Gain} = \frac{1}{2} \left[ \frac{G_L^2}{H_L + \lambda} + \frac{G_R^2}{H_R + \lambda} - \frac{(G_L + G_R)^2}{H_L + H_R + \lambda} \right] - \gamma
+    \]
+    där $G_L$, $H_L$ är gradient/hessian för vänster barn, $G_R$, $H_R$ för höger barn, $\lambda$ är L2-regularisering och $\gamma$ är straff för att skapa en ny nod.
+  \end{itemize}
+
+  \textbf{Tolkning:} En split görs om gain är positiv och tillräckligt stor – annars stoppas trädet.
+
+  \textbf{Effekt:} Effektiv trädbyggnad med inbyggd regularisering mot överanpassning.
+\end{frame}
+
+\begin{frame}{XGBoost: Visuell förklaring av Gain}
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{xgboost_gain_fig.png}
+  \end{center}
+
+  \vspace{0.3cm}
+  \textbf{Gain} mäts som förbättring i objektfunktionen när en nod delas:
+  \[
+    \text{Gain} = \frac{1}{2} \left[ \frac{G_L^2}{H_L + \lambda} + \frac{G_R^2}{H_R + \lambda} - \frac{(G_L + G_R)^2}{H_L + H_R + \lambda} \right] - \gamma
+  \]
+
+  \textbf{Split görs om gain är positiv och tillräckligt stor.}
+\end{frame}
+
+\begin{frame}{Kostandsfunktion och additiv modell}
+  \begin{itemize}
+    \item XGBoost bygger upp sin modell genom att successivt lägga till nya beslutsträd.
+    \item Varje träd försöker förbättra modellens prediktioner genom att fokusera på de observationer där tidigare träd gjort fel.
+    \item Den totala modellen är en summa av alla tidigare träd – en additiv sekvens.
+    \item Objektfunktionen balanserar två mål: att minimera fel i prediktionerna och att hålla modellen enkel.
+    \item Regularisering ingår i objektfunktionen för att undvika överanpassning.
+  \end{itemize}
+\end{frame}
+
+
+----------------
+
+\begin{frame}{Grundläggande idéer inom XGBoost}
+  \begin{itemize}
+    \item \textbf{XGBoost} (Extreme Gradient Boosting) är en effektiv implementation av gradient boosting med fokus på prestanda och skalbarhet.
+    \item Modellen bygger beslutsträd med hjälp av en greedy-algoritm som väljer den bästa splitpunkten i varje steg.
+    \item Inbyggd regularisering används för att kontrollera modellens komplexitet och minska risken för överanpassning.
+    \item Träden byggs med hjälp av en objektfunktion som kombinerar förlust och modellkomplexitet.
+    \item XGBoost är optimerad för parallellisering och hantering av stora datamängder.
+    \item Kan hantera saknade värden automatiskt
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Viktiga hyperparametrar i XGBoost}
+  \begin{itemize}
+    \item \texttt{eta} – Inlärningshastighet. Lägger mindre vikt vid varje nytt träd.
+    \item \texttt{nrounds} – Antal boosting-rundor, dvs. antal träd som byggs.
+    \item \texttt{lambda} – L2-regularisering av vikter. Minskar överanpassning.
+    \item \texttt{gamma} – Minsta förbättring som krävs för att göra en split. Påverkar pruning.
+    \item \texttt{max\_depth} – Maximal djup för varje träd. Påverkar modellens komplexitet.
+    \item \texttt{subsample} – Andel av träningsdata som används för varje träd. Minskar överanpassning.
+    \item \texttt{colsample\_bytree} – Andel features som används vid varje träd. Ökar variation mellan träden.
+    
+    
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Kostandsfunktion och additiv modell}
+  \textbf{Additiv modell:}
+  \begin{equation*}
+    \hat{y}_i^{(t)} = \sum_{k=1}^{t} f_k(x_i), \quad f_k \in \mathcal{F}
+  \end{equation*}
+  Där varje \( f_k \) är ett beslutsträd och modellen byggs upp stegvis.
+
+  \vspace{0.1cm}
+  \textbf{Kostandsfunktion:}
+  \begin{equation*}
+    \text{Obj}^{(t)} = \sum_{i=1}^{n} l(y_i, \hat{y}_i^{(t-1)} + f_t(x_i)) + \Omega(f_t)
+  \end{equation*}
+  Där \( l \) är en förlustfunktion (t.ex. kvadratisk eller logistisk) och \( \Omega(f) \) är en regulariseringsterm som straffar komplexa träd.
+
+  \vspace{0.1cm}
+  \textbf{Regulariseringsterm:}
+  \begin{equation*}
+    \Omega(f) = \gamma T + \frac{1}{2} \lambda \sum_{j=1}^{T} w_j^2
+  \end{equation*}
+  Där \( T \) är antalet blad i trädet och \( w_j \) är vikten för blad \( j \).
+\end{frame}
+
+\begin{frame}{Taylor-expansion av en funktion}
+  \textbf{Taylor-expansion:}
+  \begin{itemize}
+    \item En metod för att approximera en funktion \( f(x) \) nära en punkt \( x_0 \) med hjälp av derivator.
+    \item För en tillräckligt slät funktion kan vi skriva:
+  \end{itemize}
+
+  \begin{equation*}
+    f(x) \approx f(x_0) + f'(x_0)(x - x_0) + \frac{1}{2} f''(x_0)(x - x_0)^2 + \cdots
+  \end{equation*}
+
+  \begin{itemize}
+    \item I XGBoost används en andra ordningens Taylor-expansion för att approximera objektfunktionen.
+    \item Detta gör det möjligt att analysera hur ett nytt träd påverkar förlusten och därmed optimera modellen effektivt.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Första steg mot härledning av Gain}
+  \textbf{Taylor-expansion:}
+  \begin{itemize}
+    \item En Taylor-expansion approximerar en funktion med hjälp av dess derivator runt en punkt.
+    \item I XGBoost används en andra ordningens Taylor-expansion för att approximera objektfunktionen.
+  \end{itemize}
+
+  \vspace{0.1cm}
+  \textbf{Approximerad objektfunktion:}
+  \begin{equation*}
+    \text{Obj}^{(t)} \approx \sum_{i=1}^{n} \left[ g_i f_t(x_i) + \frac{1}{2} h_i f_t(x_i)^2 \right] + \Omega(f_t)
+  \end{equation*}
+  Där:
+  \begin{itemize}
+    \item \( g_i = \frac{\partial l(y_i, \hat{y}_i)}{\partial \hat{y}_i} \) är första derivatan (gradient).
+    \item \( h_i = \frac{\partial^2 l(y_i, \hat{y}_i)}{\partial \hat{y}_i^2} \) är andra derivatan (hessian).
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Skattning av lövvikter via Taylor-expansion}
+  \textbf{Utgångspunkt:}
+  \begin{itemize}
+    \item Vi approximerar objektfunktionen med en andra ordningens Taylor-expansion.
+    \item För varje löv i trädet summerar vi gradienter och hessianer för de observationer som hamnar där.
+  \end{itemize}
+
+  \textbf{Approximerad objektfunktion för ett löv:}
+  \begin{equation*}
+    \text{Obj}_{\text{leaf}}(w) = G w + \frac{1}{2} H w^2 + \Omega(w)
+  \end{equation*}
+  Där:
+  \begin{itemize}
+    \item \( G = \sum_{i \in \text{leaf}} g_i \) är summan av första derivator (gradienter).
+    \item \( H = \sum_{i \in \text{leaf}} h_i \) är summan av andra derivator (hessianer).
+    \item \( w \) är vikten som tilldelas lövet.
+  \end{itemize}
+
+  \textbf{Optimal lövvikt:}
+  \begin{equation*}
+    w^* = -\frac{G}{H + \lambda}
+  \end{equation*}
+  Detta är den vikt som minimerar den approximativa objektfunktionen för lövet.
+\end{frame}
+
+
+
+\begin{frame}{XGBoost: Gain-beräkning}
+  \textbf{Syfte:} Välj den split som maximerar förbättringen i den regulariserade objektfunktionen.
+
+  \textbf{För varje split:}
+  \begin{itemize}
+    \item Gain ges av:
+    \[
+      \text{Gain} = \frac{1}{2} \left[ \frac{G_L^2}{H_L + \lambda} + \frac{G_R^2}{H_R + \lambda} - \frac{(G_L + G_R)^2}{H_L + H_R + \lambda} \right] - \gamma
+    \]
+    där $G_L$, $H_L$ är gradient/hessian för vänster barn, $G_R$, $H_R$ för höger barn, $\lambda$ är L2-regularisering och $\gamma$ är straff för att skapa en ny nod.
+  \end{itemize}
+
+  \textbf{Tolkning:} En split görs om gain är positiv och tillräckligt stor – annars stoppas trädet.
+
+  \textbf{Effekt:} Effektiv trädbyggnad med inbyggd regularisering mot överanpassning.
+\end{frame}
+
+\begin{frame}{XGBoost: Visuell förklaring av Gain}
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{xgboost_gain_fig.png}
+  \end{center}
+
+  \vspace{0.3cm}
+  \textbf{Gain} mäts som förbättring i objektfunktionen när en nod delas:
+  \[
+    \text{Gain} = \frac{1}{2} \left[ \frac{G_L^2}{H_L + \lambda} + \frac{G_R^2}{H_R + \lambda} - \frac{(G_L + G_R)^2}{H_L + H_R + \lambda} \right] - \gamma
+  \]
+
+  \textbf{Split görs om gain är positiv och tillräckligt stor.}
+\end{frame}
+
+\begin{frame}{Översikt av XGBoost-algoritmen}
+  \begin{itemize}
+    \item Starta med en initial modell (t.ex. en konstant prediktion).
+    \item Upprepa för varje boosting-runda:
+    \begin{itemize}
+      \item Beräkna gradienter och hessianer för varje observation.
+      \item Bygg ett nytt beslutsträd som approximerar dessa derivator.
+      \item Optimera varje split med hjälp av en objektfunktion som inkluderar regularisering.
+      \item Beräkna vikter för varje löv i trädet.
+    \end{itemize}
+    \item Lägg till det nya trädet i den befintliga modellen.
+    \item Fortsätt tills ett stoppkriterium uppfylls (t.ex. antal träd eller ingen förbättring).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Regulariseringens roll i XGBoost}
+  \begin{itemize}
+    \item Regularisering används för att kontrollera modellens komplexitet och minska risken för överanpassning.
+    \item I XGBoost införs regularisering direkt i objektfunktionen, vilket påverkar hur träd byggs.
+    \item Två typer av regularisering används:
+    \begin{itemize}
+      \item \textbf{L2-penalitet} på lövvikterna – straffar stora värden och gör modellen mer stabil.
+      \item \textbf{Strukturstraff} – straffar träd med många löv för att föredra enklare modeller.
+    \end{itemize}
+    \item Regularisering påverkar både hur splitar väljs och hur lövvikter beräknas.
+    \item Genom att justera hyperparametrar som \texttt{lambda} och \texttt{gamma} kan man styra regulariseringens styrka.
+  \end{itemize}
+\end{frame}
+
+\end{document}

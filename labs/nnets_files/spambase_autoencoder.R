@@ -1,14 +1,15 @@
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
 # läs in paket
-library(keras3)
+#library(keras3)
+library(keras)
 library(GGally)
 library(Matrix)
 library(caret)
 library(randomForest)
 
-source("https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/class_evaluation.R")
-source("https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/class_evaluation_keras.R")
+source("https://raw.githubusercontent.com/STIMALiU/732G57_ML/master/labs/class_evaluation.R")
+source("https://raw.githubusercontent.com/STIMALiU/732G57_ML/master/labs/class_evaluation_keras.R")
 
 
 #-------------------------------------------------------------------------------
@@ -22,7 +23,7 @@ source("https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/class_e
 #-------------------------------------------------------------------------------
 # info om data: https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/Email_Spam_dataset_info.pdf
 
-D<-read.csv2(file = "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/data/spambase.csv")
+D<-read.csv2(file = "https://raw.githubusercontent.com/STIMALiU/732G57_ML/master/data/spambase.csv")
 colnames(D)
 D2<-D
 
@@ -72,7 +73,7 @@ set.seed(4654)
 tree_model<-randomForest(formula= Spam~.,data=D3,ntree=100,mtry=57/3)
 # träffsäkerhet:
 mean(predict(tree_model)==D3$Spam)
-
+varImpPlot(tree_model)
 #-------------------------------------------------------------------------------
 
 
@@ -180,13 +181,19 @@ autoencoder_model <- keras_model(inputs = input_layer, outputs = decoder)
 autoencoder_model %>% compile(
   loss = 'mean_squared_error',
   optimizer = optimizer_adam(learning_rate=0.01),
-  metrics = c() 
+  metrics = c("mse") 
 )
+
+
 
 summary(autoencoder_model)
 #plot(autoencoder_model,show_shapes = TRUE)
 
-
+autoencoder_model %>% compile(
+  loss = 'mean_squared_error',
+  optimizer = optimizer_adam(learning_rate=0.01),
+  metrics = c("mse") 
+)
 set_random_seed(seed=753)
 #set_random_seed(seed=3)
 history <- autoencoder_model %>% fit(
@@ -197,6 +204,19 @@ history <- autoencoder_model %>% fit(
   batch_size = 128,
   validation_split = .2,
 )
+
+history <- autoencoder_model %>% fit(
+  x = train_data, 
+  y = train_data, 
+  epochs = 50, 
+  shuffle = TRUE, 
+  batch_size = 128,
+  validation_split = 0.2,
+  callbacks = NULL
+)
+
+
+
 #plot(history) + theme_bw()
 
 X_hat<-autoencoder_model %>% predict(x = train_data)
