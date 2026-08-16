@@ -47,7 +47,7 @@
 \begin{frame}{Introduktion - Kursupplägg}
     \begin{itemize}
         \item Lärare och examinator: Josef Wilzén, mail: josef.wilzen@liu.se
-        \item Ny kurs! Ersätter 732G12 Data-Mining
+        \item Ny-ish kurs från 2025! Ersätter 732G12 Data-Mining
         \item Struktur:  \href{https://www.ida.liu.se/~732G57/info/courseinfo.sv.shtml}{Kurshemsidan}, Lisam, Teams
         \item Kurslitteratur
         \item Upplägg: 
@@ -86,19 +86,15 @@
     
 \end{frame}
 
-\begin{frame}{Introduktion - Kursutvärdering 2023}
+\begin{frame}{Kursutvärdering 2025}
     \begin{itemize}
-        \item Antal respondenter: 20
-        \item Antal svar: 13 ($65\%$)
-        \item Helhetsbetyg: $4,62$
+        \item Antal respondenter: 24
+        \item Antal svar: 9 ($38\%$)
+        \item Helhetsbetyg: $4,11$
         \item Förändringar till detta år:
         \begin{itemize}
-            \item Ny kurs 2025
-            \begin{itemize}
-                \item 1-2 nya föreläsningar
-                \item Ev mindre förändingar på labbar/föreläsningar/projekt
-            \end{itemize}
-            
+            \item Visa förändringar i övningsuppgifter/föreläsningar
+            \item Visa förändringar i projektet
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -107,11 +103,11 @@
 \begin{frame}{Introduktion - Bonuspoäng}
     \begin{itemize}
         \item Möjligt att ha 2 bonuspoäng på tentamen.
-        \item Krav: Delta aktivt på 9 av 14 datorlaborationern 
+        \item Krav: Delta aktivt på 10 av 15 datorlaborationer 
         \item Delta aktivt innebär:
         \begin{itemize}
             \item Vara på plats och jobba med kursen.
-            \item Ställa en fråga och visa upp en lösning för läraren.
+            \item Ställa en fråga eller visa upp en lösning för läraren.
         \end{itemize}
         \item Använda bonuspoängen:
         \begin{itemize}
@@ -133,6 +129,18 @@
           \end{itemize}
     \end{itemize}
 \end{frame}
+
+\begin{frame}{Introduktion - Projektarbete}
+    Grov tidsplan:
+    \begin{itemize}
+        \item Vecka 37: Anmälan till grupper 
+        \item Vecka 38: Datainlämning
+        \item Vecka 39 och framåt: Projeket - huvudsakligt arbete
+        \item Vecka 43: Seminarium och inlämning av slutgilltig rapport
+    \end{itemize}
+\end{frame}
+
+
 
 \begin{frame}{Introduktion - Förkunskaper}
     Vad behöhver ni ha med er?
@@ -160,46 +168,22 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{Introduktion - Vad är statistik}
+
+\end{frame}
 
 \begin{frame}{Introduktion - Vad är statistik}
     \begin{bluebox}
         \myheading{Från SCB:}
         Med statistik menas vetenskapen om metoder för insamling, bearbetning, redovisning och analys av data. Statistik är också den siffermässiga beskrivningen av en viss företeelse, till exempel i tabellform. Statistik har alltså två betydelser: dels metodiken eller processen, dels informationen eller själva produkten.
     \end{bluebox}
+    \vspace{1.5cm}
+     \textbf{Statistisk modellering}: Vad är det? Hur går det till?
 \end{frame}
 
-\begin{frame}{Introduktion - Statistisk modellering}
-    \begin{itemize}
-        \item Börjar med data som vi vill analysera.
-        \item Konstruerar en modell som beskriver något samband.
-        \item Osäkerhet/slumptal kan finnas i problemet och ska vara med i modellen.
-        \item Beskriv vår modell matematiskt med fördelningar och ekvationer.
-        \item Härled och implementera parameterskattningar.
-        \item Använd vår modell för inferens och predikation.
-    \end{itemize}
-\end{frame}
 
-\begin{frame}{Intoduktion - Exempel: Linjär regression}
-    Vi har respons $\bf{y}$ och förklarande variabler $\bf{X}$.
 
-    Vi antar ett linjärt samband mellan $\bf{y}$ och $\bf{X}$.
 
-    Deterministisk modell:
-    \begin{equation*}
-        \bf{y} = \bf{X} \beta.
-    \end{equation*}
-
-    Stokastisk modell:
-    \begin{equation*}
-        \bf{y} = \bf{X} \beta + \boldsymbol{\varepsilon}, \qquad \boldsymbol{\varepsilon} \sim \mathcal{N}(0, \sigma^2_{\varepsilon}).
-    \end{equation*}
-
-    Vi kan skatta parametrar med $\hat{\beta} = (\bf{X}^\top \bf{X})^{-1}\bf{X}^{\top} \bf{y}$
-
-    Inferens genom att konstruera test eller konfidensintervall
-
-    Predikation genom att beräkna respons $\hat{y}$ för nya värden $\bf{X}_{\text{test}}$.
-\end{frame}
 
 \begin{frame}{Introduktion - Maskininlärning}
     \begin{bluebox}
@@ -224,19 +208,19 @@
     ''Statistical learning'' $\approx$ Maskininlärning.
 \end{frame}
 
-\begin{frame}{Introduktion - Diskussion}
+\begin{frame}{Analysprocessen}
+    \includegraphics[width = \textwidth]{figs/analys1.png}
+\end{frame}
+
+
+\begin{frame}{ Diskussion}
     Bilda grupper om 3 och diskutera er fram till två stora eller komplexa datamängder, beskriv vad det är för mängder och vilken information som kan finnas.
 \end{frame}
 
-\begin{frame}{Introduktion - Exempel på stora datamaterial}
-    \begin{itemize}
-        \item Transaktionsdatabaser
-        \item Hälsoregister
-        \item Sociala nätverk
-        \item Väder / klimatdata
-        \item Börsdata
-        \item Korpus
-    \end{itemize}
+\begin{frame}{Exempel på stora/komplexa datamaterial}
+
+  \includegraphics[width = \textwidth]{figs/stora_data3.png}
+  
 \end{frame}
 
 \begin{frame}{Introduktion - Dataset}
@@ -251,74 +235,53 @@
     \end{tabular}
     \begin{itemize}
         \item Rader är objekt, record, observation, transaktion etc.
-        \item Kolumner är variabler, attribut, kovariat etc.
-        \item Finns andra format, t.ex. tidsserier, texter, bilder etc.
+        \item Kolumner är variabler, attribut, kovariat, feature etc.
+        \item Skalan på variablerna: Nominell, Ordinal, Intervall/kvot
+        \item Finns andra format, t.ex. tidsserier, texter, bilder, grafer etc.
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Introduktion - Dataskalor}
-    Finns många olik dataskalor:
-    \begin{itemize}
-        \item Nominell
-        \begin{itemize}
-            \item Ex. "RÖD", "GRÖN", "BLÅ"
-        \end{itemize}
-        \item Binär
-        \begin{itemize}
-            \item 0 eller 1
-        \end{itemize}
-        \item Ordinal
-        \begin{itemize}
-            \item Ex. "LÅG", "MELLAN", "HÖG"
-        \end{itemize}
-        \item Intervall/kvot
-        \begin{itemize}
-            \item Ex. $[0,1], \mathbb{R}, \mathbb{R}^{+}$
-        \end{itemize}
-    \end{itemize}
+
+
+
+
+\begin{frame}{Samla in data}
+     \includegraphics[width = \textwidth]{figs/samla_in_data2.png}
 \end{frame}
 
-\begin{frame}{Analysprocessen}
-    \myheading{Exempel på processen:}
-    \begin{enumerate}
-        \item Problemformulering
-        \item Samla in data
-        \item Datahantering
-        \begin{itemize}
-            \item Gå från rådata till användbar data
-            \item Ta bort sakanade värden, outliers, skalning
-            \item Kolla på metadata, plottar
-        \end{itemize}
-        \item Modellering
-        \begin{itemize}
-            \item Skatta modeller och gör predikationer
-        \end{itemize}
-        \item Evaluering
-        \begin{itemize}
-            \item Jämför med problemformuleringen!
-        \end{itemize}
-    \end{enumerate}
-\end{frame}
 
 \begin{frame}{Datahantering}
-    \begin{itemize}
-        \item Saknade värden
-        \begin{itemize}
-            \item Eliminera objekt eller attribut
-            \item Skatta saknade värden (imputering)
-            \item Ignorera saknade värden
-        \end{itemize}
-        \item Förbearbeta data
-        \begin{itemize}
-            \item Aggregering
-            \item Urval
-            \item Reducera dimensionalitet
-            \item Diskretisering
-            \item Variabelomvandling
-            \item Skalning
-        \end{itemize}
-    \end{itemize}
+    \includegraphics[width = \textwidth]{figs/datahantering1.png}
 \end{frame}
+
+\begin{frame}{Introduktion - Statistisk modellering}
+
+    \includegraphics[width = \textwidth]{figs/analysprocessen1.png}
+
+\end{frame}
+
+\begin{frame}{Intoduktion - Exempel: Linjär regression}
+    Vi har respons $\bf{y}$ och förklarande variabler $\bf{X}$.
+
+    Vi antar ett linjärt samband mellan $\bf{y}$ och $\bf{X}$.
+
+    Deterministisk modell:
+    \begin{equation*}
+        \bf{y} = \bf{X} \beta.
+    \end{equation*}
+
+    Stokastisk modell:
+    \begin{equation*}
+        \bf{y} = \bf{X} \beta + \boldsymbol{\varepsilon}, \qquad \boldsymbol{\varepsilon} \sim \mathcal{N}(0, \sigma^2_{\varepsilon}).
+    \end{equation*}
+
+    Vi kan skatta parametrar med $\hat{\beta} = (\bf{X}^\top \bf{X})^{-1}\bf{X}^{\top} \bf{y}$
+
+    Inferens genom att konstruera test eller konfidensintervall
+
+    Predikation genom att beräkna respons $\hat{y}$ för nya värden $\bf{X}_{\text{test}}$.
+\end{frame}
+
 
 \begin{frame}{Metoder}
     \begin{itemize}
