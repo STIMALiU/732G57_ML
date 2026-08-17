@@ -499,6 +499,104 @@
 \end{frame}
 
 
+\begin{frame}{Parametrar och hyperparametrar}
+
+\begin{columns}
+
+\column{0.48\textwidth}
+
+\begin{block}{Parametrar}
+Värden som lärs automatiskt från data när modellen tränas.
+
+\vspace{0.3cm}
+
+\[
+\text{Data}
+\longrightarrow
+\text{Modell}
+\longrightarrow
+\text{Parametrar}
+\]
+
+\vspace{0.3cm}
+
+Bestämmer hur modellen anpassas till data.
+
+\end{block}
+
+\column{0.48\textwidth}
+
+\begin{block}{Hyperparametrar}
+Inställningar som väljs innan modellen tränas.
+
+\vspace{0.3cm}
+
+\[
+\text{Hyperparametrar}
+\longrightarrow
+\text{Modell}
+\]
+
+\vspace{0.3cm}
+
+Styr modellens flexibilitet och inlärning.
+
+\end{block}
+
+\end{columns}
+
+\vspace{0.4cm}
+
+\begin{alertblock}{Viktig skillnad}
+Parametrar skattas från data.
+
+Hyperparametrar väljs av användaren och används för att styra modellens egenskaper eller träningsprocessen.
+\end{alertblock}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Hyperparametersökning}
+
+\begin{columns}
+
+\column{0.48\textwidth}
+
+\begin{block}{Grid Search}
+\begin{itemize}
+\item Definiera ett antal kandidatvärden.
+\item Testa alla kombinationer.
+\item Jämför modellerna.
+\item Välj den bästa.
+\end{itemize}
+\end{block}
+
+\column{0.48\textwidth}
+
+\begin{block}{Random Search}
+\begin{itemize}
+\item Definiera ett sökområde.
+\item Slumpa ett antal kombinationer.
+\item Jämför modellerna.
+\item Välj den bästa.
+\end{itemize}
+\end{block}
+
+\end{columns}
+
+\vspace{0.5cm}
+
+\begin{alertblock}{Mål}
+Hitta hyperparametrar som ger bra generalisering till ny data.
+\end{alertblock}
+
+
+\end{frame}
+
+
+
 
 
 \begin{frame}{Bias, varians och brus}
