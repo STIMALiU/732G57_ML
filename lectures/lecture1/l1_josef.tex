@@ -461,23 +461,6 @@
 
 \end{frame}
 
-\begin{frame}{Leave-one-out cross-validation}
-    Givet ett antal modeller görs följande för varje modell:
-    \begin{enumerate}
-        \item Ta bort en observation och anpassa modellen till återstående data.
-        \item Använd den anpassade modellen för att beräkna felet på den borttagna observationen.
-        \item Upprepa 1 och 2 för alla datapunkter. Beräkna genomsnittet för felfunktionen över alla observationer.
-    \end{enumerate}
-    Välj modellen med lägs genomsnittlig felfunktion.
-
-    OBS! Om vi har $n$ observationer måste vi anpassa varje modell $n$ gånger.
-\end{frame}
-
-\begin{frame}{Leave-one-out cross-validation}
-    \begin{center}
-        \includegraphics[height=0.8\textheight]{figs/cv1.png}
-    \end{center}
-\end{frame}
 
 \begin{frame}{K-fold cross-validation}
     Dela upp datan i $k$ olika block. Givet ett antal modeller görs följande för varje modell:
@@ -496,6 +479,27 @@
         \includegraphics[height=0.8\textheight]{figs/cv2.png}
     \end{center}
 \end{frame}
+
+\begin{frame}{Leave-one-out cross-validation}
+    Givet ett antal modeller görs följande för varje modell:
+    \begin{enumerate}
+        \item Ta bort en observation och anpassa modellen till återstående data.
+        \item Använd den anpassade modellen för att beräkna felet på den borttagna observationen.
+        \item Upprepa 1 och 2 för alla datapunkter. Beräkna genomsnittet för felfunktionen över alla observationer.
+    \end{enumerate}
+    Välj modellen med lägs genomsnittlig felfunktion.
+
+    OBS! Om vi har $n$ observationer måste vi anpassa varje modell $n$ gånger.
+\end{frame}
+
+\begin{frame}{Leave-one-out cross-validation}
+    \begin{center}
+        \includegraphics[height=0.8\textheight]{figs/cv1.png}
+    \end{center}
+\end{frame}
+
+
+
 
 \begin{frame}{Bias, varians och brus}
     Givet en modell
