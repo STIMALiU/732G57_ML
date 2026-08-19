@@ -71,7 +71,6 @@
 
     \begin{itemize}
         \item Idé att hindra modellen att bli för komplex.
-        \item Regularisering $\approx$ "begränsning"
         \item Ger förhoppningsvis bättre generaliseringsfel.
         \item \textbf{Mycket viktigt tema inom maskininlärning}
         \item Görs på olika sätt för olika modeller.
@@ -108,557 +107,6 @@
     \end{itemize}
 
 \end{frame}
-
-
-\begin{frame}{Logistisk regression}
-
-\begin{itemize}
-    \item Responsvariabeln antas vara Bernoullifördelad:
-    \[
-        y_i \sim \operatorname{Bernoulli}(p_i),
-        \qquad
-        \mathbb{P}(y_i=1)=p_i.
-    \]
-
-    \item Logitlänken kopplar sannolikheten till den linjära prediktorn:
-    \[
-        \log\left(\frac{p_i}{1-p_i}\right)
-        =
-        \boldsymbol{x}_i^\top\boldsymbol{\beta}.
-    \]
-
-    \item Detta ger
-    \[
-        p_i
-        =
-        \frac{\exp(\boldsymbol{x}_i^\top\boldsymbol{\beta})}
-        {1+\exp(\boldsymbol{x}_i^\top\boldsymbol{\beta})}.
-    \]
-
-    \item Likelihoodfunktionen för oberoende observationer är
-    \[
-        L(\boldsymbol{\beta})
-        =
-        \prod_{i=1}^{n}
-        p_i^{y_i}(1-p_i)^{1-y_i}.
-    \]
-
-    \item Parametrarna skattas genom att maximera likelihoodfunktionen:
-    \[
-        \widehat{\boldsymbol{\beta}}
-        =
-        \arg\max_{\boldsymbol{\beta}} L(\boldsymbol{\beta}).
-    \]
-\end{itemize}
-
-\end{frame}
-
-
-
-\begin{frame}{Skattning i logistisk regression}
-
-Parametrarna skattas genom att maximera log-likelihoodfunktionen:
-
-\[
-\widehat{\boldsymbol{\beta}}
-=
-\arg\max_{\boldsymbol{\beta}}
-\ell(\boldsymbol{\beta}),
-\]
-
-där
-
-\[
-\ell(\boldsymbol{\beta})
-=
-\sum_{i=1}^{n}
-\left[
-y_i\log(p_i)
-+
-(1-y_i)\log(1-p_i)
-\right],
-\]
-
-och
-
-\[
-p_i
-=
-\frac{\exp(\boldsymbol{x}_i^\top\boldsymbol{\beta})}
-{1+\exp(\boldsymbol{x}_i^\top\boldsymbol{\beta})}.
-\]
-
-
-
-
-\end{frame}
-
-
-\begin{frame}{Skattning i logistisk regression}
-
-Optimeringsalgoritmer formuleras ofta för minimering. Därför kan vi
-minimera den negativa log-likelihoodfunktionen:
-
-\[
--\ell(\boldsymbol{\beta})
-=
--\sum_{i=1}^{n}
-\left[
-y_i\log(p_i)
-+
-(1-y_i)\log(1-p_i)
-\right].
-\]
-
-
-\end{frame}
-
-
-\begin{frame}{Skattning i logistisk regression}
-
-Vanliga optimeringsmetoder:
-
-\begin{itemize}
-    \item Gradient descent och varianter av gradient descent
-    \item Newton--Raphsons metod $\rightarrow$ använder hessianen
-    \item Fisher scoring $\rightarrow$ använder förväntade hessianen
-    \item Iteratively Reweighted Least Squares (IRLS)
-\end{itemize}
-
-\begin{block}{Logistisk regression i R}
-\texttt{glm(..., family = binomial)} använder iterativt viktade
-minsta kvadratmetoden (IRLS), vilket för logistisk regression
-motsvarar Fisher scoring.
-\end{block}
-
-\end{frame}
-
-
-
-\begin{frame}{Multinomial logistisk regression: data}
-
-    Antag att responsvariabeln har tre klasser:
-
-    \[
-        Y_i \in \{1,2,3\},
-        \qquad
-        K=3,
-    \]
-
-    och att vi har fyra förklarande variabler:
-
-    \[
-        x_1,\;x_2,\;x_3,\;x_4.
-    \]
-
-    \medskip
-
-    För tre observationer kan designmatrisen, inklusive intercept, vara
-
-    \[
-        X
-        =
-        \begin{pmatrix}
-            1 & 1 & 0 & 2 & -1 \\
-            1 & 0 & 1 & 1 &  0 \\
-            1 & 1 & 1 & 0 &  2
-        \end{pmatrix}.
-    \]
-
-    \begin{itemize}
-        \item Första kolumnen motsvarar interceptet.
-        \item Övriga kolumner motsvarar \(x_1,x_2,x_3,x_4\).
-        \item Varje rad motsvarar en observation.
-    \end{itemize}
-
-\end{frame}
-
-
-
-\begin{frame}{One-hot-kodning av responsvariabeln}
-
-    Antag att de tre observationerna tillhör klasserna
-
-    \[
-        \boldsymbol{y}
-        =
-        \begin{pmatrix}
-            1 \\
-            2 \\
-            3
-        \end{pmatrix}
-        \qquad
-        \Longrightarrow
-        \qquad
-        Y
-        =
-        \begin{pmatrix}
-            1 & 0 & 0 \\
-            0 & 1 & 0 \\
-            0 & 0 & 1
-        \end{pmatrix}.
-    \]
-
-    Kolumnerna i \(Y\) motsvarar klasserna \(k=1,2,3\).
-
-    \medskip
-
-    Elementen i den one-hot-kodade responsmatrisen definieras som
-
-    \[
-        y_{ik}
-        =
-        \begin{cases}
-            1, & \text{om observation \(i\) tillhör klass \(k\),} \\
-            0, & \text{annars.}
-        \end{cases}
-    \]
-
-    \begin{itemize}
-        \item Varje rad motsvarar en observation.
-        \item Varje kolumn motsvarar en klass.
-        \item Varje rad summerar till ett.
-    \end{itemize}
-
-\end{frame}
-
-
-
-
-
-\begin{frame}{Referensklass-formulering}
-
-    En vanlig formulering väljer en av de \(K\) klasserna som
-    referensklass.
-
-    \medskip
-
-    Om klass \(k=3\) är referensklass modelleras
-
-    \[
-        \log
-        \left(
-            \frac{P(Y_i=1\mid\boldsymbol{x}_i)}
-                 {P(Y_i=3\mid\boldsymbol{x}_i)}
-        \right)
-        =
-        \beta_{01}
-        +
-        \boldsymbol{x}_i^{\mathsf T}\boldsymbol{\beta}_1,
-    \]
-
-    och
-
-    \[
-        \log
-        \left(
-            \frac{P(Y_i=2\mid\boldsymbol{x}_i)}
-                 {P(Y_i=3\mid\boldsymbol{x}_i)}
-        \right)
-        =
-        \beta_{02}
-        +
-        \boldsymbol{x}_i^{\mathsf T}\boldsymbol{\beta}_2.
-    \]
-
-    \begin{itemize}
-        \item Endast \(K-1\) linjära prediktorer behöver skattas.
-        \item Koefficienterna tolkas relativt referensklassen.
-        \item Ett byte av referensklass ändrar koefficienterna, men inte
-              modellens skattade klassannolikheter.
-    \end{itemize}
-
-\end{frame}
-
-
-\begin{frame}{Softmax-formulering}
-
-    En linjär prediktor används för varje klass:
-
-    \[
-        \eta_{ik}
-        =
-        \beta_{0k}
-        +
-        \boldsymbol{x}_i^{\mathsf T}\boldsymbol{\beta}_k,
-        \qquad
-        k=1,\ldots,K.
-    \]
-
-    Klassannolikheterna beräknas med softmax-funktionen:
-
-    \[
-        p_{ik}
-        =
-        P(Y_i=k\mid\boldsymbol{x}_i)
-        =
-        \frac{\exp(\eta_{ik})}
-             {\displaystyle
-              \sum_{j=1}^{K}\exp(\eta_{ij})}.
-    \]
-
-    Softmax ger giltiga klassannolikheter:
-
-    \[
-        0<p_{ik}<1,
-        \qquad
-        \sum_{k=1}^{K}p_{ik}=1.
-    \]
-  \medskip
-  I \texttt{glmnet} använd \texttt{family = "multinomial"} En koefficientvektor
-        skattas för varje klass.
-
-
-\end{frame}
-
-\begin{frame}{Exempel på skattade koefficienter}
-
-    Antag att följande koefficientmatris har skattats:
-
-    \[
-        \widehat{\boldsymbol{\Theta}}
-        =
-        \begin{array}{c|rrr}
-                            & k=1  & k=2  & k=3  \\ \hline
-            \text{Intercept} & 0.4  & -0.2 & -0.2 \\
-            x_1              & 0.6  & -0.3 & -0.3 \\
-            x_2              & -0.3 & 0.5  & -0.2 \\
-            x_3              & 0.2  & -0.4 & 0.2  \\
-            x_4              & -0.1 & 0.1  & 0
-        \end{array}.
-    \]
-
-    Varje kolumn innehåller koefficienterna för en klass:
-
-    \[
-        \widetilde{\boldsymbol{\beta}}_k
-        =
-        \begin{pmatrix}
-            \beta_{0k} \\
-            \beta_{1k} \\
-            \vdots \\
-            \beta_{4k}
-        \end{pmatrix},
-        \qquad
-        k=1,2,3.
-    \]
-
-
-\end{frame}
-
-
-\begin{frame}{Exempel på skattade koefficienter}
-
-    
-
-    De linjära prediktorerna för observation \(i\) blir
-
-    \[
-        \widehat{\boldsymbol{\eta}}_i
-        =
-        \widehat{\boldsymbol{\Theta}}^{\mathsf T}
-        \widetilde{\boldsymbol{x}}_i,
-        \qquad
-        \widetilde{\boldsymbol{x}}_i
-        =
-        \begin{pmatrix}
-            1 & x_{i1} & x_{i2} & x_{i3} & x_{i4}
-        \end{pmatrix}^{\mathsf T}.
-    \]
-
-\end{frame}
-
-
-\begin{frame}{Beräkning av klassannolikheter}
-
-    Betrakta en observation med
-
-    \[
-        \widetilde{\boldsymbol{x}}_i
-        =
-        \begin{pmatrix}
-            1 & 1 & 0 & 1 & 0
-        \end{pmatrix}^{\mathsf T}.
-    \]
-
-    De linjära prediktorerna beräknas som
-
-    \[
-        \widehat{\boldsymbol{\eta}}_i
-        =
-        \widehat{\boldsymbol{\Theta}}^{\mathsf T}
-        \widetilde{\boldsymbol{x}}_i
-        =
-        \begin{pmatrix}
-            1.2 \\
-            -0.9 \\
-            -0.3
-        \end{pmatrix}.
-    \]
-
-    Softmax-funktionen ger
-
-    \[
-        \widehat{p}_{ik}
-        =
-        \frac{\exp(\widehat{\eta}_{ik})}
-             {\displaystyle
-              \sum_{j=1}^{3}\exp(\widehat{\eta}_{ij})}.
-    \]
-
-    
-\end{frame}
-
-
-\begin{frame}{Beräkning av klassannolikheter}
-
-    
-
-    För observation \(i\) får vi därför
-
-    \[
-        \begin{pmatrix}
-            \widehat{p}_{i1} \\
-            \widehat{p}_{i2} \\
-            \widehat{p}_{i3}
-        \end{pmatrix}
-        =
-        \frac{1}
-             {e^{1.2}+e^{-0.9}+e^{-0.3}}
-        \begin{pmatrix}
-            e^{1.2} \\
-            e^{-0.9} \\
-            e^{-0.3}
-        \end{pmatrix}
-        \approx
-        \begin{pmatrix}
-            0.743 \\
-            0.091 \\
-            0.166
-        \end{pmatrix}.
-    \]
-
-    Modellen predikterar klass \(1\), eftersom
-
-    \[
-        \widehat{p}_{i1}
-        =
-        \max_{k\in\{1,2,3\}}\widehat{p}_{ik}.
-    \]
-
-\end{frame}
-
-
-\begin{frame}{Hur påverkar koefficienterna prediktionen?}
-
-    Varje klass \(k\) har en egen linjär prediktor:
-
-    \[
-        \eta_{ik}
-        =
-        \beta_{0k}
-        +
-        \sum_{j=1}^{p} x_{ij}\beta_{jk}.
-    \]
-
-    \begin{itemize}
-        \item En positiv \(\beta_{jk}\) innebär att ett större värde på
-              \(x_j\) ökar den linjära prediktorn för klass \(k\).
-
-        \item En negativ \(\beta_{jk}\) innebär att ett större värde på
-              \(x_j\) minskar den linjära prediktorn för klass \(k\).
-
-        \item Softmax jämför de linjära prediktorerna för alla klasser:
-              \[
-                  p_{ik}
-                  =
-                  \frac{\exp(\eta_{ik})}
-                       {\displaystyle
-                        \sum_{r=1}^{K}\exp(\eta_{ir})}.
-              \]
-
-        \item En klass med högre \(\eta_{ik}\) får en högre skattad
-              sannolikhet relativt övriga klasser.
-    \end{itemize}
-
-    
-
-\end{frame}
-
-
-\begin{frame}{Hur påverkar koefficienterna prediktionen?}
-
-
-
-    \begin{block}{Predikterad klass}
-        Observation \(i\) klassificeras till den klass som har högst
-        skattad sannolikhet:
-        \[
-            \widehat{y}_i
-            =
-            \arg\max_{k\in\{1,\ldots,K\}}
-            \widehat{p}_{ik}.
-        \]
-    \end{block}
-
-\end{frame}
-
-\begin{frame}{Log-likelihood}
-
-    För observation \(i\) och klass \(k\) är
-
-    \[
-        y_{ik}
-        =
-        \begin{cases}
-            1, & \text{om observation \(i\) tillhör klass \(k\),} \\
-            0, & \text{annars.}
-        \end{cases}
-    \]
-
-    Likelihoodfunktionen är
-
-    \[
-        L(\boldsymbol{\Theta})
-        =
-        \prod_{i=1}^{n}
-        \prod_{k=1}^{K}
-        p_{ik}^{\,y_{ik}}.
-    \]
-
-    Log-likelihoodfunktionen blir
-
-    \[
-        \ell(\boldsymbol{\Theta})
-        =
-        \sum_{i=1}^{n}
-        \sum_{k=1}^{K}
-        y_{ik}\log(p_{ik}).
-    \]
-
-\end{frame}
-
-
-\begin{frame}{Log-likelihood}
-
-
-
-    Parametrarna skattas genom att maximera log-likelihooden:
-
-    \[
-        \widehat{\boldsymbol{\Theta}}
-        =
-        \arg\max_{\boldsymbol{\Theta}}
-        \ell(\boldsymbol{\Theta}).
-    \]
-
-    \begin{block}{One-hot-kodning}
-        Varje observation bidrar endast med logaritmen av den
-        skattade sannolikheten för observationens faktiska klass.
-    \end{block}
-
-\end{frame}
-
 
 \begin{frame}{Förväxlingsmatris}
 \begin{center}
@@ -734,49 +182,49 @@ motsvarar Fisher scoring.
 
 
 
-% \begin{frame}{Generaliserade linjära modeller}
-% 
-%     Antag att data $\mathbf{y} = y_1, y_2, \ldots, y_n$ är oberoende observationer från sannolikhetsfördelning från \href{https://en.wikipedia.org/wiki/Exponential_family}{exponentialfamiljen}.
-% 
-%     Vi har en linjär prediktor $\mathbf{X} \beta$ samt en länkfunktion $g$ som kopplar ihop prediktorn med medelvärdet $\mu$ genom
-%     \begin{equation*}
-%         g(\mu) = \mathbf{X} \beta.
-%     \end{equation*}
-%     
-%     Tar "vanlig" linjär regression till andra typer av responsvariabler
-%     \begin{itemize}
-%         \item Kontinuerlig: Normal, t, gamma, log-normal
-%         \item Binär: Logistisk regression
-%         \item Nominell: Multinomiell logistisk regression
-%         \item Frekvensdata: Poissonregression, Negativ binomialregression
-%     \end{itemize}
-% \end{frame}
-% 
-% \begin{frame}{Generaliserade linjära modeller - Exempel}
-% 
-%     \myheading{Linjär regression}
-%     \begin{itemize}
-%         \item Likelihood: Normal
-%         \item L\"ankfunktion: identitetsfunktionen
-%         \item SKattas genom att minimera:
-%         \begin{equation*}
-%             \operatorname{RSS} = \sum_{i=1}^{n} \left( y_i - \beta_0 - \sum_{j=1}^{p} \beta_j x_{ij} \right)^2
-%         \end{equation*}
-%     \end{itemize}
-% 
-% \end{frame}
-% 
-% \begin{frame}{Generaliserade linjära modeller - Exempel}
-%     \myheading{Logistisk regression}
-%     \begin{itemize}
-%         \item Likelihood: Bernoulli ($y$ kan vara 0 eller 1, $\mathbb{P}(y = 1) = p$)
-%         \item L\"ankfunktion: Logit,
-%         \begin{equation*}
-%             g(\mu) = \log\left( \frac{\mu}{1-\mu} \right)
-%         \end{equation*}
-%         \item Skattas med att maximera likelihoodfunktionen (MLE)
-%     \end{itemize}
-% \end{frame}
+\begin{frame}{Generaliserade linjära modeller}
+
+    Antag att data $\mathbf{y} = y_1, y_2, \ldots, y_n$ är oberoende observationer från sannolikhetsfördelning från \href{https://en.wikipedia.org/wiki/Exponential_family}{exponentialfamiljen}.
+
+    Vi har en linjär prediktor $\mathbf{X} \beta$ samt en länkfunktion $g$ som kopplar ihop prediktorn med medelvärdet $\mu$ genom
+    \begin{equation*}
+        g(\mu) = \mathbf{X} \beta.
+    \end{equation*}
+    
+    Tar "vanlig" linjär regression till andra typer av responsvariabler
+    \begin{itemize}
+        \item Kontinuerlig: Normal, t, gamma, log-normal
+        \item Binär: Logistisk regression
+        \item Nominell: Multinomiell logistisk regression
+        \item Frekvensdata: Poissonregression, Negativ binomialregression
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Generaliserade linjära modeller - Exempel}
+
+    \myheading{Linjär regression}
+    \begin{itemize}
+        \item Likelihood: Normal
+        \item L\"ankfunktion: identitetsfunktionen
+        \item SKattas genom att minimera:
+        \begin{equation*}
+            \operatorname{RSS} = \sum_{i=1}^{n} \left( y_i - \beta_0 - \sum_{j=1}^{p} \beta_j x_{ij} \right)^2
+        \end{equation*}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Generaliserade linjära modeller - Exempel}
+    \myheading{Logistisk regression}
+    \begin{itemize}
+        \item Likelihood: Bernoulli ($y$ kan vara 0 eller 1, $\mathbb{P}(y = 1) = p$)
+        \item L\"ankfunktion: Logit,
+        \begin{equation*}
+            g(\mu) = \log\left( \frac{\mu}{1-\mu} \right)
+        \end{equation*}
+        \item Skattas med att maximera likelihoodfunktionen (MLE)
+    \end{itemize}
+\end{frame}
 
 % \begin{frame}{Generaliserade linjära modeller - Exempel}
 %     \myheading{Multinominell logistisk regression}
@@ -880,13 +328,13 @@ motsvarar Fisher scoring.
 
 \end{frame}
 
-% \begin{frame}{Best subset selection}
-%     \begin{nscenter}
-%         \includegraphics[width=\textwidth]{figs/best subset selection.png}
-%     \end{nscenter}
-%     Bild från kursboken "An Introduction to Statistical Learning with Applications in R".
-% 
-% \end{frame}
+\begin{frame}{Best subset selection}
+    \begin{nscenter}
+        \includegraphics[width=\textwidth]{figs/best subset selection.png}
+    \end{nscenter}
+    Bild från kursboken "An Introduction to Statistical Learning with Applications in R".
+
+\end{frame}
 
 \begin{frame}{Forward selection}
     \begin{nscenter}
@@ -896,13 +344,13 @@ motsvarar Fisher scoring.
 
 \end{frame}
 
-% \begin{frame}{Backward selection}
-%     \begin{nscenter}
-%         \includegraphics[width=\textwidth]{figs/Backward stepwise selection.png}
-%     \end{nscenter}
-%     Bild från kursboken "An Introduction to Statistical Learning with Applications in R".
-% 
-% \end{frame}
+\begin{frame}{Backward selection}
+    \begin{nscenter}
+        \includegraphics[width=\textwidth]{figs/Backward stepwise selection.png}
+    \end{nscenter}
+    Bild från kursboken "An Introduction to Statistical Learning with Applications in R".
+
+\end{frame}
 
 \begin{frame}{Krympning (Shrinkage)}
     
@@ -995,7 +443,7 @@ motsvarar Fisher scoring.
             \item Fåtal variabler med hög effektstorlek, resten nära 0.
         \end{itemize}
         \item Lasso kan vara lättare att tolka.
-        % \item Lättare att göra inferens på parameterarna i Ridge.
+        \item Lättare att göra inferens på parameterarna i Ridge.
         \item Vilken man ska välja får ofta avgöras empiriskt för specifika dataset.
         \item Finns många utökningar och varianter.
         \item $l^2$-norm och $l^1$-norm används som regularisering inom många olika modeller inom maskininlärning

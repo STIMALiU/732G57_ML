@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.18)  20 AUG 2025 13:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  19 AUG 2026 13:05
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -829,9 +829,9 @@ Language: english 2017/06/06 v3.3r English support from the babel system
 Package babel Info: Hyphen rules for 'canadian' set to \l@english
 (babel)             (\language0). Reported on input line 102.
 Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
-(babel)             (\language36). Reported on input line 105.
+(babel)             (\language20). Reported on input line 105.
 Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
-(babel)             (\language36). Reported on input line 108.
+(babel)             (\language20). Reported on input line 108.
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
@@ -1207,20 +1207,20 @@ File: ts1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ] [3
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 86.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 87.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 86.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 87.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 86.
+ut line 87.
 
 (/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
@@ -1230,48 +1230,29 @@ thkerncmss.
 
 ] [5
 
-]
-<figs/Screenshot at 2020-08-18 12-24-31.png, id=56, 1310.8975pt x 645.41125pt>
-File: figs/Screenshot at 2020-08-18 12-24-31.png Graphic file (type png)
-<use figs/Screenshot at 2020-08-18 12-24-31.png>
-Package pdftex.def Info: figs/Screenshot at 2020-08-18 12-24-31.png  used on in
-put line 128.
-(pdftex.def)             Requested size: 215.10196pt x 105.89737pt.
- [6
+] [6
 
- <./figs/Screenshot at 2020-08-18 12-24-31.png>]
-File: figs/Screenshot at 2020-08-18 12-24-31.png Graphic file (type png)
-<use figs/Screenshot at 2020-08-18 12-24-31.png>
-Package pdftex.def Info: figs/Screenshot at 2020-08-18 12-24-31.png  used on in
-put line 147.
-(pdftex.def)             Requested size: 215.10196pt x 105.89737pt.
-
-Overfull \vbox (4.51567pt too high) detected at line 147
- []
-
-[7
+] [7
 
 ] [8
 
 ] [9
 
 ]
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 201.
+Overfull \vbox (17.12445pt too high) detected at line 274
+ []
 
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 201.
-
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 201.
-
- [10
+[10
 
 ] [11
 
 ] [12
 
-] [13
+]
+Overfull \vbox (13.90854pt too high) detected at line 412
+ []
+
+[13
 
 ] [14
 
@@ -1282,90 +1263,131 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
 ] [17
 
 ]
-<figs/best subset selection.png, id=126, 1186.4325pt x 551.05875pt>
-File: figs/best subset selection.png Graphic file (type png)
-<use figs/best subset selection.png>
-Package pdftex.def Info: figs/best subset selection.png  used on input line 337
-.
-(pdftex.def)             Requested size: 307.28987pt x 142.72534pt.
- [18
+Overfull \vbox (0.30786pt too high) detected at line 586
+ []
 
- <./figs/best subset selection.png>]
-<figs/Forward stepwise selection.png, id=132, 1142.2675pt x 547.04375pt>
+[18
+
+] [19
+
+] [20
+
+] [21
+
+]
+<figs/Screenshot at 2020-08-18 12-24-31.png, id=151, 1310.8975pt x 645.41125pt>
+
+File: figs/Screenshot at 2020-08-18 12-24-31.png Graphic file (type png)
+<use figs/Screenshot at 2020-08-18 12-24-31.png>
+Package pdftex.def Info: figs/Screenshot at 2020-08-18 12-24-31.png  used on in
+put line 680.
+(pdftex.def)             Requested size: 215.10196pt x 105.89737pt.
+ [22
+
+ <./figs/Screenshot at 2020-08-18 12-24-31.png>]
+File: figs/Screenshot at 2020-08-18 12-24-31.png Graphic file (type png)
+<use figs/Screenshot at 2020-08-18 12-24-31.png>
+Package pdftex.def Info: figs/Screenshot at 2020-08-18 12-24-31.png  used on in
+put line 699.
+(pdftex.def)             Requested size: 215.10196pt x 105.89737pt.
+
+Overfull \vbox (4.51567pt too high) detected at line 699
+ []
+
+[23
+
+] [24
+
+] [25
+
+]
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 811.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 811.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 811.
+
+ [26
+
+] [27
+
+] [28
+
+] [29
+
+] [30
+
+]
+<figs/Forward stepwise selection.png, id=200, 1142.2675pt x 547.04375pt>
 File: figs/Forward stepwise selection.png Graphic file (type png)
 <use figs/Forward stepwise selection.png>
 Package pdftex.def Info: figs/Forward stepwise selection.png  used on input lin
-e 345.
+e 897.
 (pdftex.def)             Requested size: 307.28987pt x 147.16121pt.
- [19
+ [31
 
- <./figs/Forward stepwise selection.png>]
-<figs/Backward stepwise selection.png, id=139, 1154.3125pt x 541.02126pt>
-File: figs/Backward stepwise selection.png Graphic file (type png)
-<use figs/Backward stepwise selection.png>
-Package pdftex.def Info: figs/Backward stepwise selection.png  used on input li
-ne 353.
-(pdftex.def)             Requested size: 307.28987pt x 144.02211pt.
- [20
+ <./figs/Forward stepwise selection.png>] [32
 
- <./figs/Backward stepwise selection.png>] [21
-
-] [22
+] [33
 
 ]
-<figs/standardized ridge regression coefficients.png, id=155, 1283.79625pt x 67
+<figs/standardized ridge regression coefficients.png, id=217, 1283.79625pt x 67
 1.50874pt>
 File: figs/standardized ridge regression coefficients.png Graphic file (type pn
 g)
 <use figs/standardized ridge regression coefficients.png>
 Package pdftex.def Info: figs/standardized ridge regression coefficients.png  u
-sed on input line 392.
+sed on input line 944.
 (pdftex.def)             Requested size: 307.28987pt x 160.7248pt.
- [23
+ [34
 
- <./figs/standardized ridge regression coefficients.png>] [24
+ <./figs/standardized ridge regression coefficients.png>]
+[35
 
 ]
-<figs/standardized lasso coefficients.png, id=167, 1259.70625pt x 685.56125pt>
+<figs/standardized lasso coefficients.png, id=228, 1259.70625pt x 685.56125pt>
 File: figs/standardized lasso coefficients.png Graphic file (type png)
 <use figs/standardized lasso coefficients.png>
 Package pdftex.def Info: figs/standardized lasso coefficients.png  used on inpu
-t line 412.
+t line 964.
 (pdftex.def)             Requested size: 307.28987pt x 167.22649pt.
- [25
+ [36
 
  <./figs/standardized lasso coefficients.png>]
-Overfull \hbox (24.89474pt too wide) in paragraph at lines 424--424
+Overfull \hbox (24.89474pt too wide) in paragraph at lines 976--976
 [][]  
  []
 
-[26
+[37
 
 ]
-<figs/Contours of the error .png, id=179, 1279.78125pt x 901.3675pt>
+<figs/Contours of the error .png, id=240, 1279.78125pt x 901.3675pt>
 File: figs/Contours of the error .png Graphic file (type png)
 <use figs/Contours of the error .png>
-Package pdftex.def Info: figs/Contours of the error .png  used on input line 43
-0.
+Package pdftex.def Info: figs/Contours of the error .png  used on input line 98
+2.
 (pdftex.def)             Requested size: 307.28987pt x 216.4289pt.
- [27
+ [38
 
- <./figs/Contours of the error .png>] [28
+ <./figs/Contours of the error .png>] [39
 
-] [29
+] [40
 
 ]
-Overfull \hbox (9.89627pt too wide) detected at line 486
+Overfull \hbox (9.89627pt too wide) detected at line 1038
 \OT1/mathkerncmss/m/sl/10 f\OT1/cmss/m/n/10 (\OML/cmm/m/it/10 ^^L\OT1/cmss/m/n/
 10 ) = [] +\OML/cmm/m/it/10 ^^U [] ;  ^^U \OMS/cmsy/m/n/10 ^^U \OT1/cmss/m/n/10
  0\OML/cmm/m/it/10 ;  \OT1/cmss/m/n/10 0 \OMS/cmsy/m/n/10 ^^T \OML/cmm/m/it/10 
  \OMS/cmsy/m/n/10 ^^T \OT1/cmss/m/n/10 1\OML/cmm/m/it/10 :
  []
 
-[30
+[41
 
 ]
-Overfull \hbox (6.69797pt too wide) detected at line 508
+Overfull \hbox (6.69797pt too wide) detected at line 1060
 \OT1/mathkerncmss/m/sl/10 f\OT1/cmss/m/n/10 (\OML/cmm/m/it/10 ^^L\OT1/cmss/m/n/
 10 ) = [] +\OML/cmm/m/it/10 ^^U [] \OT1/mathkerncmss/m/sl/10 w[] [] \OML/cmm/m/
 it/10 ;  ^^U \OMS/cmsy/m/n/10 ^^U \OT1/cmss/m/n/10 0\OML/cmm/m/it/10 ;  \OT1/cm
@@ -1373,7 +1395,7 @@ ss/m/n/10 0 \OMS/cmsy/m/n/10 ^^T \OML/cmm/m/it/10  \OMS/cmsy/m/n/10 ^^T \OT1/c
 mss/m/n/10 1\OML/cmm/m/it/10 :
  []
 
-[31
+[42
 
 ]
 \tf@nav=\write6
@@ -1390,33 +1412,38 @@ Package rerunfilecheck Info: File `L2_josef.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 31478 strings out of 479533
- 649099 string characters out of 5876205
- 893288 words of memory out of 5000000
- 48769 multiletter control sequences out of 15000+600000
- 481514 words of font info for 66 fonts, out of 8000000 for 9000
+ 31530 strings out of 479533
+ 649494 string characters out of 5876205
+ 893287 words of memory out of 5000000
+ 48800 multiletter control sequences out of 15000+600000
+ 482328 words of font info for 67 fonts, out of 8000000 for 9000
  417 hyphenation exceptions out of 8191
- 128i,13n,122p,1893b,742s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/joswi05/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcss0900.6
-00pk> </home/joswi05/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcss100
-0.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
-t10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm
-10.pfb>
-Output written on L2_josef.pdf (31 pages, 663904 bytes).
+ 128i,14n,122p,1893b,742s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf/
+fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmbx7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfso1000.pf
+b></usr/share/texmf/fonts/type1/public/cm-super/sfss0900.pfb></usr/share/texmf/
+fonts/type1/public/cm-super/sfss1000.pfb>
+Output written on L2_josef.pdf (42 pages, 598183 bytes).
 PDF statistics:
- 291 PDF objects out of 1000 (max. 8388607)
- 209 compressed objects within 3 object streams
- 63 named destinations out of 1000 (max. 500000)
- 83 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 378 PDF objects out of 1000 (max. 8388607)
+ 275 compressed objects within 3 object streams
+ 85 named destinations out of 1000 (max. 500000)
+ 73 words of extra memory for PDF output out of 10000 (max. 10000000)
 
