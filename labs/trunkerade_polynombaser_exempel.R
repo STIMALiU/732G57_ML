@@ -32,25 +32,27 @@ str(basis_list3)
 # modell 1: linjära baser
 df_temp1<-data.frame(y=y,basis_list1$basis_mat)
 head(df_temp1)
-lm_cos1<-lm(y~.,data=df_temp1)
+lm_model1<-lm(y~.,data=df_temp1)
 
 
 # modell 2: kvadratiska baser
 df_temp2<-data.frame(y=y,basis_list2$basis_mat)
 head(df_temp2)
-lm_cos2<-lm(y~.,data=df_temp2)
+lm_model2<-lm(y~.,data=df_temp2)
 
 
 
 # modell 3: kubiska baser
 df_temp3<-data.frame(y=y,basis_list3$basis_mat)
 head(df_temp3)
+lm_model3<-lm(y~.,data=df_temp3)
+
 
 # plottar anpassningen
 plot(df,main="linjära baser")
-lines(x,fitted(lm_cos1),col="blue",lwd=3)
+lines(x,fitted(lm_model1),col="blue",lwd=3)
 plot(df,main="kvadratiska baser")
-lines(x,fitted(lm_cos2),col="blue",lwd=3)
+lines(x,fitted(lm_model2),col="blue",lwd=3)
 plot(df,main="kubiska baser")
-lines(x,fitted(lm_cos3),col="blue",lwd=3)
+lines(x,fitted(lm_model3),col="blue",lwd=3)
 
