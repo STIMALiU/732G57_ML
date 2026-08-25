@@ -1,0 +1,18 @@
+\frametitle{LOESS i R}
+
+    Parametern \texttt{span} styr storleken på det lokala grannskapet:
+
+    \begin{itemize}
+        \item \texttt{span = 0.2}: använder ungefär 20\% av observationerna lokalt.
+        \item \texttt{span = 0.8}: använder ungefär 80\% av observationerna lokalt.
+        \item Litet \texttt{span}: flexibel modell, risk för överanpassning.
+        \item Stort \texttt{span}: slät modell, risk för underanpassning.
+    \end{itemize}
+
+\begin{greenbox}
+    \texttt{span} i LOESS är ungefär motsvarigheten till bandwidth
+    \(\lambda\) i kernel smoothing. Skillnaden är att \(\lambda\)
+    mäts i \(x\)-enheter medan \texttt{span} anger hur stor andel av
+    observationerna som används lokalt.
+\end{greenbox}
+

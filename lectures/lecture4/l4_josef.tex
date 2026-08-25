@@ -8,6 +8,7 @@
 %\usepackage{movie15}
 \usepackage{tikz}
 \usepackage{listofitems} % for \readlist to create arrays
+\usepackage{booktabs}
 
 \title{732G57 Maskininlärning för statistiker}
 \subtitle{Föreläsning 4}
@@ -71,7 +72,7 @@
     \end{description}
 \end{frame}
 
-\begin{frame}{K-närmaste grannar}
+\begin{frame}{K-närmaste grannar - klassificering}
     \begin{enumerate}
         \item Låt $k$ vara ditt valda antal grannar och $D$ din träninigsdata.
         \item För varje testdata $z = (\mathbf{x}', y') \in D$:
@@ -133,41 +134,94 @@
     KNN: Blå har $K=10$ och grön har $K=30$.
 \end{frame}
 
+
+
 \begin{frame}{One-Dimensional Kernel Smoothers}
 
     \begin{itemize}
-        \item Problem med hopp i funktionen.
-        \item Ett sätt att lösa det är att vikta om punkterna.
+        \item KNN-regression ger samma vikt till alla punkter i grannskapet.
+        \item Detta kan ge hopp och en ojämn skattad funktion.
+        \item En lösning är att låta vikten bero på avståndet till $x_0$.
     \end{itemize}
 
-    Vi vill estimera $g(x_0)$ men istället för att ge alla närliggande punkterna samma vikt så använder vi
-    \begin{equation*}
-        \hat{g}(x_0) = \frac{\sum_{i=1}^{n} K_{\lambda}(x_0, x_i) y_i}{\sum_{i=1}^{n}K_{\lambda}(x_0, x_i)},
-    \end{equation*}
-    där $K_{\lambda}(x_0, x_i)$ är en viktfunktion (Kernel).
+    \medskip
+
+    Vi vill skatta $g(x_0)$ och använder ett viktat medelvärde:
+
+    \[
+        \hat g(x_0)
+        =
+        \frac{
+            \sum_{i=1}^{n}
+            K_{\lambda}(x_0,x_i)y_i
+        }{
+            \sum_{i=1}^{n}
+            K_{\lambda}(x_0,x_i)
+        }.
+    \]
+
+    \medskip
+
+    \begin{itemize}
+        \item Observationer nära $x_0$ får hög vikt.
+        \item Observationer långt från $x_0$ får låg vikt.
+        \item $K_{\lambda}(x_0,x_i)$ kallas en \emph{kernel} eller viktfunktion.
+    \end{itemize}
+
 \end{frame}
+
 
 \begin{frame}{One-Dimensional Kernel Smoothers}
-    
-    Kernel-funktionen är en täthet, vanligtvis given på formen
-    \begin{align*}
-        K_{\lambda} (x_0, x_i) &= D\left(\frac{|x_0 - x_i|}{\lambda}\right) \\
-        D(t) &\propto \begin{cases}
-            (1 - |t|^p)^q,& \quad \text{om } |t| \leq 1, \\
-            0& \text{annars.}
-        \end{cases}
-    \end{align*}
-    eller $D(t)$ är täthetsfunktionen för en standard normalfördelning. $\lambda$ kallas för "bandwidth".
 
-    \begin{description}
-        \item[Triangel] : $p = 1, q = 1$
-        \item[Epanechnikov] : $p = 2, q = 1$
-        \item[Quartic] : $p = 2, q = 2$ 
-        \item[Tri-cube] : $p = 3, q = 3$  
-    \end{description}
-    
+    En kernel används för att ge större vikt till punkter nära
+    \(x_0\) och mindre vikt till punkter längre bort.
+
+    \[
+        \hat g(x_0)
+        =
+        \frac{\sum_{i=1}^n K_\lambda(x_0,x_i)\,y_i}
+             {\sum_{i=1}^n K_\lambda(x_0,x_i)}
+    \]
+
+    \vspace{0.3cm}
+
+    Vanliga kernels:
+
+    \begin{itemize}
+        \item Triangel
+        \item Epanechnikov
+        \item Quartic
+        \item Gaussian
+    \end{itemize}
+
+
 
 \end{frame}
+
+
+\begin{frame}{One-Dimensional Kernel Smoothers}
+
+    \begin{block}{Bandwidth}
+        Hyperparametern \(\lambda\) styr hur stort område kring
+        \(x_0\) som påverkar skattningen.
+    \end{block}
+
+    \begin{itemize}
+        \item Litet \(\lambda\) $\rightarrow$ låg bias, hög varians.
+        \item Stort \(\lambda\) $\rightarrow$ hög bias, låg varians.
+        \item Valet av \(\lambda\) är ofta viktigare än valet av kernel.
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{One-Dimensional Kernel Smoothers}
+
+    \includegraphics[width = \textwidth]{fig/kernel_plot3.png}
+    
+\end{frame}
+
+
 
 \begin{frame}{One-Dimensional Kernel Smoothers}
 
@@ -186,6 +240,7 @@
             \item Låter $\lambda$ styra hur stort fönster vi kollar i.
         \end{itemize}
         \item Många olika val av kernels.
+        \item Valet av \(\lambda\) är ofta viktigare än valet av kernel.
         \item Problem vid kanterna.
     \end{itemize}
     
@@ -215,7 +270,7 @@
 \end{frame}
 
 \begin{frame}{Lokal Regression}
-    Skattar lokal regression med olika $\lambda$ med $p = q = 3$ (Tri-Cube)
+    Skattar lokal regression med olika $\lambda$ och Tri-Cube
 
     \includegraphics[width = \textwidth]{fig/locreg.png}
 \end{frame}
@@ -233,6 +288,198 @@
     \end{itemize}
 
 \end{frame}
+
+
+
+
+
+\begin{frame}[fragile]{LOESS i R}
+
+    \begin{greenbox}
+        LOESS = \textbf{LO}cal regr\textbf{ESS}ion
+    \end{greenbox}
+
+    \begin{itemize}
+        \item Vid varje punkt anpassas en lokal regressionsmodell.
+        \item Närliggande observationer får högre vikt än avlägsna observationer.
+        \item Standard i \texttt{loess()} är lokal kvadratisk regression (\texttt{degree = 2}).
+    \end{itemize}
+
+    \medskip
+
+    Anpassning i R:
+
+\begin{verbatim}
+fit <- loess(y ~ x, span = 0.5)
+\end{verbatim}
+
+    \medskip
+
+    geom\_smooth(): "stats::loess() is used for less than 1,000 observations..."
+
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]{LOESS i R}
+
+    Parametern \texttt{span} styr storleken på det lokala grannskapet:
+
+    \begin{itemize}
+        \item \texttt{span = 0.2}: använder ungefär 20\% av observationerna lokalt.
+        \item \texttt{span = 0.8}: använder ungefär 80\% av observationerna lokalt.
+        \item Litet \texttt{span}: flexibel modell, risk för överanpassning.
+        \item Stort \texttt{span}: slät modell, risk för underanpassning.
+    \end{itemize}
+
+\begin{greenbox}
+    \texttt{span} i LOESS är ungefär motsvarigheten till bandwidth
+    \(\lambda\) i kernel smoothing. Skillnaden är att \(\lambda\)
+    mäts i \(x\)-enheter medan \texttt{span} anger hur stor andel av
+    observationerna som används lokalt.
+\end{greenbox}
+
+\end{frame}
+
+
+\begin{frame}{Beräkningskomplexitet}
+
+    Ordo-notation beskriver hur beräkningstiden växer när antalet
+    observationer \(n\) ökar.
+
+    \medskip
+
+    \begin{center}
+        \begin{tabular}{ll}
+            \toprule
+            Komplexitet & Tolkning \\
+            \midrule
+            \(O(1)\)     & Konstant tid \\
+            \(O(\log n)\)& Logaritmisk tillväxt \\
+            \(O(n)\)     & Linjär tillväxt \\
+            \(O(n^2)\)   & Kvadratisk tillväxt \\
+            \(O(n^3)\)   & Kubisk tillväxt \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+
+    \medskip
+
+    Ju \textbf{långsammare} komplexiteten växer, desto \textbf{bättre skalar}
+    algoritmen till stora datamängder.
+
+\end{frame}
+
+\begin{frame}{Exempel på komplexitet}
+
+    Antag att vi dubblar antalet observationer:
+
+    \[
+        n
+        \quad \longrightarrow \quad
+        2n.
+    \]
+
+    Då förändras beräkningstiden ungefär enligt:
+
+    \begin{center}
+        \begin{tabular}{lc}
+            \toprule
+            Komplexitet & Förändring \\
+            \midrule
+            \(O(1)\)      & \(1\times\) \\
+            \(O(\log n)\) & något större än \(1\times\) \\
+            \(O(n)\)      & \(2\times\) \\
+            \(O(n^2)\)    & \(4\times\) \\
+            \(O(n^3)\)    & \(8\times\) \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+
+\begin{block}{Exempel}
+Om antalet observationer fördubblas $n \rightarrow 2n$
+så blir en algoritm med komplexitet \(O(n^3)\)
+ungefär \(8\) gånger långsammare.
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Beräkningskostnad -- jämförelse}
+
+    Antag att vi har \(n\) observationer.
+
+    \medskip
+
+    Tabellen visar den ungefärliga kostnaden för att:
+    \begin{itemize}
+        \item Träna modellen,
+        \item Beräkna modellens skattningar i samtliga \(n\) träningspunkter.
+        \item Komplexiteterna är ungefärliga och avser moderna implementationer.
+    \end{itemize}
+
+    \medskip
+
+    \begin{center}
+        \begin{tabular}{lcc}
+            \toprule
+            Metod & Träning & Prediktion i \(n\) punkter \\
+            \midrule
+            Linjär regression (\(p\) variabler)
+              & \(O(np^2+p^3)\)
+              & \(O(np)\)  \\
+
+            Naturliga splines (\(K\) knutar)
+                & \(O(nK^2)\)
+                & \(O(nK)\) \\
+
+            Smoothing splines
+                & \(O(n)\)
+                & \(O(n)\) \\
+
+            KNN (\(k\) grannar)
+                & \(O(1)\)
+                & \(O(n^2)\) \\
+
+            Kernel smoothers
+                & \(O(1)\)
+                & \(O(n^2)\) \\
+
+            Lokal regression (LOESS)
+                & \(O(1)\)
+                & \(O(n^2)\) \\
+
+            \bottomrule
+        \end{tabular}
+    \end{center}
+  \begin{itemize}
+    \item Om antalet knutar ($K$) hålls konstant blir detta ungefär \(O(n)\).
+  \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Beräkningskostnad - jämförelse}
+
+
+    \begin{itemize}
+        \item Linjär regression  skapar en global modell.
+        \item Naturliga splines skapar K+1 "lokala" modeller
+        \item KNN, kernel smoothers och LOESS gör huvuddelen av arbetet vid prediktion.
+        \item Smoothing splines kräver dyrare matrisberäkningar vid träning.
+    \end{itemize}
+
+    \begin{greenbox}
+        KNN, kernel smoothers och LOESS kallas ibland för
+        \emph{lazy learners} eftersom de gör relativt lite arbete vid
+        träning och mer arbete vid prediktion.
+    \end{greenbox}
+
+\end{frame}
+
+
+
+
 
 \begin{frame}{Generaliserade Additativa Modeller}
 
@@ -300,6 +547,94 @@
 
 \end{frame}
 
+\begin{frame}{Modellval för GAM}
+
+    Modellval i GAM handlar huvudsakligen om att välja
+
+    \begin{itemize}
+        \item vilka variabler som ska ingå,
+        \item vilka typer av funktioner som ska användas (linjär/icke-linjär)
+        \item hur många frihetsgrader varje funktion ska få.
+    \end{itemize}
+
+    \medskip
+
+    Vanliga metoder:
+
+    \begin{itemize}
+        \item Korsvalidering (Cross Validation)
+        \item Generalized Cross Validation (GCV)
+        \item AIC, BIC
+        \item Penaliserade metoder med regularisering
+    \end{itemize}
+
+    \medskip
+
+    \begin{greenbox}
+        Modellval i GAM handlar i stor utsträckning om att välja
+        hur flexibla funktionerna \(g_1,\ldots,g_p\) ska vara.
+    \end{greenbox}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Modellval i \texttt{gamsel}}
+
+    \texttt{gamsel} (GAM Selection) använder regularisering för att
+    automatiskt välja modellens komplexitet.
+
+    \medskip
+
+    För varje variabel finns tre möjligheter:
+
+    \[
+        \text{Ej vald}
+        \quad\Longrightarrow\quad
+        \text{Linjär effekt}
+        \quad\Longrightarrow\quad
+        \text{Icke-linjär effekt}
+    \]
+
+
+
+\end{frame}
+
+
+\begin{frame}{Modellval i \texttt{gamsel}}
+
+    
+
+    Regulariseringsparametern \(\lambda\) styr hur komplex modellen får vara.
+
+    \begin{itemize}
+        \item Stor \(\lambda\):
+        \begin{itemize}
+            \item Fler koefficienter krymps mot noll.
+            \item Färre variabler väljs.
+            \item Linjära effekter föredras framför icke-linjära.
+        \end{itemize}
+
+        \item Liten \(\lambda\):
+        \begin{itemize}
+            \item Fler variabler inkluderas.
+            \item Mer flexibla funktioner tillåts.
+            \item Modellen blir mer komplex.
+        \end{itemize}
+    \end{itemize}
+
+    \begin{greenbox}
+        \(\lambda\) styr avvägningen mellan
+        modellens komplexitet och dess anpassning till data.
+    \end{greenbox}
+
+    \medskip
+
+    Vanligtvis väljs \(\lambda\) med korsvalidering: \texttt{cv.gamsel(...)}
+ 
+
+\end{frame}
 
 
 \end{document}
