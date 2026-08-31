@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  31 AUG 2026 10:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  31 AUG 2026 22:02
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1366,31 +1366,6 @@ Package pdftex.def Info: figs/ensample_cat.png  used on input line 391.
 ] [30
 
 ]
-<figs/tree_fredrik.png, id=205, 1440.38126pt x 771.88374pt>
-File: figs/tree_fredrik.png Graphic file (type png)
-<use figs/tree_fredrik.png>
-Package pdftex.def Info: figs/tree_fredrik.png  used on input line 439.
-(pdftex.def)             Requested size: 245.83282pt x 131.73672pt.
- [31
-
- <./figs/tree_fredrik.png>] [32
-
-] [33
-
-]
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <9> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 489.
-
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 489.
-
- [34
-
-] [35
-
-] [36
-
-]
 \tf@nav=\write6
 \openout6 = `l5_josef.nav'.
 
@@ -1400,41 +1375,37 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
 \tf@snm=\write8
 \openout8 = `l5_josef.snm'.
 
-
-(./l5_josef.aux)
+ (./l5_josef.aux)
 Package rerunfilecheck Info: File `l5_josef.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 31597 strings out of 479533
- 650466 string characters out of 5876205
+ 31527 strings out of 479533
+ 649602 string characters out of 5876205
  892269 words of memory out of 5000000
- 48863 multiletter control sequences out of 15000+600000
- 489191 words of font info for 89 fonts, out of 8000000 for 9000
+ 48819 multiletter control sequences out of 15000+600000
+ 481702 words of font info for 66 fonts, out of 8000000 for 9000
  417 hyphenation exceptions out of 8191
  128i,13n,122p,1893b,742s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx1
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/pu
-blic/cm-super/sfss0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss10
-00.pfb>
-Output written on l5_josef.pdf (36 pages, 2365022 bytes).
+/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss
+i10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/
+texmf/fonts/type1/public/cm-super/sfss0900.pfb></usr/share/texmf/fonts/type1/pu
+blic/cm-super/sfss1000.pfb>
+Output written on l5_josef.pdf (30 pages, 2299482 bytes).
 PDF statistics:
- 337 PDF objects out of 1000 (max. 8388607)
- 240 compressed objects within 3 object streams
- 73 named destinations out of 1000 (max. 500000)
- 93 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 287 PDF objects out of 1000 (max. 8388607)
+ 203 compressed objects within 3 object streams
+ 61 named destinations out of 1000 (max. 500000)
+ 88 words of extra memory for PDF output out of 10000 (max. 10000000)
 
