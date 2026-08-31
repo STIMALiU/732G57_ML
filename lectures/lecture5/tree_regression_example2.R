@@ -62,8 +62,10 @@ y_hat<-predict(tree)
 plot(x,y)
 lines(x,y_hat,lwd=2,col="red")
 
+res_vect<-y-y_hat
 
-
+source("https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/labs/lm_diagnostics.R")
+model_diagnostics(res_vect = res_vect,fit_vect = y_hat)
 
 
 

@@ -300,6 +300,12 @@
     \includegraphics[height=0.9\textheight]{figs/reg_tree_estimate.png}
 \end{frame}
 
+
+\begin{frame}{Regressionsträd med cost complexity pruning: exempel}
+    \includegraphics[height=0.9\textheight]{figs/tree_cost_complexity2.png}
+\end{frame}
+
+
 \begin{frame}{Trädmodell eller linjär modell}
     För regression har vi:
 
@@ -361,5 +367,145 @@
     \end{itemize}
     
 \end{frame}
+
+\begin{frame}{Ensamblemetoder}
+    
+    Grundidén är att skatta många modeller på träningsdata och sen kombinera dessa för att göra prediktioner.
+    
+    Finns många olika varainter:
+     \begin{itemize}
+        \item Göra slumpmässiga urval från träningsdata och skatta modeller på dessa urval (Bootstraping/Bagging)
+        \item Skapa en mängd dataset där observationerna har olika vikter i modellanpassningen i olika dataset (Boosting)
+        \item Skatta ett antal olika modeller (kan vara av helt olika sort) och sen kombinera dessa vid prediktioner
+        \item Vissa modeller har slumpmässiga element vid optimieringen (tänk neurala nätverk): optimera samma modell flera gånger men med olika seed, vilket ger olika modeller/parameterar. Kombinera dessa sedan vid prediktionen.
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Ensamblemetoder}
+    
+    \includegraphics[width=.8\textwidth]{figs/ensample_cat.png}
+
+\end{frame}
+
+\begin{frame}{Bootstraping}
+    
+    \begin{greenbox}
+        Idé: Skapa $B$ stickprov av datan genom att \textbf{med återläggning} välja nya datapunkter. Använd dessa stickprov för att skatta modell eller funktioner.
+    \end{greenbox}
+
+    Exempel:
+
+    Vi vill skatta $\mathbb{V}(e^{\bar{X}})$.
+
+    Skapa $B$ stickprov.
+
+    Skatta $T_k = e^{\bar{Z}_k}$ för $k = 1, \ldots, B$.
+
+    Beräkna $\mathbb{V}(\mathbf{T})$.
+
+
+\end{frame}
+
+\begin{frame}{Bagging}
+    
+    Idé: Om man tar medelvärdet av oberoende observationer (modeller) så minskar variansen.
+
+    \begin{bluebox}
+        \myheading{Bagging (Bootstrap aggregating)}: Använd Bootstrap för att skapa $B$ träningsdataset och skatta en modell $\hat{f}_b$ för varje av dessa set.
+
+        Den slutgiltliga modellen får vi genom att ta medelvärdet av alla dessa modeller:
+        \begin{equation*}
+            \hat{f}_{\text{bag}}(\mathbf{X}) = \frac{1}{B}\sum_{b=1}^{B}\hat{f}_b(\mathbf{X}).
+        \end{equation*}
+    \end{bluebox}
+
+    \begin{itemize}
+        \item Sänker variansen av den anpassade funktionen.
+        \item Påverkas \emph{mycket} av kvalitén av modellen. En bra modell blir bättre, en dålig blir sämre.
+        \item För klassificering, använd majoritetsröstning.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Classification and Regression Trees (CART)}
+    Vi delar upp variabelrummet genom att rekrusivt göra binära uppdelningar.
+
+    För klassificering används vanligaste klassen, för regression medelvärdet inom regionen.
+
+    \includegraphics[width=0.8\textwidth]{figs/tree_fredrik.png}
+\end{frame}
+
+\begin{frame}{Förbättra CART}
+    Flexibilitet/komplexitet för trädmodeller beror på djupet.
+    \begin{redbox}
+        Ett djupt träd ger litet bias, men mycket varians.
+    \end{redbox}
+    
+    Förbättringar:
+    \begin{itemize}
+        \item Efterbeskärning (post-pruning):
+        \begin{itemize}
+            \item Skapa ett djupt träd och beskär det till ett mindre (minska variansen).
+        \end{itemize}
+        \item Ensamblemetoder:
+        \begin{itemize}
+            \item Ta ett genomsnitt över många trädmodeller.
+            \item Bagging
+            \item Random forest
+            \item Boosted trees
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Random forest}
+    
+    Bagging kan ge stora förbättringar för trädmodeller. Men det finns vissa problem:
+    \begin{itemize}
+        \item De $B$ bootstrap-urvalen är korrelerade.
+        \item Reduktionen i varians blir liten när vi tar medelvärde över korrelerade variabler.
+    \end{itemize}
+
+    Idé: Avkorrelera de $B$ trädmodellerna genom att göra slumpmässiga ändringar av modellerna.
+
+\end{frame}
+
+\begin{frame}{Random forest}
+    
+    \begin{itemize}
+        \item Använd bagging för att skatta $B$ träd,
+        \begin{itemize}
+            \item Vid varje uppdelning/regel använd endast en slumpmässig delmängd $q \leq p$ av de förklarande variablerna.
+        \end{itemize}
+        \item Tumregel: (Förslag från Leo Breiman)
+        \begin{itemize}
+            \item Klassificering: $q = \sqrt{p}$
+            \item Regression: $q = p/3$
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Random forest}
+    Slumpmässigt val av variabler leder till:
+    \begin{description}
+        \item[-] Minskar bias, men ofta mycket långsamt.
+        \item[-] Lägger till varians till varje träd.
+        \item[+] Avkorrelerar träden.
+    \end{description}
+    Ofta dominerar den avkorrelerade effekten vilket leder till att MSE minskar på testdata.
+\end{frame}
+
+\begin{frame}{Random forest}
+    Beräkningsmässiga fördelar:
+    \begin{itemize}
+        \item Lätt att parallellisera.
+        \item $q <  p$ minskar kostanden för vaje regel/uppdelning.
+        \item Inte så många hyperparametrar.
+    \end{itemize}
+\end{frame}
+
+
 
 \end{document}

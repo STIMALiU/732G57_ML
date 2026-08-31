@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  31 AUG 2026 09:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  31 AUG 2026 10:05
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1313,25 +1313,82 @@ Overfull \vbox (6.93202pt too high) detected at line 301
 
 [20
 
- <./figs/reg_tree_estimate.png>] [21
+ <./figs/reg_tree_estimate.png>]
+<figs/tree_cost_complexity2.png, id=148, 1541.76pt x 1027.84pt>
+File: figs/tree_cost_complexity2.png Graphic file (type png)
+<use figs/tree_cost_complexity2.png>
+Package pdftex.def Info: figs/tree_cost_complexity2.png  used on input line 306
+.
+(pdftex.def)             Requested size: 335.54182pt x 223.69612pt.
 
-]
-<figs/trees_vs_linear.png, id=153, 916.42375pt x 867.24pt>
-File: figs/trees_vs_linear.png Graphic file (type png)
-<use figs/trees_vs_linear.png>
-Package pdftex.def Info: figs/trees_vs_linear.png  used on input line 322.
-(pdftex.def)             Requested size: 208.95485pt x 197.7407pt.
-
-Overfull \vbox (1.72098pt too high) detected at line 322
+Overfull \hbox (28.25195pt too wide) in paragraph at lines 306--306
+[][]  
  []
 
-[22
 
- <./figs/trees_vs_linear.png>] [23
+Overfull \vbox (6.93202pt too high) detected at line 306
+ []
 
-] [24
+[21
+
+ <./figs/tree_cost_complexity2.png>] [22
+
+]
+<figs/trees_vs_linear.png, id=161, 916.42375pt x 867.24pt>
+File: figs/trees_vs_linear.png Graphic file (type png)
+<use figs/trees_vs_linear.png>
+Package pdftex.def Info: figs/trees_vs_linear.png  used on input line 328.
+(pdftex.def)             Requested size: 208.95485pt x 197.7407pt.
+
+Overfull \vbox (1.72098pt too high) detected at line 328
+ []
+
+[23
+
+ <./figs/trees_vs_linear.png>] [24
 
 ] [25
+
+] [26
+
+] [27
+
+]
+<figs/ensample_cat.png, id=189, 791.95876pt x 678.535pt>
+File: figs/ensample_cat.png Graphic file (type png)
+<use figs/ensample_cat.png>
+Package pdftex.def Info: figs/ensample_cat.png  used on input line 390.
+(pdftex.def)             Requested size: 245.83282pt x 210.62321pt.
+ [28
+
+ <./figs/ensample_cat.png>] [29
+
+] [30
+
+]
+<figs/tree_fredrik.png, id=205, 1440.38126pt x 771.88374pt>
+File: figs/tree_fredrik.png Graphic file (type png)
+<use figs/tree_fredrik.png>
+Package pdftex.def Info: figs/tree_fredrik.png  used on input line 438.
+(pdftex.def)             Requested size: 245.83282pt x 131.73672pt.
+ [31
+
+ <./figs/tree_fredrik.png>] [32
+
+] [33
+
+]
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <9> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 488.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 488.
+
+ [34
+
+] [35
+
+] [36
 
 ]
 \tf@nav=\write6
@@ -1343,37 +1400,41 @@ Overfull \vbox (1.72098pt too high) detected at line 322
 \tf@snm=\write8
 \openout8 = `l5_josef.snm'.
 
- (./l5_josef.aux)
+
+(./l5_josef.aux)
 Package rerunfilecheck Info: File `l5_josef.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 31487 strings out of 479533
- 648898 string characters out of 5876205
+ 31597 strings out of 479533
+ 650466 string characters out of 5876205
  892269 words of memory out of 5000000
- 48791 multiletter control sequences out of 15000+600000
- 481702 words of font info for 66 fonts, out of 8000000 for 9000
+ 48863 multiletter control sequences out of 15000+600000
+ 489191 words of font info for 89 fonts, out of 8000000 for 9000
  417 hyphenation exceptions out of 8191
  128i,13n,122p,1893b,742s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss
-i10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/
-texmf/fonts/type1/public/cm-super/sfss0900.pfb></usr/share/texmf/fonts/type1/pu
-blic/cm-super/sfss1000.pfb>
-Output written on l5_josef.pdf (25 pages, 542749 bytes).
+/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx1
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/pu
+blic/cm-super/sfss0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss10
+00.pfb>
+Output written on l5_josef.pdf (36 pages, 2364988 bytes).
 PDF statistics:
- 255 PDF objects out of 1000 (max. 8388607)
- 180 compressed objects within 2 object streams
- 51 named destinations out of 1000 (max. 500000)
- 78 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 337 PDF objects out of 1000 (max. 8388607)
+ 240 compressed objects within 3 object streams
+ 73 named destinations out of 1000 (max. 500000)
+ 93 words of extra memory for PDF output out of 10000 (max. 10000000)
 
