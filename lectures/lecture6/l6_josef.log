@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  31 AUG 2026 22:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  31 AUG 2026 22:52
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1269,187 +1269,189 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
 
 ] [13
 
+] [14
+
 ]
-<figs/boosting_scheme.png, id=107, 1191.45125pt x 499.8675pt>
+<figs/boosting_scheme.png, id=113, 1191.45125pt x 499.8675pt>
 File: figs/boosting_scheme.png Graphic file (type png)
 <use figs/boosting_scheme.png>
-Package pdftex.def Info: figs/boosting_scheme.png  used on input line 202.
+Package pdftex.def Info: figs/boosting_scheme.png  used on input line 214.
 (pdftex.def)             Requested size: 307.28987pt x 128.91753pt.
- [14
+ [15
 
- <./figs/boosting_scheme.png>] [15
+ <./figs/boosting_scheme.png>] [16
 
-] [16
+] [17
 
 ]
-<figs/Boosting illustration1.png, id=124, 1370.11874pt x 842.14626pt>
+<figs/Boosting illustration1.png, id=130, 1370.11874pt x 842.14626pt>
 File: figs/Boosting illustration1.png Graphic file (type png)
 <use figs/Boosting illustration1.png>
-Package pdftex.def Info: figs/Boosting illustration1.png  used on input line 23
-9.
+Package pdftex.def Info: figs/Boosting illustration1.png  used on input line 25
+1.
 (pdftex.def)             Requested size: 307.28987pt x 188.87077pt.
- [17
+ [18
 
  <./figs/Boosting illustration1.png>]
-<figs/Boosting illustration2.png, id=130, 1365.1pt x 840.13875pt>
+<figs/Boosting illustration2.png, id=136, 1365.1pt x 840.13875pt>
 File: figs/Boosting illustration2.png Graphic file (type png)
 <use figs/Boosting illustration2.png>
-Package pdftex.def Info: figs/Boosting illustration2.png  used on input line 24
-3.
+Package pdftex.def Info: figs/Boosting illustration2.png  used on input line 25
+5.
 (pdftex.def)             Requested size: 307.28987pt x 189.1128pt.
 
-[18
+[19
 
  <./figs/Boosting illustration2.png>]
-<figs/Boosting illustration3.png, id=136, 1360.08125pt x 838.13126pt>
+<figs/Boosting illustration3.png, id=143, 1360.08125pt x 838.13126pt>
 File: figs/Boosting illustration3.png Graphic file (type png)
 <use figs/Boosting illustration3.png>
-Package pdftex.def Info: figs/Boosting illustration3.png  used on input line 24
-7.
+Package pdftex.def Info: figs/Boosting illustration3.png  used on input line 25
+9.
 (pdftex.def)             Requested size: 307.28987pt x 189.3643pt.
- [19
-
- <./figs/Boosting illustration3.png>]
-<figs/Boosting illustration4.png, id=143, 1360.08125pt x 842.14626pt>
-File: figs/Boosting illustration4.png Graphic file (type png)
-<use figs/Boosting illustration4.png>
-Package pdftex.def Info: figs/Boosting illustration4.png  used on input line 25
-1.
-(pdftex.def)             Requested size: 307.28987pt x 190.27144pt.
  [20
 
- <./figs/Boosting illustration4.png>]
-<figs/Boosting illustration5.png, id=149, 1370.11874pt x 845.1575pt>
-File: figs/Boosting illustration5.png Graphic file (type png)
-<use figs/Boosting illustration5.png>
-Package pdftex.def Info: figs/Boosting illustration5.png  used on input line 25
-5.
-(pdftex.def)             Requested size: 307.28987pt x 189.54611pt.
+ <./figs/Boosting illustration3.png>]
+<figs/Boosting illustration4.png, id=149, 1360.08125pt x 842.14626pt>
+File: figs/Boosting illustration4.png Graphic file (type png)
+<use figs/Boosting illustration4.png>
+Package pdftex.def Info: figs/Boosting illustration4.png  used on input line 26
+3.
+(pdftex.def)             Requested size: 307.28987pt x 190.27144pt.
  [21
 
- <./figs/Boosting illustration5.png>]
-<figs/Boosting illustration6.png, id=155, 1363.0925pt x 845.1575pt>
-File: figs/Boosting illustration6.png Graphic file (type png)
-<use figs/Boosting illustration6.png>
-Package pdftex.def Info: figs/Boosting illustration6.png  used on input line 25
-9.
-(pdftex.def)             Requested size: 307.28987pt x 190.52621pt.
+ <./figs/Boosting illustration4.png>]
+<figs/Boosting illustration5.png, id=155, 1370.11874pt x 845.1575pt>
+File: figs/Boosting illustration5.png Graphic file (type png)
+<use figs/Boosting illustration5.png>
+Package pdftex.def Info: figs/Boosting illustration5.png  used on input line 26
+7.
+(pdftex.def)             Requested size: 307.28987pt x 189.54611pt.
  [22
 
- <./figs/Boosting illustration6.png>]
-<figs/Boosting illustration7.png, id=161, 1355.0625pt x 842.14626pt>
-File: figs/Boosting illustration7.png Graphic file (type png)
-<use figs/Boosting illustration7.png>
-Package pdftex.def Info: figs/Boosting illustration7.png  used on input line 26
-3.
-(pdftex.def)             Requested size: 307.28987pt x 190.9782pt.
+ <./figs/Boosting illustration5.png>]
+<figs/Boosting illustration6.png, id=161, 1363.0925pt x 845.1575pt>
+File: figs/Boosting illustration6.png Graphic file (type png)
+<use figs/Boosting illustration6.png>
+Package pdftex.def Info: figs/Boosting illustration6.png  used on input line 27
+1.
+(pdftex.def)             Requested size: 307.28987pt x 190.52621pt.
  [23
 
- <./figs/Boosting illustration7.png>]
-<figs/Boosting illustration8.png, id=167, 1360.08125pt x 840.13875pt>
-File: figs/Boosting illustration8.png Graphic file (type png)
-<use figs/Boosting illustration8.png>
-Package pdftex.def Info: figs/Boosting illustration8.png  used on input line 26
-7.
-(pdftex.def)             Requested size: 307.28987pt x 189.81787pt.
+ <./figs/Boosting illustration6.png>]
+<figs/Boosting illustration7.png, id=167, 1355.0625pt x 842.14626pt>
+File: figs/Boosting illustration7.png Graphic file (type png)
+<use figs/Boosting illustration7.png>
+Package pdftex.def Info: figs/Boosting illustration7.png  used on input line 27
+5.
+(pdftex.def)             Requested size: 307.28987pt x 190.9782pt.
  [24
 
- <./figs/Boosting illustration8.png>]
-<figs/Boosting illustration9.png, id=174, 1363.0925pt x 847.165pt>
-File: figs/Boosting illustration9.png Graphic file (type png)
-<use figs/Boosting illustration9.png>
-Package pdftex.def Info: figs/Boosting illustration9.png  used on input line 27
-1.
-(pdftex.def)             Requested size: 307.28987pt x 190.97876pt.
+ <./figs/Boosting illustration7.png>]
+<figs/Boosting illustration8.png, id=174, 1360.08125pt x 840.13875pt>
+File: figs/Boosting illustration8.png Graphic file (type png)
+<use figs/Boosting illustration8.png>
+Package pdftex.def Info: figs/Boosting illustration8.png  used on input line 27
+9.
+(pdftex.def)             Requested size: 307.28987pt x 189.81787pt.
  [25
 
+ <./figs/Boosting illustration8.png>]
+<figs/Boosting illustration9.png, id=181, 1363.0925pt x 847.165pt>
+File: figs/Boosting illustration9.png Graphic file (type png)
+<use figs/Boosting illustration9.png>
+Package pdftex.def Info: figs/Boosting illustration9.png  used on input line 28
+3.
+(pdftex.def)             Requested size: 307.28987pt x 190.97876pt.
+ [26
+
  <./figs/Boosting illustration9.png>]
-<figs/Boosting illustration10.png, id=181, 1360.08125pt x 842.14626pt>
+<figs/Boosting illustration10.png, id=187, 1360.08125pt x 842.14626pt>
 File: figs/Boosting illustration10.png Graphic file (type png)
 <use figs/Boosting illustration10.png>
 Package pdftex.def Info: figs/Boosting illustration10.png  used on input line 2
-75.
+87.
 (pdftex.def)             Requested size: 307.28987pt x 190.27144pt.
- [26
+ [27
 
- <./figs/Boosting illustration10.png>] [27
+ <./figs/Boosting illustration10.png>] [28
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 310.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 322.
 
- [28
+ [29
 
 ]
-<figs/boosting for regression trees.png, id=200, 860.21375pt x 659.46375pt>
+<figs/boosting for regression trees.png, id=206, 860.21375pt x 659.46375pt>
 File: figs/boosting for regression trees.png Graphic file (type png)
 <use figs/boosting for regression trees.png>
 Package pdftex.def Info: figs/boosting for regression trees.png  used on input 
-line 316.
+line 328.
 (pdftex.def)             Requested size: 307.28987pt x 235.57536pt.
 
-Overfull \vbox (18.81126pt too high) detected at line 316
+Overfull \vbox (18.81126pt too high) detected at line 328
  []
 
-[29
+[30
 
- <./figs/boosting for regression trees.png>] [30
-
-] [31
+ <./figs/boosting for regression trees.png>] [31
 
 ] [32
 
-]
-Overfull \vbox (14.187pt too high) detected at line 402
- []
-
-[33
+] [33
 
 ]
-Overfull \vbox (13.54318pt too high) detected at line 428
+Overfull \vbox (14.187pt too high) detected at line 414
  []
 
 [34
 
 ]
-Overfull \vbox (11.47618pt too high) detected at line 461
+Overfull \vbox (13.54318pt too high) detected at line 440
  []
 
 [35
 
-] [36
+]
+Overfull \vbox (11.47618pt too high) detected at line 473
+ []
+
+[36
 
 ] [37
 
+] [38
+
 ]
-Overfull \vbox (1.10939pt too high) detected at line 509
+Overfull \vbox (1.10939pt too high) detected at line 521
  []
 
-[38
-
-] [39
+[39
 
 ] [40
 
+] [41
+
 ]
-Overfull \vbox (32.39537pt too high) detected at line 566
+Overfull \vbox (32.39537pt too high) detected at line 578
  []
 
-[41
+[42
 
-] [42
+] [43
 
 ]
-<./figs//xgboost_gain_fig.png, id=279, 1541.76pt x 1027.84pt>
+<./figs//xgboost_gain_fig.png, id=286, 1541.76pt x 1027.84pt>
 File: ./figs//xgboost_gain_fig.png Graphic file (type png)
 <use ./figs//xgboost_gain_fig.png>
-Package pdftex.def Info: ./figs//xgboost_gain_fig.png  used on input line 599.
+Package pdftex.def Info: ./figs//xgboost_gain_fig.png  used on input line 611.
 (pdftex.def)             Requested size: 184.3758pt x 122.91202pt.
- [43
+ [44
 
- <./figs//xgboost_gain_fig.png (PNG copy)>] [44
+ <./figs//xgboost_gain_fig.png (PNG copy)>] [45
 
-] [45
+] [46
 
 ]
 \tf@nav=\write6
@@ -1467,10 +1469,10 @@ Package rerunfilecheck Info: File `l6_josef.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 31731 strings out of 479533
- 654187 string characters out of 5876205
+ 31735 strings out of 479533
+ 654222 string characters out of 5876205
  895291 words of memory out of 5000000
- 48965 multiletter control sequences out of 15000+600000
+ 48967 multiletter control sequences out of 15000+600000
  493242 words of font info for 102 fonts, out of 8000000 for 9000
  417 hyphenation exceptions out of 8191
  128i,13n,122p,1893b,742s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1498,10 +1500,10 @@ ts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/ms
 bm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss0900.pfb></usr/share
 /texmf/fonts/type1/public/cm-super/sfss1000.pfb>
-Output written on l6_josef.pdf (45 pages, 2237529 bytes).
+Output written on l6_josef.pdf (46 pages, 2238394 bytes).
 PDF statistics:
- 427 PDF objects out of 1000 (max. 8388607)
- 301 compressed objects within 4 object streams
- 91 named destinations out of 1000 (max. 500000)
+ 433 PDF objects out of 1000 (max. 8388607)
+ 306 compressed objects within 4 object streams
+ 93 named destinations out of 1000 (max. 500000)
  123 words of extra memory for PDF output out of 10000 (max. 10000000)
 
