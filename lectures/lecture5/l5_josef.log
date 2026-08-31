@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  31 AUG 2026 10:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  31 AUG 2026 10:07
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1198,42 +1198,42 @@ Overfull \vbox (13.79993pt too high) detected at line 33
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <../LiU_primary_black.pdf>]
 LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 
-44.
+45.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmss.fd
 File: ts1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ) [2
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 66.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 67.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 66.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 67.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 66.
+ut line 67.
 
 (/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
 )
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 66.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 67.
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 66.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 67.
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 66.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 67.
 
 [3
 
 ]
-Overfull \vbox (0.58519pt too high) detected at line 90
+Overfull \vbox (0.58519pt too high) detected at line 91
  []
 
 [4
@@ -1244,7 +1244,7 @@ Overfull \vbox (0.58519pt too high) detected at line 90
 <figs/tree1.png, id=58, 715.67375pt x 482.80376pt>
 File: figs/tree1.png Graphic file (type png)
 <use figs/tree1.png>
-Package pdftex.def Info: figs/tree1.png  used on input line 122.
+Package pdftex.def Info: figs/tree1.png  used on input line 123.
 (pdftex.def)             Requested size: 153.64493pt x 103.64607pt.
  [6
 
@@ -1252,7 +1252,7 @@ Package pdftex.def Info: figs/tree1.png  used on input line 122.
 <figs/tree2.png, id=64, 1137.24875pt x 600.2425pt>
 File: figs/tree2.png Graphic file (type png)
 <use figs/tree2.png>
-Package pdftex.def Info: figs/tree2.png  used on input line 126.
+Package pdftex.def Info: figs/tree2.png  used on input line 127.
 (pdftex.def)             Requested size: 307.28987pt x 162.1867pt.
  [7
 
@@ -1262,7 +1262,7 @@ Package pdftex.def Info: figs/tree2.png  used on input line 126.
 <figs/tree3.png, id=77, 1184.425pt x 578.16pt>
 File: figs/tree3.png Graphic file (type png)
 <use figs/tree3.png>
-Package pdftex.def Info: figs/tree3.png  used on input line 151.
+Package pdftex.def Info: figs/tree3.png  used on input line 152.
 (pdftex.def)             Requested size: 307.28987pt x 150.00046pt.
  [9
 
@@ -1276,10 +1276,10 @@ Package pdftex.def Info: figs/tree3.png  used on input line 151.
 <figs/reg_tree_surface.png, id=102, 756.8275pt x 869.2475pt>
 File: figs/reg_tree_surface.png Graphic file (type png)
 <use figs/reg_tree_surface.png>
-Package pdftex.def Info: figs/reg_tree_surface.png  used on input line 196.
+Package pdftex.def Info: figs/reg_tree_surface.png  used on input line 197.
 (pdftex.def)             Requested size: 208.95485pt x 239.99214pt.
 
-Overfull \vbox (23.22804pt too high) detected at line 196
+Overfull \vbox (23.22804pt too high) detected at line 197
  []
 
 [13
@@ -1300,15 +1300,15 @@ Overfull \vbox (23.22804pt too high) detected at line 196
 <figs/reg_tree_estimate.png, id=142, 1055.945pt x 717.68124pt>
 File: figs/reg_tree_estimate.png Graphic file (type png)
 <use figs/reg_tree_estimate.png>
-Package pdftex.def Info: figs/reg_tree_estimate.png  used on input line 301.
+Package pdftex.def Info: figs/reg_tree_estimate.png  used on input line 302.
 (pdftex.def)             Requested size: 329.12804pt x 223.69612pt.
 
-Overfull \hbox (21.83817pt too wide) in paragraph at lines 301--301
+Overfull \hbox (21.83817pt too wide) in paragraph at lines 302--302
 [][]  
  []
 
 
-Overfull \vbox (6.93202pt too high) detected at line 301
+Overfull \vbox (6.93202pt too high) detected at line 302
  []
 
 [20
@@ -1317,16 +1317,16 @@ Overfull \vbox (6.93202pt too high) detected at line 301
 <figs/tree_cost_complexity2.png, id=148, 1541.76pt x 1027.84pt>
 File: figs/tree_cost_complexity2.png Graphic file (type png)
 <use figs/tree_cost_complexity2.png>
-Package pdftex.def Info: figs/tree_cost_complexity2.png  used on input line 306
+Package pdftex.def Info: figs/tree_cost_complexity2.png  used on input line 307
 .
 (pdftex.def)             Requested size: 335.54182pt x 223.69612pt.
 
-Overfull \hbox (28.25195pt too wide) in paragraph at lines 306--306
+Overfull \hbox (28.25195pt too wide) in paragraph at lines 307--307
 [][]  
  []
 
 
-Overfull \vbox (6.93202pt too high) detected at line 306
+Overfull \vbox (6.93202pt too high) detected at line 307
  []
 
 [21
@@ -1337,10 +1337,10 @@ Overfull \vbox (6.93202pt too high) detected at line 306
 <figs/trees_vs_linear.png, id=161, 916.42375pt x 867.24pt>
 File: figs/trees_vs_linear.png Graphic file (type png)
 <use figs/trees_vs_linear.png>
-Package pdftex.def Info: figs/trees_vs_linear.png  used on input line 328.
+Package pdftex.def Info: figs/trees_vs_linear.png  used on input line 329.
 (pdftex.def)             Requested size: 208.95485pt x 197.7407pt.
 
-Overfull \vbox (1.72098pt too high) detected at line 328
+Overfull \vbox (1.72098pt too high) detected at line 329
  []
 
 [23
@@ -1357,7 +1357,7 @@ Overfull \vbox (1.72098pt too high) detected at line 328
 <figs/ensample_cat.png, id=189, 791.95876pt x 678.535pt>
 File: figs/ensample_cat.png Graphic file (type png)
 <use figs/ensample_cat.png>
-Package pdftex.def Info: figs/ensample_cat.png  used on input line 390.
+Package pdftex.def Info: figs/ensample_cat.png  used on input line 391.
 (pdftex.def)             Requested size: 245.83282pt x 210.62321pt.
  [28
 
@@ -1369,7 +1369,7 @@ Package pdftex.def Info: figs/ensample_cat.png  used on input line 390.
 <figs/tree_fredrik.png, id=205, 1440.38126pt x 771.88374pt>
 File: figs/tree_fredrik.png Graphic file (type png)
 <use figs/tree_fredrik.png>
-Package pdftex.def Info: figs/tree_fredrik.png  used on input line 438.
+Package pdftex.def Info: figs/tree_fredrik.png  used on input line 439.
 (pdftex.def)             Requested size: 245.83282pt x 131.73672pt.
  [31
 
@@ -1379,10 +1379,10 @@ Package pdftex.def Info: figs/tree_fredrik.png  used on input line 438.
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <9> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 488.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 489.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 488.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 489.
 
  [34
 
@@ -1431,7 +1431,7 @@ f-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/pu
 blic/cm-super/sfss0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss10
 00.pfb>
-Output written on l5_josef.pdf (36 pages, 2364988 bytes).
+Output written on l5_josef.pdf (36 pages, 2365022 bytes).
 PDF statistics:
  337 PDF objects out of 1000 (max. 8388607)
  240 compressed objects within 3 object streams
