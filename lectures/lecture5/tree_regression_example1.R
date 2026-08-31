@@ -70,7 +70,7 @@ grid_X <- expand.grid(Girth = girth_seq, Height = height_seq)
 
 grid_all<-grid_X
 # Prediktera Volume från modellen för all x-punkter i grid_X
-grid_all$Volume <- predict(lm_model, newdata = grid)
+grid_all$Volume <- predict(lm_model, newdata = grid_X)
 
 # Omforma till matris för surface plot
 volume_matrix <- matrix(grid_all$Volume, nrow = length(girth_seq), 
