@@ -607,13 +607,14 @@ literal "false"
 \end_layout
 
 \begin_layout Enumerate
-Korsvalidering och XGBoost.
+Klassificering:
+ Korsvalidering och XGBoost.
  Gå igenom skriptet här:
  
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
-target "https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/labs/xgboost_files/xgboost_cv.R"
+target "https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/labs/xgboost_files/xgboost_cv_class.R"
 literal "false"
 
 \end_inset
@@ -646,10 +647,66 @@ Studera resutatet från de olika modellerna.
 
 \end_deeper
 \begin_layout Enumerate
-Utgå från koden i steget innan,
+Klassificering:
+ Utgå från koden i steget innan,
  men testa nu sex andra hyperparameterkombinationer som ni själva bestämmer.
  Utvärdera och analysera resulatet.
  Blir anpassningen bättre eller sämre jämfört med de modeller som skattades i föregående steg?
+\end_layout
+
+\begin_layout Enumerate
+Regression:
+ Korsvalidering och XGBoost.
+ Gå igenom skriptet här:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/labs/xgboost_files/xgboost_cv_reg.R"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Först skattas en 
+\begin_inset Quotes eld
+\end_inset
+
+första gissning
+\begin_inset Quotes erd
+\end_inset
+
+-modell
+\end_layout
+
+\begin_layout Itemize
+Sen skattas sex olika modeller med olika hyperparametrar och korsvalidering används för att välja den bästa kombinationen av hyperparametrar.
+ 
+\end_layout
+
+\begin_layout Itemize
+Studera resutatet från de olika modellerna.
+ Hur blir anpassningen?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Regression:
+ Utgå från koden i steget innan,
+ men testa nu sex andra hyperparameterkombinationer som ni själva bestämmer.
+ Utvärdera och analysera resulatet.
+ Blir anpassningen bättre eller sämre jämfört med de modeller som skattades i föregående steg?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Part*
@@ -670,8 +727,22 @@ spambase.csv
  symboler osv.
  från 4601 olika mail.
  Dessa har också klassificerats som antingen spam (spam = 1) eller vanliga mail (spam = 0).
- Er uppgift är nu att skatta trädmodeller som kan användas som någon form av spamfilter för nya mail som anländer till inkorgen.
+ Er uppgift är nu att skatta olika modeller som kan användas som någon form av spamfilter för nya mail som anländer till inkorgen.
  Mer detaljerad information om dessa attribut är angivna i bilagan nedan.
+ Då våra förklarande är tungsvansade kan en log-transformation fungera bra (
+\begin_inset Formula $\log(x+0.1)$
+\end_inset
+
+) där vi lägger på 
+\begin_inset Formula $0.1$
+\end_inset
+
+ för att undvika 
+\begin_inset Formula $\log(0)$
+\end_inset
+
+ problem.
+ 
 \end_layout
 
 \begin_layout Enumerate
@@ -751,7 +822,15 @@ Ta er bästa modell från föregående steg och skatta om den med hjälp av trä
 \begin_layout Enumerate
 Ta modellen från föregående steg beräkna träffsäkerhet,
  sensitivitet och specificitet på testdata.
- 
+ Analysera resultatet.
+ Anser ni att den bästa modellen skulle vara ett bra spamfilter eller ej?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Part*
