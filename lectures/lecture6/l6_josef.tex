@@ -497,6 +497,140 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}{Viktiga hyperparametrar i XGBoost}
+
+\begin{description}
+
+  \item[\texttt{eta}]
+  Learning rate. Styr hur mycket varje nytt träd får påverka modellen.
+  Ett lägre värde ger långsammare inlärning och kräver vanligtvis fler träd.
+
+  \item[\texttt{nrounds}]
+  Antal boosting-iterationer, det vill säga hur många träd som läggs till.
+  För många träd kan leda till överanpassning.
+
+  \item[\texttt{lambda}]
+  L2-regularisering av lövvikterna.
+  Ett större värde ger mindre lövvikter och en försiktigare modell.
+
+  \item[\texttt{gamma}]
+  Minsta förbättring av objektfunktionen som krävs för att göra en split.
+  Ett större värde ger färre splits och enklare träd.
+
+  \item[\texttt{min\_child\_weight}]
+  Minsta tillåtna summa av Hessianerna i en barnnod.
+  Ett större värde förhindrar små och osäkra löv.
+
+\end{description}
+
+\end{frame}
+
+
+\begin{frame}{Mer om hyperparametrar}
+
+\begin{description}
+
+  \item[\texttt{max\_depth}]
+  Maximalt djup för varje träd.
+  Större djup gör det möjligt att modellera mer komplexa samband och
+  interaktioner, men ökar risken för överanpassning.
+
+  \item[\texttt{subsample}]
+  Andel av träningsobservationerna som används för att bygga varje träd.
+  Värden under 1 ger mer slumpmässighet och kan minska överanpassning.
+
+  \item[\texttt{colsample\_bytree}]
+  Andel förklarande variabler som är tillgängliga när ett träd byggs.
+  Liknar det slumpmässiga variabelurvalet i Random Forest.
+
+  \item[\texttt{alpha}]
+  L1-regularisering av lövvikterna.
+  Ett större värde kan pressa små lövvikter mot noll.
+
+  \item[\texttt{early\_stopping\_rounds}]
+  Avbryter träningen om resultatet på valideringsdata inte förbättras
+  under ett angivet antal iterationer.
+
+\end{description}
+
+\end{frame}
+
+
+\begin{frame}{Hyperparametrar: vanliga värden och default}
+
+  \centering
+  \small
+
+  \begin{tabular}{lcc}
+    \hline
+    \textbf{Hyperparameter}
+      & \textbf{Vanligt sökintervall}
+      & \textbf{Default i R-paketet} \\
+    \hline
+    \texttt{eta}
+      & $0.01$--$0.3$
+      & $0.3$ \\
+    \texttt{nrounds}
+      & $100$--$2000$
+      & $100$ \\
+    \texttt{lambda}
+      & $0$--$10$
+      & $1$ \\
+    \texttt{gamma}
+      & $0$--$10$
+      & $0$ \\
+    \texttt{min\_child\_weight}
+      & $1$--$20$
+      & $1$ \\
+    \hline
+  \end{tabular}
+
+  \vspace{0.5cm}
+
+  \footnotesize
+  Intervallen är typiska utgångspunkter vid
+  hyperparameteroptimering.
+
+\end{frame}
+
+
+\begin{frame}{Fler hyperparametrar: vanliga värden och default}
+
+  \centering
+  \small
+
+  \begin{tabular}{lcc}
+    \hline
+    \textbf{Hyperparameter}
+      & \textbf{Vanligt sökintervall}
+      & \textbf{Default i R-paketet} \\
+    \hline
+    \texttt{max\_depth}
+      & $2$--$10$
+      & $6$ \\
+    \texttt{subsample}
+      & $0.5$--$1$
+      & $1$ \\
+    \texttt{colsample\_bytree}
+      & $0.5$--$1$
+      & $1$ \\
+    \texttt{alpha}
+      & $0$--$10$
+      & $0$ \\
+    \texttt{early\_stopping\_rounds}
+      & $10$--$50$
+      & \texttt{NULL} \\
+    \hline
+  \end{tabular}
+
+  \vspace{0.5cm}
+
+  \footnotesize
+  Intervallen är typiska utgångspunkter vid
+  hyperparameteroptimering.
+
+\end{frame}
+
 \begin{frame}{Kostandsfunktion och additiv modell}
   \textbf{Additiv modell:}
   \begin{equation*}
@@ -636,6 +770,151 @@
     \item Regularisering påverkar både hur splitar väljs och hur lövvikter beräknas.
     \item Genom att justera hyperparametrar som \texttt{lambda} och \texttt{gamma} kan man styra regulariseringens styrka.
   \end{itemize}
+\end{frame}
+
+\begin{frame}{Regulariseringens roll i XGBoost}
+
+  Regularisering sker även genom att styra trädens komplexitet
+  och införa slumpmässighet:
+
+  \begin{itemize}
+
+    \item \texttt{max\_depth} begränsar trädens maximala djup.
+          Mindre djup ger enklare träd.
+
+    \item \texttt{min\_child\_weight} förhindrar splits som leder
+          till barnnoder med för lite information.
+
+    \item \texttt{subsample} anger hur stor andel av observationerna
+          som används för att bygga varje träd.
+
+    \item \texttt{colsample\_bytree} anger hur stor andel av
+          variablerna som är tillgängliga i varje träd.
+
+  \end{itemize}
+
+  \vspace{0.3cm}
+
+  \begin{block}{Två typer av regularisering}
+    \begin{itemize}
+      \item Begränsa trädens komplexitet:
+            \texttt{max\_depth}, \texttt{min\_child\_weight}
+      \item Införa slumpmässighet:
+            \texttt{subsample}, \texttt{colsample\_bytree}
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+
+\begin{frame}{XGBoost för fler än två klasser}
+
+  Antag att responsvariabeln har \(K>2\) klasser.
+
+  \begin{itemize}
+
+    \item Klassen kodas med heltalen
+          \(0,1,\ldots,K-1\).
+
+    \item Vid varje boosting-iteration byggs \(K\) träd,
+          ett träd för varje klass.
+
+    \item Träden ger en poäng \(F_k(\boldsymbol{x})\)
+          för varje klass \(k\).
+
+    \item Poängen omvandlas till klassannolikheter med softmax:
+          \[
+            \widehat{P}(Y=k\mid\boldsymbol{x})
+            =
+            \frac{\exp(F_k(\boldsymbol{x}))}
+                 {\sum_{j=1}^{K}\exp(F_j(\boldsymbol{x}))}.
+          \]
+
+    \item Observationen tilldelas klassen med högst
+          skattad sannolikhet.
+
+  \end{itemize}
+
+  \begin{block}{Inställningar i R}
+    \texttt{objective = "multi:softprob"}\\
+    \texttt{num\_class = K}
+  \end{block}
+
+\end{frame}
+
+
+\begin{frame}{Early stopping}
+
+  \begin{itemize}
+
+    \item Sätt \texttt{nrounds} till ett relativt stort värde.
+
+    \item Efter varje boosting-iteration utvärderas modellen
+          på en separat valideringsmängd.
+
+    \item Om valideringsresultatet förbättras sparas iterationen
+          som den hittills bästa.
+
+    \item Om resultatet inte förbättras under exempelvis
+          \texttt{early\_stopping\_rounds = 20} iterationer
+          stoppas träningen.
+
+    \item Det valda antalet träd ges av den iteration som hade
+          bäst resultat på valideringsmängden.
+
+  \end{itemize}
+
+  \vspace{0.2cm}
+
+  \begin{block}{Varför använda early stopping?}
+    Det hjälper oss att välja \texttt{nrounds}, minskar risken för
+    överanpassning och undviker onödiga beräkningar.
+  \end{block}
+
+  \vspace{0.2cm}
+
+  \centering
+  \texttt{nrounds = 2000,\quad early\_stopping\_rounds = 20}
+
+\end{frame}
+
+
+\begin{frame}{Praktiska råd för att komma igång med XGBoost}
+
+\begin{itemize}
+
+  \item Börja med standardinställningarna och justera endast
+        några få hyperparametrar i taget.
+
+  \item Använd korsvalidering för att välja hyperparametrar.
+
+  \item Prova först att justera:
+        \texttt{eta},
+        \texttt{nrounds} och
+        \texttt{max\_depth}.
+
+  \item Ett mindre värde på \texttt{eta} kräver vanligtvis fler träd.
+
+  \item Om modellen överanpassar:
+        minska \texttt{max\_depth},
+        öka \texttt{min\_child\_weight}
+        eller använd \texttt{subsample < 1}.
+
+  \item Använd \texttt{early\_stopping\_rounds}
+        för att välja ett lämpligt antal träd.
+
+  \item Jämför alltid mot enklare modeller som
+        logistisk regression, linjär regression eller Random Forest.
+
+\end{itemize}
+
+\vspace{0.3cm}
+
+\begin{block}{Tumregel}
+Lägg mer tid på bra data och bra variabler
+än på att finjustera hyperparametrar.
+\end{block}
+
 \end{frame}
 
 \end{document}
