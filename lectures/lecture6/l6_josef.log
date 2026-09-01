@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  31 AUG 2026 22:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  1 SEP 2026 08:45
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -991,6 +991,7 @@ Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\\' on input line 13.
 
+Package hyperref Info: Option `colorlinks' set `true' on input line 19.
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count351
@@ -999,24 +1000,24 @@ File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 (./l6_josef.aux)
 \openout1 = `l6_josef.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1074,7 +1075,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 28.
+Package hyperref Info: Link coloring ON on input line 31.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -1087,68 +1088,68 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count358
 )
-LaTeX Info: Redefining \ref on input line 28.
-LaTeX Info: Redefining \pageref on input line 28.
-LaTeX Info: Redefining \nameref on input line 28.
+LaTeX Info: Redefining \ref on input line 31.
+LaTeX Info: Redefining \pageref on input line 31.
+LaTeX Info: Redefining \nameref on input line 31.
 
 (./l6_josef.out) (./l6_josef.out)
 \@outlinefile=\write5
 \openout5 = `l6_josef.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 28.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 31.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 28.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 31.
 \symnumbers=\mathgroup11
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 28.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 31.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
-(Font)                  OT1/mathkerncmss/m/sl --> OT1/cmss/m/it on input line 2
-8.
+(Font)                  OT1/mathkerncmss/m/sl --> OT1/cmss/m/it on input line 3
+1.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/bx/sl --> OT1/cmss/m/it on input line 
-28.
+31.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 28.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 28.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 28.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 31.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 31.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 31.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 28.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 31.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 28.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 28.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 31.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 31.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 28.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 31.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 28.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 28.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 31.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 31.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 28.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 31.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 28.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 31.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 28.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 31.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 28.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 31.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 28.
+(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 31.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 28.
+(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 31.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 28.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 31.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 28.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 31.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 28.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 28.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 31.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 31.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
-(Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 2
-8.
+(Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 3
+1.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 2
-8.
+(Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 3
+1.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on inp
-ut line 28.
+ut line 31.
 
 (/usr/share/texlive/texmf-dist/tex/latex/translator/translator-basic-dictionary
 -English.dict
@@ -1183,21 +1184,21 @@ n: found PDF version <1.7>, but at most version <1.5> allowed
 <../LiU_primary_black.pdf, id=13, 315.1775pt x 114.4275pt>
 File: ../LiU_primary_black.pdf Graphic file (type pdf)
 <use ../LiU_primary_black.pdf>
-Package pdftex.def Info: ../LiU_primary_black.pdf  used on input line 30.
+Package pdftex.def Info: ../LiU_primary_black.pdf  used on input line 33.
 (pdftex.def)             Requested size: 94.04419pt x 34.14322pt.
 
-Overfull \vbox (54.14325pt too high) detected at line 30
+Overfull \vbox (54.14325pt too high) detected at line 33
  []
 
 
-Overfull \vbox (13.79993pt too high) detected at line 30
+Overfull \vbox (13.79993pt too high) detected at line 33
  []
 
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <../LiU_primary_black.pdf>]
 LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 
-42.
+45.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmss.fd
 File: ts1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ) [2
@@ -1208,35 +1209,35 @@ File: ts1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 <figs/ensample_cat.png, id=43, 791.95876pt x 678.535pt>
 File: figs/ensample_cat.png Graphic file (type png)
 <use figs/ensample_cat.png>
-Package pdftex.def Info: figs/ensample_cat.png  used on input line 64.
+Package pdftex.def Info: figs/ensample_cat.png  used on input line 67.
 (pdftex.def)             Requested size: 245.83282pt x 210.62321pt.
  [4
 
  <./figs/ensample_cat.png>]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 83.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 86.
 
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 83.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 86.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 83.
+ut line 86.
 
 (/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
 )
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 83.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 86.
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 83.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 86.
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 83.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 86.
 
 [5
 
@@ -1246,7 +1247,7 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
 <figs/tree_fredrik.png, id=65, 1440.38126pt x 771.88374pt>
 File: figs/tree_fredrik.png Graphic file (type png)
 <use figs/tree_fredrik.png>
-Package pdftex.def Info: figs/tree_fredrik.png  used on input line 112.
+Package pdftex.def Info: figs/tree_fredrik.png  used on input line 115.
 (pdftex.def)             Requested size: 245.83282pt x 131.73672pt.
  [7
 
@@ -1256,10 +1257,10 @@ Package pdftex.def Info: figs/tree_fredrik.png  used on input line 112.
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <9> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 162.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 165.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 162.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 165.
 
  [10
 
@@ -1275,7 +1276,7 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
 <figs/boosting_scheme.png, id=113, 1191.45125pt x 499.8675pt>
 File: figs/boosting_scheme.png Graphic file (type png)
 <use figs/boosting_scheme.png>
-Package pdftex.def Info: figs/boosting_scheme.png  used on input line 214.
+Package pdftex.def Info: figs/boosting_scheme.png  used on input line 213.
 (pdftex.def)             Requested size: 307.28987pt x 128.91753pt.
  [15
 
@@ -1288,7 +1289,7 @@ Package pdftex.def Info: figs/boosting_scheme.png  used on input line 214.
 File: figs/Boosting illustration1.png Graphic file (type png)
 <use figs/Boosting illustration1.png>
 Package pdftex.def Info: figs/Boosting illustration1.png  used on input line 25
-1.
+0.
 (pdftex.def)             Requested size: 307.28987pt x 188.87077pt.
  [18
 
@@ -1297,7 +1298,7 @@ Package pdftex.def Info: figs/Boosting illustration1.png  used on input line 25
 File: figs/Boosting illustration2.png Graphic file (type png)
 <use figs/Boosting illustration2.png>
 Package pdftex.def Info: figs/Boosting illustration2.png  used on input line 25
-5.
+4.
 (pdftex.def)             Requested size: 307.28987pt x 189.1128pt.
 
 [19
@@ -1307,7 +1308,7 @@ Package pdftex.def Info: figs/Boosting illustration2.png  used on input line 25
 File: figs/Boosting illustration3.png Graphic file (type png)
 <use figs/Boosting illustration3.png>
 Package pdftex.def Info: figs/Boosting illustration3.png  used on input line 25
-9.
+8.
 (pdftex.def)             Requested size: 307.28987pt x 189.3643pt.
  [20
 
@@ -1316,7 +1317,7 @@ Package pdftex.def Info: figs/Boosting illustration3.png  used on input line 25
 File: figs/Boosting illustration4.png Graphic file (type png)
 <use figs/Boosting illustration4.png>
 Package pdftex.def Info: figs/Boosting illustration4.png  used on input line 26
-3.
+2.
 (pdftex.def)             Requested size: 307.28987pt x 190.27144pt.
  [21
 
@@ -1325,7 +1326,7 @@ Package pdftex.def Info: figs/Boosting illustration4.png  used on input line 26
 File: figs/Boosting illustration5.png Graphic file (type png)
 <use figs/Boosting illustration5.png>
 Package pdftex.def Info: figs/Boosting illustration5.png  used on input line 26
-7.
+6.
 (pdftex.def)             Requested size: 307.28987pt x 189.54611pt.
  [22
 
@@ -1334,7 +1335,7 @@ Package pdftex.def Info: figs/Boosting illustration5.png  used on input line 26
 File: figs/Boosting illustration6.png Graphic file (type png)
 <use figs/Boosting illustration6.png>
 Package pdftex.def Info: figs/Boosting illustration6.png  used on input line 27
-1.
+0.
 (pdftex.def)             Requested size: 307.28987pt x 190.52621pt.
  [23
 
@@ -1343,7 +1344,7 @@ Package pdftex.def Info: figs/Boosting illustration6.png  used on input line 27
 File: figs/Boosting illustration7.png Graphic file (type png)
 <use figs/Boosting illustration7.png>
 Package pdftex.def Info: figs/Boosting illustration7.png  used on input line 27
-5.
+4.
 (pdftex.def)             Requested size: 307.28987pt x 190.9782pt.
  [24
 
@@ -1352,7 +1353,7 @@ Package pdftex.def Info: figs/Boosting illustration7.png  used on input line 27
 File: figs/Boosting illustration8.png Graphic file (type png)
 <use figs/Boosting illustration8.png>
 Package pdftex.def Info: figs/Boosting illustration8.png  used on input line 27
-9.
+8.
 (pdftex.def)             Requested size: 307.28987pt x 189.81787pt.
  [25
 
@@ -1361,7 +1362,7 @@ Package pdftex.def Info: figs/Boosting illustration8.png  used on input line 27
 File: figs/Boosting illustration9.png Graphic file (type png)
 <use figs/Boosting illustration9.png>
 Package pdftex.def Info: figs/Boosting illustration9.png  used on input line 28
-3.
+2.
 (pdftex.def)             Requested size: 307.28987pt x 190.97876pt.
  [26
 
@@ -1370,7 +1371,7 @@ Package pdftex.def Info: figs/Boosting illustration9.png  used on input line 28
 File: figs/Boosting illustration10.png Graphic file (type png)
 <use figs/Boosting illustration10.png>
 Package pdftex.def Info: figs/Boosting illustration10.png  used on input line 2
-87.
+86.
 (pdftex.def)             Requested size: 307.28987pt x 190.27144pt.
  [27
 
@@ -1378,7 +1379,7 @@ Package pdftex.def Info: figs/Boosting illustration10.png  used on input line 2
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 322.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 321.
 
  [29
 
@@ -1387,10 +1388,10 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
 File: figs/boosting for regression trees.png Graphic file (type png)
 <use figs/boosting for regression trees.png>
 Package pdftex.def Info: figs/boosting for regression trees.png  used on input 
-line 328.
+line 327.
 (pdftex.def)             Requested size: 307.28987pt x 235.57536pt.
 
-Overfull \vbox (18.81126pt too high) detected at line 328
+Overfull \vbox (18.81126pt too high) detected at line 327
  []
 
 [30
@@ -1402,19 +1403,19 @@ Overfull \vbox (18.81126pt too high) detected at line 328
 ] [33
 
 ]
-Overfull \vbox (14.187pt too high) detected at line 414
+Overfull \vbox (14.187pt too high) detected at line 413
  []
 
 [34
 
 ]
-Overfull \vbox (13.54318pt too high) detected at line 440
+Overfull \vbox (13.54318pt too high) detected at line 439
  []
 
 [35
 
 ]
-Overfull \vbox (11.47618pt too high) detected at line 473
+Overfull \vbox (11.47618pt too high) detected at line 472
  []
 
 [36
@@ -1424,7 +1425,7 @@ Overfull \vbox (11.47618pt too high) detected at line 473
 ] [38
 
 ]
-Overfull \vbox (1.10939pt too high) detected at line 521
+Overfull \vbox (1.10939pt too high) detected at line 520
  []
 
 [39
@@ -1434,7 +1435,7 @@ Overfull \vbox (1.10939pt too high) detected at line 521
 ] [41
 
 ]
-Overfull \vbox (32.39537pt too high) detected at line 578
+Overfull \vbox (32.39537pt too high) detected at line 577
  []
 
 [42
@@ -1445,7 +1446,7 @@ Overfull \vbox (32.39537pt too high) detected at line 578
 <./figs//xgboost_gain_fig.png, id=286, 1541.76pt x 1027.84pt>
 File: ./figs//xgboost_gain_fig.png Graphic file (type png)
 <use ./figs//xgboost_gain_fig.png>
-Package pdftex.def Info: ./figs//xgboost_gain_fig.png  used on input line 611.
+Package pdftex.def Info: ./figs//xgboost_gain_fig.png  used on input line 610.
 (pdftex.def)             Requested size: 184.3758pt x 122.91202pt.
  [44
 
@@ -1469,10 +1470,10 @@ Package rerunfilecheck Info: File `l6_josef.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 31735 strings out of 479533
- 654222 string characters out of 5876205
- 895291 words of memory out of 5000000
- 48967 multiletter control sequences out of 15000+600000
+ 31737 strings out of 479533
+ 654255 string characters out of 5876205
+ 894269 words of memory out of 5000000
+ 48969 multiletter control sequences out of 15000+600000
  493242 words of font info for 102 fonts, out of 8000000 for 9000
  417 hyphenation exceptions out of 8191
  128i,13n,122p,1893b,742s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1500,7 +1501,7 @@ ts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/ms
 bm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss0900.pfb></usr/share
 /texmf/fonts/type1/public/cm-super/sfss1000.pfb>
-Output written on l6_josef.pdf (46 pages, 2238394 bytes).
+Output written on l6_josef.pdf (46 pages, 2238395 bytes).
 PDF statistics:
  433 PDF objects out of 1000 (max. 8388607)
  306 compressed objects within 4 object streams
