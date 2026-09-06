@@ -21,7 +21,7 @@ library(caret)
 library(randomForest)
 
 data(mdrr)
-
+?mdrr
 # Predictor matrix
 X <- mdrrDescr
 
