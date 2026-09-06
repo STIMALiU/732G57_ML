@@ -1,6 +1,6 @@
 ---
-title: "Rapport X"
-subtitle: "Kurskod, Grupp Y"
+title: "{En informativ titel ska vara här}"
+subtitle: "Kurskod, GruppX"
 author: 
   - "Författare 1 Namn"
   - "Författare 2 Namn"
@@ -77,11 +77,13 @@ bibliography: report_ref.bib
 
 <!-- Börjar med kapitel 1 -->
 # Inledning
+**Allmänt**
+
 Detta är enklare mall för hur akademiska rapporter ska skrivas. Den kan även användas som stöd när övriga rapporter ska skrivas.
 
 *Notera*: det finns instruktioner i denna mall löpande till och med Bilaga.
 
-Ha som riktmärke att rapporten ska vara 10-20 sidor (exkludera referenser och bilaga från den siffran). Det är viktigt att det inte ska vara för långt för opponenter och examinator att läsa.
+Ha som riktmärke att rapporten ska vara 10-20 sidor (exkludera referenser och bilaga från den siffran). Det är viktigt att det inte ska vara för långt för opponenter och examinator att läsa. Försök att hålla rapporten under 20 sidor brödtext.
 
 
 Se till att använda ett korrekt språk i rapporterna, utan stavfel och andra grammatiska misstag. Tänk hela tiden att ni ska kunna visa upp det ni presterar för en framtida arbetsgivare.
@@ -100,7 +102,7 @@ Notera: Alla figurer, tabeller och liknande ska vara numrerade och ska refereras
 Notera: **Ingen R-kod** eller **råa R-utskrifter** ska synas i rapporten (med undantag för om de är i Bilaga under rubriken Kod). Alla tabeller ska vara ordentliga rapporttabeller.
 
 ## Bakgrund
-I bakgrunden ges en introduktion till ämnet och motivering till problemställningen i uppsatsen.
+I bakgrunden ges en introduktion till ämnet och motivering till problemställningen i uppsatsen. Här ska ni ha minst olika **2 källor** som behandlar ämnet/problemet. Sen om ni hittar andra som har analyserat ert dataset tidigare: citera dessa och skriv kortfattat "vad som har gjorts på data". (Om data har använts väldigt mycket så räcker det att citera några användningar.)
 
 ## Syfte
 Här beskrivs syftet med undersökningen samt eventuella avgränsningar.
@@ -150,53 +152,42 @@ Om man har ett antal figurer som är mycket lika varandra $\rightarrow$ visa en 
 # Metod (VIKTIGT!!!)
 
 ## Teori
-Detta kapitel beskriver de statistiska metoderna som används i rapporten. Hänvisa till litteraturen då metoderna förklaras och visa formler när det är relevant.
+Ni ska **kortfattat** förklara era valda metoder i allmänna termer. Det räcker med ett antal meningar/några stycken per metod. Skriv något kort om hur modellerna skattas/optimeras. Ni behöver inte visa formler om ni inte vill. Fokusera på metodernas/modellerna övergripande egenskaper/koncept. Ha litteraturhänvisningar för era metoder.
 
-Ha som riktmärke att sektionen Metod ska vara max 6 sidor.
-
-Metoderna ska beskrivas **generellt** i detta kapitel. Det räcker med en **kortfattad** beskrivning. Ni ska inte ta upp alla detaljer på varje metod. Tänk max 1 sida per större metod/modellfamlij. Kan vara kortare.
+Tänk att denna sektion ska vara 1-2 sidor
 
 *Notera*: Vanlig linjär regression och linjär logistisk regression behöver inte förklaras men ska nämnas om det användas. Om man använder någon utökning av linjär (logistisk) regression så ska det förklaras.
+
 I de flesta fall så vill man jämföra med enkel baslinjemetod (baseline), och då brukar oftast linjär (logistisk) regression vara den bästa alternativet för det. Man kan ha en egen rubrik "Baslinjemetod" där man skriver kortfattad om vilken baslinjemetod man använder. Se nedan för mer info om baslinjemetod.
 
-Börja med att kort förklara syftet eller motivationen med metoden/modellen. Tänk: Varför ska man använda denna metod? 
+## Praktisk metod
 
-
-Ta upp nedanstående punkter i den mån de är relevanta för er metod:
-
-- Vilka krav eller antaganden som gäller för att man kan använda metoden. (tex: de flesta metoder i kursen antar att vi har oberoende observationer)
-- **Kort** beskrivning av metoden: "vad gör metoden?"
-  - Definitioner, skattning, optimering mm
-- Modeller/modellval, hyperparameterar, modellkomplexitet: Förklara de viktiga hyperparameterarna.
-- Överanpassning/generalisering 
-  - Träning, validering, test
-- Utvärderingsmått och liknande
-
+Fokus i metodkapitlet ska vara i denna sektion.
 
 Notera att i de flesta fall så är det lämpligt att jämföra två eller fler modeller/metoder på samma problem. Det kan vara så att man har samma metodfamlij, men med olika hyperparametrar.
 
 - Inom klassificering /regression: Om ni tänker använda någon icke-linjär metod, då är det ofta rimligt att jämföra med linjär regression/linjär logistisk regression (men även andra modeller kan vara intressant att jämföra med). Tänk frågan: "Vad vinner vi med en mer komplicerad modell?"
 - Det är ok att ha en metod som sin "huvudmetod" som beskrivs mer ingående i metodkapitlet, och en eller flera jämförande metoder som beskrivs kortare.
 - Om ni vill hålla er till endast en metod så bör ni motivera det och den metoden bör utforskas mer ingående med avseende på olika inställningar etc. (Ett exempel kan vara: ni arbetar med bilddata och använder bara olika typer av neurala nätverk)
-- Ha som grund: minst 2 olika typer av modeller + en baslinjemetod
-
-## Praktisk metod
+- **Ha som grund**: minst 2 olika typer av modeller + en baslinjemetod
 
 Först beskriver ni era metoder/modeller teoretiskt i generella termer. (sektionen ovan)
 
 Sen ska ni beskriva era "praktiska metod": hur ni applicerar era metoder/modeller på ert specifika problem. Ni ska alltså har ett strukturerat arbetssätt och ni ska beskriva det övergripande här. Sen under Resultat visar ni resultatet av er applicerade metod. 
 
- - När man analyserar data är det naturligt att ha en initial fas där men explorativt utforskar data och olika metoder kopplat till problemet. Denna fas behöver man oftast inte skriva om under Metod. Notera: denna fas ska vara relativt kort i tid.
- - Sen när ni fått ungefärlig bild av vad som ni behöver göras för att analysera er frågeställning så ska ni bestämma ett strukturerat upplägg på hur ni ska använda era metoder/modeller på ert problem.
+ - När man analyserar data är det naturligt att ha en informell initial fas där men explorativt utforskar data och olika metoder kopplat till problemet. Denna fas behöver man oftast inte skriva om under Metod. Notera: denna fas ska vara relativt kort i tid.
+ - Sen när ni fått ungefärlig bild av vad som ni behöver göras för att analysera er frågeställning så ska ni bestämma ett **strukturerat upplägg** på hur ni ska använda era metoder/modeller på ert problem.
     - Ska data delas upp? Hur? (träning, validering, korsvalidering, test)
-    - Vilka modellval/inställningar/hyperparametrar ska göras? Detta är ofta en svår och viktig fråga.
+    - Vilka modellval/inställningar/hyperparametrar ska göras? Detta är ofta en svår och viktig fråga. Förklara hyperparametrarna betyder.
       - Ofta behöver man fixera några inställningar/hyperparametrar (pga man behöver avgränsa och tidsbegränsningar)
-      - Andra inställningar/hyperparametrar vill man hitta så optimala värden för som möjligt (ofta med hjälp av korsvalidering/valideringsdata) $\rightarrow$ ni vill göra en hyperparametersökning för era olika metoder/modeller
+      - Andra inställningar/hyperparametrar vill man hitta så optimala värden för som möjligt (ofta med hjälp av korsvalidering/valideringsdata) $\rightarrow$ ni vill göra en **hyperparametersökning** för era olika metoder/modeller
       - Ange tydligt vilka hyperparametrar som ni fixerar och vilka som ni vill försöker optimera för olika metoder/modeller. De som ni optimerar: ange tydligt vilka olika hyperparametervärden som ni väljer mellan för varje specifik hyperparameter. Ex: "För KNN används korsvalidering med tio uppdelningar för att bestämma k. Följande  följande värden på k testas: $k=5,7,9,\ldots,25$. Det k som ger minst genomsnittligt MSE i korsvalideringen används."
-    - Hur metoder/modellerna ska utvärderas och jämföras.
+    - Hur metoder/modellerna ska utvärderas och jämföras. Val av utvärderingsmått.
   - Det är ok att revidera sitt praktiska upplägg vid behov efter att man har börjat med själva analysen (se till att uppdatera beskrivningen av upplägget) 
+  
+Tänk att andra analytiker ska kunna ta ert "recept" och använda det på er data eller annan liknande data.
 
-Förklara vilka mjukvaror/program/paket som ni använder för att tillämpa er metod.
+Förklara vilka mjukvaror/program/paket som ni använder för att tillämpa er metod. Citera R-paket.
 
 
 
@@ -209,18 +200,25 @@ Detta kapitel presenterar resultatet av beräkningar, diagram och tabeller som s
 
 Här anger ni vilka faktiska val ni har gjort med avseende på modellval, hyperparameterar mm.
 
+Här ska vi se utfallet av er parktiska metod.
+
 Varje diagram och tabell som presenteras i rapporten ska vara numrerat och ha en figur/tabelltext som kort beskriver innehållet. Avrunda till lämpligt antal decimaler.
 
 - Ta inte med någon tabell eller diagram som ni inte kommenterar eller tolkar. Alla figurer, tabeller och liknande ska ska refereras från brödtexten.
 
+Det rekommenderas att man gör någon variant av följande upplägg:
 
+- Om man gör hyperparamersökning/modellval inom en metodfamilj: ofta vill man visa en tabell med resultat per familj, där varje rad är en hyperparameterkombination/modellinställning + utvärderingsmått. Presentera vad som är den bästa modellvalet inom varje metodfamilj. Beroende på hur många kombinationer av modeller som används så kan man ha en tabell för alla modeller. Notera: Om man testar många modeller, då brukar det ofta vara rimligt att visa de bästa 5-10 modellerna per metodfamilj. 
+- En jämförande tabell där man visar utvärderingsmått för den bästa modellen från varje metodfamilj för träningsdata och valideringsdata.
+- Om det är relevant: mer inzoomade analyser per metodfamilj (tex om man vill undersöka viktiga variabler, residualanalys etc)
+- Till sist: Om man använder testdata så visar man utvärderingsmått för **en modell** på testdata = den modell som man anser är bäst av alla tidigare modeller som tagits upp.
 
 
 <!-- Anger sidbrytning -->
 \clearpage
 
 # Diskussion
-Här ingår en kritisk granskning av resultaten (inte analys eller tolkning utan mer fokuserad på trovärdighet) samt en utvärdering av lämpligheten av de använda metoderna. Här görs även kopplingar tillbaka till tidigare studier som gåtts igenom i bakgrunden med referenser i texten.
+Här ingår en kritisk granskning och diskussion av resultaten samt en utvärdering av lämpligheten av de använda metoderna. Här görs även kopplingar tillbaka till tidigare studier som gåtts igenom i bakgrunden med referenser i texten.
 
 En del av diskussion bör också försöka sätta resultatet i sitt sammanhang, vad kan samhället ta lärdom av dessa resultat, hur kan man fortsätta undersöka ämnet (t.ex. andra metoder eller andra faktorer).
 
