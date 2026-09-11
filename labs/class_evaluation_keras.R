@@ -1,6 +1,8 @@
 # new_data - new data for prediction
 # model    - a keras model
+# true_y   - the true class labels
 # digits   - number of digits used 
+
 
 # funktionen använder k_argmax() från paketet keras
 class_evaluation_keras <- function(new_data, model, true_y, digits = 3){
