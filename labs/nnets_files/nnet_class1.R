@@ -172,6 +172,7 @@ y_train_vect[3]
 round(class_pred_train[1:5,],2)
 
 # ta fram klasserna för prediktionerna som en vektor:
+class_pred_train_vect <- max.col(class_pred_train) - 1
 temp<-class_pred_train %>% keras::k_argmax()
 class_pred_train_vect<-as.vector(as.array(temp))
 

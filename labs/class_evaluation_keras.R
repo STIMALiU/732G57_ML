@@ -1,11 +1,13 @@
 # new_data - new data for prediction
 # model    - a keras model
+# true_y   - the true class labels
 # digits   - number of digits used 
+
 
 # funktionen använder k_argmax() från paketet keras
 class_evaluation_keras <- function(new_data, model, true_y, digits = 3){
   # Predikterar klassen för new_data givet den skattade modellen
-  class_pred <- model %>% predict(new_data) %>% keras::k_argmax()
+  class_pred <- model %>% predict(new_data) %>% keras3::op_argmax(axis = -1)
   pred<-as.vector(as.array(class_pred))
 
   # Konverterar de predikterade klasserna till en faktor med samma nivåer som de sanna klasserna
