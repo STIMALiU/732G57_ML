@@ -449,7 +449,7 @@ literal "false"
 \begin_layout Itemize
 \begin_inset CommandInset href
 LatexCommand href
-name "Lista över funktioner i Keras"
+name "Lista över funktioner i Keras3"
 target "https://keras3.posit.co/reference/index.html"
 literal "false"
 
@@ -492,7 +492,17 @@ literal "false"
 
 
 \bar default
-.
+ för en introduktion.
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "Här"
+target "https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/labs/nnets_files/tensorflow_basic_image_classification_keras3.qmd"
+literal "false"
+
+\end_inset
+
+ finns källfilen (med kod) som är ändrad så att det passar med keras3.
  Läs in datamaterialet och se till att ha koll på vad det är för sorts data.
  Nu ska ni testa olika inställningar på optimeringen.
 \end_layout
@@ -513,36 +523,36 @@ status open
 
 \begin_layout Plain Layout
 
-model <- keras_model_sequential() 
+model <- keras_model_sequential(input_shape = c(28,
+ 28))
 \end_layout
 
 \begin_layout Plain Layout
 
-model %>%   
+model %>%
 \end_layout
 
 \begin_layout Plain Layout
 
-layer_flatten(input_shape = c(28,
- 28)) %>%   
+  layer_flatten() %>%
 \end_layout
 
 \begin_layout Plain Layout
 
-layer_dense(units = 128,
- activation = 'relu') %>%
+  layer_dense(units = 128,
+ activation = "relu") %>%
 \end_layout
 
 \begin_layout Plain Layout
 
-layer_dense(units = 128,
- activation = 'relu') %>%     
+  layer_dense(units = 128,
+ activation = "relu") %>%
 \end_layout
 
 \begin_layout Plain Layout
 
-layer_dense(units = 10,
- activation = 'softmax')
+  layer_dense(units = 10,
+ activation = "softmax")
 \end_layout
 
 \begin_layout Plain Layout
@@ -579,7 +589,7 @@ Tips
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://tensorflow.rstudio.com/reference/keras/"
+target "https://keras3.posit.co/reference/index.html"
 literal "false"
 
 \end_inset
@@ -667,46 +677,56 @@ status open
 
 \begin_layout Plain Layout
 
-model_batch_norm <- keras_model_sequential() 
+model_batch_norm <- keras_model_sequential(
 \end_layout
 
 \begin_layout Plain Layout
 
-model_batch_norm %>%   
+  input_shape = c(28,
+ 28)
 \end_layout
 
 \begin_layout Plain Layout
 
-layer_flatten(input_shape = c(28,
- 28)) %>%   
+)
 \end_layout
 
 \begin_layout Plain Layout
 
-layer_dense(units = 128,
- activation = 'relu') %>%   
+model_batch_norm %>%
 \end_layout
 
 \begin_layout Plain Layout
 
-layer_batch_normalization() %>%   
+  layer_flatten() %>%
 \end_layout
 
 \begin_layout Plain Layout
 
-layer_dense(units = 128,
- activation = 'relu') %>%   
+  layer_dense(units = 128,
+ activation = "relu") %>%
 \end_layout
 
 \begin_layout Plain Layout
 
-layer_batch_normalization() %>%   
+  layer_batch_normalization() %>%
 \end_layout
 
 \begin_layout Plain Layout
 
-layer_dense(units = 10,
- activation = 'softmax')
+  layer_dense(units = 128,
+ activation = "relu") %>%
+\end_layout
+
+\begin_layout Plain Layout
+
+  layer_batch_normalization() %>%
+\end_layout
+
+\begin_layout Plain Layout
+
+  layer_dense(units = 10,
+ activation = "softmax")
 \end_layout
 
 \begin_layout Plain Layout
