@@ -24,7 +24,7 @@ modelStep <- lm(y ~ cut(x,10))
 plot(x, y)
 lines(sort(x), fitted(modelStep)[order(x)])
 
-library(keras)
+library(keras3)
 modelNN <- keras_model_sequential()
 modelNN %>% layer_dense(
   units = 64,

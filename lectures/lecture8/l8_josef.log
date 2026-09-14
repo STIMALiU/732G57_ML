@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.18)  15 SEP 2025 13:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  14 SEP 2026 13:04
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -829,9 +829,9 @@ Language: english 2017/06/06 v3.3r English support from the babel system
 Package babel Info: Hyphen rules for 'canadian' set to \l@english
 (babel)             (\language0). Reported on input line 102.
 Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
-(babel)             (\language36). Reported on input line 105.
+(babel)             (\language20). Reported on input line 105.
 Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
-(babel)             (\language36). Reported on input line 108.
+(babel)             (\language20). Reported on input line 108.
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
@@ -1207,24 +1207,24 @@ Overfull \vbox (13.79993pt too high) detected at line 38
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <../LiU_primary_black.pdf>]
 LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 
-60.
+58.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmss.fd
 File: ts1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 60.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 58.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 60.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 58.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 60.
+ut line 58.
 
 (/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
@@ -1246,10 +1246,10 @@ thkerncmss.
 <figs/Momentum.png, id=79, 1187.43625pt x 864.22874pt>
 File: figs/Momentum.png Graphic file (type png)
 <use figs/Momentum.png>
-Package pdftex.def Info: figs/Momentum.png  used on input line 152.
+Package pdftex.def Info: figs/Momentum.png  used on input line 150.
 (pdftex.def)             Requested size: 245.83282pt x 178.90872pt.
 
-Overfull \vbox (15.76663pt too high) detected at line 152
+Overfull \vbox (15.76663pt too high) detected at line 150
  []
 
 [8
@@ -1262,10 +1262,10 @@ Overfull \vbox (15.76663pt too high) detected at line 152
 <figs/DL_training_curves.png, id=97, 1026.83624pt x 746.79pt>
 File: figs/DL_training_curves.png Graphic file (type png)
 <use figs/DL_training_curves.png>
-Package pdftex.def Info: figs/DL_training_curves.png  used on input line 203.
+Package pdftex.def Info: figs/DL_training_curves.png  used on input line 201.
 (pdftex.def)             Requested size: 307.28987pt x 223.48036pt.
 
-Overfull \vbox (6.71626pt too high) detected at line 203
+Overfull \vbox (6.71626pt too high) detected at line 201
  []
 
 [11
@@ -1284,13 +1284,13 @@ Overfull \vbox (6.71626pt too high) detected at line 203
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 312.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 310.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 312.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 310.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 312.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 310.
 
  [18
 
@@ -1303,7 +1303,7 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
 <figs/dropout_example.png, id=152, 1342.01375pt x 833.1125pt>
 File: figs/dropout_example.png Graphic file (type png)
 <use figs/dropout_example.png>
-Package pdftex.def Info: figs/dropout_example.png  used on input line 342.
+Package pdftex.def Info: figs/dropout_example.png  used on input line 340.
 (pdftex.def)             Requested size: 307.28987pt x 190.76012pt.
  [21
 
@@ -1315,10 +1315,10 @@ Package pdftex.def Info: figs/dropout_example.png  used on input line 342.
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <9> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 420.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 418.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 420.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 418.
 
  [25
 
@@ -1333,10 +1333,10 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
 <figs/CNN_sparse_con.png, id=199, 1257.69875pt x 878.28125pt>
 File: figs/CNN_sparse_con.png Graphic file (type png)
 <use figs/CNN_sparse_con.png>
-Package pdftex.def Info: figs/CNN_sparse_con.png  used on input line 469.
+Package pdftex.def Info: figs/CNN_sparse_con.png  used on input line 467.
 (pdftex.def)             Requested size: 276.559pt x 193.12866pt.
 
-Overfull \vbox (25.70879pt too high) detected at line 469
+Overfull \vbox (25.70879pt too high) detected at line 467
  []
 
 [29
@@ -1345,7 +1345,7 @@ Overfull \vbox (25.70879pt too high) detected at line 469
 <figs/imageNet.png, id=206, 985.6825pt x 531.9875pt>
 File: figs/imageNet.png Graphic file (type png)
 <use figs/imageNet.png>
-Package pdftex.def Info: figs/imageNet.png  used on input line 480.
+Package pdftex.def Info: figs/imageNet.png  used on input line 478.
 (pdftex.def)             Requested size: 245.83282pt x 132.67996pt.
  [30
 
@@ -1353,23 +1353,19 @@ Package pdftex.def Info: figs/imageNet.png  used on input line 480.
 <figs/Chexnet.png, id=213, 1042.89626pt x 678.535pt>
 File: figs/Chexnet.png Graphic file (type png)
 <use figs/Chexnet.png>
-Package pdftex.def Info: figs/Chexnet.png  used on input line 486.
+Package pdftex.def Info: figs/Chexnet.png  used on input line 484.
 (pdftex.def)             Requested size: 307.28987pt x 199.92795pt.
  [31
 
  <./figs/Chexnet.png>] [32
 
 ]
-<figs/2-D convolution.png, id=227, 1066.98625pt x 912.40875pt>
+<figs/2-D convolution.png, id=225, 1066.98625pt x 912.40875pt>
 File: figs/2-D convolution.png Graphic file (type png)
 <use figs/2-D convolution.png>
-Package pdftex.def Info: figs/2-D convolution.png  used on input line 506.
+Package pdftex.def Info: figs/2-D convolution.png  used on input line 504.
 (pdftex.def)             Requested size: 245.83282pt x 210.21158pt.
-
-Overfull \vbox (9.19185pt too high) detected at line 506
- []
-
-[33
+ [33
 
  <./figs/2-D convolution.png>] [34
 
@@ -1378,28 +1374,28 @@ Overfull \vbox (9.19185pt too high) detected at line 506
 ] [36
 
 ]
-<figs/padding.png, id=248, 948.54375pt x 959.585pt>
+<figs/padding.png, id=246, 948.54375pt x 959.585pt>
 File: figs/padding.png Graphic file (type png)
 <use figs/padding.png>
-Package pdftex.def Info: figs/padding.png  used on input line 557.
+Package pdftex.def Info: figs/padding.png  used on input line 555.
 (pdftex.def)             Requested size: 245.68924pt x 248.55293pt.
 
-Overfull \vbox (31.78883pt too high) detected at line 557
+Overfull \vbox (31.78883pt too high) detected at line 555
  []
 
 [37
 
  <./figs/padding.png>]
-<figs/typical convolutional neural network layer.png, id=255, 925.4575pt x 864.
+<figs/typical convolutional neural network layer.png, id=253, 925.4575pt x 864.
 22874pt>
 File: figs/typical convolutional neural network layer.png Graphic file (type pn
 g)
 <use figs/typical convolutional neural network layer.png>
 Package pdftex.def Info: figs/typical convolutional neural network layer.png  u
-sed on input line 563.
+sed on input line 561.
 (pdftex.def)             Requested size: 266.15875pt x 248.55293pt.
 
-Overfull \vbox (31.78883pt too high) detected at line 563
+Overfull \vbox (31.78883pt too high) detected at line 561
  []
 
 [38
@@ -1407,34 +1403,34 @@ Overfull \vbox (31.78883pt too high) detected at line 563
  <./figs/typical convolutional neural network layer.png>] [39
 
 ]
-<figs/CNN ARCHITECTURE.png, id=266, 1244.65pt x 818.05624pt>
+<figs/CNN ARCHITECTURE.png, id=264, 1244.65pt x 818.05624pt>
 File: figs/CNN ARCHITECTURE.png Graphic file (type png)
 <use figs/CNN ARCHITECTURE.png>
-Package pdftex.def Info: figs/CNN ARCHITECTURE.png  used on input line 587.
+Package pdftex.def Info: figs/CNN ARCHITECTURE.png  used on input line 585.
 (pdftex.def)             Requested size: 307.28987pt x 201.96712pt.
  [40
 
  <./figs/CNN ARCHITECTURE.png>]
-<figs/Autoencoder_schema.png, id=273, 405.1938pt x 368.577pt>
+<figs/Autoencoder_schema.png, id=271, 405.1938pt x 368.577pt>
 File: figs/Autoencoder_schema.png Graphic file (type png)
 <use figs/Autoencoder_schema.png>
-Package pdftex.def Info: figs/Autoencoder_schema.png  used on input line 606.
+Package pdftex.def Info: figs/Autoencoder_schema.png  used on input line 604.
 (pdftex.def)             Requested size: 129.66466pt x 117.94704pt.
 
-Overfull \vbox (19.28242pt too high) detected at line 606
+Overfull \vbox (19.28242pt too high) detected at line 604
  []
 
 [41
 
  <./figs/Autoencoder_schema.png>]
-<figs/Autoencoder_structure_deep.png, id=281, 679.53876pt x 507.8975pt>
+<figs/Autoencoder_structure_deep.png, id=279, 679.53876pt x 507.8975pt>
 File: figs/Autoencoder_structure_deep.png Graphic file (type png)
 <use figs/Autoencoder_structure_deep.png>
 Package pdftex.def Info: figs/Autoencoder_structure_deep.png  used on input lin
-e 619.
+e 617.
 (pdftex.def)             Requested size: 203.8632pt x 152.37042pt.
 
-Overfull \vbox (35.35033pt too high) detected at line 619
+Overfull \vbox (35.35033pt too high) detected at line 617
  []
 
 [42
@@ -1444,14 +1440,14 @@ Overfull \vbox (35.35033pt too high) detected at line 619
 ] [44
 
 ]
-<figs/Reconstruction_autoencoders_vs_PCA.png, id=300, 967.4544pt x 212.4738pt>
+<figs/Reconstruction_autoencoders_vs_PCA.png, id=298, 967.4544pt x 212.4738pt>
 File: figs/Reconstruction_autoencoders_vs_PCA.png Graphic file (type png)
 <use figs/Reconstruction_autoencoders_vs_PCA.png>
 Package pdftex.def Info: figs/Reconstruction_autoencoders_vs_PCA.png  used on i
-nput line 669.
+nput line 667.
 (pdftex.def)             Requested size: 309.59174pt x 67.993pt.
 
-Overfull \hbox (2.30186pt too wide) in paragraph at lines 669--669
+Overfull \hbox (2.30186pt too wide) in paragraph at lines 667--667
 [][]  
  []
 
@@ -1474,37 +1470,37 @@ Package rerunfilecheck Info: File `l8_josef.out' has not changed.
 Here is how much of TeX's memory you used:
  31836 strings out of 479533
  655211 string characters out of 5876205
- 897384 words of memory out of 5000000
+ 897383 words of memory out of 5000000
  49071 multiletter control sequences out of 15000+600000
  490243 words of font info for 93 fonts, out of 8000000 for 9000
  417 hyphenation exceptions out of 8191
  128i,13n,122p,1893b,744s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/joswi05/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcss0800.6
-00pk> </home/joswi05/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcss090
-0.600pk> </home/joswi05/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcss
-1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-si9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on l8_josef.pdf (45 pages, 2190867 bytes).
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+ss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss0800
+.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss0900.pfb></usr/share/tex
+mf/fonts/type1/public/cm-super/sfss1000.pfb>
+Output written on l8_josef.pdf (45 pages, 2202843 bytes).
 PDF statistics:
- 428 PDF objects out of 1000 (max. 8388607)
- 309 compressed objects within 4 object streams
+ 427 PDF objects out of 1000 (max. 8388607)
+ 305 compressed objects within 4 object streams
  91 named destinations out of 1000 (max. 500000)
  113 words of extra memory for PDF output out of 10000 (max. 10000000)
 
