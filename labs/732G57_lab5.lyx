@@ -756,7 +756,7 @@ Del 2:
 \end_layout
 
 \begin_layout Standard
-Kör denna tutorial:
+Utgå från denna tutorial:
  
 \begin_inset CommandInset href
 LatexCommand href
@@ -768,6 +768,48 @@ literal "false"
 
 .
  
+\end_layout
+
+\begin_layout Itemize
+Datasetet som används heter HIGGS,
+ och är väldigt stort,
+ så för att underlätta så har två mindre delar sparats i filerna 
+\begin_inset Quotes sld
+\end_inset
+
+HIGGS_training.csv
+\begin_inset Quotes srd
+\end_inset
+
+ och 
+\begin_inset Quotes sld
+\end_inset
+
+HIGGS_validation.csv
+\begin_inset Quotes srd
+\end_inset
+
+.
+ Dessa finns under kursdokument på kursrummet.
+ Ladda ned dessa lokalt på er dator.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Här"
+target "https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/labs/nnets_files/tensorflow_overfit_and_underfit_keras3_local_data.qmd"
+literal "false"
+
+\end_inset
+
+ finns källfilen till tutorial ändrad för keras3.
+ Den utgår från de mindre dataseten.
+ 
+\end_layout
+
+\begin_layout Itemize
+Gå igenom koden och analysera de olika stegen.
 \end_layout
 
 \begin_layout Section*
