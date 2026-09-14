@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -29,10 +29,10 @@
 \begin_modules
 knitr
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language swedish
 \language_package auto
-\inputencoding auto
+\inputencoding auto-legacy
 \fontencoding default
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -41,7 +41,9 @@ knitr
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -54,7 +56,7 @@ knitr
 \paperfontsize default
 \spacing single
 \use_hyperref false
-\papersize a4paper
+\papersize a4
 \use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
@@ -75,7 +77,9 @@ knitr
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -95,11 +99,16 @@ knitr
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -173,7 +182,8 @@ Datorlaborationerna kräver att ni har R och Rstudio installerat.
 \begin_layout Itemize
 
 \lang english
-Exempelkod för neurala nätvek: 
+Exempelkod för neurala nätvek:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
@@ -188,7 +198,8 @@ literal "false"
 \begin_layout Itemize
 
 \lang english
-Kodmanual: 
+Kodmanual:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -206,14 +217,17 @@ literal "false"
 \lang english
 ISL
 \series default
-: An Introduction to Statistical Learning, 
+:
+ An Introduction to Statistical Learning,
+ 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \lang english
-Boken: 
+Boken:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -228,7 +242,8 @@ literal "false"
 \begin_layout Itemize
 
 \lang english
-R-kod till labbar: 
+R-kod till labbar:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -243,7 +258,8 @@ literal "false"
 \begin_layout Itemize
 
 \lang english
-Dataset: 
+Dataset:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -271,7 +287,8 @@ literal "false"
 \lang english
 IDM
 \series default
-: Introduction to Data Mining
+:
+ Introduction to Data Mining
 \end_layout
 
 \begin_deeper
@@ -332,9 +349,9 @@ literal "false"
 
 \begin_layout Standard
 Notera att ni inte behöver göra alla delar på alla uppgifter.
- Det viktiga är att ni får en förståelse för de olika principerna och modellerna
- som avhandlats.
- Dessa uppgifter ska inte lämnas in, utan är till för er övning.
+ Det viktiga är att ni får en förståelse för de olika principerna och modellerna som avhandlats.
+ Dessa uppgifter ska inte lämnas in,
+ utan är till för er övning.
  
 \end_layout
 
@@ -343,7 +360,8 @@ Datauppdelning
 \end_layout
 
 \begin_layout Standard
-För att motverka överanpassning bör ni dela upp data till träning-, validering-,
+För att motverka överanpassning bör ni dela upp data till träning-,
+ validering-,
  (och testmängd).
  Detta kan göras med 
 \family typewriter
@@ -363,15 +381,24 @@ caret
 \family typewriter
 subset()
 \family default
- för att göra detta också, men det blir svårare att tydligt ange de observatione
-r som ska tilldelas till valideringsmängden.
+ för att göra detta också,
+ men det blir svårare att tydligt ange de observationer som ska tilldelas till valideringsmängden.
  Denna uppdelning ska ske slumpmässigt.
- Notera att om en testmängd ska skapas måste uppdelningen ske en gång till
- från valideringsmängden.
+ Notera att om en testmängd ska skapas måste uppdelningen ske en gång till från valideringsmängden.
 \end_layout
 
 \begin_layout Section*
 Keras
+\end_layout
+
+\begin_layout Itemize
+Notera:
+ kursen utgår från 
+\series bold
+Keras3
+\series default
+,
+ inte Keras (gammal version)
 \end_layout
 
 \begin_layout Itemize
@@ -423,7 +450,7 @@ literal "false"
 \begin_inset CommandInset href
 LatexCommand href
 name "Lista över funktioner i Keras"
-target "https://tensorflow.rstudio.com/reference/keras/"
+target "https://keras3.posit.co/reference/index.html"
 literal "false"
 
 \end_inset
@@ -446,11 +473,13 @@ literal "false"
 \end_layout
 
 \begin_layout Section*
-Del 1: Optimiering av neurala nätverk
+Del 1:
+ Optimiering av neurala nätverk
 \end_layout
 
 \begin_layout Standard
-Här kommer vi utgå från Fashion MNIST-data, kolla 
+Här kommer vi utgå från Fashion MNIST-data,
+ kolla 
 \bar under
 
 \begin_inset CommandInset href
@@ -494,22 +523,26 @@ model %>%
 
 \begin_layout Plain Layout
 
-layer_flatten(input_shape = c(28, 28)) %>%   
+layer_flatten(input_shape = c(28,
+ 28)) %>%   
 \end_layout
 
 \begin_layout Plain Layout
 
-layer_dense(units = 128, activation = 'relu') %>%
+layer_dense(units = 128,
+ activation = 'relu') %>%
 \end_layout
 
 \begin_layout Plain Layout
 
-layer_dense(units = 128, activation = 'relu') %>%     
+layer_dense(units = 128,
+ activation = 'relu') %>%     
 \end_layout
 
 \begin_layout Plain Layout
 
-layer_dense(units = 10, activation = 'softmax')
+layer_dense(units = 10,
+ activation = 'softmax')
 \end_layout
 
 \begin_layout Plain Layout
@@ -539,7 +572,8 @@ Testa nu följande inställningar.
 \series bold
 Tips
 \series default
-: titta 
+:
+ titta 
 \bar under
 
 \begin_inset CommandInset href
@@ -584,7 +618,8 @@ Gör om 4) men med batchstorlek 64 och 256.
 
 \begin_layout Enumerate
 Välj batchstorlek 128 och SGD.
- Ändra learning rate till 1 och 0.0001, vad händer?
+ Ändra learning rate till 1 och 0.0001,
+ vad händer?
 \end_layout
 
 \begin_layout Enumerate
@@ -596,8 +631,7 @@ Välj batchstorlek 128 och SGD.
  Testa att ändra startvärdena.
  Detta görs i lagerfunktionerna.
  Kolla i dokumentationen hur ni ska göra.
- Testa att låta startvärdena vara väldigt små (men ej exakt noll) och rätt
- stora.
+ Testa att låta startvärdena vara väldigt små (men ej exakt noll) och rätt stora.
  Hur blir resultatet?
 \end_layout
 
@@ -610,10 +644,14 @@ literal "false"
 
 \end_inset
 
-: Definiera modellen nedan.
- Skatta modellen med Adam, learning_rate=0.01, epochs = 30, batch_size=128.
- Hur blir resultatet? Undersök tränings- och valideringsdata under träning
- och utvärdera på testdata.
+:
+ Definiera modellen nedan.
+ Skatta modellen med Adam,
+ learning_rate=0.01,
+ epochs = 30,
+ batch_size=128.
+ Hur blir resultatet?
+ Undersök tränings- och valideringsdata under träning och utvärdera på testdata.
  
 \begin_inset Newline newline
 \end_inset
@@ -639,22 +677,14 @@ model_batch_norm %>%
 
 \begin_layout Plain Layout
 
-layer_flatten(input_shape = c(28, 28)) %>%   
+layer_flatten(input_shape = c(28,
+ 28)) %>%   
 \end_layout
 
 \begin_layout Plain Layout
 
-layer_dense(units = 128, activation = 'relu') %>%   
-\end_layout
-
-\begin_layout Plain Layout
-
-layer_batch_normalization() %>%   
-\end_layout
-
-\begin_layout Plain Layout
-
-layer_dense(units = 128, activation = 'relu') %>%   
+layer_dense(units = 128,
+ activation = 'relu') %>%   
 \end_layout
 
 \begin_layout Plain Layout
@@ -664,7 +694,19 @@ layer_batch_normalization() %>%
 
 \begin_layout Plain Layout
 
-layer_dense(units = 10, activation = 'softmax')
+layer_dense(units = 128,
+ activation = 'relu') %>%   
+\end_layout
+
+\begin_layout Plain Layout
+
+layer_batch_normalization() %>%   
+\end_layout
+
+\begin_layout Plain Layout
+
+layer_dense(units = 10,
+ activation = 'softmax')
 \end_layout
 
 \begin_layout Plain Layout
@@ -682,16 +724,20 @@ Välj en metod från 4) och skatta modellen med 50 epoker.
 \end_layout
 
 \begin_layout Enumerate
-Av alla metoder för optimering ni testat, vad tycker ni har funkat bäst?
+Av alla metoder för optimering ni testat,
+ vad tycker ni har funkat bäst?
  Har det varit stor skillnad?
 \end_layout
 
 \begin_layout Section*
-Del 2: Neurala nätverk: regularisering
+Del 2:
+ Neurala nätverk:
+ regularisering
 \end_layout
 
 \begin_layout Standard
-Kör denna tutorial: 
+Kör denna tutorial:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -705,11 +751,13 @@ literal "false"
 \end_layout
 
 \begin_layout Section*
-Del 3: Faltade nätverk och MNIST data
+Del 3:
+ Faltade nätverk och MNIST data
 \end_layout
 
 \begin_layout Standard
-Kör denna tutorial: 
+Kör denna tutorial:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -723,11 +771,13 @@ literal "false"
 \end_layout
 
 \begin_layout Section*
-Del 4: Faltade nätverk och CIFAR10 data
+Del 4:
+ Faltade nätverk och CIFAR10 data
 \end_layout
 
 \begin_layout Standard
-Kör denna tutorial: 
+Kör denna tutorial:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -737,9 +787,10 @@ literal "false"
 \end_inset
 
 .
- Ni ska här jobba med CIFAR10 datasetet, som är ett klassiskt datasets inom
- maskininlärning.
- För mer info, se 
+ Ni ska här jobba med CIFAR10 datasetet,
+ som är ett klassiskt datasets inom maskininlärning.
+ För mer info,
+ se 
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
@@ -761,8 +812,9 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Notera att detta är färgbilder som har tre kanaler (grön, röd, blå) och
- att beräkningarna blir mycket tyngre.
+Notera att detta är färgbilder som har tre kanaler (grön,
+ röd,
+ blå) och att beräkningarna blir mycket tyngre.
  
 \series bold
 Läs steg 1 och 2 nedan innan börjar skatta modeller
@@ -771,8 +823,7 @@ Läs steg 1 och 2 nedan innan börjar skatta modeller
 \end_layout
 
 \begin_layout Enumerate
-Beroende på hårdvaran i er dator så kan det vara bra att minska ner storleken
- på datasetet.
+Beroende på hårdvaran i er dator så kan det vara bra att minska ner storleken på datasetet.
  Testa att börja med hälften av observationerna.
  Sedan kan ni använda fler om er dator klarar av det.
 \begin_inset Newline newline
@@ -849,7 +900,8 @@ rm(cifar0)
 
 \begin_layout Plain Layout
 
-# kolla så att klasserna är hyfsat balanserade: 
+# kolla så att klasserna är hyfsat balanserade:
+ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -878,7 +930,9 @@ Börja med att träna i max 5 epoker när ni skattar modellen.
 \end_layout
 
 \begin_layout Enumerate
-Vad är det för sorts data ni jobbar med här? Hur många obs? Hur stora bilder?
+Vad är det för sorts data ni jobbar med här?
+ Hur många obs?
+ Hur stora bilder?
  Vilka klasser finns?
 \end_layout
 
@@ -888,7 +942,8 @@ Skatta den föreslagna modellen (OBS kan ta lång tid).
 \end_layout
 
 \begin_layout Enumerate
-Hur presterar modellen på testdata? Beräkna förväxlingsmatrisen för testdata.
+Hur presterar modellen på testdata?
+ Beräkna förväxlingsmatrisen för testdata.
 \end_layout
 
 \begin_deeper
@@ -908,12 +963,15 @@ Testa att ändra arkitekturen på modellen.
 
 \begin_deeper
 \begin_layout Enumerate
-Ändra de faltade lagren: 
+Ändra de faltade lagren:
+ 
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Antal lager, varning: ta ej för många 
+Antal lager,
+ varning:
+ ta ej för många 
 \end_layout
 
 \begin_layout Enumerate
@@ -921,7 +979,9 @@ Antal lager, varning: ta ej för många
 \family typewriter
 filters
 \family default
- i faltade lagren, varning: ta ej för många
+ i faltade lagren,
+ varning:
+ ta ej för många
 \end_layout
 
 \begin_layout Enumerate
@@ -968,26 +1028,26 @@ literal "false"
 \end_layout
 
 \begin_layout Section*
-Del 5: Autoencoders och Functional API
+Del 5:
+ Autoencoders och Functional API
 \end_layout
 
 \begin_layout Standard
 I denna del ska ni testa att skatta autoencoders.
- Ni även testa att använda functional API i Keras (istället för Sequential
- model som ni testat innan).
- Functional API är ett gränssnitt för konstruera modeller som är mer avancerade
- och där allt inte bara är kopplat från lagret precis innan.
+ Ni även testa att använda functional API i Keras (istället för Sequential model som ni testat innan).
+ Functional API är ett gränssnitt för konstruera modeller som är mer avancerade och där allt inte bara är kopplat från lagret precis innan.
  
 \end_layout
 
 \begin_layout Enumerate
-Autoencoder och spambase data: Målet är nu att testa att träna en autoencoder
- datasetet spambase.
- Vi kommer att använda Keras functional API, för mer detaljer, se steg 3)
- nedan.
- Datasetet har 57 förklarande variabler och en kategorisk responsvariabel
- (Spam).
- För detaljer kring data, se denna 
+Autoencoder och spambase data:
+ Målet är nu att testa att träna en autoencoder datasetet spambase.
+ Vi kommer att använda Keras functional API,
+ för mer detaljer,
+ se steg 3) nedan.
+ Datasetet har 57 förklarande variabler och en kategorisk responsvariabel (Spam).
+ För detaljer kring data,
+ se denna 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -1002,7 +1062,8 @@ literal "false"
 
 \begin_deeper
 \begin_layout Enumerate
-Läs data och transformera data enligt koden: 
+Läs data och transformera data enligt koden:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
@@ -1027,20 +1088,22 @@ Vanlig linjär logistik regression
 \end_layout
 
 \begin_layout Enumerate
-Random forest, använd 100 träd.
+Random forest,
+ använd 100 träd.
 \end_layout
 
 \begin_layout Enumerate
-MLP, ha lager: 100 noder + 100 noder och sen en klassificeringsnod.
+MLP,
+ ha lager:
+ 100 noder + 100 noder och sen en klassificeringsnod.
  Ni väljer övriga inställningar själva.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
 Vi ska nu utgå från de 57 förklarande variablerna.
- Målet är att få fram en transformation/kod av dessa som är har en låg dimension
-, men som ändå innehåller relevant information för klassificering av spam
- från de ursprungliga variablerna.
+ Målet är att få fram en transformation/kod av dessa som är har en låg dimension,
+ men som ändå innehåller relevant information för klassificering av spam från de ursprungliga variablerna.
  Skatta den föreslagna autoencoder-modellen.
  Beskriv hur encoder och decoder ser ut.
  Vårt flaskhalslager har här 2 noder
@@ -1049,8 +1112,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Dvs de minsta lagret som ligger i mitten av modellen.
- Två noder gör det lätt att visualisera de nya transformerade variablerna
- i ett spridningsdiagram.
+ Två noder gör det lätt att visualisera de nya transformerade variablerna i ett spridningsdiagram.
 \end_layout
 
 \end_inset
@@ -1061,18 +1123,18 @@ Dvs de minsta lagret som ligger i mitten av modellen.
 \end_layout
 
 \begin_layout Enumerate
-Plotta data i de två nya variablerna (baserat på flaskhalslagret), färglägg
- punkterna baserat på Spam-variabeln.
+Plotta data i de två nya variablerna (baserat på flaskhalslagret),
+ färglägg punkterna baserat på Spam-variabeln.
  Detta får vi genom att göra prediktioner med encoder-delen av modellen.
- Verkar de nya variablerna vara meningsfulla? Notera att Spam inte har använts
- för att göra variabelreduktionen.
+ Verkar de nya variablerna vara meningsfulla?
+ Notera att Spam inte har använts för att göra variabelreduktionen.
 \end_layout
 
 \begin_layout Enumerate
-Testa nu att skatta några modeller där ni har de två nya variablerna som
- förklarande variabler och Spam som respons.
+Testa nu att skatta några modeller där ni har de två nya variablerna som förklarande variabler och Spam som respons.
  Ta fram träffsäkerhet för träningsdata.
- Hur bra blir modellerna? Jämför med b) ovan.
+ Hur bra blir modellerna?
+ Jämför med b) ovan.
  Verkar de nya variablerna vara användbara eller ej?
 \end_layout
 
@@ -1082,39 +1144,46 @@ Vanlig logistik regression
 \end_layout
 
 \begin_layout Enumerate
-KNN, där ni väljer K med korsvalidering från en lista av värden (5,7, 9,
+KNN,
+ där ni väljer K med korsvalidering från en lista av värden (5,7,
+ 9,
  ...
  ,21).
 \end_layout
 
 \begin_layout Enumerate
-MLP, ha lager: 50 noder + 50 noder.
+MLP,
+ ha lager:
+ 50 noder + 50 noder.
  Ni väljer övriga inställningar själva.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Bonus: Gör PCA på de 57 förklarande variablerna, och spara de två första
- komponenterna i ett dataset.
+Bonus:
+ Gör PCA på de 57 förklarande variablerna,
+ och spara de två första komponenterna i ett dataset.
  Hur mycket av datas varians förklarar de två första variablerna tillsammans?
- Skatta modellerna i e) med de två första komponenterna som förklarande
- variabler.
+ Skatta modellerna i e) med de två första komponenterna som förklarande variabler.
  Jämför med modellerna i b) och e).
 \end_layout
 
 \begin_layout Enumerate
-Bonus: Gör om c), men flaskhalslagret ha 3 noder och testa även att ha 5
- noder.
- Notera att det är mycket svårare att analysera det nya variabelrummet är
- bra/meningsfullt när vi har mer än 2 noder.
- Vi kan kolla på parvisa punktdiagram, men det kommer inte att ge hela bilden
- av de nya variablerna, men kan lära oss nåt.
+Bonus:
+ Gör om c),
+ men flaskhalslagret ha 3 noder och testa även att ha 5 noder.
+ Notera att det är mycket svårare att analysera det nya variabelrummet är bra/meningsfullt när vi har mer än 2 noder.
+ Vi kan kolla på parvisa punktdiagram,
+ men det kommer inte att ge hela bilden av de nya variablerna,
+ men kan lära oss nåt.
  
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Denoising autoencoder: Kör denna tutorial: 
+Denoising autoencoder:
+ Kör denna tutorial:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -1123,12 +1192,14 @@ literal "false"
 
 \end_inset
 
-, minska ev antal epoker om det tar lång tid att träna modellerna.
+,
+ minska ev antal epoker om det tar lång tid att träna modellerna.
  Målet är att återskapa rena bilder baserat på data med brusiga bilder.
 \end_layout
 
 \begin_layout Enumerate
-Functional API: kolla på den 
+Functional API:
+ kolla på den 
 \begin_inset CommandInset href
 LatexCommand href
 name "tutorial"
@@ -1155,7 +1226,8 @@ Setup
 \begin_inset Quotes sld
 \end_inset
 
-All models are callable, just like layers
+All models are callable,
+ just like layers
 \begin_inset Quotes srd
 \end_inset
 
@@ -1180,7 +1252,8 @@ Shared layers
 \end_inset
 
 .
- Vissa delar här ligger utanför kursen (tex hantering av text, embeddings,
+ Vissa delar här ligger utanför kursen (tex hantering av text,
+ embeddings,
  LSTM etc).
  Kolla mer på koncepten på hur mer avancerade arkitekturer kan skapas.
  Testa att återkskapa modellen under 
@@ -1196,11 +1269,13 @@ A toy ResNet model
 
 \end_deeper
 \begin_layout Section*
-Del 6: Mer faltade nätverk
+Del 6:
+ Mer faltade nätverk
 \end_layout
 
 \begin_layout Standard
-Återvänd till Fashion MNIST-data, kolla 
+Återvänd till Fashion MNIST-data,
+ kolla 
 \bar under
 
 \begin_inset CommandInset href
@@ -1231,7 +1306,8 @@ Faltat lager + pooling + faltat lager + pooling + två fullt kopplade lager
 \end_layout
 
 \begin_layout Enumerate
-En egen kombination av lager, men med minst ett faltat lager.
+En egen kombination av lager,
+ men med minst ett faltat lager.
 \end_layout
 
 \end_deeper
@@ -1241,8 +1317,8 @@ Skatta de föreslagna modellerna.
 \end_layout
 
 \begin_layout Enumerate
-Hur presterar modellerna på testdata? Beräkna förväxlingsmatrisen för testdata
- för de olika modellerna.
+Hur presterar modellerna på testdata?
+ Beräkna förväxlingsmatrisen för testdata för de olika modellerna.
 \end_layout
 
 \begin_deeper
@@ -1256,20 +1332,20 @@ Vilken klass var svårat?
 
 \end_deeper
 \begin_layout Enumerate
-Om ni vill: testa att lägga till någon regularisering till den bästa modellen
- i 1).
+Om ni vill:
+ testa att lägga till någon regularisering till den bästa modellen i 1).
  Hur blir prediktionen på testdata?
 \end_layout
 
 \begin_layout Enumerate
 Jämför med er bästa modell med bara fullt kopplade lager på detta dataset.
- Vilken presterar bäst? Hur stor är skillnaden? Hur skiljer sig antalet
- parametrar åt?
+ Vilken presterar bäst?
+ Hur stor är skillnaden?
+ Hur skiljer sig antalet parametrar åt?
 \end_layout
 
 \begin_layout Enumerate
-Utgå från MNIST och försök skapa en model som kopplingar som hoppar över
- vissa lager.
+Utgå från MNIST och försök skapa en model som kopplingar som hoppar över vissa lager.
  Använd Functional API.
 \end_layout
 
