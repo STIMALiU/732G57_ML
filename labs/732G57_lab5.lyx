@@ -834,22 +834,11 @@ literal "false"
 
 \begin_layout Section*
 Del 4:
- Faltade nätverk och CIFAR10 data (under uppdatering)
+ Faltade nätverk och CIFAR10 data 
 \end_layout
 
 \begin_layout Standard
-Kör denna tutorial:
- 
-\begin_inset CommandInset href
-LatexCommand href
-name "länk"
-target "https://tensorflow.rstudio.com/examples/cifar10_cnn"
-literal "false"
-
-\end_inset
-
-.
- Ni ska här jobba med CIFAR10 datasetet,
+Ni ska här jobba med CIFAR10 datasetet,
  som är ett klassiskt datasets inom maskininlärning.
  För mer info,
  se 
@@ -877,118 +866,58 @@ literal "false"
 Notera att detta är färgbilder som har tre kanaler (grön,
  röd,
  blå) och att beräkningarna blir mycket tyngre.
+ Data kommer i tre varianter och alla är sparade som rds-filer och de ligger i kursrummet på Lisam.
  
-\series bold
-Läs steg 1 och 2 nedan innan börjar skatta modeller
-\series default
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+cifar10_full.rds
+\family default
+ - all tillgänglig data
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+cifar10_half.rds
+\family default
+ - 50 % av data,
+ slumpmässigt vald
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+cifar10_quarter.rds
+\family default
+ - 25 % av data,
+ slumpmässigt vald 
+\end_layout
+
+\begin_layout Standard
+Här finns kod för uppgiften:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/labs/nnets_files/cifar10_cnn_keras3.qmd"
+literal "false"
+
+\end_inset
+
 .
 \end_layout
 
 \begin_layout Enumerate
-Beroende på hårdvaran i er dator så kan det vara bra att minska ner storleken på datasetet.
- Testa att börja med hälften av observationerna.
- Sedan kan ni använda fler om er dator klarar av det.
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<prompt=TRUE,eval=FALSE,comment=''>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-cifar0 <- dataset_cifar10() 
-\end_layout
-
-\begin_layout Plain Layout
-
-no_obs<-dim(cifar0$train$y)[1] 
-\end_layout
-
-\begin_layout Plain Layout
-
-no_obs_test<-dim(cifar0$test$y)[1] 
-\end_layout
-
-\begin_layout Plain Layout
-
-set.seed(34) 
-\end_layout
-
-\begin_layout Plain Layout
-
-index<-base::sample(no_obs,size = no_obs/2) 
-\end_layout
-
-\begin_layout Plain Layout
-
-index2<-base::sample(no_obs_test,size = no_obs_test/2) 
-\end_layout
-
-\begin_layout Plain Layout
-
-cifar<-cifar0
-\end_layout
-
-\begin_layout Plain Layout
-
-cifar$train$x<-cifar0$train$x[index,,,] 
-\end_layout
-
-\begin_layout Plain Layout
-
-cifar$train$y<-cifar0$train$y[index,]
-\end_layout
-
-\begin_layout Plain Layout
-
-cifar$test$x<-cifar0$test$x[index2,,,] 
-\end_layout
-
-\begin_layout Plain Layout
-
-cifar$test$y<-cifar0$test$y[index2,] 
-\end_layout
-
-\begin_layout Plain Layout
-
-rm(cifar0)
-\end_layout
-
-\begin_layout Plain Layout
-
-# kolla så att klasserna är hyfsat balanserade:
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-table(cifar$train$y) 
-\end_layout
-
-\begin_layout Plain Layout
-
-table(cifar$test$y)
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Börja med att träna i max 5 epoker när ni skattar modellen.
- Sen kan ni öka antalet när ni ser hur lång tid beräkningarna tar.
+Börja med en fjärdedel av data,
+ läs in 
+\family typewriter
+cifar10_quarter.rds
+\family default
+ i R.
+ Senare kan ni testa att välja dataseten med mer data om ni vill.
 \end_layout
 
 \begin_layout Enumerate
@@ -999,8 +928,12 @@ Vad är det för sorts data ni jobbar med här?
 \end_layout
 
 \begin_layout Enumerate
-Skatta den föreslagna modellen (OBS kan ta lång tid).
- Hur många parameterar har den?
+Skatta modellen med 10 epoker.
+ OBS:
+ kan ta lång tid!
+ Sen kan ni öka antalet när ni ser hur lång tid beräkningarna tar.
+ Analysera modellen under träning.
+ Hur många parameterar har modellen?
 \end_layout
 
 \begin_layout Enumerate
@@ -1070,23 +1003,6 @@ Testa att ändra optimeringen
 
 \begin_layout Enumerate
 Hur presterar den bästa modellen som ni lyckas hitta?
-\end_layout
-
-\begin_layout Enumerate
-Gå in 
-\bar under
-
-\begin_inset CommandInset href
-LatexCommand href
-name "här"
-target "https://benchmarks.ai/"
-literal "false"
-
-\end_inset
-
-
-\bar default
- och se hur de bästa modellerna presterar på CIFAR10 och MNIST.
 \end_layout
 
 \begin_layout Section*
