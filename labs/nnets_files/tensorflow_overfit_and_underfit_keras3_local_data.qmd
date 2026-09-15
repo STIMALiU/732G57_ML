@@ -63,8 +63,6 @@ FEATURES <- 28
 
 path_validation <- "HIGGS_validation.csv"
 path_training <- "HIGGS_training.csv"
-path_validation <- "/home/joswi05/Documents/732G57_admin/2026/datasets_big/HIGGS_validation.csv"
-path_training <- "/home/joswi05/Documents/732G57_admin/2026/datasets_big/HIGGS_training.csv"
 
 validation_data <- read.csv(path_validation)
 training_data <- read.csv(path_training)
