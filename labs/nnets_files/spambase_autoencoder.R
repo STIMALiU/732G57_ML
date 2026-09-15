@@ -1,8 +1,7 @@
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
 # läs in paket
-#library(keras3)
-library(keras)
+library(keras3)
 library(GGally)
 library(Matrix)
 library(caret)
@@ -264,7 +263,7 @@ encoder_model %>% compile(
 # Gör prediktioner med encoder och får data med 2 dimensioner:
 embeded_points <- 
   encoder_model %>% 
-  keras::predict_on_batch(x = train_data)
+  keras3::predict_on_batch(x = train_data)
 
 head(embeded_points,20)
 
