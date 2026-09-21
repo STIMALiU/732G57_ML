@@ -48,28 +48,32 @@
 \end{frame}
 
 
-\begin{frame}{Kandidatuppsats: info}
-
-  \begin{itemize}
-        \item  Introduktionsinformation till uppsatskursen är den 23/9 kl. 15.15 i John von Neumann
-        \item Kontakta Linda Wänström för mer information: linda.wanstrom@liu.se
-    \end{itemize}
-
-\end{frame}
+% \begin{frame}{Kandidatuppsats: info}
+% 
+%   \begin{itemize}
+%         \item  Introduktionsinformation till uppsatskursen är den 23/9 kl. 15.15 i John von Neumann
+%         \item Kontakta Linda Wänström för mer information: linda.wanstrom@liu.se
+%     \end{itemize}
+% 
+% \end{frame}
 
 
 \begin{frame}{Info}
-  Projektet:
+  Projektet - \href{https://www.ida.liu.se/~732G57/info/courseinfo.sv.shtml\#projekt}{kurshemsidan}
+
+  Viktiga dokument att ha koll på:
     \begin{itemize}
-        \item Info finns på \href{https://www.ida.liu.se/~732G12/info/courseinfo.sv.shtml\#projekt}{Kurshemsidan - Projekt}
-        \item Börja kolla på uppgiften och hitta data! $\rightarrow$ Deadline på torsdag för Datainlämnning!
+        \item Generella instruktioner: \href{https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/project/projekt_2026.pdf}{länk}
+        \item Datahatering och modellering: \href{https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/project/Projekt\%20modellering.pdf}{länk}
+        \item Mallen, finns info i: \href{https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/project/template/Rapportmall-STIMA-projekt.pdf}{pdf} och
+                                     \href{https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/project/template/Rapportmall\%20STIMA\%20projekt.rmd}{rmd}
+        \item Datum och deadlines: \href{https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/project/Datum_ht2026.pdf}{länk}
     \end{itemize}
-  Föreläsning 11:
+  Kursvecka 7: Föreläsning 11
       \begin{itemize}
-        \item Ny föreläsning
-        \item Teama: Modellering, modellval, sammanfattning av kursen
+        \item Teama: Modellering, modellval, sammanfattning av kursen $\Rightarrow$ Bra för projeket!
     \end{itemize}
-  
+
 \end{frame}
 
 \begin{frame}{Introduktion}
@@ -105,9 +109,6 @@
 \end{frame}
 
 \begin{frame}{Klusteranalys}
-
-    Ta 5 minuter att fundera på följande frågor:
-
     \begin{enumerate}
         \item Hur många kluster finns det i bilden?
         \includegraphics[width = .7\textwidth]{figs/kluster1.png}
@@ -199,7 +200,30 @@
     \includegraphics[width=1.1\textwidth]{figs/k-means Illustration1.png}
 \end{frame}
 
-\begin{frame}{K-means klustring}
+\begin{frame}{K-means: Val av startvärden}
+    K-means behöver $K$ initiala centroider. Två klassiska metoder är:
+
+    \begin{itemize}
+        \item \textbf{Forgy-metoden:} Välj $K$ distinkta observationer
+        slumpmässigt som initiala centroider.
+
+        \item \textbf{Slumpmässig indelning:} Tilldela varje observation
+        slumpmässigt till ett av de $K$ klustren och beräkna därefter
+        centroiden för varje kluster.
+    \end{itemize}
+
+    \vspace{0.3cm}
+
+    \begin{itemize}
+        \item Forgy-metoden är vanligast i praktiken.
+        \item \texttt{stats::kmeans(x, centers = K)} använder Forgy-metoden.
+        \item Ofta används flera slumpmässiga starter, exempelvis
+        \texttt{nstart = 50}.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{K-means klustring: Slumpmässig indelning}
 
     \includegraphics[width=\textwidth]{figs/K-means clustering.png}
     Från An Introduction to Statistical Learning with Applications in R av Gareth James, Daniela Witten, Trevor
@@ -255,6 +279,15 @@ Hastie, Robert Tibshirani
     
 \end{frame}
 
+
+\begin{frame}{K-means: exempel}
+
+    \begin{itemize}
+        \item 2D-data: faithful och geyse - \href{}{länk}
+        \item 3D-data: palmerpenguins - \href{}{länk}
+    \end{itemize}
+    
+\end{frame}
 
 
 \begin{frame}{K-means klustring: Startvärden}
@@ -342,7 +375,151 @@ Hastie, Robert Tibshirani
     
 \end{frame}
 
-\begin{frame}{K-mean klustring: Utökningar}
+
+\begin{frame}{Beräkningskomplexitet}
+    Låt $n$ vara antal observationer, $p$ antal variabler,
+    $K$ antal kluster och $I$ antal iterationer.
+
+    \begin{itemize}
+        \item \textbf{Vanlig K-means:}
+        \[
+            \mathcal{O}(npKI)
+        \]
+
+        \item \textbf{K-means++:}
+        \[
+            \mathcal{O}(npK) + \mathcal{O}(npKI)
+        \]
+        Dyrare initialisering, men ofta snabbare konvergens.
+
+        \item \textbf{Bisecting K-means:}
+        \[
+          \mathcal{O}(npI\log K)
+        \]
+        Ofta snabbare än vanlig K-means när $K$ är stort.
+    \end{itemize}
+
+    \begin{greenbox}
+        Antalet omstarter multiplicerar beräkningskostnaden.
+    \end{greenbox}
+\end{frame}
+
+\begin{frame}{Utökningar av K-means}
+    K-means kan generaliseras genom att byta närhetsmått och anpassa
+    klusterrepresentanten.
+
+    \begin{itemize}
+        \item \textbf{Kvadrerat euklidiskt avstånd}
+        \[
+            d(x,c)^2 = \sum_{j=1}^{p}(x_j-c_j)^2
+        \]
+        Klusterrepresentant: komponentvisa \textbf{medelvärden}.
+
+        \item \textbf{Manhattanavstånd ($L_1$)}
+        \[
+            d(x,c) = \sum_{j=1}^{p}|x_j-c_j|
+        \]
+        Klusterrepresentant: komponentvisa \textbf{medianer}
+        (\textit{K-medians}).
+
+        \item \textbf{Cosinusavstånd}
+        \[
+            d(x,c) = 1-\frac{x^\top c}{\lVert x\rVert\lVert c\rVert}
+        \]
+        Klusterrepresentant: \textbf{normaliserat medelvärde}
+        (\textit{spherical K-means}).
+
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{K-medians}
+    K-medians är en robust variant av K-means.
+
+    \begin{itemize}
+        \item Använder \textbf{Manhattanavstånd} ($L_1$):
+        \[
+            d(x,c_k)=\sum_{j=1}^{p}|x_j-c_{kj}|.
+        \]
+
+        \item Varje kluster representeras av den komponentvisa
+              \textbf{medianen}:
+        \[
+            c_{kj}
+            =
+            \operatorname{median}\{x_{ij}:x_i\in C_k\}.
+        \]
+
+        \item Algoritmen upprepar två steg:
+        \begin{enumerate}
+           \item Tilldela varje observation till det närmaste klustercentrumet
+             (med Manhattanavstånd).
+            \item Uppdatera klustercentrumen genom att beräkna komponentvisa
+              medianer inom varje kluster.
+        \end{enumerate}
+
+        \item Mindre känslig för extremvärden än vanlig K-means.
+
+        \item Kan fortfarande konvergera till ett lokalt optimum och bör
+              därför köras med flera startvärden.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{K-means med cosinusavstånd}
+    K-means med cosinusavstånd kallas ofta
+    \textbf{spherical K-means}.
+
+    \begin{itemize}
+        \item Observationerna normaliseras till längd 1:
+        \[
+            \widetilde{x}_i
+            =
+            \frac{x_i}{\lVert x_i\rVert}.
+        \]
+
+        \item Klustertillhörighet bestäms med cosinusavstånd:
+        \[
+            d(x,c_k)
+            =
+            1-
+            \frac{x^\top c_k}
+                 {\lVert x\rVert\lVert c_k\rVert}.
+        \]
+
+        \item Varje observation tilldelas det klustercentrum som
+              ger minst cosinusavstånd.
+
+        \item Klustercentrumet beräknas som klustrets medelvärde
+              och normaliseras därefter till längd 1.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Spherical K-means: Tillämpningar}
+    Spherical K-means grupperar observationer efter
+    \textbf{riktning} snarare än efter vektorernas storlek.
+
+    \begin{itemize}
+        \item \textbf{Dokumentklustring:}
+              ordindikatorer, ordfrekvenser
+
+        \item \textbf{Högdimensionella och glesa data:}
+              många variabler men relativt få värden skilda från noll.
+
+        \item \textbf{Vektorinbäddningar:}
+              exempelvis representationer av text eller bilder.
+
+        \item \textbf{Asymmetriska binära data:}
+              när gemensamma ettor är informativa men gemensamma
+              nollor inte ska påverka likheten.
+    \end{itemize}
+
+    \begin{greenbox}
+        Metoden är särskilt användbar när vektorernas riktning är
+        viktigare än deras längd.
+    \end{greenbox}
+\end{frame}
+
+\begin{frame}{Utökningar av K-means}
 
     \begin{itemize}
         \item Kernel K-means: Kan forma kluster av olika former med icke-linjära separationsgränser.
@@ -351,8 +528,7 @@ Hastie, Robert Tibshirani
             \item Varje kluster beskrivs med en multivariat normalfördelning.
             \item Skattas med expectation-maximization (EM) algoritmen.
         \end{itemize}
-        \item K-medoids/Partitioning Around Medoids. Använder medioder som center (en punkt i datasetet).
-        \item K-medians klustring: använder medianer istället.
+        \item K-medoids/Partitioning Around Medoids (PAM). Använder medioder som center (en punkt i datasetet).
     \end{itemize}
     
 \end{frame}

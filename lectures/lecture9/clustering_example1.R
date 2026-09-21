@@ -24,7 +24,6 @@ ggplot(data = geyser) +
   geom_point(mapping = aes(x = duration, y = waiting))
 
 
-
 #-------------------------------------------------------------------------------
 # Bearbetning 
 #-------------------------------------------------------------------------------
@@ -59,7 +58,7 @@ K<-2
 
 # centers = ett heltal = K = antal kluster
 # nstart = antal omstarter
-clust_kmeans<-kmeans(D1, centers=K, nstart = 1,iter.max = 25)
+clust_kmeans<-kmeans(D1, centers=K, nstart = 1,iter.max = 10)
 
 tab1<-table(clust_kmeans$cluster)
 tab1<-as.data.frame(tab1)
@@ -95,7 +94,7 @@ clust_kmeans<-kmeans(D2, centers=K, nstart = 1,iter.max = 25)
 tab1<-table(clust_kmeans$cluster)
 tab1<-as.data.frame(tab1)
 colnames(tab1)<-c("Kluster ID","Antal")
-tab1$Andel<-round(tab1$Antal/nrow(D1),2)
+tab1$Andel<-round(tab1$Antal/nrow(D2),2)
 knitr::kable(tab1)
 
 
@@ -227,7 +226,7 @@ abline(h=cut_val_single,lty="dashed",col="blue")
 # testa med några olika antal kluster nedan när ni plottar
 
 
-hclust_single<-cutree(hc.single, 7) # testa med 3 och 7 kluster
+hclust_single<-cutree(hc.single, 3) # testa med 3 och 7 kluster
 tab2<-table(hclust_single)
 tab2<-as.data.frame(tab2)
 colnames(tab2)<-c("Kluster ID","Antal")
@@ -274,7 +273,7 @@ ggplot(data = D2,aes(x=duration,y=waiting))+geom_point(alpha=1,size=3,aes(col=cl
 #-------------------------------------------------------------------------------
 # wards linkage
 
-hc.ward <- hclust(dist(D2), method = "ward")
+hc.ward <- hclust(dist(D2), method = "ward.D")
 
 plot(hc.ward, main = "Wards Linkage",
      xlab = "", sub = "", cex = .9,labels = FALSE)
