@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  21 SEP 2026 10:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  21 SEP 2026 10:08
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1265,105 +1265,105 @@ Package pdftex.def Info: figs/Klustertyper.png  used on input line 182.
 (pdftex.def)             Requested size: 153.64493pt x 174.95778pt.
  [10
 
- <./figs/Klustertyper.png>]
-<figs/basic K-means.png, id=90, 1401.235pt x 357.335pt>
+ <./figs/Klustertyper.png>] [11
+
+] [12
+
+]
+<figs/basic K-means.png, id=100, 1401.235pt x 357.335pt>
 File: figs/basic K-means.png Graphic file (type png)
 <use figs/basic K-means.png>
-Package pdftex.def Info: figs/basic K-means.png  used on input line 197.
+Package pdftex.def Info: figs/basic K-means.png  used on input line 244.
 (pdftex.def)             Requested size: 307.28987pt x 78.36311pt.
- [11
+ [13
 
  <./figs/basic K-means.png>]
-<figs/k-means Illustration1.png, id=97, 1207.51125pt x 482.80376pt>
+<figs/k-means Illustration1.png, id=108, 1207.51125pt x 482.80376pt>
 File: figs/k-means Illustration1.png Graphic file (type png)
 <use figs/k-means Illustration1.png>
-Package pdftex.def Info: figs/k-means Illustration1.png  used on input line 201
+Package pdftex.def Info: figs/k-means Illustration1.png  used on input line 248
 .
 (pdftex.def)             Requested size: 338.02072pt x 135.1473pt.
 
-Overfull \hbox (30.73085pt too wide) in paragraph at lines 201--201
+Overfull \hbox (30.73085pt too wide) in paragraph at lines 248--248
 [][]  
  []
 
-[12
+[14
 
- <./figs/k-means Illustration1.png>] [13
+ <./figs/k-means Illustration1.png>] [15
 
 ]
-<figs/K-means clustering.png, id=110, 1004.75375pt x 479.7925pt>
+<figs/K-means clustering.png, id=120, 1004.75375pt x 479.7925pt>
 File: figs/K-means clustering.png Graphic file (type png)
 <use figs/K-means clustering.png>
-Package pdftex.def Info: figs/K-means clustering.png  used on input line 232.
+Package pdftex.def Info: figs/K-means clustering.png  used on input line 279.
 (pdftex.def)             Requested size: 307.28987pt x 146.73549pt.
- [14
+ [16
 
  <./figs/K-means clustering.png>]
-<figs/k-means Illustration2.png, id=116, 761.84625pt x 904.37875pt>
+<figs/k-means Illustration2.png, id=126, 761.84625pt x 904.37875pt>
 File: figs/k-means Illustration2.png Graphic file (type png)
 <use figs/k-means Illustration2.png>
-Package pdftex.def Info: figs/k-means Illustration2.png  used on input line 240
+Package pdftex.def Info: figs/k-means Illustration2.png  used on input line 287
 .
 (pdftex.def)             Requested size: 198.07535pt x 235.13293pt.
 
-Overfull \vbox (18.36884pt too high) detected at line 240
+Overfull \vbox (18.36884pt too high) detected at line 287
  []
 
-[15
+[17
 
- <./figs/k-means Illustration2.png>] [16
+ <./figs/k-means Illustration2.png>] [18
 
-] [17
+] [19
 
-] [18
+] [20
 
 ]
-<figs/dåliga start värden.png, id=148, 1334.9875pt x 500.87125pt>
+<figs/dåliga start värden.png, id=159, 1334.9875pt x 500.87125pt>
 File: figs/dåliga start värden.png Graphic file (type png)
 <use figs/dåliga start värden.png>
-Package pdftex.def Info: figs/dåliga start värden.png  used on input line 302
+Package pdftex.def Info: figs/dåliga start värden.png  used on input line 349
 .
 (pdftex.def)             Requested size: 307.28987pt x 115.28967pt.
- [19
+ [21
 
- <./figs/dåliga start värden.png>] [20
+ <./figs/dåliga start värden.png>] [22
 
-] [21
+] [23
 
 ]
-<figs/Halverande K-means_exempel.png, id=165, 1161.33875pt x 391.4625pt>
+<figs/Halverande K-means_exempel.png, id=176, 1161.33875pt x 391.4625pt>
 File: figs/Halverande K-means_exempel.png Graphic file (type png)
 <use figs/Halverande K-means_exempel.png>
 Package pdftex.def Info: figs/Halverande K-means_exempel.png  used on input lin
-e 346.
+e 393.
 (pdftex.def)             Requested size: 307.28987pt x 103.58176pt.
- [22
+ [24
 
  <./figs/Halverande K-means_exempel.png>]
-<figs/Halverande K-means algoritm.png, id=172, 1348.03625pt x 544.0325pt>
+<figs/Halverande K-means algoritm.png, id=182, 1348.03625pt x 544.0325pt>
 File: figs/Halverande K-means algoritm.png Graphic file (type png)
 <use figs/Halverande K-means algoritm.png>
 Package pdftex.def Info: figs/Halverande K-means algoritm.png  used on input li
-ne 355.
+ne 402.
 (pdftex.def)             Requested size: 307.28987pt x 124.01247pt.
- [23
+ [25
 
- <./figs/Halverande K-means algoritm.png>] [24
-
-] [25
-
-] [26
+ <./figs/Halverande K-means algoritm.png>] [26
 
 ] [27
 
-]
-Overfull \vbox (14.41068pt too high) detected at line 461
- []
-
-[28
+] [28
 
 ] [29
 
-] [30
+]
+Overfull \vbox (14.41068pt too high) detected at line 508
+ []
+
+[30
 
 ] [31
 
@@ -1371,101 +1371,105 @@ Overfull \vbox (14.41068pt too high) detected at line 461
 
 ] [33
 
+] [34
+
+] [35
+
 ]
-<figs/dendogram1.png, id=231, 584.1825pt x 462.72874pt>
+<figs/dendogram1.png, id=241, 584.1825pt x 462.72874pt>
 File: figs/dendogram1.png Graphic file (type png)
 <use figs/dendogram1.png>
-Package pdftex.def Info: figs/dendogram1.png  used on input line 595.
+Package pdftex.def Info: figs/dendogram1.png  used on input line 642.
 (pdftex.def)             Requested size: 153.64493pt x 121.69759pt.
 
-Overfull \vbox (17.33293pt too high) detected at line 595
+Overfull \vbox (17.33293pt too high) detected at line 642
  []
 
-[34
+[36
 
  <./figs/dendogram1.png>]
-<figs/dendogram2.png, id=237, 1149.29375pt x 517.935pt>
+<figs/dendogram2.png, id=247, 1149.29375pt x 517.935pt>
 File: figs/dendogram2.png Graphic file (type png)
 <use figs/dendogram2.png>
-Package pdftex.def Info: figs/dendogram2.png  used on input line 601.
+Package pdftex.def Info: figs/dendogram2.png  used on input line 648.
 (pdftex.def)             Requested size: 307.28987pt x 138.47708pt.
- [35
-
- <./figs/dendogram2.png>] [36
-
-]
-<figs/dendogram3.png, id=248, 1157.32375pt x 808.01875pt>
-File: figs/dendogram3.png Graphic file (type png)
-<use figs/dendogram3.png>
-Package pdftex.def Info: figs/dendogram3.png  used on input line 624.
-(pdftex.def)             Requested size: 307.28987pt x 214.54315pt.
  [37
 
+ <./figs/dendogram2.png>] [38
+
+]
+<figs/dendogram3.png, id=259, 1157.32375pt x 808.01875pt>
+File: figs/dendogram3.png Graphic file (type png)
+<use figs/dendogram3.png>
+Package pdftex.def Info: figs/dendogram3.png  used on input line 671.
+(pdftex.def)             Requested size: 307.28987pt x 214.54315pt.
+ [39
+
  <./figs/dendogram3.png>]
-<figs/hclut_alg.png, id=255, 1126.2075pt x 343.2825pt>
+<figs/hclut_alg.png, id=265, 1126.2075pt x 343.2825pt>
 File: figs/hclut_alg.png Graphic file (type png)
 <use figs/hclut_alg.png>
-Package pdftex.def Info: figs/hclut_alg.png  used on input line 632.
+Package pdftex.def Info: figs/hclut_alg.png  used on input line 679.
 (pdftex.def)             Requested size: 307.28987pt x 93.66702pt.
- [38
+ [40
 
- <./figs/hclut_alg.png>] [39
+ <./figs/hclut_alg.png>] [41
 
-] [40
+] [42
 
-] [41
+] [43
 
 ]
-<figs/linking_pic.png, id=277, 1167.36125pt x 295.1025pt>
+<figs/linking_pic.png, id=288, 1167.36125pt x 295.1025pt>
 File: figs/linking_pic.png Graphic file (type png)
 <use figs/linking_pic.png>
-Package pdftex.def Info: figs/linking_pic.png  used on input line 700.
+Package pdftex.def Info: figs/linking_pic.png  used on input line 747.
 (pdftex.def)             Requested size: 307.28987pt x 77.67944pt.
- [42
+ [44
 
- <./figs/linking_pic.png>] [43
+ <./figs/linking_pic.png>] [45
 
-] [44
+] [46
 
 ]
-<figs/ex_data.png, id=295, 1108.14pt x 852.18375pt>
+<figs/ex_data.png, id=305, 1108.14pt x 852.18375pt>
 File: figs/ex_data.png Graphic file (type png)
 <use figs/ex_data.png>
-Package pdftex.def Info: figs/ex_data.png  used on input line 731.
+Package pdftex.def Info: figs/ex_data.png  used on input line 778.
 (pdftex.def)             Requested size: 307.28987pt x 236.30824pt.
 
-Overfull \vbox (19.54414pt too high) detected at line 731
- []
-
-[45
-
- <./figs/ex_data.png>]
-<figs/Single link clustering.png, id=301, 1005.7575pt x 626.34pt>
-File: figs/Single link clustering.png Graphic file (type png)
-<use figs/Single link clustering.png>
-Package pdftex.def Info: figs/Single link clustering.png  used on input line 73
-7.
-(pdftex.def)             Requested size: 152.10698pt x 94.72107pt.
-<figs/Complete link clustering.png, id=302, 1028.84375pt x 611.28375pt>
-File: figs/Complete link clustering.png Graphic file (type png)
-<use figs/Complete link clustering.png>
-Package pdftex.def Info: figs/Complete link clustering.png  used on input line 
-737.
-(pdftex.def)             Requested size: 152.10698pt x 90.37343pt.
- [46
-
- <./figs/Single link clustering.png> <./figs/Complete link clustering.png>]
-<figs/grouP_ward_clustering.png, id=308, 864.22874pt x 1034.86626pt>
-File: figs/grouP_ward_clustering.png Graphic file (type png)
-<use figs/grouP_ward_clustering.png>
-Package pdftex.def Info: figs/grouP_ward_clustering.png  used on input line 743
-.
-(pdftex.def)             Requested size: 190.1309pt x 227.67128pt.
-
-Overfull \vbox (10.90718pt too high) detected at line 743
+Overfull \vbox (19.54414pt too high) detected at line 778
  []
 
 [47
+
+ <./figs/ex_data.png>]
+<figs/Single link clustering.png, id=312, 1005.7575pt x 626.34pt>
+File: figs/Single link clustering.png Graphic file (type png)
+<use figs/Single link clustering.png>
+Package pdftex.def Info: figs/Single link clustering.png  used on input line 78
+4.
+(pdftex.def)             Requested size: 152.10698pt x 94.72107pt.
+<figs/Complete link clustering.png, id=313, 1028.84375pt x 611.28375pt>
+File: figs/Complete link clustering.png Graphic file (type png)
+<use figs/Complete link clustering.png>
+Package pdftex.def Info: figs/Complete link clustering.png  used on input line 
+784.
+(pdftex.def)             Requested size: 152.10698pt x 90.37343pt.
+ [48
+
+ <./figs/Single link clustering.png> <./figs/Complete link clustering.png>]
+<figs/grouP_ward_clustering.png, id=319, 864.22874pt x 1034.86626pt>
+File: figs/grouP_ward_clustering.png Graphic file (type png)
+<use figs/grouP_ward_clustering.png>
+Package pdftex.def Info: figs/grouP_ward_clustering.png  used on input line 790
+.
+(pdftex.def)             Requested size: 190.1309pt x 227.67128pt.
+
+Overfull \vbox (10.90718pt too high) detected at line 790
+ []
+
+[49
 
  <./figs/grouP_ward_clustering.png>]
 \tf@nav=\write6
@@ -1482,10 +1486,10 @@ Package rerunfilecheck Info: File `l9_josef.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 31907 strings out of 479533
- 656946 string characters out of 5876205
+ 31917 strings out of 479533
+ 657050 string characters out of 5876205
  896371 words of memory out of 5000000
- 49134 multiletter control sequences out of 15000+600000
+ 49140 multiletter control sequences out of 15000+600000
  489117 words of font info for 89 fonts, out of 8000000 for 9000
  417 hyphenation exceptions out of 8191
  128i,13n,122p,1893b,744s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1509,10 +1513,10 @@ nts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/public/cm-super/
 sfss0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss0900.pfb></usr/s
 hare/texmf/fonts/type1/public/cm-super/sfss1000.pfb>
-Output written on l9_josef.pdf (47 pages, 2378218 bytes).
+Output written on l9_josef.pdf (49 pages, 2381569 bytes).
 PDF statistics:
- 429 PDF objects out of 1000 (max. 8388607)
- 306 compressed objects within 4 object streams
- 95 named destinations out of 1000 (max. 500000)
+ 441 PDF objects out of 1000 (max. 8388607)
+ 316 compressed objects within 4 object streams
+ 99 named destinations out of 1000 (max. 500000)
  138 words of extra memory for PDF output out of 10000 (max. 10000000)
 

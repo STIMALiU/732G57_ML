@@ -181,6 +181,53 @@
     \end{columns}
 \end{frame}
 
+
+\begin{frame}{Avstånds- och närhetsmått}
+    Ett avstånds- eller närhetsmått beskriver hur lika eller olika
+    två observationer är.
+
+    \begin{itemize}
+        \item \textbf{Avståndsmått:}
+              Ett litet värde innebär att observationerna är lika.
+
+        \item \textbf{Likhetsmått:}
+              Ett stort värde innebär att observationerna är lika.
+
+        \item Måttet beräknas utifrån observationernas variabelvärden.
+
+        \item Valet av mått påverkar vilka observationer som betraktas
+              som närliggande och därmed vilka kluster som bildas.
+    \end{itemize}
+
+    \begin{greenbox}
+        Det finns inget avståndsmått som passar alla typer av data.
+    \end{greenbox}
+\end{frame}
+
+\begin{frame}{Vanliga avstånds- och närhetsmått}
+    \begin{itemize}
+        \item \textbf{Euklidiskt avstånd:}
+              Det vanliga raka avståndet mellan två punkter.
+
+        \item \textbf{Manhattanavstånd:}
+              Summan av skillnaderna för de olika variablerna.
+
+        \item \textbf{Cosinuslikhet:}
+              Jämför observationernas riktning snarare än deras storlek.
+
+        \item \textbf{Jaccard-likhet:}
+              Används ofta för asymmetriska binära data.
+
+        \item \textbf{Gower-avstånd:}
+              Kan användas för data med blandade variabeltyper.
+    \end{itemize}
+
+    \begin{greenbox}
+        Numeriska, binära, kategoriska och blandade data kan kräva
+        olika avstånds- eller närhetsmått.
+    \end{greenbox}
+\end{frame}
+
 \begin{frame}{K-means klustring}
 
     \begin{itemize}
