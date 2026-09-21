@@ -283,8 +283,8 @@ Hastie, Robert Tibshirani
 \begin{frame}{K-means: exempel}
 
     \begin{itemize}
-        \item 2D-data: faithful och geyse - \href{}{länk}
-        \item 3D-data: palmerpenguins - \href{}{länk}
+        \item 2D-data: faithful och geyser - \href{https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/lectures/lecture9/clustering_example1.R}{länk}
+        \item 3D-data: palmerpenguins - \href{https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/lectures/lecture9/klustering3D_palmerpenguins1.R}{länk}
     \end{itemize}
     
 \end{frame}
@@ -314,11 +314,39 @@ Hastie, Robert Tibshirani
     
 \end{frame}
 
+\begin{frame}{Bisecting K-means}
+    Bisecting K-means skapar klustren stegvis:
+
+    \begin{enumerate}
+        \item Börja med alla observationer i ett enda kluster.
+
+        \item Välj ett befintligt kluster att dela.
+        \begin{itemize}
+            \item Ofta väljs klustret med störst SSE.
+        \end{itemize}
+
+        \item Dela det valda klustret genom att köra K-means
+              med $K=2$.
+
+        \item Ersätt det gamla klustret med de två nya klustren.
+
+        \item Upprepa tills önskat antal kluster har skapats.
+    \end{enumerate}
+
+    \begin{greenbox}
+        Till skillnad från vanlig K-means skapas inte alla $K$
+        kluster samtidigt.
+    \end{greenbox}
+\end{frame}
+
 \begin{frame}{Halverande K-means}
 
     \includegraphics[width=\textwidth]{figs/Halverande K-means_exempel.png}
     
 \end{frame}
+
+
+
 
 \begin{frame}{Halverande K-means}
 
@@ -572,6 +600,9 @@ Hastie, Robert Tibshirani
     
 \end{frame}
 
+
+
+
 \begin{frame}{Dendogram}
 
     \begin{itemize}
@@ -599,6 +630,35 @@ Hastie, Robert Tibshirani
     Proximity matrix är en matris som innehåller närheten mellan kluster. Kan använda en distansmatris också.
 
 \end{frame}
+
+
+\begin{frame}{Närhetsmått vid hierarkisk klustring}
+    Vid agglomerativ hierarkisk klustring behöver vi göra två val:
+
+    \begin{enumerate}
+        \item \textbf{Avstånd mellan observationer}
+        \begin{itemize}
+            \item Euklidiskt avstånd
+            \item Manhattanavstånd
+            \item Cosinus- eller korrelationsavstånd
+            \item Gower-avstånd för blandade datatyper
+        \end{itemize}
+
+        \item \textbf{Avstånd mellan kluster (länkningsmetod)}
+        \begin{itemize}
+            \item Single linkage
+            \item Complete linkage
+            \item Average linkage
+            \item Ward's metod
+        \end{itemize}
+    \end{enumerate}
+
+    \begin{greenbox}
+        Både avståndsmåttet och länkningsmetoden kan påverka vilka
+        kluster som skapas.
+    \end{greenbox}
+\end{frame}
+
 
 \begin{frame}{Beräkning av avstånd mellan två kluster}
 
@@ -654,6 +714,15 @@ Hastie, Robert Tibshirani
     \end{itemize}
     
 \end{frame}
+
+\begin{frame}{Exempel - Kod}
+
+    \begin{itemize}
+        \item 2D-data: faithful och geyser - \href{https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/lectures/lecture9/clustering_example1.R}{länk}
+    \end{itemize}
+    
+\end{frame}
+
 
 \begin{frame}{Exempel}
     

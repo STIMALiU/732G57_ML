@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  21 SEP 2026 09:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  21 SEP 2026 10:04
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1314,52 +1314,52 @@ Overfull \vbox (18.36884pt too high) detected at line 240
 
 ] [17
 
+] [18
+
 ]
-<figs/dåliga start värden.png, id=141, 1334.9875pt x 500.87125pt>
+<figs/dåliga start värden.png, id=148, 1334.9875pt x 500.87125pt>
 File: figs/dåliga start värden.png Graphic file (type png)
 <use figs/dåliga start värden.png>
-Package pdftex.def Info: figs/dåliga start värden.png  used on input line 293
+Package pdftex.def Info: figs/dåliga start värden.png  used on input line 302
 .
 (pdftex.def)             Requested size: 307.28987pt x 115.28967pt.
- [18
+ [19
 
- <./figs/dåliga start värden.png>] [19
+ <./figs/dåliga start värden.png>] [20
+
+] [21
 
 ]
-<figs/Halverande K-means_exempel.png, id=153, 1161.33875pt x 391.4625pt>
+<figs/Halverande K-means_exempel.png, id=165, 1161.33875pt x 391.4625pt>
 File: figs/Halverande K-means_exempel.png Graphic file (type png)
 <use figs/Halverande K-means_exempel.png>
 Package pdftex.def Info: figs/Halverande K-means_exempel.png  used on input lin
-e 312.
+e 346.
 (pdftex.def)             Requested size: 307.28987pt x 103.58176pt.
- [20
+ [22
 
  <./figs/Halverande K-means_exempel.png>]
-<figs/Halverande K-means algoritm.png, id=159, 1348.03625pt x 544.0325pt>
+<figs/Halverande K-means algoritm.png, id=172, 1348.03625pt x 544.0325pt>
 File: figs/Halverande K-means algoritm.png Graphic file (type png)
 <use figs/Halverande K-means algoritm.png>
 Package pdftex.def Info: figs/Halverande K-means algoritm.png  used on input li
-ne 318.
+ne 355.
 (pdftex.def)             Requested size: 307.28987pt x 124.01247pt.
- [21
+ [23
 
- <./figs/Halverande K-means algoritm.png>] [22
-
-] [23
-
-] [24
+ <./figs/Halverande K-means algoritm.png>] [24
 
 ] [25
 
-]
-Overfull \vbox (14.41068pt too high) detected at line 424
- []
-
-[26
+] [26
 
 ] [27
 
-] [28
+]
+Overfull \vbox (14.41068pt too high) detected at line 461
+ []
+
+[28
 
 ] [29
 
@@ -1367,97 +1367,105 @@ Overfull \vbox (14.41068pt too high) detected at line 424
 
 ] [31
 
+] [32
+
+] [33
+
 ]
-<figs/dendogram1.png, id=219, 584.1825pt x 462.72874pt>
+<figs/dendogram1.png, id=231, 584.1825pt x 462.72874pt>
 File: figs/dendogram1.png Graphic file (type png)
 <use figs/dendogram1.png>
-Package pdftex.def Info: figs/dendogram1.png  used on input line 558.
+Package pdftex.def Info: figs/dendogram1.png  used on input line 595.
 (pdftex.def)             Requested size: 153.64493pt x 121.69759pt.
 
-Overfull \vbox (17.33293pt too high) detected at line 558
+Overfull \vbox (17.33293pt too high) detected at line 595
  []
 
-[32
+[34
 
  <./figs/dendogram1.png>]
-<figs/dendogram2.png, id=225, 1149.29375pt x 517.935pt>
+<figs/dendogram2.png, id=237, 1149.29375pt x 517.935pt>
 File: figs/dendogram2.png Graphic file (type png)
 <use figs/dendogram2.png>
-Package pdftex.def Info: figs/dendogram2.png  used on input line 564.
+Package pdftex.def Info: figs/dendogram2.png  used on input line 601.
 (pdftex.def)             Requested size: 307.28987pt x 138.47708pt.
- [33
-
- <./figs/dendogram2.png>] [34
-
-]
-<figs/dendogram3.png, id=236, 1157.32375pt x 808.01875pt>
-File: figs/dendogram3.png Graphic file (type png)
-<use figs/dendogram3.png>
-Package pdftex.def Info: figs/dendogram3.png  used on input line 584.
-(pdftex.def)             Requested size: 307.28987pt x 214.54315pt.
  [35
 
+ <./figs/dendogram2.png>] [36
+
+]
+<figs/dendogram3.png, id=248, 1157.32375pt x 808.01875pt>
+File: figs/dendogram3.png Graphic file (type png)
+<use figs/dendogram3.png>
+Package pdftex.def Info: figs/dendogram3.png  used on input line 624.
+(pdftex.def)             Requested size: 307.28987pt x 214.54315pt.
+ [37
+
  <./figs/dendogram3.png>]
-<figs/hclut_alg.png, id=242, 1126.2075pt x 343.2825pt>
+<figs/hclut_alg.png, id=255, 1126.2075pt x 343.2825pt>
 File: figs/hclut_alg.png Graphic file (type png)
 <use figs/hclut_alg.png>
-Package pdftex.def Info: figs/hclut_alg.png  used on input line 592.
+Package pdftex.def Info: figs/hclut_alg.png  used on input line 632.
 (pdftex.def)             Requested size: 307.28987pt x 93.66702pt.
- [36
+ [38
 
- <./figs/hclut_alg.png>] [37
+ <./figs/hclut_alg.png>] [39
 
-] [38
+] [40
+
+] [41
 
 ]
-<figs/linking_pic.png, id=260, 1167.36125pt x 295.1025pt>
+<figs/linking_pic.png, id=277, 1167.36125pt x 295.1025pt>
 File: figs/linking_pic.png Graphic file (type png)
 <use figs/linking_pic.png>
-Package pdftex.def Info: figs/linking_pic.png  used on input line 631.
+Package pdftex.def Info: figs/linking_pic.png  used on input line 700.
 (pdftex.def)             Requested size: 307.28987pt x 77.67944pt.
- [39
+ [42
 
- <./figs/linking_pic.png>] [40
+ <./figs/linking_pic.png>] [43
+
+] [44
 
 ]
-<figs/ex_data.png, id=271, 1108.14pt x 852.18375pt>
+<figs/ex_data.png, id=295, 1108.14pt x 852.18375pt>
 File: figs/ex_data.png Graphic file (type png)
 <use figs/ex_data.png>
-Package pdftex.def Info: figs/ex_data.png  used on input line 653.
+Package pdftex.def Info: figs/ex_data.png  used on input line 731.
 (pdftex.def)             Requested size: 307.28987pt x 236.30824pt.
 
-Overfull \vbox (19.54414pt too high) detected at line 653
+Overfull \vbox (19.54414pt too high) detected at line 731
  []
 
-[41
+[45
 
  <./figs/ex_data.png>]
-<figs/Single link clustering.png, id=277, 1005.7575pt x 626.34pt>
+<figs/Single link clustering.png, id=301, 1005.7575pt x 626.34pt>
 File: figs/Single link clustering.png Graphic file (type png)
 <use figs/Single link clustering.png>
-Package pdftex.def Info: figs/Single link clustering.png  used on input line 65
-9.
+Package pdftex.def Info: figs/Single link clustering.png  used on input line 73
+7.
 (pdftex.def)             Requested size: 152.10698pt x 94.72107pt.
-<figs/Complete link clustering.png, id=278, 1028.84375pt x 611.28375pt>
+<figs/Complete link clustering.png, id=302, 1028.84375pt x 611.28375pt>
 File: figs/Complete link clustering.png Graphic file (type png)
 <use figs/Complete link clustering.png>
 Package pdftex.def Info: figs/Complete link clustering.png  used on input line 
-659.
+737.
 (pdftex.def)             Requested size: 152.10698pt x 90.37343pt.
- [42
+ [46
 
  <./figs/Single link clustering.png> <./figs/Complete link clustering.png>]
-<figs/grouP_ward_clustering.png, id=284, 864.22874pt x 1034.86626pt>
+<figs/grouP_ward_clustering.png, id=308, 864.22874pt x 1034.86626pt>
 File: figs/grouP_ward_clustering.png Graphic file (type png)
 <use figs/grouP_ward_clustering.png>
-Package pdftex.def Info: figs/grouP_ward_clustering.png  used on input line 665
+Package pdftex.def Info: figs/grouP_ward_clustering.png  used on input line 743
 .
 (pdftex.def)             Requested size: 190.1309pt x 227.67128pt.
 
-Overfull \vbox (10.90718pt too high) detected at line 665
+Overfull \vbox (10.90718pt too high) detected at line 743
  []
 
-[43
+[47
 
  <./figs/grouP_ward_clustering.png>]
 \tf@nav=\write6
@@ -1474,10 +1482,10 @@ Package rerunfilecheck Info: File `l9_josef.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 31889 strings out of 479533
- 656776 string characters out of 5876205
+ 31907 strings out of 479533
+ 656946 string characters out of 5876205
  896371 words of memory out of 5000000
- 49124 multiletter control sequences out of 15000+600000
+ 49134 multiletter control sequences out of 15000+600000
  489117 words of font info for 89 fonts, out of 8000000 for 9000
  417 hyphenation exceptions out of 8191
  128i,13n,122p,1893b,744s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1501,10 +1509,10 @@ nts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/public/cm-super/
 sfss0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss0900.pfb></usr/s
 hare/texmf/fonts/type1/public/cm-super/sfss1000.pfb>
-Output written on l9_josef.pdf (43 pages, 2373131 bytes).
+Output written on l9_josef.pdf (47 pages, 2378218 bytes).
 PDF statistics:
- 404 PDF objects out of 1000 (max. 8388607)
- 286 compressed objects within 3 object streams
- 87 named destinations out of 1000 (max. 500000)
+ 429 PDF objects out of 1000 (max. 8388607)
+ 306 compressed objects within 4 object streams
+ 95 named destinations out of 1000 (max. 500000)
  138 words of extra memory for PDF output out of 10000 (max. 10000000)
 
