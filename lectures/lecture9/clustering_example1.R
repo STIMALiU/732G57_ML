@@ -57,7 +57,7 @@ K<-2
 # vi testar K=2 först, testa sen andra värden på K och se hur resultatet ändrar sig
 
 # centers = ett heltal = K = antal kluster
-# nstart = antal omstarter
+# nstart = antal slumpmässiga omstarter
 clust_kmeans<-kmeans(D1, centers=K, nstart = 1,iter.max = 10)
 
 tab1<-table(clust_kmeans$cluster)
