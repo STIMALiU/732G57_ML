@@ -266,3 +266,13 @@ cowplot::plot_grid(
 table(fit_kmeans_nstart1$cluster)
 table(fit_kmeans_nstart10$cluster)
 table(fit_kmeans_pp$cluster)
+
+
+
+#-------------------------------------------------------------------------------
+# Comment
+#-------------------------------------------------------------------------------
+# Note: geyser is a relatively simple dataset. As the data become more
+# complex, the advantage of K-means++ over standard K-means is expected
+# to become more noticeable.
+

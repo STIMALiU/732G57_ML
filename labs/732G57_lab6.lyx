@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -29,10 +29,10 @@
 \begin_modules
 knitr
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language swedish
 \language_package auto
-\inputencoding auto
+\inputencoding auto-legacy
 \fontencoding default
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -41,7 +41,9 @@ knitr
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -54,7 +56,7 @@ knitr
 \paperfontsize default
 \spacing single
 \use_hyperref false
-\papersize a4paper
+\papersize a4
 \use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
@@ -75,7 +77,9 @@ knitr
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -95,11 +99,16 @@ knitr
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -171,7 +180,8 @@ Datorlaborationerna kräver att ni har R och Rstudio installerat.
 \end_layout
 
 \begin_layout Itemize
-Kodmanual: 
+Kodmanual:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -188,12 +198,14 @@ literal "false"
 \series bold
 ISL
 \series default
-: An Introduction to Statistical Learning,
+:
+ An Introduction to Statistical Learning,
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Boken: 
+Boken:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -206,7 +218,8 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-R-kod till labbar: 
+R-kod till labbar:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -219,7 +232,8 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-Dataset: 
+Dataset:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -246,7 +260,8 @@ literal "false"
 \series bold
 IDM
 \series default
-: Introduction to Data Mining
+:
+ Introduction to Data Mining
 \end_layout
 
 \begin_deeper
@@ -291,9 +306,9 @@ literal "false"
 
 \begin_layout Standard
 Notera att ni inte behöver göra alla delar på alla uppgifter.
- Det viktiga är att ni får en förståelse för de olika principerna och modellerna
- som avhandlats.
- Dessa uppgifter ska inte lämnas in, utan är till för er övning.
+ Det viktiga är att ni får en förståelse för de olika principerna och modellerna som avhandlats.
+ Dessa uppgifter ska inte lämnas in,
+ utan är till för er övning.
  
 \end_layout
 
@@ -302,7 +317,8 @@ Datauppdelning
 \end_layout
 
 \begin_layout Standard
-För att motverka överanpassning bör ni dela upp data till träning-, validering-,
+För att motverka överanpassning bör ni dela upp data till träning-,
+ validering-,
  (och testmängd).
  Detta kan göras med 
 \family typewriter
@@ -322,15 +338,15 @@ caret
 \family typewriter
 subset()
 \family default
- för att göra detta också, men det blir svårare att tydligt ange de observatione
-r som ska tilldelas till valideringsmängden.
+ för att göra detta också,
+ men det blir svårare att tydligt ange de observationer som ska tilldelas till valideringsmängden.
  Denna uppdelning ska ske slumpmässigt.
- Notera att om en testmängd ska skapas måste uppdelningen ske en gång till
- från valideringsmängden.
+ Notera att om en testmängd ska skapas måste uppdelningen ske en gång till från valideringsmängden.
 \end_layout
 
 \begin_layout Section*
-Del 0: Kod
+Del 0:
+ Kod
 \end_layout
 
 \begin_layout Itemize
@@ -359,7 +375,8 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-IDM, kod för 
+IDM,
+ kod för 
 \begin_inset CommandInset href
 LatexCommand href
 name "klustering"
@@ -372,11 +389,21 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-Från föreläsning: 
+Från föreläsning 9:
+ 
 \begin_inset CommandInset href
 LatexCommand href
-name "länk"
+name "2D-data"
 target "https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/lectures/lecture9/clustering_example1.R"
+literal "false"
+
+\end_inset
+
+ och 
+\begin_inset CommandInset href
+LatexCommand href
+name "3D-data"
+target "https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/lectures/lecture9/clustering3D_palmerpenguins1.R"
 literal "false"
 
 \end_inset
@@ -384,8 +411,23 @@ literal "false"
 
 \end_layout
 
+\begin_layout Itemize
+Från föreläsning 10:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/lectures/lecture10/clustering_example2.R"
+literal "false"
+
+\end_inset
+
+ 
+\end_layout
+
 \begin_layout Section*
-Del 1: K-means klustering och PAM
+Del 1:
+ K-means klustering och PAM
 \end_layout
 
 \begin_layout Enumerate
@@ -409,7 +451,9 @@ ISL
 \series bold
 ISL
 \series default
-: 12.6 Exercises Conceptual: 3
+:
+ 12.6 Exercises Conceptual:
+ 3
 \end_layout
 
 \begin_layout Enumerate
@@ -422,7 +466,8 @@ literal "false"
 
 \end_inset
 
-: gå igenom 7.1 och 7.2.1
+:
+ gå igenom 7.1 och 7.2.1
 \end_layout
 
 \begin_layout Enumerate
@@ -435,7 +480,8 @@ literal "false"
 
 \end_inset
 
-: gå igenom 7.2.4 
+:
+ gå igenom 7.2.4 
 \begin_inset Quotes sld
 \end_inset
 
@@ -447,7 +493,8 @@ Partitioning Around Medoids (PAM)
 \end_layout
 
 \begin_layout Section*
-Del 2: Startcentroider i K-means klustering
+Del 2:
+ Startcentroider i K-means klustering
 \end_layout
 
 \begin_layout Standard
@@ -463,14 +510,13 @@ data1_alt.csv
 \end_layout
 
 \begin_layout Enumerate
-Visualisera datamaterialet för att se med blotta ögat de kluster som finns
- där.
- Hur ser de naturliga klustrena ut? Var är deras centroider?
+Visualisera datamaterialet för att se med blotta ögat de kluster som finns där.
+ Hur ser de naturliga klustrena ut?
+ Var är deras centroider?
 \end_layout
 
 \begin_layout Enumerate
-Genomför en k-means klustring med de angivna startcentroiderna i koden nedan
- samt ange antalet maximala iterationer till 1.
+Genomför en k-means klustring med de angivna startcentroiderna i koden nedan samt ange antalet maximala iterationer till 1.
  Visualisera de resulterande klustren och tolka resultatet.
 \begin_inset Newline newline
 \end_inset
@@ -486,17 +532,26 @@ status open
 
 \begin_layout Plain Layout
 
-cluster_result <- kmeans(x = data1, 
+cluster_result <- kmeans(x = data1,
+ 
 \end_layout
 
 \begin_layout Plain Layout
 
-		centers = rbind(c(0,0), c(1, 0), c(-1, 0), c(1, 1)), 
+		centers = rbind(c(0,0),
+ c(1,
+ 0),
+ c(-1,
+ 0),
+ c(1,
+ 1)),
+ 
 \end_layout
 
 \begin_layout Plain Layout
 
-		iter.max = 1, nstart = 1)
+		iter.max = 1,
+ nstart = 1)
 \end_layout
 
 \begin_layout Plain Layout
@@ -510,9 +565,9 @@ cluster_result <- kmeans(x = data1,
 \end_layout
 
 \begin_layout Enumerate
-Öka antalet iterationer till något rimligt värde som tillåter algoritmen
- att konvergera och kör algoritmen igen och repetera steg 2.
- Blev resultatet något bättre? Varför inte?
+Öka antalet iterationer till något rimligt värde som tillåter algoritmen att konvergera och kör algoritmen igen och repetera steg 2.
+ Blev resultatet något bättre?
+ Varför inte?
 \end_layout
 
 \begin_layout Enumerate
@@ -526,12 +581,36 @@ Ange nu
 \end_layout
 
 \begin_layout Enumerate
-Återkoppla till vilken funktion som K-means avser att optimera och bedöm
- vilken av diagrammen som visar de “korrekta” klustren.
+Återkoppla till vilken funktion som K-means avser att optimera och bedöm vilken av diagrammen som visar de “korrekta” klustren.
+\end_layout
+
+\begin_layout Enumerate
+K-means++:
+ Nu ska ni jämföra k-means++ med 
+\begin_inset Quotes sld
+\end_inset
+
+vanliga
+\begin_inset Quotes srd
+\end_inset
+
+ k-means,
+ gå igenom koden här:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "kod"
+target "https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/labs/geyser_kmeans_pp.R"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section*
-Del 3: Hierarkisk klustring
+Del 3:
+ Hierarkisk klustring
 \end_layout
 
 \begin_layout Enumerate
@@ -560,7 +639,8 @@ literal "false"
 
 \end_inset
 
-: gå igenom 7.2.2 
+:
+ gå igenom 7.2.2 
 \end_layout
 
 \begin_layout Enumerate
@@ -568,7 +648,9 @@ literal "false"
 \series bold
 ISL
 \series default
-: 12.6 Exercises Conceptual: 2
+:
+ 12.6 Exercises Conceptual:
+ 2
 \end_layout
 
 \begin_layout Enumerate
@@ -576,7 +658,9 @@ ISL
 \series bold
 ISL
 \series default
-: 12.6 Exercises Applied: 9
+:
+ 12.6 Exercises Applied:
+ 9
 \end_layout
 
 \begin_layout Subsubsection*
@@ -592,13 +676,11 @@ data2.csv
 \end_layout
 
 \begin_layout Enumerate
-Visualisera materialet i två dimensioner och definiera antalet naturliga
- kluster.
+Visualisera materialet i två dimensioner och definiera antalet naturliga kluster.
 \end_layout
 
 \begin_layout Enumerate
-Beräkna en hierarkisk klustring med följande länkningsmetoder och visa lämpliga
- dendrogram:
+Beräkna en hierarkisk klustring med följande länkningsmetoder och visa lämpliga dendrogram:
 \end_layout
 
 \begin_deeper
@@ -616,20 +698,19 @@ Ward’s metod
 
 \end_deeper
 \begin_layout Enumerate
-Definiera från varje dendrogram hur många kluster som hittats och visualisera
- resultatet i ett diagram.
- Verkar metoden ha hittat de naturliga klustren? Vilken länkningsmetod anser
- ni vara lämpligast för denna sorts data?
+Definiera från varje dendrogram hur många kluster som hittats och visualisera resultatet i ett diagram.
+ Verkar metoden ha hittat de naturliga klustren?
+ Vilken länkningsmetod anser ni vara lämpligast för denna sorts data?
 \end_layout
 
 \begin_layout Enumerate
-Genomför K-means klustring på samma data och jämför med resultaten med enkel
- länkning.
+Genomför K-means klustring på samma data och jämför med resultaten med enkel länkning.
  Vilken egenskap från de två metoderna visas här?
 \end_layout
 
 \begin_layout Section*
-Del 4: Densitetsbaserad klustring
+Del 4:
+ Densitetsbaserad klustring
 \end_layout
 
 \begin_layout Itemize
@@ -642,7 +723,8 @@ literal "false"
 
 \end_inset
 
-: gå igenom 7.2.4 
+:
+ gå igenom 7.2.4 
 \begin_inset Quotes sld
 \end_inset
 
@@ -662,16 +744,17 @@ data3.csv
 \end_layout
 
 \begin_layout Enumerate
-Visualisera materialet i två dimensioner och definiera antalet naturliga
- kluster.
+Visualisera materialet i två dimensioner och definiera antalet naturliga kluster.
 \end_layout
 
 \begin_layout Enumerate
-Genomför klustring med DBSCAN och följande värden: 
+Genomför klustring med DBSCAN och följande värden:
+ 
 \family typewriter
 eps = 0.18
 \family default
-, 
+,
+ 
 \family typewriter
 minPts = 3
 \family default
@@ -680,8 +763,8 @@ minPts = 3
 borderPoints = TRUE
 \family default
 .
- Vad innebär dessa inställningar? Visualisera de resulterande klustren och
- bedöm ifall de faller in med de naturliga klustren som identifierats tidigare.
+ Vad innebär dessa inställningar?
+ Visualisera de resulterande klustren och bedöm ifall de faller in med de naturliga klustren som identifierats tidigare.
 \end_layout
 
 \begin_layout Enumerate
@@ -716,8 +799,9 @@ Genomför k-means klustring med några olika värden på
 
 .
  Visualisera de resulterande klustren och jämför med steg 2.
- Vilken av metoderna anses producera “bättre” resultat? Om resultaten skiljer
- sig åt, försök förklara varför.
+ Vilken av metoderna anses producera “bättre” resultat?
+ Om resultaten skiljer sig åt,
+ försök förklara varför.
 \end_layout
 
 \begin_layout Section*
@@ -751,35 +835,36 @@ literal "false"
 \end_layout
 
 \begin_layout Section*
-Del 6: Irisdata
+Del 6:
+ Irisdata
 \end_layout
 
 \begin_layout Standard
 Använd nu det inbyggda datasetet iris.
  Notera att här finns det tre klasser (Species).
- Använd inte den variabeln i klusteringen, utan endast de fyra numeriska
- variablerna.
+ Använd inte den variabeln i klusteringen,
+ utan endast de fyra numeriska variablerna.
 \end_layout
 
 \begin_layout Enumerate
 Genomför klustring med DBSCAN.
  Välj valfria värden på hyperparametrarna.
- Hur många kluster erhåller ni? Undersök hur väl klustringen matchar de
- befintliga grupperna (klasserna).
+ Hur många kluster erhåller ni?
+ Undersök hur väl klustringen matchar de befintliga grupperna (klasserna).
  
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Gör parvisa punktdiagram för variablerna (blir sex stycken), låt klustren
- ha olika färger.
+Gör parvisa punktdiagram för variablerna (blir sex stycken),
+ låt klustren ha olika färger.
  Låt klasserna representeras av olika symboler.
  Hur blir uppdelningen?
 \end_layout
 
 \begin_layout Enumerate
-Om matchningen blir dålig: försök att ändra på hyperparametrarna för att
- få en bättre gruppering.
+Om matchningen blir dålig:
+ försök att ändra på hyperparametrarna för att få en bättre gruppering.
 \end_layout
 
 \begin_layout Enumerate
@@ -797,8 +882,8 @@ Genomför klustring med k-means.
 
 \begin_deeper
 \begin_layout Enumerate
-Gör parvisa punktdiagram för variablerna (blir sex stycken), låt klustren
- ha olika färger.
+Gör parvisa punktdiagram för variablerna (blir sex stycken),
+ låt klustren ha olika färger.
  Låt klasserna representeras av olika symboler.
  Hur blir uppdelningen?
 \end_layout
@@ -816,8 +901,8 @@ Genomför klustring med hierarkisk klustring.
 
 \begin_deeper
 \begin_layout Enumerate
-Gör parvisa punktdiagram för variablerna (blir sex stycken), låt klustren
- ha olika färger.
+Gör parvisa punktdiagram för variablerna (blir sex stycken),
+ låt klustren ha olika färger.
  Låt klasserna representeras av olika symboler.
  Hur blir uppdelningen?
 \end_layout
@@ -829,12 +914,14 @@ Beräkna förväxlingsmatrisen mellan de skattade klustren och den sanna klasser
 
 \end_deeper
 \begin_layout Enumerate
-Jämför resultatet i 1), 2) och 3).
+Jämför resultatet i 1),
+ 2) och 3).
  Vilken modell föredrar ni här?
 \end_layout
 
 \begin_layout Section*
-Del 7: Teorifrågor
+Del 7:
+ Teorifrågor
 \end_layout
 
 \begin_layout Enumerate
@@ -842,19 +929,15 @@ Ge ett exempel på ett datamaterial där k-means kommer att fungera dåligt.
 \end_layout
 
 \begin_layout Enumerate
-Förklara varför man i K-means algoritmen beräknar centroidernas position
- genom ett medelvärde av alla klustrets punkter om vi använder det Euklidiska
- avståndsmåttet och vill minimera SSE.
+Förklara varför man i K-means algoritmen beräknar centroidernas position genom ett medelvärde av alla klustrets punkter om vi använder det Euklidiska avståndsmåttet och vill minimera SSE.
 \end_layout
 
 \begin_layout Enumerate
-Beskriv två alternativa lösningar till initialiseringsproblemen för val
- av startcentroider i K-means algoritmen utöver att slumpmässigt välja dessa.
+Beskriv två alternativa lösningar till initialiseringsproblemen för val av startcentroider i K-means algoritmen utöver att slumpmässigt välja dessa.
 \end_layout
 
 \begin_layout Enumerate
-Ge ett exempel på ett datamaterial som innehåller kluster av olika tätheter
- där DBSCAN inte kommer kunna hitta de “korrekta” naturliga klustren?
+Ge ett exempel på ett datamaterial som innehåller kluster av olika tätheter där DBSCAN inte kommer kunna hitta de “korrekta” naturliga klustren?
 \end_layout
 
 \begin_layout Enumerate
@@ -876,7 +959,8 @@ hierarkisk klustring?
 
 \end_deeper
 \begin_layout Section*
-Del 8: Mer klustering
+Del 8:
+ Mer klustering
 \end_layout
 
 \begin_layout Standard
@@ -916,15 +1000,18 @@ Testa att göra klustra data med
 
 \begin_deeper
 \begin_layout Enumerate
-k-means: testa olika värden på k
+k-means:
+ testa olika värden på k
 \end_layout
 
 \begin_layout Enumerate
-DBSCAN: Välj valfria värden på hyperparametrarna.
+DBSCAN:
+ Välj valfria värden på hyperparametrarna.
 \end_layout
 
 \begin_layout Enumerate
-Hierarkisk klustring, välj valfri länkningsmetod.
+Hierarkisk klustring,
+ välj valfri länkningsmetod.
 \end_layout
 
 \end_deeper
@@ -947,7 +1034,8 @@ S-sets
 
 \begin_deeper
 \begin_layout Enumerate
-Börja med att undersöka data: Vad skiljer S1-S4 åt?
+Börja med att undersöka data:
+ Vad skiljer S1-S4 åt?
 \end_layout
 
 \begin_layout Enumerate
@@ -956,15 +1044,18 @@ Gå igenom dataseten S1-S4 och klustra med
 
 \begin_deeper
 \begin_layout Enumerate
-k-means: testa olika värden på k
+k-means:
+ testa olika värden på k
 \end_layout
 
 \begin_layout Enumerate
-DBSCAN: Välj valfria värden på hyperparametrarna.
+DBSCAN:
+ Välj valfria värden på hyperparametrarna.
 \end_layout
 
 \begin_layout Enumerate
-Hierarkisk klustring, välj valfri länkningsmetod.
+Hierarkisk klustring,
+ välj valfri länkningsmetod.
 \end_layout
 
 \end_deeper
@@ -974,7 +1065,8 @@ Hur fungerar klustringen i de olika fallen?
 
 \end_deeper
 \begin_layout Section*
-Del 9: Frivillig fördjupning
+Del 9:
+ Frivillig fördjupning
 \end_layout
 
 \begin_layout Subsection*
@@ -994,7 +1086,9 @@ ISL
 \series bold
 ISL
 \series default
-: 12.6 Exercises Applied: 10
+:
+ 12.6 Exercises Applied:
+ 10
 \end_layout
 
 \end_body
