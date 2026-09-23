@@ -44,26 +44,37 @@
         \item Densitetsbaserade metoder
         \item Faktorer som påverkar klusteranalys
         \item Utvärdera klusteranalys
-        \item Sammanfattning av kursen
     \end{itemize}
     
 \end{frame}
 
 \begin{frame}{Projekt och resten av kursen}
-    
+  
+   Kursvecka 7 och framåt: 
+  
   \begin{itemize}
-        \item Kursvecka 7 och framåt: 
-        \begin{itemize}
-          \item Arbeta med projektet
-          \item Datorlabbar: hjälp med projektet $\rightarrow$ utnyttja tiden!
-          \item Förbereda inför tentan
-        \end{itemize}
-        \item Datum: \href{https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/project/Datum_ht2025.pdf}{länk}
+        \item Arbeta med projektet
+        \item Datorlabbar: hjälp med projektet $\rightarrow$ utnyttja tiden!
+        \item Förbereda inför tentan
     \end{itemize}
+    
+      Projektet - \href{https://www.ida.liu.se/~732G57/info/courseinfo.sv.shtml\#projekt}{kurshemsidan}
+
+  Viktiga dokument att ha koll på:
+    \begin{itemize}
+        \item Generella instruktioner: \href{https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/project/projekt_2026.pdf}{länk}
+        \item Datahatering och modellering: \href{https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/project/Projekt\%20modellering.pdf}{länk}
+        \item Mallen, finns info i: \href{https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/project/template/Rapportmall-STIMA-projekt.pdf}{pdf} och
+                                     \href{https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/project/template/Rapportmall\%20STIMA\%20projekt.rmd}{rmd}
+        \item Datum och deadlines: \href{https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/project/Datum_ht2026.pdf}{länk}
+    \end{itemize}
+    
 
 \end{frame}
 
-\begin{frame}{K-medoid klustring}
+
+
+\begin{frame}{K-medoid klustring - PAM}
 
     Använder \imp{medoider} som center/prototyp vid klustring.
     \begin{itemize}
@@ -85,13 +96,317 @@
     
 \end{frame}
 
-\begin{frame}{K-medoid klustring}
+\begin{frame}{PAM-algoritmen: BUILD och SWAP}
+    PAM söker $K$ medoider som minimerar summan av avstånden
+    till observationernas närmaste medoid.
 
-    \includegraphics[width = \textwidth]{figs/k-mediod.png}
-    
+    \begin{enumerate}
+        \item \textbf{BUILD:} Välj stegvis $K$ observationer som
+              initiala medoider.
+
+        \item Skapa kluster genom att tilldela varje observation till sin närmaste medoid.
+
+        \item \textbf{SWAP:} Undersök om en medoid kan bytas mot
+              en observation som inte är medoid.
+
+        \item Genomför det byte som minskar den totala kostnaden mest.
+
+        \item Upprepa tills inget byte längre förbättrar lösningen.
+    \end{enumerate}
+
+    \begin{greenbox}
+        Medoiderna är alltid faktiska observationer i datamängden.
+    \end{greenbox}
 \end{frame}
 
+\begin{frame}{PAM: BUILD-fasen}
+    Målet är att välja $K$ bra startmedoider.
 
+    \begin{enumerate}
+        \item Välj först den observation som ger lägst total kostnad
+              om den används som enda medoid.
+
+        \item Välj därefter den observation som ger den största
+              minskningen av den totala kostnaden. Spara som nästa medoid.
+
+        \item Upprepa tills $K$ medoider har valts.
+    \end{enumerate}
+
+    \vspace{0.2cm}
+
+    \begin{itemize}
+        \item BUILD är en girig (greedy) algoritm.
+        \item Försöker sprida ut medoiderna över datamängden.
+        \item Ger ofta betydligt bättre startvärden än ett rent slumpmässigt val.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{PAM: SWAP-fasen}
+    Efter BUILD-fasen försöker PAM förbättra lösningen.
+
+    \begin{enumerate}
+        \item Välj en aktuell medoid.
+
+        \item Välj en observation som inte är medoid.
+
+        \item Beräkna hur den totala kostnaden påverkas om
+              de två observationerna byter plats.
+
+        \item Genomför det byte som ger störst förbättring.
+
+        \item Upprepa tills inget byte längre minskar kostnaden.
+    \end{enumerate}
+
+    \vspace{0.2cm}
+
+    \begin{greenbox}
+        SWAP-fasen spelar en liknande roll som centroiduppdateringen
+        i K-means.
+    \end{greenbox}
+\end{frame}
+
+\begin{frame}{PAM-algoritmen - detaljer}
+
+    Givet
+    \[
+        X=\{x_1,\ldots,x_n\},
+        \qquad
+        d(\cdot,\cdot),
+        \qquad
+        K,
+    \]
+
+    söker PAM efter $K$ medoider: $c_1,\ldots,c_K$ som minimerar
+
+    \[
+        L(c_1,\ldots,c_K)
+        =
+        \sum_{i=1}^{n}
+        \min_{k=1,\ldots,K}
+        d(x_i,c_k).
+    \]
+
+\begin{enumerate}
+    \item $c_1,\ldots,c_K \leftarrow \texttt{BUILD}(X)$
+
+    \item Tilldela varje observation till närmaste medoid.
+
+    \item while(en förbättrande swap existerar)
+    \begin{itemize}
+        \item $\texttt{SWAP}(c_1,\ldots,c_K)$
+        \item Tilldela observationerna till närmaste medoid.
+    \end{itemize}
+
+    \item returnera $c_1,\ldots,c_K$
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{PAM: SWAP-fasen - detaljer}
+
+    Låt
+    \[
+        M=\{c_1,\ldots,c_K\}
+    \]
+    vara de aktuella medoiderna.
+
+    \begin{itemize}
+        \item Undersök alla möjliga byten
+        \[
+            c \in M,
+            \qquad
+            x \notin M.
+        \]
+
+        \item Antal kandidatswaps: $K(n-K).$
+
+        \item För varje swap beräknas den nya kostnaden $L$.
+
+        \item Genomför den swap som minskar $L$ mest.
+
+        \item Upprepa tills ingen förbättring är möjlig.
+    \end{itemize}
+
+    \vspace{0.2cm}
+
+    \textbf{Tidskomplexitet}
+
+    \[
+        \text{PAM: ungefär } \mathcal{O}(Kn^2)
+        \qquad
+        \text{K-means: } \mathcal{O}(Kn)
+    \]
+
+\end{frame}
+
+\begin{frame}{PAM med slumpmässiga startvärden}
+    BUILD-fasen kan ersättas med slumpmässiga startvärden:
+
+    \begin{enumerate}
+        \item Välj $K$ observationer slumpmässigt som startmedoider.
+
+        \item Tilldela varje observation till sin närmaste medoid.
+
+        \item Använd SWAP-fasen för att förbättra lösningen.
+
+        \item Upprepa med flera slumpmässiga startvärden.
+
+        \item Behåll den lösning som ger lägst total kostnad.
+    \end{enumerate}
+
+    \vspace{0.2cm}
+
+    \begin{itemize}
+        \item Liknar användningen av \texttt{nstart} i K-means.
+        \item I \texttt{cluster::pam()} används
+              \texttt{medoids = "random"} och \texttt{nstart}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{CLARA (Clustering Large Applications)}
+
+    CLARA är en skalbar variant av PAM för stora datamängder.
+
+    \begin{enumerate}
+        \item Dra ett slumpmässigt stickprov av observationer.
+
+        \item Kör PAM på stickprovet.
+
+        \item Använd de erhållna medoiderna för att klustra
+              hela datamängden.
+
+        \item Upprepa för flera stickprov.
+
+        \item Behåll den lösning som ger lägst total kostnad.
+    \end{enumerate}
+
+    \vspace{0.2cm}
+
+    \begin{itemize}
+        \item Snabbare än PAM för stora datamängder.
+        \item Kan använda samma avståndsmått som PAM.
+        \item Resultatet beror på vilka stickprov som dras.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Avståndsmått för PAM}
+
+    PAM kan använda många olika avståndsmått eftersom algoritmen
+    endast kräver ett avstånd $d(\cdot,\cdot)$. Exempel
+
+    \begin{itemize}
+
+        \item \textbf{Cosinusavstånd}
+        \item \textbf{Jaccard-avstånd}
+        \item \textbf{Gower-avstånd}:
+        Kan hantera numeriska, kategoriska,
+        ordinala och binära variabler samtidigt.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Cosinusavstånd}
+
+    Cosinusavstånd mäter skillnaden i \textbf{riktning}
+    mellan två vektorer.
+
+    \[
+        d(x,y)
+        =
+        1-
+        \frac{x^\top y}
+             {\|x\|\|y\|}
+    \]
+
+    \begin{itemize}
+        \item Bygger på vinkeln mellan två vektorer.
+        \item Oberoende av vektorernas längd.
+        \item Två vektorer med samma riktning får avstånd 0.
+        \item Två ortogonala vektorer får avstånd 1 ( = mest olika)
+    \end{itemize}
+
+    \vspace{0.2cm}
+
+    Vanliga tillämpningar:
+
+    \begin{itemize}
+        \item Textdata
+        \item Dokumentklustring.
+        \item Embeddings från språk- och bildmodeller.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Jaccard-avstånd}
+
+    Jaccard-avstånd används ofta för asymmetriska binära data.
+
+    \[
+        d(x,y)
+        =
+        1-
+        \frac{a}{a+b+c}
+    \]
+
+där
+
+\begin{itemize}
+    \item $a$ = antal variabler där båda observationerna har värdet 1,
+    \item $b$ = antal variabler där den första observationen har värdet 1 och den andra 0,
+    \item $c$ = antal variabler där den första observationen har värdet 0 och den andra 1.
+\end{itemize}
+
+    Egenskaper:
+
+    \begin{itemize}
+        \item Gemensamma nollor påverkar inte avståndet. Fokuserar på närvaro snarare än frånvaro.
+    \end{itemize}
+
+    Vanliga tillämpningar: Marknadskorgsanalys, dokument representerade med ordindikatorer. Frånvaro/närvaro-data
+
+
+\end{frame}
+
+\begin{frame}{Gower-avstånd}
+
+    Gower-avstånd kan hantera blandade datatyper.
+
+    \[
+        d_G(x_i,x_j)
+        =
+        \frac{
+            \sum_{k=1}^{p}
+            w_k d_{ijk}
+        }{
+            \sum_{k=1}^{p}
+            w_k
+        }
+    \]
+
+    där $d_{ijk}$ är avståndet för variabel $k$.
+
+    \vspace{0.2cm}
+
+    Egenskaper:
+
+    \begin{itemize}
+        \item Numeriska variabler skalas till intervallet $[0,1]$.
+        \item Kategoriska variabler behandlas via match/mismatch.
+        \item Kan hantera ordinala och binära variabler.
+        \item Alla delavstånd kombineras till ett totalavstånd.
+    \end{itemize}
+
+    \vspace{0.2cm}
+
+    Vanliga tillämpningar:
+
+    \begin{itemize}
+        \item Kundsegmentering.
+        \item Enkätdata.
+        \item Data med både numeriska och kategoriska variabler.
+    \end{itemize}
+
+\end{frame}
 
 \begin{frame}{Densitetsbaserade metoder}
 
@@ -100,6 +415,8 @@
     \includegraphics[width = .8\textwidth]{figs/density_cluster2.png}
     
 \end{frame}
+
+
 
 \begin{frame}{DBSCAN}
 
@@ -217,7 +534,7 @@ Ingen klustermetod passar för alla dataset!
 \begin{frame}{Utvärdera klusteranalys}
 
     \begin{itemize}
-        \item Cluster tendency: Finns det kluster i data? Eller har observationerna bara slumpmässiga värden?
+        \item Finns det kluster i data? Eller har observationerna bara slumpmässiga värden?
         \begin{itemize}
            \item Notera: det kan finnas bra ett "naturligt" kluster i data
         \end{itemize}
@@ -226,6 +543,7 @@ Ingen klustermetod passar för alla dataset!
         \item Externa mått på hur bra klusteranalysen är $\rightarrow$ om vi har tillgång till sanna klasser/grupper.
         \item Jämföra olika metoder för klusteranalys på samma dataset.
         \item Kontext och problembeskrivning: avgör om vi har en bra klustring.
+        Hjälper resutlatet från klustringen oss att lösa problemet?
     \end{itemize}
     
 \end{frame}
@@ -362,31 +680,6 @@ Ingen klustermetod passar för alla dataset!
 \begin{frame}{Välja antal kluster - Exempel}
 
     \includegraphics[width=.7\textwidth]{figs/Similarity matrices for clusters.png}
-    
-\end{frame}
-
-\begin{frame}{Cluster Tendency}
-
-    \begin{itemize}
-        \item Har vi slumpmässig data eller finns det något mönster? (kluster)
-        \item Sampla två grupper om $p$ datapunkter
-        \begin{itemize}
-            \item Uniformt fördelade från datarymden.
-            \item Från datasetet utan återläggning.
-        \end{itemize}
-        \item Beräkna avståndet till närmaste granne i datasetet.
-        \begin{itemize}
-            \item $u_i$ är minsta avståndet från en uniform datapunkt till en observation.
-            \item $w_i$ är minsta avståndet från en samplad datapunkt till en icke-samplad datapunkt.
-        \end{itemize}
-        \item Hopkins statistic:
-        \begin{equation*}
-            \operatorname{H}=\frac{\sum_{i=1}^{p}u_i}{\sum_{i=1}^{p}u_i + \sum_{i=1}^{p}w_i}
-        \end{equation*}
-        \item Nollhypotesen är att datasetet följer en uniform fördelning. $\operatorname{H_0}$ kommer då vara $\operatorname{Beta}(p,p)$ fördelat.
-        \item Värden nära 1 indikerar att data inte är uniformt fördelat.
-        
-    \end{itemize}
     
 \end{frame}
 

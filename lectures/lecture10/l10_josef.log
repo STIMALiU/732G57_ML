@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.18)  22 OCT 2025 10:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  23 SEP 2026 15:47
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -829,9 +829,9 @@ Language: english 2017/06/06 v3.3r English support from the babel system
 Package babel Info: Hyphen rules for 'canadian' set to \l@english
 (babel)             (\language0). Reported on input line 102.
 Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
-(babel)             (\language36). Reported on input line 105.
+(babel)             (\language20). Reported on input line 105.
 Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
-(babel)             (\language36). Reported on input line 108.
+(babel)             (\language20). Reported on input line 108.
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
@@ -1207,26 +1207,26 @@ Overfull \vbox (13.79993pt too high) detected at line 37
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <../LiU_primary_black.pdf>]
 LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 
-50.
+49.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmss.fd
 File: ts1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ) [2
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 64.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 73.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 64.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 73.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 64.
+ut line 73.
 
 (/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
@@ -1236,149 +1236,169 @@ thkerncmss.
 
 ] [4
 
-]
-<figs/k-mediod.png, id=51, 887.315pt x 564.1075pt>
-File: figs/k-mediod.png Graphic file (type png)
-<use figs/k-mediod.png>
-Package pdftex.def Info: figs/k-mediod.png  used on input line 92.
-(pdftex.def)             Requested size: 307.28987pt x 195.35754pt.
- [5
+] [5
 
- <./figs/k-mediod.png>]
-<figs/density_cluster2.png, id=57, 652.4375pt x 508.90125pt>
+] [6
+
+] [7
+
+] [8
+
+] [9
+
+] [10
+
+] [11
+
+] [12
+
+] [13
+
+]
+Overfull \vbox (14.77223pt too high) detected at line 368
+ []
+
+[14
+
+]
+Overfull \vbox (16.38278pt too high) detected at line 409
+ []
+
+[15
+
+]
+<figs/density_cluster2.png, id=123, 652.4375pt x 508.90125pt>
 File: figs/density_cluster2.png Graphic file (type png)
 <use figs/density_cluster2.png>
-Package pdftex.def Info: figs/density_cluster2.png  used on input line 102.
+Package pdftex.def Info: figs/density_cluster2.png  used on input line 417.
 (pdftex.def)             Requested size: 245.83282pt x 191.74602pt.
 
-Overfull \vbox (7.58177pt too high) detected at line 102
+Overfull \vbox (7.58177pt too high) detected at line 417
  []
 
-[6
+[16
 
- <./figs/density_cluster2.png>] [7
+ <./figs/density_cluster2.png>] [17
 
 ]
-<figs/DBSCAN_obs_class.png, id=69, 1253.68375pt x 671.50874pt>
+<figs/DBSCAN_obs_class.png, id=134, 1253.68375pt x 671.50874pt>
 File: figs/DBSCAN_obs_class.png Graphic file (type png)
 <use figs/DBSCAN_obs_class.png>
-Package pdftex.def Info: figs/DBSCAN_obs_class.png  used on input line 128.
+Package pdftex.def Info: figs/DBSCAN_obs_class.png  used on input line 445.
 (pdftex.def)             Requested size: 307.28987pt x 164.58768pt.
- [8
+ [18
 
  <./figs/DBSCAN_obs_class.png>]
-<figs/DBSCAN algoritm.png, id=75, 1671.24374pt x 405.515pt>
+<figs/DBSCAN algoritm.png, id=140, 1671.24374pt x 405.515pt>
 File: figs/DBSCAN algoritm.png Graphic file (type png)
 <use figs/DBSCAN algoritm.png>
-Package pdftex.def Info: figs/DBSCAN algoritm.png  used on input line 134.
+Package pdftex.def Info: figs/DBSCAN algoritm.png  used on input line 451.
 (pdftex.def)             Requested size: 307.28987pt x 74.5612pt.
-
-[9
-
- <./figs/DBSCAN algoritm.png>] [10
-
-]
-<figs/density_cluster.png, id=87, 1513.655pt x 651.43375pt>
-File: figs/density_cluster.png Graphic file (type png)
-<use figs/density_cluster.png>
-Package pdftex.def Info: figs/density_cluster.png  used on input line 153.
-(pdftex.def)             Requested size: 307.28987pt x 132.24263pt.
- [11
-
- <./figs/density_cluster.png>]
-<figs/DBSCAN_cluster_example.png, id=93, 1688.3075pt x 717.68124pt>
-File: figs/DBSCAN_cluster_example.png Graphic file (type png)
-<use figs/DBSCAN_cluster_example.png>
-Package pdftex.def Info: figs/DBSCAN_cluster_example.png  used on input line 15
-9.
-(pdftex.def)             Requested size: 307.28987pt x 130.62256pt.
-
-[12
-
- <./figs/DBSCAN_cluster_example.png>] [13
-
-]
-<figs/compre_k-mean_DBACAN.png, id=106, 1351.0475pt x 744.7825pt>
-File: figs/compre_k-mean_DBACAN.png Graphic file (type png)
-<use figs/compre_k-mean_DBACAN.png>
-Package pdftex.def Info: figs/compre_k-mean_DBACAN.png  used on input line 186.
-
-(pdftex.def)             Requested size: 307.28987pt x 169.3985pt.
- [14
-
- <./figs/compre_k-mean_DBACAN.png>] [15
-
-] [16
-
-] [17
-
-] [18
-
-]
-<figs/cohesion and separation.1.png, id=133, 934.49126pt x 469.755pt>
-File: figs/cohesion and separation.1.png Graphic file (type png)
-<use figs/cohesion and separation.1.png>
-Package pdftex.def Info: figs/cohesion and separation.1.png  used on input line
- 255.
-(pdftex.def)             Requested size: 245.83282pt x 123.57416pt.
-
-Overfull \vbox (14.61409pt too high) detected at line 255
- []
 
 [19
 
- <./figs/cohesion and separation.1.png>] [20
-
-] [21
+ <./figs/DBSCAN algoritm.png>] [20
 
 ]
-<figs/Silhouette coefficients for points in ten clusters..png, id=157, 842.1462
+<figs/density_cluster.png, id=152, 1513.655pt x 651.43375pt>
+File: figs/density_cluster.png Graphic file (type png)
+<use figs/density_cluster.png>
+Package pdftex.def Info: figs/density_cluster.png  used on input line 470.
+(pdftex.def)             Requested size: 307.28987pt x 132.24263pt.
+ [21
+
+ <./figs/density_cluster.png>]
+<figs/DBSCAN_cluster_example.png, id=158, 1688.3075pt x 717.68124pt>
+File: figs/DBSCAN_cluster_example.png Graphic file (type png)
+<use figs/DBSCAN_cluster_example.png>
+Package pdftex.def Info: figs/DBSCAN_cluster_example.png  used on input line 47
+6.
+(pdftex.def)             Requested size: 307.28987pt x 130.62256pt.
+
+[22
+
+ <./figs/DBSCAN_cluster_example.png>] [23
+
+]
+<figs/compre_k-mean_DBACAN.png, id=171, 1351.0475pt x 744.7825pt>
+File: figs/compre_k-mean_DBACAN.png Graphic file (type png)
+<use figs/compre_k-mean_DBACAN.png>
+Package pdftex.def Info: figs/compre_k-mean_DBACAN.png  used on input line 503.
+
+(pdftex.def)             Requested size: 307.28987pt x 169.3985pt.
+ [24
+
+ <./figs/compre_k-mean_DBACAN.png>] [25
+
+] [26
+
+] [27
+
+] [28
+
+]
+<figs/cohesion and separation.1.png, id=198, 934.49126pt x 469.755pt>
+File: figs/cohesion and separation.1.png Graphic file (type png)
+<use figs/cohesion and separation.1.png>
+Package pdftex.def Info: figs/cohesion and separation.1.png  used on input line
+ 573.
+(pdftex.def)             Requested size: 245.83282pt x 123.57416pt.
+
+Overfull \vbox (14.61409pt too high) detected at line 573
+ []
+
+[29
+
+ <./figs/cohesion and separation.1.png>] [30
+
+] [31
+
+]
+<figs/Silhouette coefficients for points in ten clusters..png, id=215, 842.1462
 6pt x 395.4775pt>
 File: figs/Silhouette coefficients for points in ten clusters..png Graphic file
  (type png)
 <use figs/Silhouette coefficients for points in ten clusters..png>
 Package pdftex.def Info: figs/Silhouette coefficients for points in ten cluster
-s..png  used on input line 298.
+s..png  used on input line 616.
 (pdftex.def)             Requested size: 307.28987pt x 144.30283pt.
- [22
+ [32
 
- <./figs/Silhouette coefficients for points in ten clusters..png>] [23
+ <./figs/Silhouette coefficients for points in ten clusters..png>] [33
 
 ]
-<figs/Determining the Correct Number of Clusters.png, id=169, 1124.2pt x 608.27
+<figs/Determining the Correct Number of Clusters.png, id=226, 1124.2pt x 608.27
 25pt>
 File: figs/Determining the Correct Number of Clusters.png Graphic file (type pn
 g)
 <use figs/Determining the Correct Number of Clusters.png>
 Package pdftex.def Info: figs/Determining the Correct Number of Clusters.png  u
-sed on input line 318.
+sed on input line 636.
 (pdftex.def)             Requested size: 307.28987pt x 166.25912pt.
- [24
+ [34
 
- <./figs/Determining the Correct Number of Clusters.png>] [25
+ <./figs/Determining the Correct Number of Clusters.png>] [35
 
-] [26
+] [36
 
 ]
-<figs/Similarity matrices for clusters.png, id=187, 929.4725pt x 972.63374pt>
+<figs/Similarity matrices for clusters.png, id=243, 929.4725pt x 972.63374pt>
 File: figs/Similarity matrices for clusters.png Graphic file (type png)
 <use figs/Similarity matrices for clusters.png>
 Package pdftex.def Info: figs/Similarity matrices for clusters.png  used on inp
-ut line 366.
+ut line 684.
 (pdftex.def)             Requested size: 215.10196pt x 225.08128pt.
 
-Overfull \vbox (8.31718pt too high) detected at line 366
+Overfull \vbox (8.31718pt too high) detected at line 684
  []
 
-[27
+[37
 
- <./figs/Similarity matrices for clusters.png>] [28
+ <./figs/Similarity matrices for clusters.png>] [38
 
-] [29
+] [39
 
-] [30
-
-] [31
+] [40
 
 ]
 \tf@nav=\write6
@@ -1396,33 +1416,35 @@ Package rerunfilecheck Info: File `l10_josef.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 31779 strings out of 479533
- 654749 string characters out of 5876205
- 898403 words of memory out of 5000000
- 49038 multiletter control sequences out of 15000+600000
- 494543 words of font info for 105 fonts, out of 8000000 for 9000
+ 31820 strings out of 479533
+ 655064 string characters out of 5876205
+ 896402 words of memory out of 5000000
+ 49059 multiletter control sequences out of 15000+600000
+ 495382 words of font info for 110 fonts, out of 8000000 for 9000
  417 hyphenation exceptions out of 8191
  128i,13n,122p,1894b,744s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/joswi05/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcss0900.6
-00pk> </home/joswi05/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcss100
-0.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmssi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on l10_josef.pdf (31 pages, 3006853 bytes).
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx1
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texmf/fonts/type1/public/
+cm-super/sfss0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1000.pf
+b>
+Output written on l10_josef.pdf (40 pages, 2989727 bytes).
 PDF statistics:
- 301 PDF objects out of 1000 (max. 8388607)
- 213 compressed objects within 3 object streams
- 63 named destinations out of 1000 (max. 500000)
- 103 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 363 PDF objects out of 1000 (max. 8388607)
+ 263 compressed objects within 3 object streams
+ 81 named destinations out of 1000 (max. 500000)
+ 98 words of extra memory for PDF output out of 10000 (max. 10000000)
 
