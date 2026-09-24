@@ -507,6 +507,16 @@ data1_alt.csv
 \end_inset
 
  för att beräkna en K-means klusteranalys.
+ Data finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://github.com/STIMALiU/732G12_DM/tree/master/data"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -672,7 +682,7 @@ Använd
 \family typewriter
 data2.csv
 \family default
- för att beräkna hierarkisk klusteranalys.
+ för att göra hierarkisk klusteranalys.
 \end_layout
 
 \begin_layout Enumerate
