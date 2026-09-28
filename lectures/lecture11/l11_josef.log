@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  28 SEP 2026 12:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  28 SEP 2026 12:37
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1275,34 +1275,34 @@ thkerncmss.
 
 ] [23
 
-] [24
-
 ]
-<./figs//ml_methods_interpretability_vs_predictive_power3.png, id=162, 670.6656
+<./figs//ml_methods_interpretability_vs_predictive_power3.png, id=157, 670.6656
 pt x 444.4605pt>
 File: ./figs//ml_methods_interpretability_vs_predictive_power3.png Graphic file
  (type png)
 <use ./figs//ml_methods_interpretability_vs_predictive_power3.png>
 Package pdftex.def Info: ./figs//ml_methods_interpretability_vs_predictive_powe
-r3.png  used on input line 456.
+r3.png  used on input line 450.
 (pdftex.def)             Requested size: 245.83282pt x 162.91508pt.
- [25
+ [24
 
- <./figs//ml_methods_interpretability_vs_predictive_power3.png>] [26
+ <./figs//ml_methods_interpretability_vs_predictive_power3.png>] [25
+
+] [26
 
 ] [27
 
-] [28
-
 ]
 
-LaTeX Warning: Command \textpm invalid in math mode on input line 487.
+LaTeX Warning: Command \textpm invalid in math mode on input line 481.
 
 
-LaTeX Warning: Command \textpm invalid in math mode on input line 487.
+LaTeX Warning: Command \textpm invalid in math mode on input line 481.
 
 Missing character: There is no ± in font cmss10!
-[29
+[28
+
+] [29
 
 ] [30
 
@@ -1328,8 +1328,6 @@ Missing character: There is no ± in font cmss10!
 
 ] [41
 
-] [42
-
 ]
 \tf@nav=\write6
 \openout6 = `l11_josef.nav'.
@@ -1346,10 +1344,10 @@ Package rerunfilecheck Info: File `l11_josef.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 31754 strings out of 479533
- 653165 string characters out of 5876205
+ 31750 strings out of 479533
+ 653130 string characters out of 5876205
  897402 words of memory out of 5000000
- 49008 multiletter control sequences out of 15000+600000
+ 49006 multiletter control sequences out of 15000+600000
  489516 words of font info for 91 fonts, out of 8000000 for 9000
  417 hyphenation exceptions out of 8191
  128i,13n,122p,1894b,744s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1371,10 +1369,10 @@ f-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/pu
 blic/cm-super/sfss0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss09
 00.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1000.pfb>
-Output written on l11_josef.pdf (42 pages, 265322 bytes).
+Output written on l11_josef.pdf (41 pages, 264801 bytes).
 PDF statistics:
- 369 PDF objects out of 1000 (max. 8388607)
- 273 compressed objects within 3 object streams
- 85 named destinations out of 1000 (max. 500000)
+ 363 PDF objects out of 1000 (max. 8388607)
+ 268 compressed objects within 3 object streams
+ 83 named destinations out of 1000 (max. 500000)
  53 words of extra memory for PDF output out of 10000 (max. 10000000)
 
