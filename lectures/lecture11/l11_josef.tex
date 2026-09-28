@@ -64,7 +64,12 @@
           \item Datorlabbar: hjälp med projektet $\rightarrow$ utnyttja tiden!
           \item Förbereda inför tentan
         \end{itemize}
-        \item Datum: \href{https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/project/Datum_ht2025.pdf}{länk}
+        \item Datum: \href{https://raw.githubusercontent.com/STIMALiU/732G57_ML/refs/heads/main/project/Datum_ht2026.pdf}{länk}
+        \item Ändring i schemat: 
+        \begin{itemize}
+          \item Måndag 5/10 kl 10-12 flyttas 13-15 samma dag.
+          \item Onsdag 14/10 flyttas till 13/10 kl 10-12 (innan deadline för projektet)
+        \end{itemize}
     \end{itemize}
 
 \end{frame}
@@ -225,6 +230,7 @@
         \item \textbf{Viktade kostnadsfunktioner:} Ge högre vikt till minoritetsklassen vid träning.
         \begin{itemize}
             \item Exempel: viktad MSE, viktad cross-entropy loss
+            \item Valet av viktning är en hyperparameter!
         \end{itemize}
     \end{itemize}
     \item Syftet är att förbättra modellens förmåga att identifiera minoritetsklassen.
@@ -245,37 +251,151 @@
 \end{itemize}
 \end{frame}
 
-
-
-\begin{frame}{Nästlade valideringsscheman}
+\begin{frame}{Användning av valideringsdata: två varianter}
 \begin{itemize}
-    \item Ibland skapas en extra valideringsmängd inom träningsdata.
-    \item Används för att välja hyperparametrar för en specifik modellklass.
-    \item Kräver att man har tillräckligt mycket data.
-    \item Exempel: intern validering i Keras vid träning av neurala nätverk.
+    \item Modellval med \textbf{direkt} validering:
+    \begin{itemize}
+      \item Träning $\rightarrow$ Validering $\rightarrow$ Test
+    \end{itemize}
+    \item Modellval med \textbf{hierarkisk} validering:
+     \begin{itemize}
+      \item Träning $\rightarrow$ Intern validering $\rightarrow$ Extern validering $\rightarrow$ Test
+    \end{itemize}
 \end{itemize}
+
+Beteckna:
+\begin{itemize}
+    \item  \textbf{Utvecklingsdata} = träning + all validering
+    \item \textbf{Modelltyp} = En grupp eller familj med modeller, exempel kan vara: CART, neurala nätverk,
+      Splines, KNN etc. Typiskt finns det många hyperparametrar inom varje modelltyp, vilket ger
+      upphov till en stor mängd möjliga modeller.
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}{Modellval med direkt validering}
+
+\begin{enumerate}
+    \item Dela upp data i: $\text{träning} \quad \text{validering} \quad \text{test}$
+
+    \item Träna flera kandidatmodeller på träningsdata.
+
+    \item Välj modelltyp och hyperparametrar med hjälp av
+    valideringsdata.
+
+    \item Träna om den valda modellen på all \textbf{utvecklingsdata}
+    \item Utvärdera den färdiga modellen på testdata.
+\end{enumerate}
+
+\vspace{0.2cm}
+
+\begin{block}{Princip}
+Valideringsdata används för modellval.
+Testdata används endast för den slutliga utvärderingen.
+\end{block}
+
+\end{frame}
+
+%----------------------------------
+
+\begin{frame}{Modellval med hierarkisk validering}
+
+\begin{enumerate}
+        \item Dela upp data i: $\text{träning} \quad \text{extern validering} \quad \text{test}$
+    \item För varje modelltyp, använd träningsmängden för att
+    \begin{itemize}
+        \item skapa intern träning och intern validering,
+        \item skatta kandidatmodeller på intern träning,
+        \item välja hyperparametrar med intern validering.
+    \end{itemize}
+    Intern korsvalidering kan användas i stället för en enda uppdelning.
+
+    \item Utvärdera den bästa modellen från varje modelltyp på den
+    \textbf{externa valideringsmängden} och välj slutlig modell.
+
+    \item Träna om den valda modellen på all \textbf{utvecklingsdata}
+
+    \item Utvärdera den färdiga modellen på testdata.
+\end{enumerate}
+
+\begin{block}{Princip}
+Intern validering väljer hyperparametrar inom en modelltyp.\\
+Extern validering väljer mellan olika modelltyper.
+\end{block}
+
 \end{frame}
 
 
-\begin{frame}{Exempel – lasso vs neurala nätverk}
+
+\begin{frame}{Direkt validering: fördelar och nackdelar}
+
+\textbf{Fördelar}
 \begin{itemize}
-    \item Dela upp data i träning, validering och test.
-    \item \textbf{Lasso regression:}
-    \begin{itemize}
-        \item Använd korsvalidering på träningsdata för att välja $\lambda$.
-    \end{itemize}
-    \item \textbf{Neurala nätverk:}
-    \begin{itemize}
-        \item Skapa intern valideringsmängd inom träningsdata.
-        \item Välj hyperparametrar för nätverket, exempel:
-        \begin{itemize}
-          \item antal gömda lager, antal noder i lager
-          \item learning rate, batch size
-        \end{itemize}
-    \end{itemize}
-    \item Jämför modeller på valideringsdata.
-    \item Välj bästa modell och utvärdera på testdata.
+    \item Enkel att genomföra och lätt att förklara.
+    \item Kräver bara en valideringsmängd.
+    \item Mer data kan användas i varje steg.
 \end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{Nackdelar}
+\begin{itemize}
+    \item Samma valideringsdata används för att välja både
+          hyperparametrar och modelltyp.
+    \item Modellvalet kan påverkas av slumpvariation i
+          valideringsmängden.
+    \item Kan ge selektionsbias och alltför optimistiska
+          valideringsresultat.
+\end{itemize}
+
+\vspace{0.2cm}
+
+\begin{block}{När är direkt validering lämplig?}
+När datamängden är begränsad och antalet kandidatmodeller är måttligt.
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}{Hierarkisk validering: fördelar och nackdelar}
+
+\textbf{Fördelar}
+\begin{itemize}
+    \item Separerar val av hyperparametrar från val av modelltyp.
+    \item Minskar påverkan från slumpvariation i en enskild
+          valideringsmängd.
+    \item Kan minska selektionsbias när många modeller jämförs.
+\end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{Nackdelar}
+\begin{itemize}
+    \item Mer komplicerad att genomföra och förklara.
+    \item Kräver att data delas upp i fler delmängder.
+    \item Mindre data i varje steg kan ge större variation och
+          mindre stabila modellval.
+\end{itemize}
+
+\vspace{0.2cm}
+
+\begin{block}{När är hierarkisk validering lämplig?}
+När datamängden är stor och många hyperparameterkombinationer eller
+kandidatmodeller jämförs.
+\end{block}
+
+\end{frame}
+
+
+
+%----------------------------------
+
+
+
+
+\begin{frame}{Exempel }
+
 \end{frame}
 
 
@@ -344,7 +464,6 @@ Konceptuell bild över olika modellers egenskaper.
 \begin{frame}{Rester från tidigare föreläsningar}
 \begin{itemize}
     \item Autoencoders
-    \item XGBoost
 \end{itemize}
 \end{frame}
 
